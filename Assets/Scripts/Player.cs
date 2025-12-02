@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float moveSpeed = 5f;
+    public float moveSpeed = 1000f;
     public Rigidbody2D rb2d;
 
     void Start()
