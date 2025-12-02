@@ -1,19 +1,37 @@
 using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float moveSpeed = 1000f;
+    public Rigidbody2D rb2d;
+
     void Start()
     {
-        
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        Vector2 direction = Vector2.zero;
+
+        if (Input.GetKey(KeyCode.W))
+            direction.y = 1;
+        else if (Input.GetKey(KeyCode.S))
+            direction.y = -1;
+
+        if (Input.GetKey(KeyCode.D))
+            direction.x = 1;
+        else if (Input.GetKey(KeyCode.A))
+            direction.x = -1;
+
+        direction = direction.normalized;
+
+        rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
+
     public Player(int maxhp, int currenthp, int currentatk, int weaponatk, int temporaryatk, int atk, int baseatk, int currentdef, int accessorydef, int temporarydef, int def, int basedef, int weaponequipmentid, int accessoryequipmentid, int timelimit)
     {
         MaxHP = maxhp;
@@ -54,10 +72,10 @@ public class Player : MonoBehaviour
         player.WeaponAtk = weapon.Atk;
         player.Atk = player.WeaponAtk + player.BaseAtk;
         player.CurrentAtk = player.Atk + player.TemporaryAtk;
-        player.TimeLimit = Math.Max(5, weapon.TimeLimit);
-        Console.WriteLine($"Œ»İŠî‘bUŒ‚—ÍF{player.Atk}");
-        Console.WriteLine($"Œ»İUŒ‚—ÍF{player.CurrentAtk}");
-        Console.WriteLine($"Œ»İ‚Ì‰ğ“šó•tŠÔF{player.TimeLimit}");
+        player.TimeLimit = Mathf.Max(5, weapon.TimeLimit);
+        Debug.Log($"Œ»İŠî‘bUŒ‚—ÍF{player.Atk}");
+        Debug.Log($"Œ»İUŒ‚—ÍF{player.CurrentAtk}");
+        Debug.Log($"Œ»İ‚Ì‰ğ“šó•tŠÔF{player.TimeLimit}");
     }
     public void AccessoryEquip(Accessory accessory, Player player)
     {
@@ -65,7 +83,7 @@ public class Player : MonoBehaviour
         player.AccessoryDef = accessory.Def;
         player.Def = player.AccessoryDef + player.BaseDef;
         player.CurrentDef = player.Def + player.TemporaryDef;
-        Console.WriteLine($"Œ»İŠî‘b–hŒä—ÍF{player.Def}");
-        Console.WriteLine($"Œ»İ–hŒä—ÍF{player.CurrentDef}");
+        Debug.Log($"Œ»İŠî‘b–hŒä—ÍF{player.Def}");
+        Debug.Log($"Œ»İ–hŒä—ÍF{player.CurrentDef}");
     }
 }
