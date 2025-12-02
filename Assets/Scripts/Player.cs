@@ -7,6 +7,12 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float moveSpeed = 1000f;
     public Rigidbody2D rb2d;
+    public Sprite newSprite ;
+    public int frame;
+    public int legmove = 0;
+    public int legmove_left = 0;
+    public int legmove_right = 0;
+    public string lastInputKey="right";
 
     void Start()
     {
@@ -16,20 +22,140 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 direction = Vector2.zero;
-
+        frame++;
+        if (frame == 15)
+        {
+            legmove = 1;
+            legmove_left = 1;
+        }
+        else if (frame == 30)
+        {
+            legmove = 0;
+            legmove_left = 0;
+        }
+        else if (frame == 45)
+        {
+            legmove = 1;
+            legmove_right = 1;
+        }
+        else if (frame == 60)
+        {
+            legmove = 0;
+            legmove_right = 0;
+            frame = 0;
+        }
         if (Input.GetKey(KeyCode.W))
+        {
             direction.y = 1;
+            forward();
+            lastInputKey = "w";
+        }
         else if (Input.GetKey(KeyCode.S))
+        {
             direction.y = -1;
-
+            back();
+            lastInputKey = "s";
+        }
         if (Input.GetKey(KeyCode.D))
+        {
             direction.x = 1;
+            right();
+            lastInputKey = "d";
+
+        }
         else if (Input.GetKey(KeyCode.A))
+        {
             direction.x = -1;
-
+            left();
+            lastInputKey = "a";
+        }
+        else
+        {
+            if (lastInputKey == "w")
+            {
+                newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_1forward_1stop");
+                GetComponent<SpriteRenderer>().sprite = newSprite;
+            }
+            else if (lastInputKey == "s")
+            {
+                newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_2back_1stop");
+                GetComponent<SpriteRenderer>().sprite = newSprite;
+            }
+            else if(lastInputKey == "d")
+            {
+                newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_4right_1stop");
+                GetComponent<SpriteRenderer>().sprite = newSprite;
+            }
+            else if(lastInputKey == "a")
+            {
+                newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_3left_1stop");
+                GetComponent<SpriteRenderer>().sprite = newSprite;
+            }
+        }
         direction = direction.normalized;
-
         rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
+    }
+    void forward()
+    {
+        if (legmove_right==1)
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_1forward_3moverightleg");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+        else if (legmove_left == 1)
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_1forward_2moveleftleg");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+        else
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_1forward_1stop");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+    }
+    void back()
+    {
+        if (legmove_right == 1)
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_2back_3moverightleg");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+        else if (legmove_left == 1)
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_2back_2moveleftleg");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+        else
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_2back_1stop");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+    }
+    void left()
+    {
+        if (legmove == 1)
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_3left_2move");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+        else 
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_3left_1stop");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+    }
+    void right()
+    {
+        if (legmove == 1)
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_4right_2move");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
+        else
+        {
+            newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_4right_1stop");
+            GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
     }
 
     public Player(int maxhp, int currenthp, int currentatk, int weaponatk, int temporaryatk, int atk, int baseatk, int currentdef, int accessorydef, int temporarydef, int def, int basedef, int weaponequipmentid, int accessoryequipmentid, int timelimit)
