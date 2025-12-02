@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
             left();
             lastInputKey = "a";
         }
-        else
+        if (direction.x == 0 && direction.y==0)
         {
             if (lastInputKey == "w")
             {
@@ -81,12 +81,12 @@ public class Player : MonoBehaviour
                 newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_2back_1stop");
                 GetComponent<SpriteRenderer>().sprite = newSprite;
             }
-            else if(lastInputKey == "d")
+            else if (lastInputKey == "d")
             {
                 newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_4right_1stop");
                 GetComponent<SpriteRenderer>().sprite = newSprite;
             }
-            else if(lastInputKey == "a")
+            else if (lastInputKey == "a")
             {
                 newSprite = Resources.Load<Sprite>("Image/Playable/1Player_1m_1normal_3left_1stop");
                 GetComponent<SpriteRenderer>().sprite = newSprite;
