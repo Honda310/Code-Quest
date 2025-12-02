@@ -1,19 +1,37 @@
 using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float moveSpeed = 1000f;
+    public Rigidbody2D rb2d;
+
     void Start()
     {
-        
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        Vector2 direction = Vector2.zero;
+
+        if (Input.GetKey(KeyCode.W))
+            direction.y = 1;
+        else if (Input.GetKey(KeyCode.S))
+            direction.y = -1;
+
+        if (Input.GetKey(KeyCode.D))
+            direction.x = 1;
+        else if (Input.GetKey(KeyCode.A))
+            direction.x = -1;
+
+        direction = direction.normalized;
+
+        rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
+
     public Player(int maxhp, int currenthp, int currentatk, int weaponatk, int temporaryatk, int atk, int baseatk, int currentdef, int accessorydef, int temporarydef, int def, int basedef, int weaponequipmentid, int accessoryequipmentid, int timelimit)
     {
         MaxHP = maxhp;
