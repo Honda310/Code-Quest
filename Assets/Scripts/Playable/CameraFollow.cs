@@ -7,16 +7,20 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public float smoothing = 5f;
+    public float maxY = 45f;
 
     private void FixedUpdate()
     {
         if (target != null)
         {
             Vector3 targetPos = target.position;
-            targetPos.z = -10f; // 2DカメラのZ位置
-
+            targetPos.z = -15f; // 2DカメラのZ位置
+            Vector3 newPos = Vector3.Lerp(transform.position, targetPos, smoothing * Time.deltaTime);
             // 現在位置から目標位置へ少しずつ移動させる（線形補間）
-            transform.position = Vector3.Lerp(transform.position, targetPos, smoothing * Time.deltaTime);
+
+            newPos.y = Mathf.Min(newPos.y, maxY);
+            transform.position = newPos;
+
         }
     }
 }
