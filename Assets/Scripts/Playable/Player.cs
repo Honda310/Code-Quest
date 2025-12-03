@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// �y�v���C���[�z
@@ -8,10 +10,10 @@ public class Player : MonoBehaviour
 {
     [Header("��{�X�e�[�^�X")]
     public string PlayerName;
-    public int MaxHP = 100;
+    public int MaxHP;
     public int CurrentHP;
-    public int BaseAtk = 10;
-    public int BaseDef = 10;
+    public int BaseAtk;
+    public int BaseDef;
 
     // ������o�t�ő�������
     public int WeaponAtk { get; private set; }
@@ -30,43 +32,83 @@ public class Player : MonoBehaviour
     }
 
     [Header("�ړ��p�����[�^")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed;
     private Rigidbody2D rb;
-    private CharacterAnimation charAnim;
 
-    private void Start()
+    public Rigidbody2D rb2d;
+    public int frame;
+    public string lastInputKey = "d";
+    int MovingIndex = 0;
+    Dictionary<string, Sprite> sprites;
+    void Start()
     {
-        CurrentHP = MaxHP;
-        rb = GetComponent<Rigidbody2D>();
-        charAnim = GetComponent<CharacterAnimation>();
+        rb2d = GetComponent<Rigidbody2D>();
 
-        // �ۑ����ꂽ���O��ǂݍ���
-        PlayerName = PlayerPrefs.GetString("PlayerName", "Hero");
-    }
-
-    private void Update()
-    {
-        // ���͕������擾
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        Vector2 dir = new Vector2(x, y).normalized;
-
-        // �ړ�����
-        Move(dir);
-
-        // �A�j���[�V�����X�V
-        if (charAnim != null)
+        sprites = new Dictionary<string, Sprite>()
         {
-            charAnim.UpdateAnimation(dir);
-        }
-    }
+            // forward
+            { "w_0", Load("1forward_1stop") },
+            { "w_1", Load("1forward_2moveleftleg") },
+            { "w_2", Load("1forward_3moverightleg") },
 
-    public void Move(Vector2 direction)
+            // back
+            { "s_0", Load("2back_1stop") },
+            { "s_1", Load("2back_2moveleftleg") },
+            { "s_2", Load("2back_3moverightleg") },
+
+            // left
+            { "a_0", Load("3left_1stop") },
+            { "a_1", Load("3left_2move") },
+
+            // right
+            { "d_0", Load("4right_1stop") },
+            { "d_1", Load("4right_2move") },
+        };
+    }
+    Sprite Load(string name)
     {
-        if (rb != null)
+        return Resources.Load<Sprite>($"Image/Playable/1Player_1m_1normal_{name}");
+    }
+    void FixedUpdate()
+    {
+        Vector2 direction = Vector2.zero;
+        frame++;
+
+        if (frame == 15) MovingIndex = 1;
+        else if (frame == 30) MovingIndex = 0;
+        else if (frame == 45) MovingIndex = 2;
+        else if (frame == 60) MovingIndex = 0;
+        if (frame >= 60) frame = 0;
+        if (Input.GetKey(KeyCode.W))
         {
-            rb.linearVelocity = direction * moveSpeed;
+            direction.y = 1;
+            lastInputKey = "w";
         }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            direction.y = -1;
+            lastInputKey = "s";
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            direction.x = 1;
+            lastInputKey = "d";
+
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            direction.x = -1;
+            lastInputKey = "a";
+        }
+        int idx = (direction == Vector2.zero) ? 0 : MovingIndex;
+        string key = lastInputKey;
+        // 左右だけ2パターンしかないため補正
+        if (key == "a" || key == "d") idx = Mathf.Min(idx, 1);
+
+        GetComponent<SpriteRenderer>().sprite = sprites[$"{key}_{idx}"];
+        Debug.Log(GetComponent<SpriteRenderer>().sprite);
+        direction = direction.normalized;
+        rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
 
     // ����𑕔�����
