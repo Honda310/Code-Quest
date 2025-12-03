@@ -3,11 +3,11 @@ using System.Collections;
 
 /// <summary>
 /// 【戦闘管理】
-/// 敵とのエンカウントから戦闘終了までを管理するクラスです。
+/// 敵IDに基づいてデータを取得し、戦闘をセットアップします。
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
-    public Enemy currentEnemy;
+    public Enemy currentEnemy; // シーン上の敵オブジェクト（プレハブインスタンス）
     private Player player;
     private Neto neto;
     private QuestData currentQuestion;
@@ -15,33 +15,51 @@ public class BattleManager : MonoBehaviour
     private QuestManager questManager;
     private WriteProgramQuest checker;
 
-    private void Start()
+    void Start()
     {
         questManager = GameManager.Instance.questManager;
         checker = GetComponent<WriteProgramQuest>();
     }
 
     /// <summary>
-    /// 戦闘を開始する
+    /// 戦闘開始処理
     /// </summary>
-    public void StartBattle(Player p, Neto n, Enemy e)
+    /// <param name="enemyId">CSVで定義された敵ID</param>
+    public void StartBattle(Player p, Neto n, int enemyId)
     {
         player = p;
         neto = n;
-        currentEnemy = e;
 
-        // 敵のカテゴリに合わせて問題デッキを作成
-        questManager.CreateDeck(e.QuestionCategories);
+        // 1. 敵データの取得
+        EnemyData data = GameManager.Instance.dataManager.GetEnemyById(enemyId);
 
-        GameManager.Instance.uiManager.ToggleBattle(true);
-        GameManager.Instance.uiManager.ShowLog($"{e.name} が現れた！");
+        if (data == null)
+        {
+            Debug.LogError($"敵データが見つかりません: ID {enemyId}");
+            return;
+        }
 
-        NextTurn();
+        // 2. 敵オブジェクトのセットアップ（ステータス・画像）
+        // ※currentEnemyがシーンに既に存在するか、生成済みであることを前提としています
+        if (currentEnemy != null)
+        {
+            currentEnemy.Setup(data);
+
+            // 3. 敵のカテゴリに合わせて問題デッキ作成
+            questManager.CreateDeck(currentEnemy.QuestionCategories);
+
+            // 4. UI表示開始
+            GameManager.Instance.uiManager.ToggleBattle(true);
+            GameManager.Instance.uiManager.ShowLog($"{data.Name} が現れた！");
+
+            NextTurn();
+        }
+        else
+        {
+            Debug.LogError("BattleManagerにEnemyオブジェクトが割り当てられていません。");
+        }
     }
 
-    /// <summary>
-    /// 次のターン（問題出題）へ
-    /// </summary>
     public void NextTurn()
     {
         currentQuestion = questManager.GetNextQuestion();
@@ -52,18 +70,14 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.uiManager.UpdateBattleMessage("問題切れ！デッキを再生成します（仮）");
+            GameManager.Instance.uiManager.UpdateBattleMessage("問題切れ！");
         }
     }
 
-    /// <summary>
-    /// 解答が提出されたときの処理
-    /// </summary>
     public void OnSubmitAnswer(string code)
     {
         if (currentQuestion == null) return;
 
-        // 正誤判定
         if (checker.CheckAnswer(code, currentQuestion))
         {
             QuizCorrect();
@@ -76,12 +90,9 @@ public class BattleManager : MonoBehaviour
 
     private void QuizCorrect()
     {
-        GameManager.Instance.uiManager.ShowLog("正解！ 攻撃します！");
-
-        // 敵にダメージ（進捗）を与える
+        GameManager.Instance.uiManager.ShowLog("正解！ 攻撃！");
         currentEnemy.TakeDamage(player.CurrentAtk);
 
-        // 勝利判定
         if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
         {
             StartCoroutine(EndBattle(true));
@@ -94,35 +105,30 @@ public class BattleManager : MonoBehaviour
 
     private void QuizIncorrect()
     {
-        GameManager.Instance.uiManager.ShowLog("不正解... 敵の反撃を受けます。");
+        GameManager.Instance.uiManager.ShowLog("不正解...");
         StartCoroutine(EnemyTurn());
     }
 
-    // 敵のターン（演出用の待ち時間を作る）
     private IEnumerator EnemyTurn()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1f);
 
-        // ランダムでプレイヤーかネトが被弾
         bool hitPlayer = Random.value > 0.5f;
         int dmg = currentEnemy.Atk;
 
         if (hitPlayer)
         {
-            int realDmg = Mathf.Max(0, dmg - player.CurrentDef);
-            player.CurrentHP -= realDmg;
-            GameManager.Instance.uiManager.ShowLog($"プレイヤーに {realDmg} のダメージ！");
+            player.CurrentHP -= Mathf.Max(0, dmg - player.CurrentDef);
+            GameManager.Instance.uiManager.ShowLog($"プレイヤーに {dmg} ダメージ");
         }
         else
         {
-            int realDmg = Mathf.Max(0, dmg - neto.Def);
-            neto.CurrentHP -= realDmg;
-            GameManager.Instance.uiManager.ShowLog($"ネトに {realDmg} のダメージ！");
+            neto.CurrentHP -= Mathf.Max(0, dmg - neto.Def);
+            GameManager.Instance.uiManager.ShowLog($"ネトに {dmg} ダメージ");
         }
 
         GameManager.Instance.uiManager.UpdateStatus(player, neto);
 
-        // 敗北判定
         if (player.CurrentHP <= 0 || neto.CurrentHP <= 0)
         {
             StartCoroutine(EndBattle(false));
@@ -133,20 +139,21 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    // 戦闘終了処理
     private IEnumerator EndBattle(bool win)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.uiManager.ToggleBattle(false);
 
         if (win)
         {
-            GameManager.Instance.uiManager.ShowLog("デバッグ完了（勝利）！");
-            Destroy(currentEnemy.gameObject);
+            GameManager.Instance.uiManager.ShowLog("勝利！");
+            // 敵を非表示にする、あるいは破壊するなどの処理
+            // Destroy(currentEnemy.gameObject); 
+            // ※再利用する場合は非アクティブ化だけにするなど調整してください
         }
         else
         {
-            GameManager.Instance.uiManager.ShowLog("敗北しました...");
+            GameManager.Instance.uiManager.ShowLog("敗北...");
         }
     }
 }
