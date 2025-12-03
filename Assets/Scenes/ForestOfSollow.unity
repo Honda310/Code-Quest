@@ -8543,12 +8543,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1993696362}
-<<<<<<< HEAD
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1993696365}
-=======
->>>>>>> origin/main
   m_SourcePrefab: {fileID: -8435245712485981826, guid: daf562fd9123d7f468ed121249757e38, type: 3}
 --- !u!1001 &1740864294
 PrefabInstance:
@@ -9281,6 +9278,7 @@ GameObject:
   - component: {fileID: 1846544233}
   - component: {fileID: 1846544232}
   - component: {fileID: 1846544231}
+  - component: {fileID: 1846544235}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9406,6 +9404,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1846544235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846544230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826e5dfa3a33b6544b6db2e2fa24a271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  target: {fileID: 1993696367}
+  smoothing: 5
 --- !u!1 &1876455035
 GameObject:
   m_ObjectHideFlags: 0
@@ -9836,6 +9848,11 @@ MonoBehaviour:
   BaseAtk: 10
   BaseDef: 10
   moveSpeed: 100
+--- !u!4 &1993696367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
+  m_PrefabInstance: {fileID: 1739104894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2028964467
 PrefabInstance:
   m_ObjectHideFlags: 0
