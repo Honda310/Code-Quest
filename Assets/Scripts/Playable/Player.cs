@@ -1,84 +1,121 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; // InputSystemを使用する場合は必要
 
 /// <summary>
-/// �y�v���C���[�z
-/// ��l���L�����N�^�[�̃X�e�[�^�X�Ǘ��A�ړ��A�����������s���܂��B
+/// 【プレイヤー管理クラス】
+/// キャラクターのステータス管理（HP, 攻撃力, 防御力）、
+/// 入力に応じた移動処理、およびスプライトアニメーションの切り替えを担当します。
 /// </summary>
 public class Player : MonoBehaviour
 {
-    [Header("��{�X�e�[�^�X")]
-    public string PlayerName;
-    public int MaxHP;
-    public int CurrentHP;
-    public int BaseAtk;
-    public int BaseDef;
+    // --- ステータス関連 ---
+    [Header("基本ステータス")]
+    public string PlayerName; // プレイヤー名
+    public int MaxHP;         // 最大HP
+    public int CurrentHP;     // 現在HP
+    public int BaseAtk;       // 基礎攻撃力
+    public int BaseDef;       // 基礎防御力
 
-    // ������o�t�ő�������
-    public int WeaponAtk { get; private set; }
-    public int AccessoryDef { get; private set; }
+    // 装備やアイテムによる加算値（外部から読み取り専用）
+    public int WeaponAtk { get; private set; }    // 武器による攻撃力加算
+    public int AccessoryDef { get; private set; } // アクセサリによる防御力加算
+
+    // 一時的なバフ効果（読み書き可能）
     public int TemporaryAtk { get; set; }
     public int TemporaryDef { get; set; }
 
-    // ���ۂɌv�Z�Ŏg�����݂̔\�͒l
+    /// <summary>
+    /// 現在の最終攻撃力（基礎 + 武器 + バフ）
+    /// </summary>
     public int CurrentAtk
     {
         get { return BaseAtk + WeaponAtk + TemporaryAtk; }
     }
+
+    /// <summary>
+    /// 現在の最終防御力（基礎 + 防具 + バフ）
+    /// </summary>
     public int CurrentDef
     {
         get { return BaseDef + AccessoryDef + TemporaryDef; }
     }
 
-    [Header("�ړ��p�����[�^")]
-    [SerializeField] private float moveSpeed;
-    private Rigidbody2D rb;
+    // --- 移動・アニメーション関連 ---
+    [Header("移動パラメータ")]
+    [SerializeField] private float moveSpeed = 5.0f; // 移動速度
+    private Rigidbody2D rb2d; // 物理演算用コンポーネント
 
-    public Rigidbody2D rb2d;
-    public int frame;
-    public string lastInputKey = "d";
-    int MovingIndex = 0;
-    Dictionary<string, Sprite> sprites;
+    // アニメーション制御用変数
+    private int frame = 0; // アニメーションフレームカウンタ
+    private string lastInputKey = "d"; // 最後に押された方向キー（待機時の向き用）
+    private int MovingIndex = 0; // 歩行アニメーションの段階 (0:停止, 1:右足, 2:左足など)
+
+    // スプライト画像をキャッシュする辞書
+    // Key: "方向キー_インデックス" (例: "w_1"), Value: 対応するSprite
+    private Dictionary<string, Sprite> sprites;
+
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     void Start()
     {
+        // コンポーネントの取得
         rb2d = GetComponent<Rigidbody2D>();
 
+        // スプライト画像の読み込みと辞書への登録
+        // Resourcesフォルダ内のパス: "Image/Playable/..."
         sprites = new Dictionary<string, Sprite>()
         {
-            // forward
-            { "w_0", Load("1forward_1stop") },
-            { "w_1", Load("1forward_2moveleftleg") },
-            { "w_2", Load("1forward_3moverightleg") },
+            // --- 上向き (Wキー) ---
+            { "w_0", Load("1forward_1stop") },          // 停止
+            { "w_1", Load("1forward_2moveleftleg") },   // 左足踏み出し
+            { "w_2", Load("1forward_3moverightleg") },  // 右足踏み出し
 
-            // back
+            // --- 下向き (Sキー) ---
             { "s_0", Load("2back_1stop") },
             { "s_1", Load("2back_2moveleftleg") },
             { "s_2", Load("2back_3moverightleg") },
 
-            // left
+            // --- 左向き (Aキー) ---
             { "a_0", Load("3left_1stop") },
             { "a_1", Load("3left_2move") },
 
-            // right
+            // --- 右向き (Dキー) ---
             { "d_0", Load("4right_1stop") },
             { "d_1", Load("4right_2move") },
         };
     }
+
+    /// <summary>
+    /// Resourcesフォルダからスプライトをロードするヘルパーメソッド
+    /// </summary>
     Sprite Load(string name)
     {
         return Resources.Load<Sprite>($"Image/Playable/1Player_1m_1normal_{name}");
     }
+
+    /// <summary>
+    /// 物理演算フレームごとの更新処理 (移動・アニメーション)
+    /// </summary>
     void FixedUpdate()
     {
-        Vector2 direction = Vector2.zero;
+        Vector2 direction = Vector2.zero; // 移動方向ベクトル
+
+        // --- アニメーションのコマ送り処理 ---
         frame++;
 
-        if (frame == 15) MovingIndex = 1;
-        else if (frame == 30) MovingIndex = 0;
-        else if (frame == 45) MovingIndex = 2;
-        else if (frame == 60) MovingIndex = 0;
+        // 15フレームごとにアニメーションパターンを切り替える
+        if (frame == 15) MovingIndex = 1;      // 足踏み1
+        else if (frame == 30) MovingIndex = 0; // 停止位置に戻る
+        else if (frame == 45) MovingIndex = 2; // 足踏み2 (逆足)
+        else if (frame == 60) MovingIndex = 0; // 停止位置に戻る
+
+        // 60フレームで1ループ
         if (frame >= 60) frame = 0;
+
+        // --- キー入力の判定 ---
+        // 上下左右の入力を検知し、移動方向と「最後の入力キー」を更新
         if (Input.GetKey(KeyCode.W))
         {
             direction.y = 1;
@@ -89,54 +126,89 @@ public class Player : MonoBehaviour
             direction.y = -1;
             lastInputKey = "s";
         }
+
         if (Input.GetKey(KeyCode.D))
         {
             direction.x = 1;
             lastInputKey = "d";
-
         }
         else if (Input.GetKey(KeyCode.A))
         {
             direction.x = -1;
             lastInputKey = "a";
         }
+
+        // --- スプライトの切り替え ---
+        // 移動していない場合は停止スプライト(Index 0)、移動中はコマ送り(MovingIndex)を使用
         int idx = (direction == Vector2.zero) ? 0 : MovingIndex;
         string key = lastInputKey;
-        // 左右だけ2パターンしかないため補正
-        if (key == "a" || key == "d") idx = Mathf.Min(idx, 1);
 
-        GetComponent<SpriteRenderer>().sprite = sprites[$"{key}_{idx}"];
-        Debug.Log(GetComponent<SpriteRenderer>().sprite);
+        // 左右移動のアニメーションは2パターンしかない（0と1）ため、インデックスを制限する
+        if (key == "a" || key == "d")
+        {
+            idx = Mathf.Min(idx, 1);
+        }
+
+        // 辞書から該当するスプライトを取得して反映
+        string spriteKey = $"{key}_{idx}";
+        if (sprites.ContainsKey(spriteKey))
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[spriteKey];
+        }
+
+        // --- 物理移動 ---
+        // 斜め移動でも速度が変わらないように正規化する
         direction = direction.normalized;
+
+        // 現在位置 + (方向 * 速度 * 経過時間) で新しい位置へ移動
         rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
 
-    // ����𑕔�����
+    // ==========================================
+    // ステータス操作メソッド群
+    // ==========================================
+
+    /// <summary>
+    /// 武器を装備し、攻撃力を更新する
+    /// </summary>
+    /// <param name="weapon">装備する武器データ</param>
     public void EquipWeapon(Weapon weapon)
     {
         WeaponAtk = weapon.Atk;
+        // UIのステータス表示を更新
         GameManager.Instance.uiManager.UpdateStatus(this, GameManager.Instance.neto);
     }
 
-    // �h��i�A�N�Z�T���j�𑕔�����
+    /// <summary>
+    /// 防具（アクセサリ）を装備し、防御力を更新する
+    /// </summary>
+    /// <param name="accessory">装備するアクセサリデータ</param>
     public void EquipAccessory(Accessory accessory)
     {
         AccessoryDef = accessory.Def;
+        // UIのステータス表示を更新
         GameManager.Instance.uiManager.UpdateStatus(this, GameManager.Instance.neto);
     }
 
-    // �ꎞ�I�ȃo�t��������
+    /// <summary>
+    /// 一時的な攻撃力バフを適用する
+    /// </summary>
     public void ApplyTemporaryAtk(int val)
     {
         TemporaryAtk = val;
     }
 
+    /// <summary>
+    /// 一時的な防御力バフを適用する
+    /// </summary>
     public void ApplyTemporaryDef(int val)
     {
         TemporaryDef = val;
     }
 
-    // �o�t����������
+    /// <summary>
+    /// すべての一時的なバフ・デバフを解除する
+    /// </summary>
     public void ClearBuffs()
     {
         TemporaryAtk = 0;
