@@ -22,11 +22,6 @@ public class Neto : MonoBehaviour
     public float stopDistance = 1.5f;
 
     private Dictionary<string, Sprite> sprites;
-    private Rigidbody2D rb;
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
     void Start()
     {
 
@@ -53,30 +48,7 @@ public class Neto : MonoBehaviour
             { "d_1", Load("4right_2move") },
         };
     }
-    private void LateUpdate()
-    {
-        if (player == null) return;
 
-        Vector2 pos = rb.position;
-        Vector2 targetPos = player.position;
-
-        // プレイヤーまでの方向と距離を取得
-        Vector2 toPlayer = targetPos - pos;
-        float dist = toPlayer.magnitude;
-
-        // 停止距離以内なら動かない
-        if (dist <= stopDistance)
-            return;
-
-        // 移動方向
-        Vector2 moveDir = toPlayer.normalized;
-
-        // 新しい位置
-        Vector2 newPos = pos + moveDir * moveSpeed * Time.fixedDeltaTime;
-
-        // MovePosition で移動（衝突に強い）
-        rb.MovePosition(newPos);
-    }
     Sprite Load(string name)
     {
         return Resources.Load<Sprite>($"Image/Playable/2Neto_1normal_{name}");
