@@ -1803,8 +1803,8 @@ Transform:
   m_GameObject: {fileID: 277149935}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.46501, y: 132.482, z: 0}
-  m_LocalScale: {x: -29.99694, y: -5.482897, z: 1}
+  m_LocalPosition: {x: 33.46501, y: 132.78, z: 0}
+  m_LocalScale: {x: -29.99694, y: -7.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 626565372}
@@ -5961,11 +5961,11 @@ MonoBehaviour:
   player: {fileID: 1993696367}
   moveSpeed: 100
   stopDistance: 40
-  RayCastDistance: 50
+  RayCastDistance: 30
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
-  avoidStrength: 0.5
+  avoidStrength: 0
 --- !u!1 &976924436
 GameObject:
   m_ObjectHideFlags: 0

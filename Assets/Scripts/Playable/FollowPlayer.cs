@@ -5,10 +5,10 @@ public class FollowPlayer2D : MonoBehaviour
     public Transform player;
     public float moveSpeed = 3f;
     public float stopDistance = 1.5f;
-    public float RayCastDistance;
-
+    public float smoothingFactor;
+    public Vector2 smoothedDir = Vector2.zero;
+    public Vector2 previousMoveDir;
     public LayerMask obstacleLayer;   // 壁レイヤーを指定
-    public float avoidStrength = 0.7f; // 回避の強さ
 
     private Rigidbody2D rb;
 
@@ -32,18 +32,19 @@ public class FollowPlayer2D : MonoBehaviour
         if (dist <= stopDistance)
             return;
 
-        // プレイヤー方向
-        Vector2 moveDir = toPlayer.normalized;
-
-        // Raycast で障害物検出（前方）
-        RaycastHit2D hit = Physics2D.Raycast(pos, moveDir, RayCastDistance, obstacleLayer);
-
-        if (hit.collider != null)
+        //一定距離以上離れた場合、加速する(近づくと元の速度に戻る)
+        if(dist >= 80)
         {
-            // 壁にぶつかっているので、法線方向に押し出す
-            Vector2 normal = hit.normal;
-            moveDir = (moveDir + normal * avoidStrength).normalized;
+            moveSpeed = Mathf.Min(200.0f,moveSpeed+10f);
         }
+        else
+        {
+            moveSpeed = Mathf.Max(100.0f, moveSpeed - 10f);
+        }
+
+        Vector2 moveDir = toPlayer.normalized;
+        smoothedDir = Vector2.Lerp(previousMoveDir, moveDir, smoothingFactor);
+        previousMoveDir = smoothedDir;
 
         // 位置更新
         Vector2 newPos = pos + moveDir * moveSpeed * Time.fixedDeltaTime;
