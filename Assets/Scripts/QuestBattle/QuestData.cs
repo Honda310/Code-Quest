@@ -1,23 +1,37 @@
-/// <summary>
-/// 1問分の問題データを保持するクラスです。
-/// </summary>
+using UnityEngine;
+
 [System.Serializable]
 public class QuestData
 {
     public string ID;
     public QuestCategory Category;
     public string QuestionText;
-    public string CorrectAnswer; // 完全一致用の正解
-    public string[] Keywords;    // 部分一致判定用のキーワード配列
+    public string CorrectAnswer; // 正解（記述式のコード、または "1"～"4"）
+    public string[] Options;     // 4択の選択肢（記述式ならnull）
+    public string[] Keywords;    // 記述判定用キーワード（4択ならnull）
 
-    public QuestData(string id, QuestCategory category, string text, string answer)
+    // 記述式用の作成
+    public QuestData(string id, QuestCategory cat, string q, string a)
     {
         ID = id;
-        Category = category;
-        QuestionText = text;
-        CorrectAnswer = answer;
-
-        // 正解コードを分割してキーワードリストを作る
-        Keywords = answer.Split(new char[] { ' ', ';', '(', ')', '{', '}' }, System.StringSplitOptions.RemoveEmptyEntries);
+        Category = cat;
+        QuestionText = q;
+        CorrectAnswer = a;
+        Options = null;
+        // 正解コードからキーワードを生成
+        Keywords = a.Split(new char[] { ' ', ';', '(', ')', '{', '}' }, System.StringSplitOptions.RemoveEmptyEntries);
     }
+
+    // 4択用の作成（★今回の修正でここが使われます）
+    public QuestData(string id, QuestCategory cat, string q, string[] opts, string a)
+    {
+        ID = id;
+        Category = cat;
+        QuestionText = q;
+        Options = opts;
+        CorrectAnswer = a; // "1", "2", "3", "4" のいずれか
+        Keywords = null;   // 4択なのでキーワード判定は不要（nullにする）
+    }
+
+    public bool IsMultipleChoice => Options != null && Options.Length > 0;
 }
