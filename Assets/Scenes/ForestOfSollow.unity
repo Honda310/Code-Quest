@@ -5961,7 +5961,7 @@ MonoBehaviour:
   player: {fileID: 1993696367}
   moveSpeed: 100
   stopDistance: 40
-  RayCastDistance: 35
+  RayCastDistance: 50
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -10840,8 +10840,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 8}
-  m_Radius: 8
+  m_Offset: {x: 0, y: 4}
+  m_Radius: 4
 --- !u!1001 &2028964467
 PrefabInstance:
   m_ObjectHideFlags: 0
