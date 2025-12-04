@@ -123,24 +123,15 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-<<<<<<< HEAD
-            neto.CurrentHP -= Mathf.Max(0, dmg - neto.Def);
-            GameManager.Instance.uiManager.ShowLog($"ネトに {dmg} ダメージ");
-=======
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             neto.CurrentHP -= realDmg;
             GameManager.Instance.uiManager.ShowLog($"ネトに {realDmg} のダメージ！");
->>>>>>> honda
         }
 
         GameManager.Instance.uiManager.UpdateStatus(player, neto);
 
-<<<<<<< HEAD
-        if (player.CurrentHP <= 0 || neto.CurrentHP <= 0)
-=======
         // 敗北判定
         if (player.CurrentHP <= 0 && neto.CurrentHP <= 0)
->>>>>>> honda
         {
             StartCoroutine(EndBattle(false));
         }
