@@ -5880,9 +5880,10 @@ MonoBehaviour:
   MaxHP: 0
   CurrentHP: 0
   BaseDef: 0
+  quadrant: 0
   player: {fileID: 1993696367}
-  moveSpeed: 100
-  stopDistance: 40
+  moveDelta: {x: 0, y: 0}
+  moveDir: {x: 0, y: 0}
 --- !u!50 &941770188
 Rigidbody2D:
   serializedVersion: 5
@@ -5961,11 +5962,14 @@ MonoBehaviour:
   player: {fileID: 1993696367}
   moveSpeed: 100
   stopDistance: 40
-  RayCastDistance: 30
+  smoothingFactor: 0
+  smoothedDir: {x: 0, y: 0}
+  previousMoveDir: {x: 0, y: 0}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
-  avoidStrength: 0
+  neto: {fileID: 941770186}
+  rb: {fileID: 941770188}
 --- !u!1 &976924436
 GameObject:
   m_ObjectHideFlags: 0
@@ -6412,6 +6416,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: daf562fd9123d7f468ed121249757e38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -672923094545035687, guid: b6f63e3f680b6bf4783cd72009e16727, type: 3}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.8
