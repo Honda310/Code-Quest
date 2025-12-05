@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
     /// </summary>
     Sprite Load(string name)
     {
-        return Resources.Load<Sprite>($"Image/Playable/1Player_1m_1normal_{name}");
+        return Resources.Load<Sprite>($"Image/Playable/Player/1Player_1m_1normal_{name}");
     }
 
     /// <summary>
@@ -213,5 +213,12 @@ public class Player : MonoBehaviour
     {
         TemporaryAtk = 0;
         TemporaryDef = 0;
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("battle");
+        }
     }
 }
