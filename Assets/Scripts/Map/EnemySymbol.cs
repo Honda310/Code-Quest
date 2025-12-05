@@ -28,7 +28,6 @@ public class EnemySymbol : MonoBehaviour
 
             // 倒されたことにする (バトル終了処理で設定を戻すか、オブジェクトを非表示にする)
             // isDefeated = true; 
-            gameObject.SetActive(false); // 一旦シンボルを非表示
         }
     }
 }

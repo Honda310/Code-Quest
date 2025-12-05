@@ -19,6 +19,7 @@ public class BattleManager : MonoBehaviour
     {
         questManager = GameManager.Instance.questManager;
         checker = GetComponent<WriteProgramQuest>();
+
     }
 
     /// <summary>
@@ -157,5 +158,14 @@ public class BattleManager : MonoBehaviour
         {
             GameManager.Instance.uiManager.ShowLog("”s–k...");
         }
+    }
+    private void OnEnable()
+    {
+        Debug.Log("BattlePanel ENABLED");
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("BattlePanel DISABLED");
     }
 }
