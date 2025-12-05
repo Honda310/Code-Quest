@@ -51,7 +51,39 @@ public class Neto : MonoBehaviour
 
     Sprite Load(string name)
     {
-        return Resources.Load<Sprite>($"Image/Playable/2Neto_1normal_{name}");
+        return Resources.Load<Sprite>($"Image/Playable/Neto/2Neto_1normal_{name}");
+    }
+    public Vector2 moveDir; // 入力や速度から更新すること
+
+    void FixedUpdate()
+    {
+        if (moveDir.sqrMagnitude <= 0.0001f)
+            return; // 移動していない時は処理しない
+
+        // 角度取得&正規化
+        float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
+        if (angle < 0) angle += 360f;
+
+        if ((angle >= 0f && angle < 45f) || (angle >= 315f && angle < 360f))
+        {
+            // Q1
+            // 第1象限（0～45°, 315～360°）
+        }
+        else if (angle >= 45f && angle < 135f)
+        {
+            // Q2
+            // 第2象限（45°～135°）
+        }
+        else if (angle >= 135f && angle < 225f)
+        {
+            // Q3
+            // 第3象限（135°～225°）
+        }
+        else if (angle >= 225f && angle < 315f)
+        {
+            // Q4
+            // 第4象限（225°～315°）
+        }
     }
     // ヒント機能などがあればここに実装
     public void SpeakHint()

@@ -3,8 +3,8 @@ using UnityEngine;
 public class FollowPlayer2D : MonoBehaviour
 {
     public Transform player;
-    public float moveSpeed = 3f;
-    public float stopDistance = 1.5f;
+    public float moveSpeed;
+    public float stopDistance;
     public float smoothingFactor;
     public Vector2 smoothedDir = Vector2.zero;
     public Vector2 previousMoveDir;
