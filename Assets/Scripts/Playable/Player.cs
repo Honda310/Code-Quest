@@ -214,4 +214,11 @@ public class Player : MonoBehaviour
         TemporaryAtk = 0;
         TemporaryDef = 0;
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("battle");
+        }
+    }
 }
