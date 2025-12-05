@@ -1,0 +1,22 @@
+ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+Sel036,int a = 1; a++;\nSystem.out.println(a);,1,2,3,0,B
+Sel037,int a = 5; a++;\nSystem.out.println(a);,5,6,4,55,B
+Sel038,int a = 10; a--;\nSystem.out.println(a);,10,11,9,-10,C
+Sel039,int a = 0; a--;\nSystem.out.println(a);,0,1,-1,エラー,C
+Sel040,int a = 10; a = a + 5;\nSystem.out.println(a);,10,5,15,50,C
+Sel041,int x = 2; x += 3;\nSystem.out.println(x);,2,3,5,6,C
+Sel042,int x = 10; x -= 2;\nSystem.out.println(x);,12,8,-2,20,B
+Sel043,int x = 5; x *= 2;\nSystem.out.println(x);,7,10,25,2.5,B
+Sel044,int num = 10; num = num + 1;\nSystem.out.println(num);,10,11,1,101,B
+Sel045,int a = 2 + 3 * 2;\nSystem.out.println(a);,10,8,12,7,B
+Sel046,int a = 2 * 3 + 2;\nSystem.out.println(a);,8,10,12,7,A
+Sel047,int a = (2 + 3) * 2;\nSystem.out.println(a);,10,8,7,25,A
+Sel048,int a = 10 - 2 * 3;\nSystem.out.println(a);,24,16,4,8,C
+Sel049,int a = 5 / 2 + 1;\nSystem.out.println(a);,3.5,3,2,4,B
+Sel050,int a = 10 % 3 + 1;\nSystem.out.println(a);,2,1,4,0,A
+Sel051,int ans = 3 + 4 * 0;\nSystem.out.println(ans);,0,3,7,12,B
+Sel052,int a = 10; int b = a;\nSystem.out.println(b);,0,10,a,b,B
+Sel053,int a = 5; int b = a + 2;\nSystem.out.println(b);,5,2,7,52,C
+Sel054,int a = 3; int b = a * a;\nSystem.out.println(b);,3,6,9,33,C
+Sel055,int x = 100; x = 200;\nSystem.out.println(x);,100,200,300,エラー,B
+Sel056,int a = 10; a = a + a;\nSystem.out.println(a);,10,20,100,0,B

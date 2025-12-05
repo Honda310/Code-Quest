@@ -1,0 +1,24 @@
+ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+13,int x = 3 * 4;\nSystem.out.println(x);,7,12,34,1,B
+14,int y = 5 * 5;\nSystem.out.println(y);,10,25,55,0,B
+15,int a = 10 * 0;\nSystem.out.println(a);,10,100,0,エラー,C
+16,int a = 1 * 9;\nSystem.out.println(a);,1,9,19,10,B
+17,int num = 100 * 2;\nSystem.out.println(num);,102,200,1002,50,B
+18,int a = 2 * 2 * 2;\nSystem.out.println(a);,6,8,16,4,B
+19,int a = 6 / 2;\nSystem.out.println(a);,3,4,12,8,A
+20,int b = 10 / 5;\nSystem.out.println(b);,50,5,15,2,D
+21,int c = 8 / 4;\nSystem.out.println(c);,2,4,32,12,A
+22,int x = 5 / 2;\nSystem.out.println(x);,2.5,2,3,52,B
+23,int y = 10 / 3;\nSystem.out.println(y);,3.33,3,4,13,B
+24,int z = 1 / 2;\nSystem.out.println(z);,0.5,1,2,0,D
+25,int a = 7 / 2;\nSystem.out.println(a);,3.5,4,3,14,C
+26,int a = 9 / 10;\nSystem.out.println(a);,0.9,1,90,0,D
+27,int a = 4 / 4;\nSystem.out.println(a);,1,0,16,44,A
+28,int a = 5 % 2;\nSystem.out.println(a);,2,1,2.5,0,B
+29,int b = 10 % 3;\nSystem.out.println(b);,3,0,1,30,C
+30,int c = 4 % 2;\nSystem.out.println(c);,2,1,0,4,C
+31,int d = 7 % 4;\nSystem.out.println(d);,3,1,4,1.75,A
+32,int e = 1 % 3;\nSystem.out.println(e);,0,1,3,エラー,B
+33,int f = 10 % 10;\nSystem.out.println(f);,1,10,100,0,D
+34,int g = 11 % 10;\nSystem.out.println(g);,1,0,11,1.1,A
+35,int x = 50; int y = 2;\nSystem.out.println(x / y);,25,100,502,48,A
