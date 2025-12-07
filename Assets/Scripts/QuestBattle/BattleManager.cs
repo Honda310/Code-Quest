@@ -67,7 +67,7 @@ public class BattleManager : MonoBehaviour
 
         if (currentQuestion != null)
         {
-            GameManager.Instance.uiManager.UpdateBattleMessage($"–â‘è:\n{currentQuestion.QuestionText}");
+            GameManager.Instance.uiManager.UpdateBattleMessage($"–â‘è:\n{currentQuestion.QuestionText}",currentQuestion.Options);
         }
         else
         {

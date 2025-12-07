@@ -68,6 +68,13 @@ public class UIManager : MonoBehaviour
             battleQuestText.text = text;
         }
     }
+    public void UpdateBattleMessage(string text, string[] opts)
+    {
+        if (battleQuestText != null)
+        {
+            battleQuestText.text = text+"\n"+"A:"+opts[0]+ "B:" + opts[1] + "C:" + opts[2] + "D:" + opts[3] ;
+        }
+    }
 
     // --- パネルの表示/非表示を切り替えるメソッド群 ---
 
