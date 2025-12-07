@@ -13,12 +13,12 @@ public class BattleManager : MonoBehaviour
     private QuestData currentQuestion;
 
     private QuestManager questManager;
-    private WriteProgramQuest checker;
+    private MultipleChoiceQuest checker;
 
     void Start()
     {
         questManager = GameManager.Instance.questManager;
-        checker = GetComponent<WriteProgramQuest>();
+        checker = GetComponent<MultipleChoiceQuest>();
 
     }
 

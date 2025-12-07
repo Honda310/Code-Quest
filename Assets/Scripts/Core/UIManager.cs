@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     [Header("各モードの画面パネル")]
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
-    [SerializeField] private Text battleInfoText;       // 戦闘中のメッセージ
+    [SerializeField] private Text battleQuestText;       // 戦闘中のメッセージ
     [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
@@ -24,6 +24,10 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
     /// </summary>
+    public void Start()
+    {
+        battleQuestText.text = "test";
+    }
     public void UpdateStatus(Player p, Neto n)
     {
         // テキストコンポーネントが存在する場合のみ更新します
@@ -58,9 +62,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void UpdateBattleMessage(string text)
     {
-        if (battleInfoText != null)
+        if (battleQuestText != null)
         {
-            battleInfoText.text = text;
+            battleQuestText.text = text;
         }
     }
 
@@ -94,17 +98,25 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// 画面上の「解答送信」ボタンが押されたときに呼ばれます
     /// </summary>
-    public void OnSubmitButtonClicked()
+    public void OnSubmitButtonClicked(Button clickedButton)
     {
         // 戦闘中のみ有効にします
         if (battlePanel.activeSelf)
         {
             // BattleManagerに入力されたテキストを渡します
-            string answer = answerInput.text;
-            GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
-
-            // 入力欄を空にします
-            answerInput.text = "";
+            if (answerInput.text != null)
+            {
+                string answer = answerInput.text;
+                GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
+            }
+            else
+            {
+                string buttonText = clickedButton.GetComponentInChildren<Text>().text;
+                string answer = buttonText;
+                GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
+            }
+                // 入力欄を空にします
+                answerInput.text = "";
         }
     }
 }

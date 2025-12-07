@@ -12,13 +12,13 @@ public class MultipleChoiceQuest : MonoBehaviour
     /// <param name="selectedNumber">プレイヤーが押したボタンの番号 (1～4)</param>
     /// <param name="data">現在の問題データ</param>
     /// <returns>正解ならtrue</returns>
-    public bool CheckAnswer(int selectedNumber, QuestData data)
+    public bool CheckAnswer(string selectedNumber, QuestData data)
     {
         // データが4択用かチェック
         if (!data.IsMultipleChoice) return false;
 
         // CSVの正解列(CorrectAnswer)は "1", "2" などの文字列として入っているため、
         // 選択された数値(int)を文字列(String)に変換して比較します。
-        return selectedNumber.ToString() == data.CorrectAnswer.Trim();
+        return selectedNumber == data.CorrectAnswer.Trim();
     }
 }
