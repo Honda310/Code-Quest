@@ -87,6 +87,7 @@ public class BattleManager : MonoBehaviour
         {
             QuizIncorrect();
         }
+        NextTurn();
     }
 
     private void QuizCorrect()
@@ -159,13 +160,5 @@ public class BattleManager : MonoBehaviour
             GameManager.Instance.uiManager.ShowLog("”s–k...");
         }
     }
-    private void OnEnable()
-    {
-        Debug.Log("BattlePanel ENABLED");
-    }
 
-    private void OnDisable()
-    {
-        Debug.Log("BattlePanel DISABLED");
-    }
 }

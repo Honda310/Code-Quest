@@ -15,7 +15,8 @@ public class UIManager : MonoBehaviour
 
     [Header("各モードの画面パネル")]
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
-    [SerializeField] private Text battleQuestText;       // 戦闘中のメッセージ
+    [SerializeField] private Text battleQuestText;       // 問題表示
+    [SerializeField] private Text battleInfoText;
     [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
@@ -100,23 +101,20 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnSubmitButtonClicked(Button clickedButton)
     {
-        // 戦闘中のみ有効にします
-        if (battlePanel.activeSelf)
+
+        string buttonText = clickedButton.GetComponentInChildren<Text>().text;
+        string answer = buttonText;
+        GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
+        battleInfoText.text = answer;
+        Debug.Log(answer);
+        // BattleManagerに入力されたテキストを渡します
+        if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
         {
-            // BattleManagerに入力されたテキストを渡します
-            if (answerInput.text != null)
-            {
-                string answer = answerInput.text;
-                GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
-            }
-            else
-            {
-                string buttonText = clickedButton.GetComponentInChildren<Text>().text;
-                string answer = buttonText;
-                GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
-            }
-                // 入力欄を空にします
-                answerInput.text = "";
+            answer = answerInput.text;
+            GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
+            Debug.Log("fill");
         }
+            // 入力欄を空にします
+            answerInput.text = "";
     }
 }
