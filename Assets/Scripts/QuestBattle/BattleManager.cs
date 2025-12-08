@@ -119,15 +119,16 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator EnemyTurn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         bool hitPlayer = Random.value > 0.5f;
         int dmg = currentEnemy.Atk;
 
         if (hitPlayer)
         {
-            player.CurrentHP -= Mathf.Max(0, dmg - player.CurrentDef);
-            GameManager.Instance.uiManager.ShowLog($"プレイヤーに {dmg} ダメージ");
+            int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
+            player.CurrentHP -= realDmg;
+            GameManager.Instance.uiManager.ShowLog($"プレイヤーに {realDmg} ダメージ");
         }
         else
         {
@@ -151,11 +152,13 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator EndBattle(bool win)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
+
         GameManager.Instance.uiManager.ToggleBattle(false);
 
         if (win)
         {
+            Destroy(currentEnemy.gameObject);
             GameManager.Instance.uiManager.ShowLog("勝利！");
             // 敵を非表示にする、あるいは破壊するなどの処理
             // Destroy(currentEnemy.gameObject); 
