@@ -6,7 +6,6 @@ public class Neto : MonoBehaviour
     public int MaxHP;
     public int CurrentHP;
     public int BaseDef;
-    public int quadrant;
 
     public int AccessoryDef { get; private set; }
     public int TemporaryDef { get; private set; }
@@ -17,6 +16,7 @@ public class Neto : MonoBehaviour
 
     private int frame = 0;
     private int MovingIndex = 0;
+    public int quadrant=1;
 
     private Dictionary<string, Sprite> sprites;
 

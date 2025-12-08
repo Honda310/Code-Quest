@@ -55,6 +55,7 @@ public class BattleManager : MonoBehaviour
 
             // 4. UI表示開始
             GameManager.Instance.uiManager.ToggleBattle(true);
+            Time.timeScale = 0f;
             GameManager.Instance.uiManager.ShowLog($"{data.Name} が現れた！");
 
             NextTurn();
@@ -82,6 +83,7 @@ public class BattleManager : MonoBehaviour
     {
         if (currentQuestion == null) return;
         Debug.Log(code);
+        Debug.Log(checker);
         if (checker.CheckAnswer(code, currentQuestion))
         {
             QuizCorrect();
@@ -97,7 +99,8 @@ public class BattleManager : MonoBehaviour
     {
         GameManager.Instance.uiManager.ShowLog("正解！ 攻撃！");
         currentEnemy.TakeDamage(player.CurrentAtk);
-
+        Debug.Log(currentEnemy.CurrentDP);
+        Debug.Log(currentEnemy.MaxDP);
         if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
         {
             StartCoroutine(EndBattle(true));
@@ -157,10 +160,12 @@ public class BattleManager : MonoBehaviour
             // 敵を非表示にする、あるいは破壊するなどの処理
             // Destroy(currentEnemy.gameObject); 
             // ※再利用する場合は非アクティブ化だけにするなど調整してください
+            Time.timeScale = 1f;
         }
         else
         {
             GameManager.Instance.uiManager.ShowLog("敗北...");
+            Time.timeScale = 1f;
         }
     }
 
