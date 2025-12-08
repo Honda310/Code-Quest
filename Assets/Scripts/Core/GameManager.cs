@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -30,11 +31,13 @@ public class GameManager : MonoBehaviour
     public Neto neto;           // パートナー
     public Inventory inventory; // アイテム所持状況
 
+
     /// <summary>
     /// ゲーム起動時に最初に呼ばれる処理
     /// </summary>
     private void Awake()
     {
+        
         // シングルトン化の処理
         // シーン移動してもこのオブジェクトが破壊されないようにします
         if (Instance == null)

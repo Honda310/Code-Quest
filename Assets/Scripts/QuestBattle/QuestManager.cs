@@ -10,10 +10,7 @@ public class QuestManager : MonoBehaviour
     {
         categorizedQuests.Clear();
         // ファイル名とカテゴリを一致させて読み込み
-        LoadFromSingleCSV("Data/Variable", QuestCategory.Variable);
-        LoadFromSingleCSV("Data/IF", QuestCategory.If);
-        LoadFromSingleCSV("Data/Loop", QuestCategory.Loop);
-        LoadFromSingleCSV("Data/Array", QuestCategory.Array);
+        LoadFromSingleCSV("Data/Variable_AdditionAndSubtraction", QuestCategory.Variable_AdditionAndSubtraction);
         Debug.Log("[QuestManager] ロード完了");
     }
 
@@ -41,7 +38,7 @@ public class QuestManager : MonoBehaviour
                 list.Add(new QuestData(cols[0], category, cols[1], cols[2]));
             }
         }
-
+        Debug.Log(list.Count);
         if (list.Count > 0)
         {
             if (categorizedQuests.ContainsKey(catName)) categorizedQuests[catName].AddRange(list);
@@ -67,6 +64,7 @@ public class QuestManager : MonoBehaviour
             int r = UnityEngine.Random.Range(i, pool.Count);
             pool[i] = pool[r];
             pool[r] = temp;
+            Debug.Log(pool[i] + "," + pool[r]);
         }
 
         foreach (var q in pool) currentDeck.Enqueue(q);

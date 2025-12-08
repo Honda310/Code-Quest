@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// 【戦闘管理】
@@ -11,7 +12,7 @@ public class BattleManager : MonoBehaviour
     private Player player;
     private Neto neto;
     private QuestData currentQuestion;
-
+    List<QuestCategory> categories = new List<QuestCategory>();
     private QuestManager questManager;
     private MultipleChoiceQuest checker;
 
@@ -47,7 +48,10 @@ public class BattleManager : MonoBehaviour
             currentEnemy.Setup(data);
 
             // 3. 敵のカテゴリに合わせて問題デッキ作成
-            questManager.CreateDeck(currentEnemy.QuestionCategories);
+            categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+            categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+            categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+            questManager.CreateDeck(categories);
 
             // 4. UI表示開始
             GameManager.Instance.uiManager.ToggleBattle(true);
@@ -64,7 +68,6 @@ public class BattleManager : MonoBehaviour
     public void NextTurn()
     {
         currentQuestion = questManager.GetNextQuestion();
-
         if (currentQuestion != null)
         {
             GameManager.Instance.uiManager.UpdateBattleMessage($"問題:\n{currentQuestion.QuestionText}",currentQuestion.Options);
@@ -78,7 +81,7 @@ public class BattleManager : MonoBehaviour
     public void OnSubmitAnswer(string code)
     {
         if (currentQuestion == null) return;
-
+        Debug.Log(code);
         if (checker.CheckAnswer(code, currentQuestion))
         {
             QuizCorrect();

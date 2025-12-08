@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void Start()
     {
-        battleQuestText.text = "test";
+
     }
     public void UpdateStatus(Player p, Neto n)
     {
@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
     {
         if (battleQuestText != null)
         {
-            battleQuestText.text = text+"\n"+"A:"+opts[0]+ "B:" + opts[1] + "C:" + opts[2] + "D:" + opts[3] ;
+            battleQuestText.text = text+"\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3] ;
         }
     }
 
@@ -113,7 +113,6 @@ public class UIManager : MonoBehaviour
         string answer = buttonText;
         GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
         battleInfoText.text = answer;
-        Debug.Log(answer);
         // BattleManagerに入力されたテキストを渡します
         if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
         {

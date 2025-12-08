@@ -3,9 +3,6 @@
 /// </summary>
 public enum QuestCategory
 {
-    Variable,   // •Ï”
-    If,         // ğŒ•ªŠò
-    Loop,       // ŒJ‚è•Ô‚µ
-    Array,      // ”z—ñ
+    Variable_AdditionAndSubtraction,
     None
 }
