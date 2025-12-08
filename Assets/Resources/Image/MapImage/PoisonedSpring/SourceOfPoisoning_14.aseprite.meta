@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639007972469456689
+  platformSettingsDirtyTick: 639008046702259312
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 320
       height: 180
-    spriteID: a93ba8726b258ef408ff6da518bed3e8
+    spriteID: bc403c00621d0ee468b9d4395a702b30
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 334
       width: 271
       height: 16
-    spriteID: ab8c93e946a1bd348800ce1652c49978
+    spriteID: ed5bd97a68a6a02448287a351339b6cb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,7 +181,7 @@ ScriptedImporter:
       y: 192
       width: 271
       height: 134
-    spriteID: 2d0c24ef7617ac74a93b73a9aa77f659
+    spriteID: 819fd71ee48b151458927d9899017574
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -229,7 +229,7 @@ ScriptedImporter:
         y: 0
         width: 320
         height: 180
-      spriteId: a93ba8726b258ef408ff6da518bed3e8
+      spriteId: bc403c00621d0ee468b9d4395a702b30
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -242,7 +242,7 @@ ScriptedImporter:
       value3: 0
     guid: 0
     name: Road
-    layerFlags: 35
+    layerFlags: 3
     layerType: 1
     blendMode: 0
     cells: []
@@ -270,7 +270,7 @@ ScriptedImporter:
         y: 15
         width: 271
         height: 16
-      spriteId: ab8c93e946a1bd348800ce1652c49978
+      spriteId: ed5bd97a68a6a02448287a351339b6cb
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -295,7 +295,7 @@ ScriptedImporter:
         y: 0
         width: 271
         height: 134
-      spriteId: 2d0c24ef7617ac74a93b73a9aa77f659
+      spriteId: 819fd71ee48b151458927d9899017574
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
