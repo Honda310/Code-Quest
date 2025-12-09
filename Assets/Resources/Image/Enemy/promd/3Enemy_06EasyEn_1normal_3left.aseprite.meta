@@ -102,7 +102,11 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
+<<<<<<< HEAD
   platformSettingsDirtyTick: 639008905019787356
+=======
+  platformSettingsDirtyTick: 639008336604694279
+>>>>>>> main
   textureAssetName: 
   singleSpriteImportData:
   - name: 

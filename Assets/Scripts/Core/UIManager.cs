@@ -123,4 +123,37 @@ public class UIManager : MonoBehaviour
             // “ü—Í—“‚ð‹ó‚É‚µ‚Ü‚·
             answerInput.text = "";
     }
+    //ƒeƒ“ƒvƒŒ—p
+    //public void OnButtonClicked(Button clickedButton)
+    //{
+
+    //}
+    public void OnFightButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnMultiplechoiceQuestButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnFillBlankQuestButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnPlayerAttackButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnPlayerItemButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnNetoScanButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnNetoItemButtonClicked(Button clickedButton)
+    {
+
+    }
 }
