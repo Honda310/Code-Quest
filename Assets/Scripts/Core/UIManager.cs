@@ -140,7 +140,7 @@ public class UIManager : MonoBehaviour
     {
 
     }
-    public void OnPlayerAttackButtonClicked(Button clickedButton)
+    public void OnPlayerDebugButtonClicked(Button clickedButton)
     {
 
     }
@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
     {
 
     }
-    public void OnNetoScanButtonClicked(Button clickedButton)
+    public void OnNetoSearchButtonClicked(Button clickedButton)
     {
 
     }
