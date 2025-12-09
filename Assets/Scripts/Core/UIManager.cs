@@ -128,15 +128,23 @@ public class UIManager : MonoBehaviour
     //{
 
     //}
-    public void OnFightButtonClicked(Button clickedButton)
+    public void OnSelectNormalButtonClicked(Button clickedButton)
     {
 
     }
-    public void OnMultiplechoiceQuestButtonClicked(Button clickedButton)
+    public void OnSelectHardButtonClicked(Button clickedButton)
     {
 
     }
-    public void OnFillBlankQuestButtonClicked(Button clickedButton)
+    public void OnReselectButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnAcceptButtonClicked(Button clickedButton)
+    {
+
+    }
+    public void OnCancelButtonClicked(Button clickedButton)
     {
 
     }
