@@ -102,11 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-<<<<<<< HEAD
-  platformSettingsDirtyTick: 639008905019787356
-=======
-  platformSettingsDirtyTick: 639008336836381041
->>>>>>> main
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -143,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 47
       height: 26
-    spriteID: 8afaea8ecf6bf2643b0b7453e8029c27
+    spriteID: 5cb5ccc865928f247a34d4299700b91c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -175,37 +171,13 @@ ScriptedImporter:
         y: 0
         width: 47
         height: 26
-      spriteId: 8afaea8ecf6bf2643b0b7453e8029c27
+      spriteId: 5cb5ccc865928f247a34d4299700b91c
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
   tileSets: []
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 16384
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 16384
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
