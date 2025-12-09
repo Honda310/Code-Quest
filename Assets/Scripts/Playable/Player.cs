@@ -156,12 +156,14 @@ public class Player : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = sprites[spriteKey];
         }
 
-        // --- 物理移動 ---
-        // 斜め移動でも速度が変わらないように正規化する
         direction = direction.normalized;
 
-        // 現在位置 + (方向 * 速度 * 経過時間) で新しい位置へ移動
-        rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
+        Vector2 newPos = rb2d.position + direction * moveSpeed * Time.fixedDeltaTime;
+
+        newPos.x = Mathf.Round(newPos.x);
+        newPos.y = Mathf.Round(newPos.y);
+
+        rb2d.MovePosition(newPos);
     }
 
     // ==========================================

@@ -19,6 +19,8 @@ public class CameraFollow : MonoBehaviour
             // 現在位置から目標位置へ少しずつ移動させる（線形補間）
 
             newPos.y = Mathf.Min(newPos.y, maxY);
+            newPos.x = Mathf.Round(newPos.x);
+            newPos.y = Mathf.Round(newPos.y);
             transform.position = newPos;
 
         }
