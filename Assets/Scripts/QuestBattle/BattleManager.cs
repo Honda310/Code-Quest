@@ -15,12 +15,12 @@ public class BattleManager : MonoBehaviour
     List<QuestCategory> categories = new List<QuestCategory>();
     private QuestManager questManager;
     private MultipleChoiceQuest checker;
+    private UIManager uiManager;
 
     void Start()
     {
         questManager = GameManager.Instance.questManager;
         checker = GetComponent<MultipleChoiceQuest>();
-
     }
 
     /// <summary>
@@ -77,6 +77,7 @@ public class BattleManager : MonoBehaviour
         {
             GameManager.Instance.uiManager.UpdateBattleMessage("問題切れ！");
         }
+        GameManager.Instance.uiManager.Turnstart();
     }
 
     public void OnSubmitAnswer(string code)
@@ -160,9 +161,7 @@ public class BattleManager : MonoBehaviour
         {
             Destroy(currentEnemy.gameObject);
             GameManager.Instance.uiManager.ShowLog("勝利！");
-            // 敵を非表示にする、あるいは破壊するなどの処理
             // Destroy(currentEnemy.gameObject); 
-            // ※再利用する場合は非アクティブ化だけにするなど調整してください
             Time.timeScale = 1f;
         }
         else

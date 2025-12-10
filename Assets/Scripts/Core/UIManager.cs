@@ -22,6 +22,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject dojoPanel;      // 道場画面
     [SerializeField] private GameObject itemDebugPanel; // アイテムデバッグ画面
 
+    [Header("戦闘パネルの各要素")]
+    [SerializeField] private GameObject PlSelectPanel;
+    [SerializeField] private GameObject NetoselectPanel;
+    [SerializeField] private GameObject HealthDpSlidersAndCharactersPanel;
+    [SerializeField] private GameObject DifficultSelectPanel;
+    [SerializeField] private GameObject QuestFramePanel;
+    [SerializeField] private GameObject DifficultAndCheckButtonFramePanel;
+    [SerializeField] private GameObject DifficultAndSelectButtonFramePanel;
+
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
     /// </summary>
@@ -87,6 +96,16 @@ public class UIManager : MonoBehaviour
     {
         battlePanel.SetActive(show);
     }
+    public void Turnstart()
+    {
+        PlSelectPanel.SetActive(true);
+        NetoselectPanel.SetActive(false);
+        HealthDpSlidersAndCharactersPanel.SetActive(true);
+        DifficultSelectPanel.SetActive(false);
+        DifficultAndCheckButtonFramePanel.SetActive(false);
+        DifficultAndSelectButtonFramePanel.SetActive(false);
+        QuestFramePanel.SetActive(false);
+    }
 
     public void ToggleShop(bool show)
     {
@@ -130,7 +149,8 @@ public class UIManager : MonoBehaviour
     //}
     public void OnSelectNormalButtonClicked(Button clickedButton)
     {
-
+        DifficultAndCheckButtonFramePanel.SetActive(true);
+        DifficultAndSelectButtonFramePanel.SetActive(false);
     }
     public void OnSelectHardButtonClicked(Button clickedButton)
     {
@@ -138,19 +158,27 @@ public class UIManager : MonoBehaviour
     }
     public void OnReselectButtonClicked(Button clickedButton)
     {
-
+        PlSelectPanel.SetActive(true);
+        DifficultSelectPanel.SetActive(false);
+        DifficultAndCheckButtonFramePanel.SetActive(false);
     }
     public void OnAcceptButtonClicked(Button clickedButton)
     {
-
+        DifficultAndCheckButtonFramePanel.SetActive(false);
+        DifficultSelectPanel.SetActive(false);
+        NetoselectPanel.SetActive(true);
     }
     public void OnCancelButtonClicked(Button clickedButton)
     {
-
+        DifficultAndCheckButtonFramePanel.SetActive(false);
+        DifficultAndSelectButtonFramePanel.SetActive(true);
     }
     public void OnPlayerDebugButtonClicked(Button clickedButton)
     {
-
+        PlSelectPanel.SetActive(false);
+        NetoselectPanel.SetActive(false);
+        DifficultSelectPanel.SetActive(true);
+        DifficultAndSelectButtonFramePanel.SetActive(true);
     }
     public void OnPlayerItemButtonClicked(Button clickedButton)
     {
@@ -158,7 +186,9 @@ public class UIManager : MonoBehaviour
     }
     public void OnNetoSearchButtonClicked(Button clickedButton)
     {
-
+        NetoselectPanel.SetActive(false);
+        HealthDpSlidersAndCharactersPanel.SetActive(false);
+        QuestFramePanel.SetActive(true);
     }
     public void OnNetoItemButtonClicked(Button clickedButton)
     {

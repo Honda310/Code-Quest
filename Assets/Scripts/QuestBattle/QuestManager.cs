@@ -24,10 +24,11 @@ public class QuestManager : MonoBehaviour
         for (int i = 1; i < csv.Count; i++)
         {
             string[] cols = csv[i];
-
+            cols[1] = cols[1].Replace("\\n", "\n");
             // ★修正：列数で形式を判別
             if (cols.Length >= 7)
             {
+                cols[1] = cols[1].Replace("\\n", "\n");
                 // [4択形式] ID, 問題, A, B, C, D, 答え
                 string[] opts = new string[] { cols[2], cols[3], cols[4], cols[5] };
                 list.Add(new QuestData(cols[0], category, cols[1], opts, cols[6]));

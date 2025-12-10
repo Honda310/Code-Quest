@@ -1,13 +1,13 @@
-ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer,Category
-Sel001,int a = 3 + 2;\nSystem.out.println(a);,1,5,6,32,B,加減算
-Sel002,int a = 10 + 5;\nSystem.out.println(a);,15,50,105,2,A,加減算
-Sel003,int x = 0 + 7;\nSystem.out.println(x);,0,7,7,エラー,B,加減算
-Sel004,int num = 100 + 200;\nSystem.out.println(num);,100200,200,300,1200,C,加減算
-Sel005,int a = 8 - 3;\nSystem.out.println(a);,5,11,-5,24,A,加減算
-Sel006,int b = 10 - 10;\nSystem.out.println(b);,10,1,0,-10,C,加減算
-Sel007,int c = 5 - 8;\nSystem.out.println(c);,3,-3,13,0,B,加減算
-Sel008,int val = 100 - 1;\nSystem.out.println(val);,101,99,100,0,B,加減算
-Sel009,int a = 20; int b = 10;\nSystem.out.println(a - b);,30,-10,10,200,C,加減算
-Sel010,int a = 1; int b = 2;\nSystem.out.println(a + b);,12,3,12,エラー,B,加減算 (変数)
-Sel011,int a = 1; int b = 2; int c = 3;\nSystem.out.println(a+b+c);,123,6,5,エラー,B,加減算
-Sel012,int zero = 0;\nSystem.out.println(0 + zero);,0,1,10,エラー,A,加減算
+ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+Sel001,int a = 3 + 2;\nSystem.out.println(a);,1,5,6,32,B
+Sel002,int a = 10 + 5;\nSystem.out.println(a);,15,50,105,2,A
+Sel003,int x = 0 + 7;\nSystem.out.println(x);,0,7,7,エラー,B
+Sel004,int num = 100 + 200;\nSystem.out.println(num);,100200,200,300,1200,C
+Sel005,int a = 8 - 3;\nSystem.out.println(a);,5,11,-5,24,A
+Sel006,int b = 10 - 10;\nSystem.out.println(b);,10,1,0,-10,C
+Sel007,int c = 5 - 8;\nSystem.out.println(c);,3,-3,13,0,B
+Sel008,int val = 100 - 1;\nSystem.out.println(val);,101,99,100,0,B
+Sel009,int a = 20; int b = 10;\nSystem.out.println(a - b);,30,-10,10,200,C
+Sel010,int a = 1; int b = 2;\nSystem.out.println(a + b);,12,3,12,エラー,B
+Sel011,int a = 1; int b = 2; int c = 3;\nSystem.out.println(a+b+c);,123,6,5,エラー,B
+Sel012,int zero = 0;\nSystem.out.println(0 + zero);,0,1,10,エラー,A
