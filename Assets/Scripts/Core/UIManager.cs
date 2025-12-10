@@ -187,7 +187,7 @@ public class UIManager : MonoBehaviour
     public void OnNetoSearchButtonClicked(Button clickedButton)
     {
         NetoselectPanel.SetActive(false);
-        HealthDpSlidersAndCharactersPanel.SetActive(true);
+        HealthDpSlidersAndCharactersPanel.SetActive(false);
         QuestFramePanel.SetActive(true);
     }
     public void OnNetoItemButtonClicked(Button clickedButton)
