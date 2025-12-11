@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider NetoStatusSlider;   
     [SerializeField] private Slider EnemyStatusSlider;
     [SerializeField] private Text logText;          // ゲーム内のログメッセージを表示
-    [SerializeField] private GameObject inventoryPanel; // アイテム一覧画面
+    [SerializeField] private GameObject MenuPanel; // アイテム一覧画面
 
     [Header("各モードの画面パネル")]
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
@@ -120,9 +120,9 @@ public class UIManager : MonoBehaviour
 
     // --- パネルの表示/非表示を切り替えるメソッド群 ---
 
-    public void ToggleInventory(bool show)
+    public void ToggleMenu(bool show)
     {
-        inventoryPanel.SetActive(show);
+        MenuPanel.SetActive(show);
     }
 
     public void ToggleBattle(bool show)
@@ -300,4 +300,5 @@ public class UIManager : MonoBehaviour
     {
         NetoSelectLabelText.text = ("");
     }
+
 }

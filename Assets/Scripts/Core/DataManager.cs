@@ -34,10 +34,11 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 6) continue;
+            if (line.Length < 6 || line.Length > 6) continue;
             Weapon w = new Weapon(line[0], line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
             if (!WeaponMaster.ContainsKey(w.ItemID)) WeaponMaster.Add(w.ItemID, w);
         }
+        Debug.Log($"武器マスタ: {WeaponMaster.Count}件 ロード完了");
     }
 
     private void LoadAccessories(string path)
@@ -45,10 +46,11 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 5) continue;
+            if (line.Length < 5 || line.Length > 5) continue;
             Accessory a = new Accessory(line[0], line[1], int.Parse(line[2]), int.Parse(line[3]), line[4]);
             if (!AccessoryMaster.ContainsKey(a.ItemID)) AccessoryMaster.Add(a.ItemID, a);
         }
+        Debug.Log($"アクセサリマスタ: {AccessoryMaster.Count}件 ロード完了");
     }
 
     private void LoadSupportItems(string path)
@@ -56,10 +58,11 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 6) continue;
+            if (line.Length < 6 || line.Length > 6) continue;
             SupportItem s = new SupportItem(line[0], line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
             if (!SupportItemMaster.ContainsKey(s.ItemID)) SupportItemMaster.Add(s.ItemID, s);
         }
+        Debug.Log($"補助アイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
     }
 
     // --------------------------------------------------------
