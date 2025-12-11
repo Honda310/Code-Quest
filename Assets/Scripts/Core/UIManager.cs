@@ -8,8 +8,12 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [Header("HUD (常時表示するもの)")]
-    [SerializeField] private Text playerStatusText; // プレイヤーのHPなどを表示
-    [SerializeField] private Text netoStatusText;   // ネトのHPを表示
+    [SerializeField] private Text PlayerStatusText; // プレイヤーのHPなどを表示
+    [SerializeField] private Text NetoStatusText;   // ネトのHPを表示
+    [SerializeField] private Text EnemyStatusText;
+    [SerializeField] private Slider PlayerStatusSlider; 
+    [SerializeField] private Slider NetoStatusSlider;   
+    [SerializeField] private Slider EnemyStatusSlider;
     [SerializeField] private Text logText;          // ゲーム内のログメッセージを表示
     [SerializeField] private GameObject inventoryPanel; // アイテム一覧画面
 
@@ -17,6 +21,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
     [SerializeField] private Text battleQuestText;       // 問題表示
     [SerializeField] private Text battleInfoText;
+    [SerializeField] private Text PlSelectLabelText;
+    [SerializeField] private Text NetoSelectLabelText;
+    [SerializeField] private Text DifficultSelectText;
     [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
@@ -38,17 +45,43 @@ public class UIManager : MonoBehaviour
     {
 
     }
+    public void UpdateStatus(Player p, Neto n,Enemy e)
+    {
+        // テキストコンポーネントが存在する場合のみ更新します
+        if (PlayerStatusText != null)
+        {
+            PlayerStatusText.text = $"{p.CurrentHP}/{p.MaxHP}"; ;
+            PlayerStatusSlider.maxValue = p.MaxHP;
+            PlayerStatusSlider.minValue = 0;
+            PlayerStatusSlider.value = p.CurrentHP;
+        }
+        if (NetoStatusText != null)
+        {
+            NetoStatusText.text = $"{n.CurrentHP}/{n.MaxHP}"; ;
+            NetoStatusSlider.maxValue = n.MaxHP;
+            NetoStatusSlider.minValue = 0;
+            NetoStatusSlider.value = n.CurrentHP;
+
+        }
+        if (EnemyStatusText != null)
+        {
+            EnemyStatusText.text = $"{e.CurrentDP}/{e.MaxDP}";
+            EnemyStatusSlider.maxValue = e.MaxDP;
+            EnemyStatusSlider.minValue = 0;
+            EnemyStatusSlider.value = e.CurrentDP;
+        }
+    }
     public void UpdateStatus(Player p, Neto n)
     {
         // テキストコンポーネントが存在する場合のみ更新します
-        if (playerStatusText != null)
+        if (PlayerStatusText != null)
         {
-            playerStatusText.text = $"Player HP: {p.CurrentHP}/{p.MaxHP}\nATK: {p.CurrentAtk} DEF: {p.CurrentDef}";
+            PlayerStatusText.text = $"Player HP: {p.CurrentHP}/{p.MaxHP}\nATK: {p.CurrentAtk} DEF: {p.CurrentDef}";
         }
 
-        if (netoStatusText != null)
+        if (NetoStatusText != null)
         {
-            netoStatusText.text = $"Neto HP: {n.CurrentHP}/{n.MaxHP}";
+            NetoStatusText.text = $"Neto HP: {n.CurrentHP}/{n.MaxHP}";
         }
     }
 
@@ -154,23 +187,23 @@ public class UIManager : MonoBehaviour
     }
 	public void OnSelectNormalButtonSelected()
 	{
-		Debug.Log("4択問題に挑戦");
+        DifficultSelectText.text = ("＊4択問題に挑戦する");
 	}
 	public void OnSelectNormalButtonDeSelected()
 	{
-		Debug.Log("挑戦する問題を選択してください");
-	}
+        DifficultSelectText.text = ("＊挑戦する問題を選択してください");
+    }
     public void OnSelectHardButtonClicked(Button clickedButton)
     {
 		
     }
     public void OnSelectHardButtonSelected()
     {
-		Debug.Log("穴埋め問題に挑戦");
+        DifficultSelectText.text = ("＊穴埋め問題に挑戦する");
     }
     public void OnSelectHardButtonDeSelected()
     {
-		Debug.Log("挑戦する問題を選択してください");
+        DifficultSelectText.text = ("＊挑戦する問題を選択してください");
     }
     public void OnReselectButtonClicked(Button clickedButton)
     {
@@ -180,11 +213,11 @@ public class UIManager : MonoBehaviour
     }
 	public void OnReselectButtonSelected()
 	{
-		Debug.Log("行動を再選択");
+        DifficultSelectText.text = ("＊行動を再選択する");
 	}
 	public void OnReselectButtonDeSelected()
 	{
-		Debug.Log("挑戦する問題を選択してください");
+        DifficultSelectText.text=("＊挑戦する問題を選択してください");
 	}
     public void OnAcceptButtonClicked(Button clickedButton)
     {
@@ -194,11 +227,11 @@ public class UIManager : MonoBehaviour
     }
     public void OnAcceptButtonSelected()
 	{
-		Debug.Log("行動を確定します");
+        DifficultSelectText.text = ("＊行動を確定します");
 	}
     public void OnAcceptButtonDeSelected()
 	{
-		Debug.Log("行動を確定しますか？");
+        DifficultSelectText.text = ("＊行動を確定しますか？");
 	}
     public void OnCancelButtonClicked(Button clickedButton)
     {
@@ -207,11 +240,11 @@ public class UIManager : MonoBehaviour
     }
     public void OnCancelButtonSelected()
     {
-		Debug.Log("行動の選択をやり直します");
+        DifficultSelectText.text = ("＊行動の選択をやり直します");
 	}
     public void OnCancelButtonDeSelected()
     {
-		Debug.Log("行動を確定しますか？");
+        DifficultSelectText.text = ("＊行動を確定しますか？");
 	}
     public void OnPlayerDebugButtonClicked(Button clickedButton)
     {
@@ -219,14 +252,15 @@ public class UIManager : MonoBehaviour
         NetoselectPanel.SetActive(false);
         DifficultSelectPanel.SetActive(true);
         DifficultAndSelectButtonFramePanel.SetActive(true);
+        DifficultSelectText.text = ("＊挑戦する問題を選択してください");
     }
     public void OnPlayerDebugButtonSelected()
     {
-        Debug.Log("デバッグ");
+        PlSelectLabelText.text = ("デバッグ");
     }
     public void OnPlayerDebugButtonDeSelected()
     {
-        Debug.Log("");
+        PlSelectLabelText.text = ("");
     }
     public void OnPlayerItemButtonClicked(Button clickedButton)
     {
@@ -234,11 +268,11 @@ public class UIManager : MonoBehaviour
     }
     public void OnPlayerItemButtonSelected()
     {
-        Debug.Log("アイテム");
+        PlSelectLabelText.text=("アイテム");
     }
     public void OnPlayerItemButtonDeSelected()
     {
-        Debug.Log("");
+        PlSelectLabelText.text=("");
     }
     public void OnNetoSearchButtonClicked(Button clickedButton)
     {
@@ -246,8 +280,24 @@ public class UIManager : MonoBehaviour
         HealthDpSlidersAndCharactersPanel.SetActive(false);
         QuestFramePanel.SetActive(true);
     }
+    public void OnNetoSearchButtonSelected()
+    {
+        NetoSelectLabelText.text = ("スキャン");
+    }
+    public void OnNetoSearchButtonDeSelected()
+    {
+        NetoSelectLabelText.text = ("");
+    }
     public void OnNetoItemButtonClicked(Button clickedButton)
     {
 		
+    }
+    public void OnNetoItemButtonSelected()
+    {
+        NetoSelectLabelText.text = ("アイテム");
+    }
+    public void OnNetoItemButtonDeSelected()
+    {
+        NetoSelectLabelText.text = ("");
     }
 }

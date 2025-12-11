@@ -138,7 +138,7 @@ public class BattleManager : MonoBehaviour
             GameManager.Instance.uiManager.ShowLog($"ネトに {realDmg} のダメージ！");
         }
 
-        GameManager.Instance.uiManager.UpdateStatus(player, neto);
+        GameManager.Instance.uiManager.UpdateStatus(player, neto,currentEnemy);
 
         // 敗北判定
         if (player.CurrentHP <= 0 && neto.CurrentHP <= 0)

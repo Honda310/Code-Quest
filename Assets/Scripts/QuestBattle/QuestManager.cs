@@ -65,7 +65,6 @@ public class QuestManager : MonoBehaviour
             int r = UnityEngine.Random.Range(i, pool.Count);
             pool[i] = pool[r];
             pool[r] = temp;
-            Debug.Log(pool[i] + "," + pool[r]);
         }
 
         foreach (var q in pool) currentDeck.Enqueue(q);

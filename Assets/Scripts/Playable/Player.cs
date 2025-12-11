@@ -10,12 +10,11 @@ using UnityEngine.InputSystem; // InputSystemを使用する場合は必要
 public class Player : MonoBehaviour
 {
     // --- ステータス関連 ---
-    [Header("基本ステータス")]
     public string PlayerName; // プレイヤー名
-    public int MaxHP;         // 最大HP
-    public int CurrentHP;     // 現在HP
-    public int BaseAtk;       // 基礎攻撃力
-    public int BaseDef;       // 基礎防御力
+    public int MaxHP=100;         // 最大HP
+    public int CurrentHP=100;     // 現在HP
+    public int BaseAtk=10;       // 基礎攻撃力
+    public int BaseDef=10;       // 基礎防御力
 
     // 装備やアイテムによる加算値（外部から読み取り専用）
     public int WeaponAtk { get; private set; }    // 武器による攻撃力加算
