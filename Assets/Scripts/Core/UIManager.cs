@@ -152,9 +152,25 @@ public class UIManager : MonoBehaviour
         DifficultAndCheckButtonFramePanel.SetActive(true);
         DifficultAndSelectButtonFramePanel.SetActive(false);
     }
+	public void OnSelectNormalButtonSelected()
+	{
+		Debug.Log("4択問題に挑戦");
+	}
+	public void OnSelectNormalButtonDeSelected()
+	{
+		Debug.Log("挑戦する問題を選択してください");
+	}
     public void OnSelectHardButtonClicked(Button clickedButton)
     {
-
+		
+    }
+    public void OnSelectHardButtonSelected()
+    {
+		Debug.Log("穴埋め問題に挑戦");
+    }
+    public void OnSelectHardButtonDeSelected()
+    {
+		Debug.Log("挑戦する問題を選択してください");
     }
     public void OnReselectButtonClicked(Button clickedButton)
     {
@@ -162,17 +178,41 @@ public class UIManager : MonoBehaviour
         DifficultSelectPanel.SetActive(false);
         DifficultAndCheckButtonFramePanel.SetActive(false);
     }
+	public void OnReselectButtonSelected()
+	{
+		Debug.Log("行動を再選択");
+	}
+	public void OnReselectButtonDeSelected()
+	{
+		Debug.Log("挑戦する問題を選択してください");
+	}
     public void OnAcceptButtonClicked(Button clickedButton)
     {
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultSelectPanel.SetActive(false);
         NetoselectPanel.SetActive(true);
     }
+    public void OnAcceptButtonSelected()
+	{
+		Debug.Log("行動を確定します");
+	}
+    public void OnAcceptButtonDeSelected()
+	{
+		Debug.Log("行動を確定しますか？");
+	}
     public void OnCancelButtonClicked(Button clickedButton)
     {
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultAndSelectButtonFramePanel.SetActive(true);
     }
+    public void OnCancelButtonSelected()
+    {
+		Debug.Log("行動の選択をやり直します");
+	}
+    public void OnCancelButtonDeSelected()
+    {
+		Debug.Log("行動を確定しますか？");
+	}
     public void OnPlayerDebugButtonClicked(Button clickedButton)
     {
         PlSelectPanel.SetActive(false);
@@ -180,9 +220,25 @@ public class UIManager : MonoBehaviour
         DifficultSelectPanel.SetActive(true);
         DifficultAndSelectButtonFramePanel.SetActive(true);
     }
+    public void OnPlayerDebugButtonSelected()
+    {
+        Debug.Log("デバッグ");
+    }
+    public void OnPlayerDebugButtonDeSelected()
+    {
+        Debug.Log("");
+    }
     public void OnPlayerItemButtonClicked(Button clickedButton)
     {
-
+		
+    }
+    public void OnPlayerItemButtonSelected()
+    {
+        Debug.Log("アイテム");
+    }
+    public void OnPlayerItemButtonDeSelected()
+    {
+        Debug.Log("");
     }
     public void OnNetoSearchButtonClicked(Button clickedButton)
     {
@@ -192,6 +248,6 @@ public class UIManager : MonoBehaviour
     }
     public void OnNetoItemButtonClicked(Button clickedButton)
     {
-
+		
     }
 }
