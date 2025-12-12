@@ -135,7 +135,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
+      x: 38
       y: 253
       width: 254
       height: 1
@@ -147,7 +147,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 253}
+    uvTransform: {x: 38, y: 253}
   - name: IntegrationPanelFr2
     originalName: 
     pivot: {x: 0.37890625, y: -0.43589744}
@@ -346,7 +346,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 268
-      y: 228
+      y: 227
       width: 127
       height: 17
     spriteID: 4b20c4f9187131e439b443e7d2157dd7
@@ -357,7 +357,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 228}
+    uvTransform: {x: 268, y: 227}
   - name: CurrentAtkLabel
     originalName: 
     pivot: {x: 0.7480315, y: -2.2941177}
@@ -409,7 +409,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 403
-      y: 228
+      y: 227
       width: 41
       height: 16
     spriteID: b0e4235376c20b0439d56e8da47e8546
@@ -420,10 +420,10 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 403, y: 228}
+    uvTransform: {x: 403, y: 227}
   - name: AccessoryEquipFr
     originalName: 
-    pivot: {x: -0.26612896, y: -4.043478}
+    pivot: {x: -0.26612896, y: -4.272727}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -432,7 +432,7 @@ ScriptedImporter:
       x: 268
       y: 167
       width: 124
-      height: 23
+      height: 22
     spriteID: e512f4247f93be343bea162aded30910
     spriteBone: []
     spriteOutline: []
@@ -451,7 +451,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 268
-      y: 198
+      y: 197
       width: 124
       height: 22
     spriteID: c64d1fe26313dc14f9ab5b0348c886d1
@@ -462,7 +462,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 198}
+    uvTransform: {x: 268, y: 197}
   - name: CharaHeader
     originalName: 
     pivot: {x: 2.3170733, y: -8.625}
@@ -472,7 +472,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 452
-      y: 228
+      y: 227
       width: 41
       height: 16
     spriteID: 422b27f3d865bd34b8e8abd933de611e
@@ -483,7 +483,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 452, y: 228}
+    uvTransform: {x: 452, y: 227}
   - name: CharaName
     originalName: 
     pivot: {x: 0.627907, y: -8.625}
@@ -535,7 +535,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 501
-      y: 228
+      y: 227
       width: 5
       height: 7
     spriteID: 71ecc0befae4fac4f8c739765397666a
@@ -546,7 +546,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 501, y: 228}
+    uvTransform: {x: 501, y: 227}
   - name: heroIconButton
     originalName: 
     pivot: {x: 2.3846154, y: -4.5}
@@ -555,7 +555,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 434
+      x: 400
       y: 167
       width: 26
       height: 22
@@ -567,7 +567,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 434, y: 167}
+    uvTransform: {x: 400, y: 167}
   - name: netoIconButton
     originalName: 
     pivot: {x: 1.0000001, y: -4.304348}
@@ -576,8 +576,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 400
-      y: 167
+      x: 4
+      y: 253
       width: 26
       height: 23
     spriteID: cca0a1107b0f09f42840a26da4c6bf08
@@ -588,7 +588,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 400, y: 167}
+    uvTransform: {x: 4, y: 253}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
@@ -959,9 +959,9 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 193
-        y: 93
+        y: 94
         width: 124
-        height: 23
+        height: 22
       spriteId: e512f4247f93be343bea162aded30910
     linkedCells: []
     tileCells: []
