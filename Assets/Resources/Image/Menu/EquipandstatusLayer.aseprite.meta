@@ -1,0 +1,1175 @@
+fileFormatVersion: 2
+guid: 7ad15afd971f7fe45adadccd6bb0b36e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639011432023907343
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: IntegrationPanelFr1
+    originalName: 
+    pivot: {x: 0.37795278, y: -75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 253
+      width: 254
+      height: 1
+    spriteID: 6fdb10e23ef88ad40804e59abf995941
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 253}
+  - name: IntegrationPanelFr2
+    originalName: 
+    pivot: {x: 0.37890625, y: -0.43589744}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 167
+      width: 256
+      height: 78
+    spriteID: e483aebd4368df841bc7082f8d48f805
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 167}
+  - name: IntegrationPanelFr3
+    originalName: 
+    pivot: {x: 0.37890625, y: -0.006451613}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 256
+      height: 155
+    spriteID: 0e9709aff2c8193499091d3d5ea4d552
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: weaponSelecerHeader
+    originalName: 
+    pivot: {x: -0.8048779, y: -4.75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 403
+      y: 29
+      width: 41
+      height: 16
+    spriteID: bd0ab75c87d30b24f9b6bbd9d13b01a5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 403, y: 29}
+  - name: weaponSelecer1
+    originalName: 
+    pivot: {x: -0.26612896, y: -4.3571424}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 54
+      width: 124
+      height: 14
+    spriteID: 0e7b0911bbb37104e96099cbed50588a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 54}
+  - name: weaponSelecer2
+    originalName: 
+    pivot: {x: -0.26612896, y: -3.3571427}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 76
+      width: 124
+      height: 14
+    spriteID: bf8ad9c854299984cae0d0c0f2e2bd14
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 76}
+  - name: weaponSelecer3
+    originalName: 
+    pivot: {x: -0.26612896, y: -2.357143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 98
+      width: 124
+      height: 14
+    spriteID: f38e32618f2d3324db690f634df046b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 98}
+  - name: weaponSelecer4
+    originalName: 
+    pivot: {x: -0.26612896, y: -1.3571428}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 120
+      width: 124
+      height: 14
+    spriteID: b357b8ba9da24db4086ccff58b6924af
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 120}
+  - name: weaponSelecer5
+    originalName: 
+    pivot: {x: -0.26612896, y: -0.35714284}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 142
+      width: 124
+      height: 14
+    spriteID: e553c60bf72fe3945ba5419837513d4d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 142}
+  - name: CharaStateHeader
+    originalName: 
+    pivot: {x: 2.3170733, y: -4.75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 452
+      y: 29
+      width: 41
+      height: 16
+    spriteID: 10ce6f439c033f041b8919b24969b5f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 452, y: 29}
+  - name: CurrentDefLabel
+    originalName: 
+    pivot: {x: 0.7480315, y: -1.2941176}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 228
+      width: 127
+      height: 17
+    spriteID: 4b20c4f9187131e439b443e7d2157dd7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 228}
+  - name: CurrentAtkLabel
+    originalName: 
+    pivot: {x: 0.7480315, y: -2.2941177}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 4
+      width: 127
+      height: 17
+    spriteID: 06187ec3d0c02c948aae74eff0fd5411
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 4}
+  - name: CurrentMaxHPLabel
+    originalName: 
+    pivot: {x: 0.7480315, y: -3.2941177}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 29
+      width: 127
+      height: 17
+    spriteID: 2d8854f1cdaf05d4c9a4804102f83d9f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 29}
+  - name: EquipHeader
+    originalName: 
+    pivot: {x: -0.8048779, y: -8.625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 403
+      y: 228
+      width: 41
+      height: 16
+    spriteID: b0e4235376c20b0439d56e8da47e8546
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 403, y: 228}
+  - name: AccessoryEquipFr
+    originalName: 
+    pivot: {x: -0.26612896, y: -4.043478}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 167
+      width: 124
+      height: 23
+    spriteID: e512f4247f93be343bea162aded30910
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 167}
+  - name: weaponEquipFr
+    originalName: 
+    pivot: {x: -0.26612896, y: -5.2727275}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 198
+      width: 124
+      height: 22
+    spriteID: c64d1fe26313dc14f9ab5b0348c886d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 198}
+  - name: CharaHeader
+    originalName: 
+    pivot: {x: 2.3170733, y: -8.625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 452
+      y: 228
+      width: 41
+      height: 16
+    spriteID: 422b27f3d865bd34b8e8abd933de611e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 452, y: 228}
+  - name: CharaName
+    originalName: 
+    pivot: {x: 0.627907, y: -8.625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 403
+      y: 4
+      width: 86
+      height: 16
+    spriteID: 213368a1bacbf084ba8659e31c9aed99
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 403, y: 4}
+  - name: select neto
+    originalName: 
+    pivot: {x: 3.2000008, y: -17.857141}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 501
+      y: 29
+      width: 5
+      height: 7
+    spriteID: 971f29dfe39c1b54bb0eeb94b362dba9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 501, y: 29}
+  - name: select hero
+    originalName: 
+    pivot: {x: 10.200001, y: -17.857141}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 501
+      y: 228
+      width: 5
+      height: 7
+    spriteID: 71ecc0befae4fac4f8c739765397666a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 501, y: 228}
+  - name: heroIconButton
+    originalName: 
+    pivot: {x: 2.3846154, y: -4.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 434
+      y: 167
+      width: 26
+      height: 22
+    spriteID: 8ce8d37cec9047944b7fddf6f73856aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 434, y: 167}
+  - name: netoIconButton
+    originalName: 
+    pivot: {x: 1.0000001, y: -4.304348}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 400
+      y: 167
+      width: 26
+      height: 23
+    spriteID: cca0a1107b0f09f42840a26da4c6bf08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 400, y: 167}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    uuid:
+      value0: 1968142605
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: IntegrationPanelFr1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: IntegrationPanelFr1
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 75
+        width: 254
+        height: 1
+      spriteId: 6fdb10e23ef88ad40804e59abf995941
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 1968142604
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: IntegrationPanelFr2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: IntegrationPanelFr2
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 63
+        y: 34
+        width: 256
+        height: 78
+      spriteId: e483aebd4368df841bc7082f8d48f805
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 2
+    uuid:
+      value0: 1968142603
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: IntegrationPanelFr3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: IntegrationPanelFr3
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 63
+        y: 1
+        width: 256
+        height: 155
+      spriteId: 0e9709aff2c8193499091d3d5ea4d552
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 3
+    uuid:
+      value0: 1458525172
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: weaponSelecerHeader
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: weaponSelecerHeader
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 76
+        width: 41
+        height: 16
+      spriteId: bd0ab75c87d30b24f9b6bbd9d13b01a5
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 4
+    uuid:
+      value0: 3819167556
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: weaponSelecer1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: weaponSelecer1
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 61
+        width: 124
+        height: 14
+      spriteId: 0e7b0911bbb37104e96099cbed50588a
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 5
+    uuid:
+      value0: 2253083615
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: weaponSelecer2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: weaponSelecer2
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 47
+        width: 124
+        height: 14
+      spriteId: bf8ad9c854299984cae0d0c0f2e2bd14
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 6
+    uuid:
+      value0: 686999674
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: weaponSelecer3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: weaponSelecer3
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 33
+        width: 124
+        height: 14
+      spriteId: f38e32618f2d3324db690f634df046b4
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 7
+    uuid:
+      value0: 3059652669
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: weaponSelecer4
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: weaponSelecer4
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 19
+        width: 124
+        height: 14
+      spriteId: b357b8ba9da24db4086ccff58b6924af
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 8
+    uuid:
+      value0: 1493568728
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: weaponSelecer5
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: weaponSelecer5
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 5
+        width: 124
+        height: 14
+      spriteId: e553c60bf72fe3945ba5419837513d4d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 9
+    uuid:
+      value0: 805942193
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: CharaStateHeader
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: CharaStateHeader
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 65
+        y: 76
+        width: 41
+        height: 16
+      spriteId: 10ce6f439c033f041b8919b24969b5f9
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 10
+    uuid:
+      value0: 2943305108
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: CurrentDefLabel
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: CurrentDefLabel
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 65
+        y: 22
+        width: 127
+        height: 17
+      spriteId: 4b20c4f9187131e439b443e7d2157dd7
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 11
+    uuid:
+      value0: 1047694845
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: CurrentAtkLabel
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: CurrentAtkLabel
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 65
+        y: 39
+        width: 127
+        height: 17
+      spriteId: 06187ec3d0c02c948aae74eff0fd5411
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 12
+    uuid:
+      value0: 2402508559
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: CurrentMaxHPLabel
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: CurrentMaxHPLabel
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 65
+        y: 56
+        width: 127
+        height: 17
+      spriteId: 2d8854f1cdaf05d4c9a4804102f83d9f
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 13
+    uuid:
+      value0: 719568363
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: EquipHeader
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: EquipHeader
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 138
+        width: 41
+        height: 16
+      spriteId: b0e4235376c20b0439d56e8da47e8546
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 14
+    uuid:
+      value0: 3520187564
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: AccessoryEquipFr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: AccessoryEquipFr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 93
+        width: 124
+        height: 23
+      spriteId: e512f4247f93be343bea162aded30910
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 15
+    uuid:
+      value0: 2440695182
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: weaponEquipFr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: weaponEquipFr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 116
+        width: 124
+        height: 22
+      spriteId: c64d1fe26313dc14f9ab5b0348c886d1
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 16
+    uuid:
+      value0: 632451764
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: CharaHeader
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: CharaHeader
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 65
+        y: 138
+        width: 41
+        height: 16
+      spriteId: 422b27f3d865bd34b8e8abd933de611e
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 17
+    uuid:
+      value0: 683640782
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: CharaName
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: CharaName
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 106
+        y: 138
+        width: 86
+        height: 16
+      spriteId: 213368a1bacbf084ba8659e31c9aed99
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 18
+    uuid:
+      value0: 1820605738
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: select neto
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: select neto
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 144
+        y: 125
+        width: 5
+        height: 7
+      spriteId: 971f29dfe39c1b54bb0eeb94b362dba9
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 19
+    uuid:
+      value0: 3184918250
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: select hero
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: select hero
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 109
+        y: 125
+        width: 5
+        height: 7
+      spriteId: 71ecc0befae4fac4f8c739765397666a
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 20
+    uuid:
+      value0: 954353953
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: heroIconButton
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: heroIconButton
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 98
+        y: 99
+        width: 26
+        height: 22
+      spriteId: 8ce8d37cec9047944b7fddf6f73856aa
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 21
+    uuid:
+      value0: 3615281633
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: netoIconButton
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: netoIconButton
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 134
+        y: 99
+        width: 26
+        height: 23
+      spriteId: cca0a1107b0f09f42840a26da4c6bf08
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 320, y: 180}
+  previousTextureSize: {x: 512, y: 512}

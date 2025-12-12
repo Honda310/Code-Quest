@@ -1,0 +1,779 @@
+fileFormatVersion: 2
+guid: b81b360373c145f40837860a8ea6338a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639011376579917055
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: 3
+    originalName: 
+    pivot: {x: 0.37890625, y: -0.006451613}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 256
+      height: 155
+    spriteID: 04cb3b4726583c84eae34e37686ac582
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: ItemListFr1
+    originalName: 
+    pivot: {x: 0.38223934, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 327
+      width: 259
+      height: 29
+    spriteID: ad66b3d9ce02b6a40989e03371108185
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 327}
+  - name: ItemListFr2
+    originalName: 
+    pivot: {x: 0.38223934, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 262
+      width: 259
+      height: 57
+    spriteID: 5e83101b94a5da24fa23a1b3795f759a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 262}
+  - name: ItemListFr3
+    originalName: 
+    pivot: {x: 0.38223934, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 167
+      width: 259
+      height: 87
+    spriteID: f13a510d71bcfb5458d5d4f30237ca24
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 167}
+  - name: ScrollBar
+    originalName: 
+    pivot: {x: -0.98749995, y: -0.011904762}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 271
+      y: 167
+      width: 80
+      height: 84
+    spriteID: 5b89575894e4d764d8f6e7dd05f6cbf9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 271, y: 167}
+  - name: dawn
+    originalName: 
+    pivot: {x: -13.599998, y: -2.6666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 216
+      width: 5
+      height: 9
+    spriteID: ff1894da1f1e0a743a542e96041a0a8d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 216}
+  - name: up
+    originalName: 
+    pivot: {x: -13.599998, y: -5.777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 502
+      y: 216
+      width: 5
+      height: 9
+    spriteID: 6e0f852af6d780446ac59813ab22927a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 502, y: 216}
+  - name: Reconfirmfr_1
+    originalName: 
+    pivot: {x: -1.3225807, y: -120}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 359
+      y: 240
+      width: 62
+      height: 1
+    spriteID: d8214ef7b92d32047a425d25464ff28c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 359, y: 240}
+  - name: Reconfirmfr_2
+    originalName: 
+    pivot: {x: -1.265625, y: -2.4390244}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 431
+      y: 167
+      width: 64
+      height: 41
+    spriteID: 68d9006a66f39fd478bdddc798b4562f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 431, y: 167}
+  - name: Reconfirmfr_3
+    originalName: 
+    pivot: {x: -1.265625, y: -1.3846154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 359
+      y: 167
+      width: 64
+      height: 65
+    spriteID: 66bf89f7bf00b964da0e9fcd7ca9676f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 359, y: 167}
+  - name: Return
+    originalName: 
+    pivot: {x: -1.7599999, y: -4.7619047}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 431
+      y: 216
+      width: 50
+      height: 21
+    spriteID: 9fa7e6b6c912c7e4ab23f5114a146344
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 431, y: 216}
+  - name: use
+    originalName: 
+    pivot: {x: -1.7599999, y: -5.9523807}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 271
+      y: 327
+      width: 50
+      height: 21
+    spriteID: b13e836b08bc8174da5488154081656d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 271, y: 327}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 10
+    uuid:
+      value0: 757011047
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: equip menu
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 11
+    uuid:
+      value0: 2154859090
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: fr
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 10
+  - layerIndex: 42
+    uuid:
+      value0: 1706070789
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: fr anime
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 11
+  - layerIndex: 45
+    uuid:
+      value0: 3644983193
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: 3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: 3
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 63
+        y: 1
+        width: 256
+        height: 155
+      spriteId: 04cb3b4726583c84eae34e37686ac582
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 42
+  - layerIndex: 46
+    uuid:
+      value0: 3658313140
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: item menu
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 47
+    uuid:
+      value0: 2916168603
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: ItemListFr1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ItemListFr1
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 61
+        y: 0
+        width: 259
+        height: 29
+      spriteId: ad66b3d9ce02b6a40989e03371108185
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 48
+    uuid:
+      value0: 2916168604
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: ItemListFr2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ItemListFr2
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 61
+        y: 0
+        width: 259
+        height: 57
+      spriteId: 5e83101b94a5da24fa23a1b3795f759a
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 49
+    uuid:
+      value0: 2916168605
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: ItemListFr3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ItemListFr3
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 61
+        y: 0
+        width: 259
+        height: 87
+      spriteId: f13a510d71bcfb5458d5d4f30237ca24
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 50
+    uuid:
+      value0: 2350833913
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: ScrollBar
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ScrollBar
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 239
+        y: 1
+        width: 80
+        height: 84
+      spriteId: 5b89575894e4d764d8f6e7dd05f6cbf9
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 51
+    uuid:
+      value0: 932863877
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: dawn
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: dawn
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 228
+        y: 24
+        width: 5
+        height: 9
+      spriteId: ff1894da1f1e0a743a542e96041a0a8d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 52
+    uuid:
+      value0: 1026285516
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: up
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: up
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 228
+        y: 52
+        width: 5
+        height: 9
+      spriteId: 6e0f852af6d780446ac59813ab22927a
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 53
+    uuid:
+      value0: 2490986260
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Reconfirmfr_1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Reconfirmfr_1
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 242
+        y: 120
+        width: 62
+        height: 1
+      spriteId: d8214ef7b92d32047a425d25464ff28c
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 54
+    uuid:
+      value0: 2490986261
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Reconfirmfr_2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Reconfirmfr_2
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 241
+        y: 100
+        width: 64
+        height: 41
+      spriteId: 68d9006a66f39fd478bdddc798b4562f
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 55
+    uuid:
+      value0: 2490986262
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Reconfirmfr_3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Reconfirmfr_3
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 241
+        y: 90
+        width: 64
+        height: 65
+      spriteId: 66bf89f7bf00b964da0e9fcd7ca9676f
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 56
+    uuid:
+      value0: 3402876435
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Return
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Return
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 248
+        y: 100
+        width: 50
+        height: 21
+      spriteId: 9fa7e6b6c912c7e4ab23f5114a146344
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  - layerIndex: 57
+    uuid:
+      value0: 1668664152
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: use
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: use
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 248
+        y: 125
+        width: 50
+        height: 21
+      spriteId: b13e836b08bc8174da5488154081656d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 46
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 320, y: 180}
+  previousTextureSize: {x: 512, y: 512}
