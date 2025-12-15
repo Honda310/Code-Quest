@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider NetoStatusSlider;   
     [SerializeField] private Slider EnemyStatusSlider;
     [SerializeField] private Text logText;          // ゲーム内のログメッセージを表示
-    [SerializeField] private GameObject MenuPanel; // アイテム一覧画面
 
     [Header("各モードの画面パネル")]
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
@@ -38,6 +37,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject DifficultAndCheckButtonFramePanel;
     [SerializeField] private GameObject DifficultAndSelectButtonFramePanel;
 
+    [Header("メニュー画面の各パネル")]
+    [SerializeField] private GameObject MenuPanel;
+    [SerializeField] private GameObject ItemPanel;
+    [SerializeField] private GameObject EquipandStatusPanel;
+    [SerializeField] private GameObject ConfigPanel;
+    [SerializeField] private GameObject KeyBindPanel;
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
     /// </summary>
@@ -300,5 +305,24 @@ public class UIManager : MonoBehaviour
     {
         NetoSelectLabelText.text = ("");
     }
+    public void OnInventoryButtonClicked()
+    {
 
+    }
+    public void OnStatusButtonClicked()
+    {
+
+    }
+    public void OnConfigButtonClicked()
+    {
+
+    }
+    public void OnKeyBindButtonClicked()
+    {
+
+    }
+    public void OnMenuCloseButtonClicked()
+    {
+
+    }
 }
