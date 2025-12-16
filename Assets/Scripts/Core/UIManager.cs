@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 /// <summary>
 /// ÅyUIä«óùÅz
@@ -49,6 +51,13 @@ public class UIManager : MonoBehaviour
     public void Start()
     {
 
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
+        {
+            MenuToggle ();
+        }
     }
     public void UpdateStatus(Player p, Neto n,Enemy e)
     {
@@ -307,22 +316,91 @@ public class UIManager : MonoBehaviour
     }
     public void OnInventoryButtonClicked()
     {
+        if (ItemPanel.activeSelf)
+        {
+            ItemPanel.SetActive(false);
+        }
+        else
+        {
+            ItemPanel.SetActive(true);
+            EquipandStatusPanel.SetActive(false);
+            ConfigPanel.SetActive(false);
+            KeyBindPanel.SetActive(false);
 
+        }
+        
     }
     public void OnStatusButtonClicked()
     {
-
+        if (EquipandStatusPanel.activeSelf)
+        {
+            EquipandStatusPanel.SetActive(false);
+        }
+        else
+        {
+            
+            ItemPanel.SetActive(false);
+            EquipandStatusPanel.SetActive(true);
+            ConfigPanel.SetActive(false);
+            KeyBindPanel.SetActive(false);
+        }
+        
     }
     public void OnConfigButtonClicked()
     {
-
+        if (ConfigPanel.activeSelf)
+        {
+            ConfigPanel.SetActive(false);
+        }
+        else
+        {
+            ItemPanel.SetActive(false);
+            EquipandStatusPanel.SetActive(false);
+            ConfigPanel.SetActive(true);
+            KeyBindPanel.SetActive(false);
+        }
+        
     }
     public void OnKeyBindButtonClicked()
     {
-
+        if (KeyBindPanel.activeSelf)
+        {
+            KeyBindPanel.SetActive(false);
+        }
+        else
+        {
+            ItemPanel.SetActive(false);
+            EquipandStatusPanel.SetActive(false);
+            ConfigPanel.SetActive(false);
+            KeyBindPanel.SetActive(true);
+        }
+        
     }
     public void OnMenuCloseButtonClicked()
     {
-
+        MenuPanel.SetActive(false);
+        ItemPanel.SetActive(false);
+        EquipandStatusPanel.SetActive(false);
+        ConfigPanel.SetActive(false);
+        KeyBindPanel.SetActive(false);
+    }
+    
+    public void MenuToggle()
+    {
+        if (MenuPanel.activeSelf == false)
+        {
+            MenuPanel.SetActive(true);
+        }
+        else if (MenuPanel.activeSelf && (((ItemPanel.activeSelf || EquipandStatusPanel.activeSelf) || (ConfigPanel.activeSelf || KeyBindPanel.activeSelf))== false))
+        {
+            MenuPanel.SetActive(false);
+        }
+        else
+        {
+            ItemPanel.SetActive(false);
+            EquipandStatusPanel.SetActive(false);
+            ConfigPanel.SetActive(false);
+            KeyBindPanel.SetActive(false);
+        }
     }
 }
