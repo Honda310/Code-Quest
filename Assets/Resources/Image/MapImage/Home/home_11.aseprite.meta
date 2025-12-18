@@ -1,0 +1,713 @@
+fileFormatVersion: 2
+guid: 9b92de75bf6d78e4e8cb64a08fed52db
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639015631383360584
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: background
+    originalName: 
+    pivot: {x: 0.40833333, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 960
+      height: 180
+    spriteID: 74c0b37e59a75384bbbe856d415c5b47
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: floor
+    originalName: 
+    pivot: {x: 0.3652597, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 380
+      width: 616
+      height: 180
+    spriteID: bd7583ba9f268d340b79d3368092f936
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 380}
+  - name: wall
+    originalName: 
+    pivot: {x: 0.47800586, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 192
+      width: 682
+      height: 180
+    spriteID: b1141a92bcb334d418f9509b1a27977c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 192}
+  - name: calendar
+    originalName: 
+    pivot: {x: 3.4999995, y: -4.259259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 993
+      y: 248
+      width: 24
+      height: 27
+    spriteID: f85b9b5482130eb43a90770dedeb3d3e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 993, y: 248}
+  - name: Water_supply
+    originalName: 
+    pivot: {x: -3.22449, y: -2.1363635}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 936
+      y: 192
+      width: 49
+      height: 44
+    spriteID: 3a4d0220d640241408a525d45d447300
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 936, y: 192}
+  - name: IH
+    originalName: 
+    pivot: {x: -2.2448976, y: -2.35}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 694
+      y: 285
+      width: 49
+      height: 40
+    spriteID: b99af97f1d78b2e449947c5d3a065cef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 694, y: 285}
+  - name: Refrigerator
+    originalName: 
+    pivot: {x: -7.6585364, y: -1.2207792}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 887
+      y: 192
+      width: 41
+      height: 77
+    spriteID: 29ed23dbcae23d2478383789af625a00
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 887, y: 192}
+  - name: 'shelfand
+
+      microwaveoven'
+    originalName: 
+    pivot: {x: -4.622222, y: -2.292683}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 972
+      y: 4
+      width: 45
+      height: 41
+    spriteID: 624a6d073df1d3c418f188d6a050fbc3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 972, y: 4}
+  - name: shelf
+    originalName: 
+    pivot: {x: -4.3050847, y: -1.2207792}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 820
+      y: 192
+      width: 59
+      height: 77
+    spriteID: bbaeeb9fae084134c98cff2da1579ff6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 820, y: 192}
+  - name: '
+
+      tableandChair'
+    originalName: 
+    pivot: {x: 1.3813559, y: -0.10588236}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 694
+      y: 192
+      width: 118
+      height: 85
+    spriteID: aaf53c670c92d90469c0ba6f55b38590
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 694, y: 192}
+  - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
+    originalName: 
+    pivot: {x: -3.9230778, y: -0.875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 993
+      y: 192
+      width: 26
+      height: 48
+    spriteID: ce3f7bbf417dc864780f752a43500f92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 993, y: 192}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    uuid:
+      value0: 297084606
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: background
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: -1
+        y: 0
+        width: 960
+        height: 180
+      spriteId: 74c0b37e59a75384bbbe856d415c5b47
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 1461772476
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: fllor_and_wall
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 2
+    uuid:
+      value0: 1763125765
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: floor
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: floor
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 166
+        y: 0
+        width: 616
+        height: 180
+      spriteId: bd7583ba9f268d340b79d3368092f936
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 1
+  - layerIndex: 3
+    uuid:
+      value0: 1021301911
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: wall
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: wall
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 65
+        y: 0
+        width: 682
+        height: 180
+      spriteId: b1141a92bcb334d418f9509b1a27977c
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 1
+  - layerIndex: 4
+    uuid:
+      value0: 1921814400
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: furniture
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 5
+    uuid:
+      value0: 2211188193
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: calendar
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: calendar
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 307
+        y: 115
+        width: 24
+        height: 27
+      spriteId: f85b9b5482130eb43a90770dedeb3d3e
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 6
+    uuid:
+      value0: 189021606
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Water_supply
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Water_supply
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 549
+        y: 94
+        width: 49
+        height: 44
+      spriteId: 3a4d0220d640241408a525d45d447300
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 7
+    uuid:
+      value0: 2844535676
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: IH
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: IH
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 501
+        y: 94
+        width: 49
+        height: 40
+      spriteId: b99af97f1d78b2e449947c5d3a065cef
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 8
+    uuid:
+      value0: 3248543901
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Refrigerator
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Refrigerator
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 705
+        y: 94
+        width: 41
+        height: 77
+      spriteId: 29ed23dbcae23d2478383789af625a00
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 9
+    uuid:
+      value0: 3394093378
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: 'shelfand
+
+      microwaveoven'
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: 'shelfand
+
+        microwaveoven'
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 599
+        y: 94
+        width: 45
+        height: 41
+      spriteId: 624a6d073df1d3c418f188d6a050fbc3
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 10
+    uuid:
+      value0: 892005943
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: shelf
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: shelf
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 645
+        y: 94
+        width: 59
+        height: 77
+      spriteId: bbaeeb9fae084134c98cff2da1579ff6
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 11
+    uuid:
+      value0: 3818589484
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: '
+
+      tableandChair'
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: '
+
+        tableandChair'
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 228
+        y: 9
+        width: 118
+        height: 85
+      spriteId: aaf53c670c92d90469c0ba6f55b38590
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 12
+    uuid:
+      value0: 1591074504
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 493
+        y: 42
+        width: 26
+        height: 48
+      spriteId: ce3f7bbf417dc864780f752a43500f92
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 782, y: 180}
+  previousTextureSize: {x: 1024, y: 1024}

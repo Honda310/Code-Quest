@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: 35726c868c59b8d4fa28f81699867484
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639015605756873510
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: haikei(ru-pusinai)
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 159
+      width: 320
+      height: 34
+    spriteID: 6e9f97d6ead147a4f85f37730d0350cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 159}
+  - name: haikei(ru-pu)
+    originalName: 
+    pivot: {x: 0.5, y: -1.1686747}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 320
+      height: 83
+    spriteID: 712994ae5e24dac49ace80f6fe57e944
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: mitiarukenai
+    originalName: 
+    pivot: {x: 0.5, y: -0.9166667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 201
+      width: 320
+      height: 24
+    spriteID: 4f90223916f33d74c80f89394732b8ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 201}
+  - name: miti
+    originalName: 
+    pivot: {x: 0.5, y: -0.76785713}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 95
+      width: 320
+      height: 56
+    spriteID: f0fb216e21b8fdf4d922cc54b65ca9c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 95}
+  - name: ' ki ningen'
+    originalName: 
+    pivot: {x: 1.7882353, y: -1.2222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 4
+      width: 85
+      height: 81
+    spriteID: 7832baee9a964e74487eabd2b6fc9acc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 4}
+  - name: happa
+    originalName: 
+    pivot: {x: 1.8470588, y: -2.3170733}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 201
+      width: 85
+      height: 41
+    spriteID: 435643d243d20914d87e7933433378a3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 201}
+  - name: happasabun
+    originalName: 
+    pivot: {x: 1.8255814, y: -2.787879}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 159
+      width: 86
+      height: 33
+    spriteID: 91949680a26baff4d89bd49f64cd63f6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 159}
+  - name: table
+    originalName: 
+    pivot: {x: 0.4166667, y: -2.0882351}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 426
+      y: 159
+      width: 72
+      height: 34
+    spriteID: 55995b2d9e042ba40838ab47d1e4a38c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 426, y: 159}
+  - name: '
+
+      AfternoonTea'
+    originalName: 
+    pivot: {x: 0.39534882, y: -1.8076924}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 425
+      y: 4
+      width: 43
+      height: 52
+    spriteID: 6f0afceb9a4acb5489890ebdf48a461b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 425, y: 4}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    uuid:
+      value0: 308436511
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: haikei
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 57094829
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: haikei(ru-pusinai)
+    layerFlags: 19
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: haikei(ru-pusinai)
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 320
+        height: 34
+      spriteId: 6e9f97d6ead147a4f85f37730d0350cb
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 0
+  - layerIndex: 2
+    uuid:
+      value0: 1630579397
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: haikei(ru-pu)
+    layerFlags: 19
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: haikei(ru-pu)
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 97
+        width: 320
+        height: 83
+      spriteId: 712994ae5e24dac49ace80f6fe57e944
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 0
+  - layerIndex: 3
+    uuid:
+      value0: 4287466680
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Layer 1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 4
+    uuid:
+      value0: 1488150357
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: miti
+    layerFlags: 51
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 5
+    uuid:
+      value0: 31268585
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: mitiarukenai
+    layerFlags: 19
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: mitiarukenai
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 22
+        width: 320
+        height: 24
+      spriteId: 4f90223916f33d74c80f89394732b8ed
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 6
+    uuid:
+      value0: 3808738815
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: miti
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: miti
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 43
+        width: 320
+        height: 56
+      spriteId: f0fb216e21b8fdf4d922cc54b65ca9c4
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 7
+    uuid:
+      value0: 1099314147
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: obj
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 8
+    uuid:
+      value0: 1060553051
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: ' ki ningen'
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ' ki ningen'
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 8
+        y: 99
+        width: 85
+        height: 81
+      spriteId: 7832baee9a964e74487eabd2b6fc9acc
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 7
+  - layerIndex: 9
+    uuid:
+      value0: 2678472406
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: happa
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: happa
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 3
+        y: 95
+        width: 85
+        height: 41
+      spriteId: 435643d243d20914d87e7933433378a3
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 7
+  - layerIndex: 10
+    uuid:
+      value0: 139159851
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: happasabun
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: happasabun
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 3
+        y: 92
+        width: 86
+        height: 33
+      spriteId: 91949680a26baff4d89bd49f64cd63f6
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 7
+  - layerIndex: 11
+    uuid:
+      value0: 3321999268
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Accessories
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 12
+    uuid:
+      value0: 3554037835
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: table
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: table
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 130
+        y: 71
+        width: 72
+        height: 34
+      spriteId: 55995b2d9e042ba40838ab47d1e4a38c
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 11
+  - layerIndex: 13
+    uuid:
+      value0: 1650834168
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: '
+
+      AfternoonTea'
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: '
+
+        AfternoonTea'
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 143
+        y: 94
+        width: 43
+        height: 52
+      spriteId: 6f0afceb9a4acb5489890ebdf48a461b
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 11
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 320, y: 180}
+  previousTextureSize: {x: 512, y: 256}
