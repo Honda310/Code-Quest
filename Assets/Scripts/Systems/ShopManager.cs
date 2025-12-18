@@ -20,7 +20,7 @@ public class ShopManager : MonoBehaviour
         GameManager.Instance.uiManager.ToggleShop(false);
     }
 
-    public void Exchange(string payItemID, string getItemID)
+    public void Exchange(int payItemID, int getItemID)
     {
         Inventory inv = GameManager.Instance.inventory;
 

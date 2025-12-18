@@ -5,12 +5,12 @@
 [System.Serializable]
 public abstract class Item
 {
-    public string ItemID;   // —á: "Wb001"
+    public int ItemID;   // —á: "Wb001"
     public string ItemName; // –¼‘O
     public int Rarity;      // ƒŒƒA“x
     public string Flavor;   // à–¾•¶
 
-    public Item(string id, string name, int rarity, string flavor)
+    public Item(int id, string name, int rarity, string flavor)
     {
         ItemID = id;
         ItemName = name;

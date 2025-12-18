@@ -8,9 +8,9 @@ using System.Collections.Generic;
 /// </summary>
 public class DataManager : MonoBehaviour
 {
-    public Dictionary<string, Weapon> WeaponMaster = new Dictionary<string, Weapon>();
-    public Dictionary<string, Accessory> AccessoryMaster = new Dictionary<string, Accessory>();
-    public Dictionary<string, SupportItem> SupportItemMaster = new Dictionary<string, SupportItem>();
+    public Dictionary<int, Weapon> WeaponMaster = new Dictionary<int, Weapon>();
+    public Dictionary<int, Accessory> AccessoryMaster = new Dictionary<int, Accessory>();
+    public Dictionary<int, SupportItem> SupportItemMaster = new Dictionary<int, SupportItem>();
 
     // 敵データ検索用辞書
     public Dictionary<int, EnemyData> EnemyMaster = new Dictionary<int, EnemyData>();
@@ -35,8 +35,10 @@ public class DataManager : MonoBehaviour
         foreach (var line in csv)
         {
             if (line.Length < 6 || line.Length > 6) continue;
-            Weapon w = new Weapon(line[0], line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
-            if (!WeaponMaster.ContainsKey(w.ItemID)) WeaponMaster.Add(w.ItemID, w);
+			int id = int.Parse(line[0]);
+            Weapon w = new Weapon(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
+            if (!WeaponMaster.ContainsKey(id)) WeaponMaster.Add(id, w);
+
         }
         Debug.Log($"武器マスタ: {WeaponMaster.Count}件 ロード完了");
     }
@@ -47,8 +49,9 @@ public class DataManager : MonoBehaviour
         foreach (var line in csv)
         {
             if (line.Length < 5 || line.Length > 5) continue;
-            Accessory a = new Accessory(line[0], line[1], int.Parse(line[2]), int.Parse(line[3]), line[4]);
-            if (!AccessoryMaster.ContainsKey(a.ItemID)) AccessoryMaster.Add(a.ItemID, a);
+			int id = int.Parse(line[0]);
+            Accessory a = new Accessory(id, line[1], int.Parse(line[2]), int.Parse(line[3]), line[4]);
+            if (!AccessoryMaster.ContainsKey(id)) AccessoryMaster.Add(id, a);
         }
         Debug.Log($"アクセサリマスタ: {AccessoryMaster.Count}件 ロード完了");
     }
@@ -59,8 +62,9 @@ public class DataManager : MonoBehaviour
         foreach (var line in csv)
         {
             if (line.Length < 6 || line.Length > 6) continue;
-            SupportItem s = new SupportItem(line[0], line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
-            if (!SupportItemMaster.ContainsKey(s.ItemID)) SupportItemMaster.Add(s.ItemID, s);
+			int id = int.Parse(line[0]);
+            SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
+            if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
         }
         Debug.Log($"補助アイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
     }
@@ -101,17 +105,27 @@ public class DataManager : MonoBehaviour
         }
         Debug.Log($"敵マスタ: {EnemyMaster.Count}件 ロード完了");
     }
+	public enum ItemType
+	{
+	    Weapon,
+	    Accessory,
+	    Support
+	}
+	public Item GetItemById(ItemType type, int id)
+	{
+	    switch (type)
+	    {
+	        case ItemType.Weapon:
+	            return WeaponMaster.TryGetValue(id, out var w) ? w : null;
 
-    public Item GetItemById(string id)
-    {
-        if (string.IsNullOrEmpty(id)) return null;
-        char type = id[0];
-        if (type == 'W' && WeaponMaster.ContainsKey(id)) return WeaponMaster[id];
-        if (type == 'A' && AccessoryMaster.ContainsKey(id)) return AccessoryMaster[id];
-        if (type == 'S' && SupportItemMaster.ContainsKey(id)) return SupportItemMaster[id];
-        return null;
-    }
+	        case ItemType.Accessory:
+	            return AccessoryMaster.TryGetValue(id, out var a) ? a : null;
 
+	        case ItemType.Support:
+	            return SupportItemMaster.TryGetValue(id, out var s) ? s : null;
+	    }
+	    return null;
+	}
     // 敵データ取得用
     public EnemyData GetEnemyById(int id)
     {

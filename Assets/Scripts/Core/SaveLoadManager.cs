@@ -17,9 +17,10 @@ public class SaveLoadManager : MonoBehaviour
         public int playerHP;            // プレイヤーHP
         public int netoHP;              // ネトHP
         public string currentMapScene;  // 現在のマップ名
-        public List<string> inventoryIDs; // 持っているアイテムのIDリスト
+        public List<int> inventoryIDs; // 持っているアイテムのIDリスト
         public List<int> inventoryCounts; // 持っているアイテムの個数リスト
     }
+	
 
     /// <summary>
     /// ゲームをセーブします
@@ -35,7 +36,7 @@ public class SaveLoadManager : MonoBehaviour
         data.netoHP = n.CurrentHP;
 
         // インベントリの保存（ループで処理）
-        data.inventoryIDs = new List<string>();
+        data.inventoryIDs = new List<int>();
         data.inventoryCounts = new List<int>();
 
         // Inventoryクラスからアイテムリストを取得
@@ -85,11 +86,11 @@ public class SaveLoadManager : MonoBehaviour
             inv.Clear();
             for (int i = 0; i < data.inventoryIDs.Count; i++)
             {
-                string id = data.inventoryIDs[i];
+                int id = data.inventoryIDs[i];
                 int count = data.inventoryCounts[i];
 
                 // IDからアイテムデータを検索
-                Item itemObj = GameManager.Instance.dataManager.GetItemById(id);
+                Item itemObj = GameManager.Instance.dataManager.GetItemById(DataManager.ItemType.Support,id);
 
                 // アイテムが存在し、かつサポートアイテムであれば追加
                 if (itemObj != null && itemObj is SupportItem)

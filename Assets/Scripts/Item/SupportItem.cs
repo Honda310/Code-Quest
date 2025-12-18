@@ -7,7 +7,7 @@ public class SupportItem : Item
     public int EffectID;   // Œø‰Ê‚ÌŽí—Þ
     public int EffectSize; // Œø‰Ê‚Ì‘å‚«‚³
 
-    public SupportItem(string id, string name, int rarity, int effectId, int effectSize, string flavor)
+    public SupportItem(int id, string name, int rarity, int effectId, int effectSize, string flavor)
         : base(id, name, rarity, flavor)
     {
         EffectID = effectId;

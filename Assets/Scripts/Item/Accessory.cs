@@ -6,7 +6,7 @@ public class Accessory : Item
 {
     public int Def; // –hŒä—Í
 
-    public Accessory(string id, string name, int rarity, int def, string flavor)
+    public Accessory(int id, string name, int rarity, int def, string flavor)
         : base(id, name, rarity, flavor)
     {
         Def = def;

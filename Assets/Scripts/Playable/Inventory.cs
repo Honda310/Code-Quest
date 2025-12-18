@@ -39,11 +39,16 @@ public class Inventory : MonoBehaviour
 
         Debug.Log($"{item.ItemName} を {amount}個 入手しました。");
     }
-
+	public enum ItemType
+	{
+	    Weapon,
+	    Accessory,
+	    Support
+	}
     /// <summary>
     /// アイテムを持っているか確認します
     /// </summary>
-    public bool HasItem(string itemId)
+    public bool HasItem(int itemId)
     {
         foreach (CarryItem c in items)
         {
@@ -58,7 +63,7 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// アイテムを消費します
     /// </summary>
-    public void RemoveItem(string itemId, int amount)
+    public void RemoveItem(int itemId, int amount)
     {
         CarryItem target = null;
         foreach (CarryItem c in items)
