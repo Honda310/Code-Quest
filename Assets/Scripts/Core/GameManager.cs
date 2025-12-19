@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     [Header("マネージャー群 (システム)")]
     // 各機能ごとの管理クラスをここに登録します
-    public UIManager uiManager;             // UI（画面表示）の管理
     public DataManager dataManager;         // データ（CSVなど）の読み込み管理
     public QuestManager questManager;       // クイズ問題の管理
     public EventManager eventManager;       // 会話などのイベント管理
@@ -30,6 +29,10 @@ public class GameManager : MonoBehaviour
     public Player player;       // 主人公
     public Neto neto;           // パートナー
     public Inventory inventory; // アイテム所持状況
+    public SpawnPlayer spawnPlayer;
+
+    private float nextAcceptTime = 0f;
+    private const float Cooldown = 0.1f;
 
 
     /// <summary>
@@ -37,7 +40,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        
+        if (Time.unscaledTime < nextAcceptTime) return;
+
+        nextAcceptTime = Time.unscaledTime + Cooldown;
         // シングルトン化の処理
         // シーン移動してもこのオブジェクトが破壊されないようにします
         if (Instance == null)
@@ -64,7 +69,15 @@ public class GameManager : MonoBehaviour
         questManager.LoadQuests();
 
         // ログに起動完了を表示します
-        uiManager.ShowLog("システム起動完了。");
+    }
+
+    private void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X)) && ((GameManager.Instance.CurrentMode == GameManager.GameMode.Field) || (GameManager.Instance.CurrentMode == GameManager.GameMode.Menu)))
+        {
+            UIManager.Active?.MenuToggle();
+        }
+        
     }
 
     /// <summary>
@@ -81,5 +94,30 @@ public class GameManager : MonoBehaviour
 #else
             Application.Quit();
 #endif
+    }
+    public enum GameMode
+    {
+        Field,
+        Menu,
+        Battle,
+        Shop,
+        Dojo,
+        SaveLoad,
+        Debug
+    }
+    public GameMode CurrentMode { get; private set; }
+    public void SetMode(GameMode mode)
+    {
+        CurrentMode = mode;
+    }
+    public enum BattleTag
+    {
+        TurnStart,
+        TurnEnd
+    }
+    public BattleTag battletime { get; private set; }
+    public void SetBattleTime(BattleTag mode)
+    {
+        battletime = mode;
     }
 }

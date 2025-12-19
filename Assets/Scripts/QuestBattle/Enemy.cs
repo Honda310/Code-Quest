@@ -8,9 +8,11 @@ using System.Collections.Generic;
 [RequireComponent(typeof(SpriteRenderer))] // SpriteRenderer‚ğ•K{‚É‚·‚é
 public class Enemy : MonoBehaviour
 {
+    public EnemyData Data { get; private set; }
+
+    public int CurrentDP { get; private set; }
     public int EnemyID;
     public int MaxDP;
-    public int CurrentDP;
     public int Atk;
 
     [Header("o‘èİ’è")]

@@ -8,6 +8,10 @@ using System.Collections.Generic;
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
+    [Header("Enemy Prefab")]
+    [SerializeField] private Enemy enemyPrefab;
+    [Header("Spawn Point")]
+    [SerializeField] private Transform enemySpawnPoint;
     public Enemy currentEnemy; // シーン上の敵オブジェクト（プレハブインスタンス）
     private Player player;
     private Neto neto;
@@ -15,7 +19,6 @@ public class BattleManager : MonoBehaviour
     List<QuestCategory> categories = new List<QuestCategory>();
     private QuestManager questManager;
     private MultipleChoiceQuest checker;
-    private UIManager uiManager;
 
     void Start()
     {
@@ -33,6 +36,7 @@ public class BattleManager : MonoBehaviour
         neto = n;
 
         // 1. 敵データの取得
+        Debug.Log("SetEnemyData(ID："+enemyId+")");
         EnemyData data = GameManager.Instance.dataManager.GetEnemyById(enemyId);
 
         if (data == null)
@@ -54,9 +58,9 @@ public class BattleManager : MonoBehaviour
             questManager.CreateDeck(categories);
 
             // 4. UI表示開始
-            GameManager.Instance.uiManager.ToggleBattle(true);
+            GameManager.Instance.SetMode(GameManager.GameMode.Battle);
             Time.timeScale = 0f;
-            GameManager.Instance.uiManager.ShowLog($"{data.Name} が現れた！");
+            //GameManager.Instance.uiManager.ShowLog($"{data.Name} が現れた！");
 
             NextTurn();
         }
@@ -71,20 +75,18 @@ public class BattleManager : MonoBehaviour
         currentQuestion = questManager.GetNextQuestion();
         if (currentQuestion != null)
         {
-            GameManager.Instance.uiManager.UpdateBattleMessage($"問題:\n{currentQuestion.QuestionText}",currentQuestion.Options);
+            //GameManager.Instance.uiManager.UpdateBattleMessage($"問題:\n{currentQuestion.QuestionText}",currentQuestion.Options);
         }
         else
         {
-            GameManager.Instance.uiManager.UpdateBattleMessage("問題切れ！");
+            //GameManager.Instance.uiManager.UpdateBattleMessage("問題切れ！");
         }
-        GameManager.Instance.uiManager.Turnstart();
+        GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnStart);
     }
 
     public void OnSubmitAnswer(string code)
     {
         if (currentQuestion == null) return;
-        Debug.Log(code);
-        Debug.Log(checker);
         if (checker.CheckAnswer(code, currentQuestion))
         {
             QuizCorrect();
@@ -98,7 +100,7 @@ public class BattleManager : MonoBehaviour
 
     private void QuizCorrect()
     {
-        GameManager.Instance.uiManager.ShowLog("正解！ 攻撃！");
+        //GameManager.Instance.uiManager.ShowLog("正解！ 攻撃！");
         currentEnemy.TakeDamage(player.CurrentAtk);
         Debug.Log(currentEnemy.CurrentDP);
         Debug.Log(currentEnemy.MaxDP);
@@ -114,7 +116,7 @@ public class BattleManager : MonoBehaviour
 
     private void QuizIncorrect()
     {
-        GameManager.Instance.uiManager.ShowLog("不正解...");
+        //GameManager.Instance.uiManager.ShowLog("不正解...");
         StartCoroutine(EnemyTurn());
     }
 
@@ -129,16 +131,16 @@ public class BattleManager : MonoBehaviour
         {
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             player.CurrentHP -= realDmg;
-            GameManager.Instance.uiManager.ShowLog($"プレイヤーに {realDmg} ダメージ");
+            //GameManager.Instance.uiManager.ShowLog($"プレイヤーに {realDmg} ダメージ");
         }
         else
         {
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             neto.CurrentHP -= realDmg;
-            GameManager.Instance.uiManager.ShowLog($"ネトに {realDmg} のダメージ！");
+            //GameManager.Instance.uiManager.ShowLog($"ネトに {realDmg} のダメージ！");
         }
 
-        GameManager.Instance.uiManager.UpdateStatus(player, neto,currentEnemy);
+        GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnEnd);
 
         // 敗北判定
         if (player.CurrentHP <= 0 && neto.CurrentHP <= 0)
@@ -155,18 +157,16 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
 
-        GameManager.Instance.uiManager.ToggleBattle(false);
+        GameManager.Instance.SetMode(GameManager.GameMode.Field);
 
         if (win)
         {
             Destroy(currentEnemy.gameObject);
-            GameManager.Instance.uiManager.ShowLog("勝利！");
             // Destroy(currentEnemy.gameObject); 
             Time.timeScale = 1f;
         }
         else
         {
-            GameManager.Instance.uiManager.ShowLog("敗北...");
             Time.timeScale = 1f;
         }
     }

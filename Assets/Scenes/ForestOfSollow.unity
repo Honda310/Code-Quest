@@ -2676,7 +2676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &232121619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2813,7 +2813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b736f07f702a1d9409e5e7d20e21126d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  uiManager: {fileID: 2130257023}
   dataManager: {fileID: 232121628}
   questManager: {fileID: 232121626}
   eventManager: {fileID: 232121627}
@@ -2826,6 +2825,7 @@ MonoBehaviour:
   player: {fileID: 1993696365}
   neto: {fileID: 941770186}
   inventory: {fileID: 0}
+  spawnPlayer: {fileID: 0}
 --- !u!4 &232121630
 Transform:
   m_ObjectHideFlags: 0
@@ -2848,7 +2848,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232121618}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40896019c21f4b747833b921afd5871b, type: 3}
   m_Name: 
@@ -9127,11 +9127,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13
+      value: 247
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 55
+      value: -118
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12003,6 +12003,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_Sprite
@@ -19052,6 +19056,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -19106,9 +19114,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1993696359}
-    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1993696362}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1993696365}
@@ -20396,7 +20401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1846544231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21719,52 +21724,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1993696362
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993696357}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: cd1adb61450d46c43ad0c76d3346ae78, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -1, y: 3}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 26, y: 48}
-    newSize: {x: 26, y: 48}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 11, y: 6}
-  m_EdgeRadius: 0
 --- !u!114 &1993696365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22470,7 +22429,7 @@ GameObject:
   - component: {fileID: 2130257026}
   - component: {fileID: 2130257025}
   - component: {fileID: 2130257024}
-  - component: {fileID: 2130257023}
+  - component: {fileID: 2130257028}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Player
@@ -22478,47 +22437,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2130257023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130257022}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40896019c21f4b747833b921afd5871b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  PlayerStatusText: {fileID: 1177602322}
-  NetoStatusText: {fileID: 933030109}
-  EnemyStatusText: {fileID: 1534752135}
-  PlayerStatusSlider: {fileID: 1280555506}
-  NetoStatusSlider: {fileID: 908510782}
-  EnemyStatusSlider: {fileID: 2044226507}
-  logText: {fileID: 0}
-  battlePanel: {fileID: 460778991}
-  battleQuestText: {fileID: 2043916939}
-  battleInfoText: {fileID: 1480011317}
-  PlSelectLabelText: {fileID: 1408555424}
-  NetoSelectLabelText: {fileID: 574683151}
-  DifficultSelectText: {fileID: 675717583}
-  answerInput: {fileID: 93549790}
-  shopPanel: {fileID: 748414678}
-  dojoPanel: {fileID: 1440116694}
-  itemDebugPanel: {fileID: 515752965}
-  PlSelectPanel: {fileID: 132200027}
-  NetoselectPanel: {fileID: 808515167}
-  HealthDpSlidersAndCharactersPanel: {fileID: 447214686}
-  DifficultSelectPanel: {fileID: 1926057487}
-  QuestFramePanel: {fileID: 1101405884}
-  DifficultAndCheckButtonFramePanel: {fileID: 658130673}
-  DifficultAndSelectButtonFramePanel: {fileID: 2092098731}
-  MenuPanel: {fileID: 121784467}
-  ItemPanel: {fileID: 1805361000}
-  EquipandStatusPanel: {fileID: 700999000}
-  ConfigPanel: {fileID: 526783924}
-  KeyBindPanel: {fileID: 1472970647}
 --- !u!114 &2130257024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22606,6 +22524,47 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2130257028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130257022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40896019c21f4b747833b921afd5871b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  PlayerStatusText: {fileID: 1177602322}
+  NetoStatusText: {fileID: 933030109}
+  EnemyStatusText: {fileID: 1534752135}
+  PlayerStatusSlider: {fileID: 1280555506}
+  NetoStatusSlider: {fileID: 908510782}
+  EnemyStatusSlider: {fileID: 2044226507}
+  logText: {fileID: 0}
+  battlePanel: {fileID: 460778991}
+  battleQuestText: {fileID: 2043916939}
+  battleInfoText: {fileID: 1480011317}
+  PlSelectLabelText: {fileID: 1408555424}
+  NetoSelectLabelText: {fileID: 574683151}
+  DifficultSelectText: {fileID: 675717583}
+  answerInput: {fileID: 93549790}
+  shopPanel: {fileID: 748414678}
+  dojoPanel: {fileID: 1440116694}
+  itemDebugPanel: {fileID: 515752965}
+  PlSelectPanel: {fileID: 132200027}
+  NetoselectPanel: {fileID: 808515167}
+  HealthDpSlidersAndCharactersPanel: {fileID: 447214686}
+  DifficultSelectPanel: {fileID: 1926057487}
+  QuestFramePanel: {fileID: 1101405884}
+  DifficultAndCheckButtonFramePanel: {fileID: 658130673}
+  DifficultAndSelectButtonFramePanel: {fileID: 2092098731}
+  MenuPanel: {fileID: 121784467}
+  ItemPanel: {fileID: 1805361000}
+  EquipandStatusPanel: {fileID: 700999000}
+  ConfigPanel: {fileID: 526783924}
+  KeyBindPanel: {fileID: 1472970647}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -22650,5 +22609,5 @@ SceneRoots:
   - {fileID: 1739104894}
   - {fileID: 1035370567}
   - {fileID: 802629710}
-  - {fileID: 232121630}
   - {fileID: 2130257027}
+  - {fileID: 232121630}

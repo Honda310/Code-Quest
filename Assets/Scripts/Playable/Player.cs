@@ -53,6 +53,21 @@ public class Player : MonoBehaviour
     // スプライト画像をキャッシュする辞書
     // Key: "方向キー_インデックス" (例: "w_1"), Value: 対応するSprite
     private Dictionary<string, Sprite> sprites;
+    public event System.Action StatusChanged;
+
+    private static Player instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     /// <summary>
     /// 初期化処理
@@ -93,7 +108,10 @@ public class Player : MonoBehaviour
     {
         return Resources.Load<Sprite>($"Image/Playable/Player/1Player_1m_1normal_{name}");
     }
-
+    private void Update()
+    {
+        
+    }
     /// <summary>
     /// 物理演算フレームごとの更新処理 (移動・アニメーション)
     /// </summary>
@@ -177,7 +195,7 @@ public class Player : MonoBehaviour
     {
         WeaponAtk = weapon.Atk;
         // UIのステータス表示を更新
-        GameManager.Instance.uiManager.UpdateStatus(this, GameManager.Instance.neto);
+        StatusChanged();
     }
 
     /// <summary>
@@ -188,7 +206,7 @@ public class Player : MonoBehaviour
     {
         AccessoryDef = accessory.Def;
         // UIのステータス表示を更新
-        GameManager.Instance.uiManager.UpdateStatus(this, GameManager.Instance.neto);
+        StatusChanged();
     }
 
     /// <summary>

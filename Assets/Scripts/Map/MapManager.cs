@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MapManager : MonoBehaviour
 {
-    public void TransAnotherMap(string sceneName)
+    public void TransAnotherMap(string sceneName,int spawnID)
     {
-        Debug.Log($"ƒ}ƒbƒvˆÚ“®: {sceneName}");
         SceneManager.LoadScene(sceneName);
+        GameManager.Instance.spawnPlayer.CharacterSpawn(spawnID);
     }
 }

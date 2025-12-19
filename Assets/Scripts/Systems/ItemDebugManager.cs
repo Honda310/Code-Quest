@@ -13,8 +13,8 @@ public class ItemDebugManager : MonoBehaviour
     public void StartDebug(Item item)
     {
         targetItem = item;
-        GameManager.Instance.uiManager.ToggleItemDebug(true);
-        GameManager.Instance.uiManager.ShowLog($"{item.ItemName} のデバッグを開始します。");
+        GameManager.Instance.SetMode(GameManager.GameMode.Debug);
+        //GameManager.Instance.uiManager.ShowLog($"{item.ItemName} のデバッグを開始します。");
     }
 
     public void OnSubmit()
@@ -24,15 +24,15 @@ public class ItemDebugManager : MonoBehaviour
         // 簡易判定: returnが含まれていれば成功とする（仮）
         if (code.Contains("return"))
         {
-            GameManager.Instance.uiManager.ShowLog("デバッグ成功！ アイテムが強化されました！");
+            //GameManager.Instance.uiManager.ShowLog("デバッグ成功！ アイテムが強化されました！");
 
             // TODO: アイテムIDを置換する処理などをここに記述
 
-            GameManager.Instance.uiManager.ToggleItemDebug(false);
+            GameManager.Instance.SetMode(GameManager.GameMode.Debug);
         }
         else
         {
-            GameManager.Instance.uiManager.ShowLog("コードに誤りがあります。");
+            //GameManager.Instance.uiManager.ShowLog("コードに誤りがあります。");
         }
     }
 }

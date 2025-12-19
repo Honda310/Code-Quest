@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using System.Collections;
+
+using static GameManager;
 
 /// <summary>
 /// 【UI管理】
@@ -48,16 +50,28 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
     /// </summary>
-    public void Start()
-    {
+    private GameManager gm;
+    private Player player;
+    private Neto neto;
+    public static UIManager Active { get; private set; }
 
+    private void Awake()
+    {
+        Active = this;
     }
+
+    private void Start()
+    {
+        gm = GameManager.Instance;
+        player = GameManager.Instance.player;
+        neto = GameManager.Instance.neto;
+        UpdateStatus(player,neto);
+    }
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
-        {
-            MenuToggle ();
-        }
+        battlePanel.SetActive(gm.CurrentMode == GameMode.Battle);
+        shopPanel.SetActive(gm.CurrentMode == GameMode.Shop);
     }
     public void UpdateStatus(Player p, Neto n,Enemy e)
     {
@@ -134,11 +148,6 @@ public class UIManager : MonoBehaviour
 
     // --- パネルの表示/非表示を切り替えるメソッド群 ---
 
-    public void ToggleMenu(bool show)
-    {
-        MenuPanel.SetActive(show);
-    }
-
     public void ToggleBattle(bool show)
     {
         battlePanel.SetActive(show);
@@ -194,7 +203,7 @@ public class UIManager : MonoBehaviour
     //{
 
     //}
-    public void OnSelectNormalButtonClicked(Button clickedButton)
+    public void OnSelectNormalButtonClicked()
     {
         DifficultAndCheckButtonFramePanel.SetActive(true);
         DifficultAndSelectButtonFramePanel.SetActive(false);
@@ -207,7 +216,7 @@ public class UIManager : MonoBehaviour
 	{
         DifficultSelectText.text = ("＊挑戦する問題を選択してください");
     }
-    public void OnSelectHardButtonClicked(Button clickedButton)
+    public void OnSelectHardButtonClicked()
     {
 		
     }
@@ -219,7 +228,7 @@ public class UIManager : MonoBehaviour
     {
         DifficultSelectText.text = ("＊挑戦する問題を選択してください");
     }
-    public void OnReselectButtonClicked(Button clickedButton)
+    public void OnReselectButtonClicked()
     {
         PlSelectPanel.SetActive(true);
         DifficultSelectPanel.SetActive(false);
@@ -233,7 +242,7 @@ public class UIManager : MonoBehaviour
 	{
         DifficultSelectText.text=("＊挑戦する問題を選択してください");
 	}
-    public void OnAcceptButtonClicked(Button clickedButton)
+    public void OnAcceptButtonClicked()
     {
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultSelectPanel.SetActive(false);
@@ -247,7 +256,7 @@ public class UIManager : MonoBehaviour
 	{
         DifficultSelectText.text = ("＊行動を確定しますか？");
 	}
-    public void OnCancelButtonClicked(Button clickedButton)
+    public void OnCancelButtonClicked()
     {
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultAndSelectButtonFramePanel.SetActive(true);
@@ -260,7 +269,7 @@ public class UIManager : MonoBehaviour
     {
         DifficultSelectText.text = ("＊行動を確定しますか？");
 	}
-    public void OnPlayerDebugButtonClicked(Button clickedButton)
+    public void OnPlayerDebugButtonClicked()
     {
         PlSelectPanel.SetActive(false);
         NetoselectPanel.SetActive(false);
@@ -276,7 +285,7 @@ public class UIManager : MonoBehaviour
     {
         PlSelectLabelText.text = ("");
     }
-    public void OnPlayerItemButtonClicked(Button clickedButton)
+    public void OnPlayerItemButtonClicked()
     {
 		
     }
@@ -288,7 +297,7 @@ public class UIManager : MonoBehaviour
     {
         PlSelectLabelText.text=("");
     }
-    public void OnNetoSearchButtonClicked(Button clickedButton)
+    public void OnNetoSearchButtonClicked(  )
     {
         NetoselectPanel.SetActive(false);
         HealthDpSlidersAndCharactersPanel.SetActive(false);
@@ -302,7 +311,7 @@ public class UIManager : MonoBehaviour
     {
         NetoSelectLabelText.text = ("");
     }
-    public void OnNetoItemButtonClicked(Button clickedButton)
+    public void OnNetoItemButtonClicked()
     {
 		
     }
@@ -387,13 +396,16 @@ public class UIManager : MonoBehaviour
     
     public void MenuToggle()
     {
+
         if (MenuPanel.activeSelf == false)
         {
             MenuPanel.SetActive(true);
+            gm.SetMode(GameMode.Menu);
         }
         else if (MenuPanel.activeSelf && (((ItemPanel.activeSelf || EquipandStatusPanel.activeSelf) || (ConfigPanel.activeSelf || KeyBindPanel.activeSelf))== false))
         {
             MenuPanel.SetActive(false);
+            gm.SetMode(GameMode.Field);
         }
         else
         {
@@ -403,4 +415,5 @@ public class UIManager : MonoBehaviour
             KeyBindPanel.SetActive(false);
         }
     }
+    
 }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.SceneManagement;
 
 public class Neto : MonoBehaviour
 {
@@ -17,9 +19,46 @@ public class Neto : MonoBehaviour
     private int frame = 0;
     private int MovingIndex = 0;
     public int quadrant=1;
+    private static Neto instance;
+    public Transform target;
 
     private Dictionary<string, Sprite> sprites;
+    private void Awake()
+    {
+        // d•¡–h~
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // ƒV[ƒ“Ø‘ÖŒã‚É Player ‚ğÄæ“¾
+        Player player = Object.FindFirstObjectByType<Player>();
+        if (player != null)
+        {
+            target = player.transform;
+
+            // ƒV[ƒ“‘JˆÚ’¼Œã‚ÌuŠÔƒ[ƒv–h~
+            Vector3 pos = target.position;
+            transform.position = pos;
+        }
+    }
     void Start()
     {
         sprites = new Dictionary<string, Sprite>()

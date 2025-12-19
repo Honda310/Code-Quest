@@ -12,12 +12,12 @@ public class ShopManager : MonoBehaviour
 
     public void OpenShop()
     {
-        GameManager.Instance.uiManager.ToggleShop(true);
+        GameManager.Instance.SetMode(GameManager.GameMode.Shop);
     }
 
     public void CloseShop()
     {
-        GameManager.Instance.uiManager.ToggleShop(false);
+        GameManager.Instance.SetMode(GameManager.GameMode.Field);
     }
 
     public void Exchange(int payItemID, int getItemID)

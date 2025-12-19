@@ -11,13 +11,12 @@ using UnityEngine;
 public class EnemySymbol : MonoBehaviour
 {
     // CSV‚É“o˜^‚³‚ê‚Ä‚¢‚é“GID
-    public int EnemyID = 1;
+    [SerializeField]private int EnemyID;
 
     private bool isDefeated = false;
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("colid");
         // ƒvƒŒƒCƒ„[‚ÆÚG‚µA‚Ü‚¾“|‚³‚ê‚Ä‚¢‚È‚¢ê‡
         if (col.gameObject.CompareTag("Player") && !isDefeated)
         {
