@@ -19,55 +19,63 @@ public class BattleManager : MonoBehaviour
     List<QuestCategory> categories = new List<QuestCategory>();
     private QuestManager questManager;
     private MultipleChoiceQuest checker;
-
-    void Start()
+    private void Awake()
+    {
+        GameManager.Instance.RegisterBattleManager(this);
+        Debug.Log("GameManagerと接続");
+    }
+    private void Start()
     {
         questManager = GameManager.Instance.questManager;
         checker = GetComponent<MultipleChoiceQuest>();
+
+        // ここで初めて battleManager が存在する
+        Debug.Log("BattleManager Setup Completed");
     }
 
     /// <summary>
     /// 戦闘開始処理
     /// </summary>
     /// <param name="enemyId">CSVで定義された敵ID</param>
-    public void StartBattle(Player p, Neto n, int enemyId)
+    public void StartBattle(int enemyId)
     {
-        player = p;
-        neto = n;
+        // プレイヤー取得（BattleScene側で責任を持つ）
+        player = GameManager.Instance.player;
+        neto = GameManager.Instance.neto;
 
-        // 1. 敵データの取得
-        Debug.Log("SetEnemyData(ID："+enemyId+")");
+        // 敵データ取得
         EnemyData data = GameManager.Instance.dataManager.GetEnemyById(enemyId);
-
         if (data == null)
         {
             Debug.LogError($"敵データが見つかりません: ID {enemyId}");
             return;
         }
 
-        // 2. 敵オブジェクトのセットアップ（ステータス・画像）
-        // ※currentEnemyがシーンに既に存在するか、生成済みであることを前提としています
+        // 既存敵がいれば破棄
         if (currentEnemy != null)
         {
-            currentEnemy.Setup(data);
-
-            // 3. 敵のカテゴリに合わせて問題デッキ作成
-            categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-            categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-            categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-            questManager.CreateDeck(categories);
-
-            // 4. UI表示開始
-            GameManager.Instance.SetMode(GameManager.GameMode.Battle);
-            Time.timeScale = 0f;
-            //GameManager.Instance.uiManager.ShowLog($"{data.Name} が現れた！");
-
-            NextTurn();
+            Destroy(currentEnemy.gameObject);
         }
-        else
-        {
-            Debug.LogError("BattleManagerにEnemyオブジェクトが割り当てられていません。");
-        }
+
+        // 敵生成
+        currentEnemy = Instantiate(
+            enemyPrefab,
+            enemySpawnPoint.position,
+            Quaternion.identity
+        ).GetComponent<Enemy>();
+        currentEnemy.Setup(data);
+
+        // クエストカテゴリ初期化
+        categories.Clear();
+        categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+        categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+        categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+
+        questManager.CreateDeck(categories);
+
+        GameManager.Instance.SetMode(GameManager.GameMode.Battle);
+
+        NextTurn();
     }
 
     public void NextTurn()
@@ -157,18 +165,13 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
 
-        GameManager.Instance.SetMode(GameManager.GameMode.Field);
-
         if (win)
         {
             Destroy(currentEnemy.gameObject);
-            // Destroy(currentEnemy.gameObject); 
-            Time.timeScale = 1f;
+            GameManager.Instance.MarkEnemyDefeated();
         }
-        else
-        {
-            Time.timeScale = 1f;
-        }
+
+        GameManager.Instance.SetMode(GameManager.GameMode.Field);
     }
 
 }

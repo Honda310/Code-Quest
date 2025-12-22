@@ -1,32 +1,23 @@
-// ==================================================
-// File: C:\Users\34007\CodeQuest\Assets\Scripts\Map\EnemySymbol.cs
-// ==================================================
 using UnityEngine;
+using static GameManager;
 
-/// <summary>
-/// 【敵シンボルクラス】
-/// マップ上に配置する敵オブジェクトにアタッチします。
-/// プレイヤーとの接触でバトルを開始します。
-/// </summary>
 public class EnemySymbol : MonoBehaviour
 {
-    // CSVに登録されている敵ID
-    [SerializeField]private int EnemyID;
+    [SerializeField] private int EnemyID;
 
-    private bool isDefeated = false;
+    private void Start()
+    {
+        // すでに倒されている敵なら消す
+        if (GameManager.Instance.IsEnemyDefeated(EnemyID))
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        // プレイヤーと接触し、まだ倒されていない場合
-        if (col.gameObject.CompareTag("Player") && !isDefeated)
-        {
-            Debug.Log("battle");
-            // バトル開始
-            GameManager.Instance.GetComponent<BattleManager>()
-                .StartBattle(GameManager.Instance.player, GameManager.Instance.neto, EnemyID);
+        if (!col.gameObject.CompareTag("Player")) return;
 
-            // 倒されたことにする (バトル終了処理で設定を戻すか、オブジェクトを非表示にする)
-            // isDefeated = true; 
-        }
+        GameManager.Instance.RequestBattle(EnemyID);
     }
 }

@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
     [SerializeField] private GameObject itemDebugPanel; // アイテムデバッグ画面
+    [SerializeField] private BattleManager battleManager;
 
     [Header("戦闘パネルの各要素")]
     [SerializeField] private GameObject PlSelectPanel;
@@ -186,13 +187,13 @@ public class UIManager : MonoBehaviour
 
         string buttonText = clickedButton.GetComponentInChildren<Text>().text;
         string answer = buttonText;
-        GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
+        GameManager.Instance.BattleManager.OnSubmitAnswer(answer);
         battleInfoText.text = answer;
         // BattleManagerに入力されたテキストを渡します
         if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
         {
             answer = answerInput.text;
-            GameManager.Instance.GetComponent<BattleManager>().OnSubmitAnswer(answer);
+            GameManager.Instance.BattleManager.OnSubmitAnswer(answer);
             Debug.Log("fill");
         }
             // 入力欄を空にします

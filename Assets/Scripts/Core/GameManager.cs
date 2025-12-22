@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public SaveLoadManager saveLoadManager; // セーブ・ロード機能
     public AudioManager audioManager;       // BGM・効果音
     public MapManager mapManager;           // シーン移動
-
+    private BattleManager battleManager;
     [Header("マネージャー群 (ゲーム独自機能)")]
     public ItemDebugManager itemDebugManager; // アイテムデバッグ機能
     public ShopManager shopManager;           // ショップ機能
@@ -31,9 +31,16 @@ public class GameManager : MonoBehaviour
     public Inventory inventory; // アイテム所持状況
     public SpawnPlayer spawnPlayer;
 
+    public BattleManager BattleManager => battleManager;
+
     private float nextAcceptTime = 0f;
     private const float Cooldown = 0.1f;
 
+    // 現在戦闘中の敵ID
+    public int CurrentEnemyID { get; private set; }
+
+    // 倒した敵の管理
+    private HashSet<int> defeatedEnemies = new HashSet<int>();
 
     /// <summary>
     /// ゲーム起動時に最初に呼ばれる処理
@@ -77,12 +84,12 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Active?.MenuToggle();
         }
-        
-    }
 
-    /// <summary>
-    /// ゲームを終了する処理
-    /// </summary>
+    }
+    public void RegisterBattleManager(BattleManager bm)
+    {
+        battleManager = bm;
+    }
     public void EndGame()
     {
         // 正常終了時はオートセーブを削除して、次回の再開位置をリセットします
@@ -116,8 +123,31 @@ public class GameManager : MonoBehaviour
         TurnEnd
     }
     public BattleTag battletime { get; private set; }
+
+    public void RequestBattle(int enemyId)
+    {
+        CurrentEnemyID = enemyId;
+
+        if (battleManager == null)
+        {
+            Debug.LogError("BattleManager が未登録です");
+            return;
+        }
+
+        battleManager.StartBattle(enemyId);
+    }
     public void SetBattleTime(BattleTag mode)
     {
         battletime = mode;
+    }
+    public void MarkEnemyDefeated()
+    {
+        defeatedEnemies.Add(CurrentEnemyID);
+    }
+
+    // マップ復帰時に敵を消す判定用
+    public bool IsEnemyDefeated(int enemyId)
+    {
+        return defeatedEnemies.Contains(enemyId);
     }
 }
