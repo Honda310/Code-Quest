@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
     [SerializeField] private GameObject itemDebugPanel; // アイテムデバッグ画面
-    [SerializeField] private BattleManager battleManager;
 
     [Header("戦闘パネルの各要素")]
     [SerializeField] private GameObject PlSelectPanel;
@@ -71,8 +70,20 @@ public class UIManager : MonoBehaviour
 
     public void Update()
     {
-        battlePanel.SetActive(gm.CurrentMode == GameMode.Battle);
-        shopPanel.SetActive(gm.CurrentMode == GameMode.Shop);
+        if(gm == null) return; //Startより先に呼び出されるケースがあるらしい？マジ？
+        if (gm.CurrentMode == GameMode.Battle)
+        {
+            battlePanel.SetActive(true);
+        }
+        else if(gm.CurrentMode == GameMode.Shop)
+        {
+            shopPanel.SetActive(true);
+        }
+        else if (gm.CurrentMode==GameMode.Field)
+        {
+            battlePanel.SetActive(false);
+            shopPanel.SetActive(false);
+        }
     }
     public void UpdateStatus(Player p, Neto n,Enemy e)
     {
@@ -187,15 +198,19 @@ public class UIManager : MonoBehaviour
 
         string buttonText = clickedButton.GetComponentInChildren<Text>().text;
         string answer = buttonText;
-        GameManager.Instance.BattleManager.OnSubmitAnswer(answer);
         battleInfoText.text = answer;
         // BattleManagerに入力されたテキストを渡します
         if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
         {
             answer = answerInput.text;
-            GameManager.Instance.BattleManager.OnSubmitAnswer(answer);
+            GameManager.Instance.BattleManager.OnSubmitFillBrankAnswer(answer);
             Debug.Log("fill");
         }
+        else
+        {
+            GameManager.Instance.BattleManager.OnSubmitMultiChoiceAnswer(answer);
+        }
+        
             // 入力欄を空にします
             answerInput.text = "";
     }
@@ -298,7 +313,7 @@ public class UIManager : MonoBehaviour
     {
         PlSelectLabelText.text=("");
     }
-    public void OnNetoSearchButtonClicked(  )
+    public void OnNetoSearchButtonClicked()
     {
         NetoselectPanel.SetActive(false);
         HealthDpSlidersAndCharactersPanel.SetActive(false);
@@ -323,6 +338,11 @@ public class UIManager : MonoBehaviour
     public void OnNetoItemButtonDeSelected()
     {
         NetoSelectLabelText.text = ("");
+    }
+    public void TurnStart()
+    {
+        HealthDpSlidersAndCharactersPanel.SetActive(true);
+        PlSelectPanel.SetActive(true);
     }
     public void OnInventoryButtonClicked()
     {

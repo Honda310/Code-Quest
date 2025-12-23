@@ -1823,7 +1823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &132200028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2679,6 +2679,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5616055682615443596, guid: 630061962aea32e49b294117609258a9, type: 3}
   enemySpawnPoint: {fileID: 1534752134}
   currentEnemy: {fileID: 802629717}
+  uimanager: {fileID: 2130257028}
 --- !u!4 &232121630
 Transform:
   m_ObjectHideFlags: 0
@@ -4241,13 +4242,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnPlayerItemButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 368585255}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4308,7 +4309,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerItemButtonSelected
           m_Mode: 1
@@ -4324,7 +4325,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerItemButtonDeSelected
           m_Mode: 1
@@ -4340,7 +4341,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerItemButtonSelected
           m_Mode: 1
@@ -4356,7 +4357,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerItemButtonDeSelected
           m_Mode: 1
@@ -4451,13 +4452,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnNetoItemButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 371537575}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4518,7 +4519,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoItemButtonSelected
           m_Mode: 1
@@ -4534,7 +4535,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoItemButtonDeSelected
           m_Mode: 1
@@ -4550,7 +4551,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoItemButtonSelected
           m_Mode: 1
@@ -4566,7 +4567,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoItemButtonDeSelected
           m_Mode: 1
@@ -5031,7 +5032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &447214687
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6321,13 +6322,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnAcceptButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 560923597}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6388,7 +6389,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnAcceptButtonSelected
           m_Mode: 1
@@ -6404,7 +6405,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnAcceptButtonDeSelected
           m_Mode: 1
@@ -6420,7 +6421,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnAcceptButtonSelected
           m_Mode: 1
@@ -6436,7 +6437,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnAcceptButtonDeSelected
           m_Mode: 1
@@ -11339,13 +11340,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnSelectNormalButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 990362247}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11406,7 +11407,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectNormalButtonSelected
           m_Mode: 1
@@ -11422,7 +11423,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectNormalButtonDeSelected
           m_Mode: 1
@@ -11438,7 +11439,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectNormalButtonSelected
           m_Mode: 1
@@ -11454,7 +11455,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectNormalButtonDeSelected
           m_Mode: 1
@@ -12230,13 +12231,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnSelectHardButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1077056529}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12297,7 +12298,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectHardButtonSelected
           m_Mode: 1
@@ -12313,7 +12314,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectHardButtonDeSelected
           m_Mode: 1
@@ -12329,7 +12330,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectHardButtonSelected
           m_Mode: 1
@@ -12345,7 +12346,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnSelectHardButtonDeSelected
           m_Mode: 1
@@ -16152,13 +16153,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnPlayerDebugButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1458482728}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16219,7 +16220,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerDebugButtonSelected
           m_Mode: 1
@@ -16235,7 +16236,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerDebugButtonDeSelected
           m_Mode: 1
@@ -16251,7 +16252,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerDebugButtonSelected
           m_Mode: 1
@@ -16267,7 +16268,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnPlayerDebugButtonDeSelected
           m_Mode: 1
@@ -17715,13 +17716,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnReselectButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1644441677}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17782,7 +17783,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnReselectButtonSelected
           m_Mode: 1
@@ -17798,7 +17799,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnReselectButtonDeSelected
           m_Mode: 1
@@ -17814,7 +17815,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnReselectButtonSelected
           m_Mode: 1
@@ -17830,7 +17831,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnReselectButtonDeSelected
           m_Mode: 1
@@ -17925,13 +17926,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnNetoSearchButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1657309217}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17992,7 +17993,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoSearchButtonSelected
           m_Mode: 1
@@ -18008,7 +18009,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoSearchButtonDeSelected
           m_Mode: 1
@@ -18024,7 +18025,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoSearchButtonSelected
           m_Mode: 1
@@ -18040,7 +18041,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnNetoSearchButtonDeSelected
           m_Mode: 1
@@ -21198,13 +21199,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnCancelButtonClicked
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1965646735}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -21265,7 +21266,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnCancelButtonSelected
           m_Mode: 1
@@ -21281,7 +21282,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnCancelButtonDeSelected
           m_Mode: 1
@@ -21297,7 +21298,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnCancelButtonSelected
           m_Mode: 1
@@ -21313,7 +21314,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2130257028}
           m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
           m_MethodName: OnCancelButtonDeSelected
           m_Mode: 1
@@ -22341,7 +22342,6 @@ MonoBehaviour:
   shopPanel: {fileID: 748414678}
   dojoPanel: {fileID: 1440116694}
   itemDebugPanel: {fileID: 515752965}
-  battleManager: {fileID: 232121625}
   PlSelectPanel: {fileID: 132200027}
   NetoselectPanel: {fileID: 808515167}
   HealthDpSlidersAndCharactersPanel: {fileID: 447214686}

@@ -18,7 +18,9 @@ public class BattleManager : MonoBehaviour
     private QuestData currentQuestion;
     List<QuestCategory> categories = new List<QuestCategory>();
     private QuestManager questManager;
-    private MultipleChoiceQuest checker;
+    private MultipleChoiceQuest choicechecker;
+    private FillBlankQuest writechecker;
+    [SerializeField] private UIManager uimanager;
     private void Awake()
     {
         GameManager.Instance.RegisterBattleManager(this);
@@ -27,7 +29,8 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         questManager = GameManager.Instance.questManager;
-        checker = GetComponent<MultipleChoiceQuest>();
+        choicechecker = GetComponent<MultipleChoiceQuest>();
+        writechecker = GetComponent<FillBlankQuest>();
 
         // ここで初めて battleManager が存在する
         Debug.Log("BattleManager Setup Completed");
@@ -68,8 +71,8 @@ public class BattleManager : MonoBehaviour
         // クエストカテゴリ初期化
         categories.Clear();
         categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-        categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-        categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+        //categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+        //categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
 
         questManager.CreateDeck(categories);
 
@@ -90,12 +93,13 @@ public class BattleManager : MonoBehaviour
             //GameManager.Instance.uiManager.UpdateBattleMessage("問題切れ！");
         }
         GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnStart);
+        uimanager.TurnStart();
     }
 
-    public void OnSubmitAnswer(string code)
+    public void OnSubmitMultiChoiceAnswer(string code)//4択クイズの正解確認
     {
         if (currentQuestion == null) return;
-        if (checker.CheckAnswer(code, currentQuestion))
+        if (choicechecker.CheckAnswer(code, currentQuestion))
         {
             QuizCorrect();
         }
@@ -104,6 +108,10 @@ public class BattleManager : MonoBehaviour
             QuizIncorrect();
         }
         NextTurn();
+    }
+    public void OnSubmitFillBrankAnswer(string code)
+    {
+
     }
 
     private void QuizCorrect()

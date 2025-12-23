@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     public Neto neto;           // パートナー
     public Inventory inventory; // アイテム所持状況
     public SpawnPlayer spawnPlayer;
-
     public BattleManager BattleManager => battleManager;
 
     private float nextAcceptTime = 0f;
