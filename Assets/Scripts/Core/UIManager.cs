@@ -1,13 +1,12 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System.Collections;
 
 using static GameManager;
 
 /// <summary>
 /// 【UI管理】
-/// 画面の表示切り替えや、テキストの更新を行うクラスです。
+/// UIすべての表示切替を担ってるよ。クラスの分業を検討するほどに過労死枠（圧倒的コード量）だよ。
 /// </summary>
 public class UIManager : MonoBehaviour
 {
@@ -22,11 +21,11 @@ public class UIManager : MonoBehaviour
 
     [Header("各モードの画面パネル")]
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
-    [SerializeField] private Text battleQuestText;       // 問題表示
-    [SerializeField] private Text battleInfoText;
-    [SerializeField] private Text PlSelectLabelText;
-    [SerializeField] private Text NetoSelectLabelText;
-    [SerializeField] private Text DifficultSelectText;
+    [SerializeField] private Text battleQuestText;      // 問題表示
+    [SerializeField] private Text battleInfoText;       
+    [SerializeField] private Text PlSelectLabelText;    
+    [SerializeField] private Text NetoSelectLabelText;  
+    [SerializeField] private Text DifficultSelectText;  
     [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
@@ -47,6 +46,27 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject EquipandStatusPanel;
     [SerializeField] private GameObject ConfigPanel;
     [SerializeField] private GameObject KeyBindPanel;
+
+    [Header("装備&ステータス画面の各テキスト&ボタン")]
+    [SerializeField] private Text CharaNameText;
+    [SerializeField] private Text EquipWeaponName;
+    [SerializeField] private Text EquipAccessoryName;
+    [SerializeField] private Text currentHPText;
+    [SerializeField] private Text CurrentAtkSlot;
+    [SerializeField] private Text CurrentDefSlot;
+    [SerializeField] private Text CurrentDebugLimitText;
+    [SerializeField] private Text EquipItemSelectSlot1;
+    [SerializeField] private Text EquipItemSelectSlot2;
+    [SerializeField] private Text EquipItemSelectSlot3;
+    [SerializeField] private Text EquipItemSelectSlot4;
+    [SerializeField] private Text EquipItemSelectSlot5;
+
+    //装備&ステータス画面の制御系
+    private bool EquipCharacterSelecter;
+    private bool EquipSlots;
+    private bool EquipChangeSelecter;
+
+
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
     /// </summary>
@@ -70,7 +90,7 @@ public class UIManager : MonoBehaviour
 
     public void Update()
     {
-        if(gm == null) return; //Startより先に呼び出されるケースがあるらしい？マジ？
+        if(gm == null) return; //Startより先に呼び出されるケースがあるらしい。マジ？
         if (gm.CurrentMode == GameMode.Battle)
         {
             battlePanel.SetActive(true);
@@ -85,6 +105,28 @@ public class UIManager : MonoBehaviour
             shopPanel.SetActive(false);
         }
     }
+    ///<summary>
+    ///フィールド上などで、キャラの現在ステータスをUIに反映するためのメソッドです。
+    ///戦闘中はPlayer,Neto,Enemyの3引数がある方を使ってね。
+    ///</summary>
+    public void UpdateStatus(Player p, Neto n)
+    {
+        // テキストコンポーネントが存在する場合のみ更新します
+        if (PlayerStatusText != null)
+        {
+            PlayerStatusText.text = $"Player HP: {p.CurrentHP}/{p.MaxHP}\nATK: {p.CurrentAtk} DEF: {p.CurrentDef}";
+        }
+
+        if (NetoStatusText != null)
+        {
+            NetoStatusText.text = $"Neto HP: {n.CurrentHP}/{n.MaxHP}";
+        }
+    }
+    ///<summary>
+    ///バトル中など、エネミーがいる際の現在ステータスをUIに反映するためのメソッドです。
+    ///player,netoのみを処理する、フィールド上でメニュー画面を開いた際を想定したものもあります。
+    ///戦闘以外でこれを呼び出すと、多分NullRef吐きます。
+    ///</summary>
     public void UpdateStatus(Player p, Neto n,Enemy e)
     {
         // テキストコンポーネントが存在する場合のみ更新します
@@ -111,22 +153,9 @@ public class UIManager : MonoBehaviour
             EnemyStatusSlider.value = e.CurrentDP;
         }
     }
-    public void UpdateStatus(Player p, Neto n)
-    {
-        // テキストコンポーネントが存在する場合のみ更新します
-        if (PlayerStatusText != null)
-        {
-            PlayerStatusText.text = $"Player HP: {p.CurrentHP}/{p.MaxHP}\nATK: {p.CurrentAtk} DEF: {p.CurrentDef}";
-        }
-
-        if (NetoStatusText != null)
-        {
-            NetoStatusText.text = $"Neto HP: {n.CurrentHP}/{n.MaxHP}";
-        }
-    }
 
     /// <summary>
-    /// 画面上のログウィンドウにメッセージを追加します
+    /// 戦闘ログを更新するためのメソッド。現状、通常会話を振り返ったりできる機能はない…でいいんだよね？
     /// </summary>
     public void ShowLog(string message)
     {
@@ -135,13 +164,12 @@ public class UIManager : MonoBehaviour
 
         if (logText != null)
         {
-            // 新しいメッセージを一番上に追加して、履歴を残します
             logText.text = message + "\n" + logText.text;
         }
     }
 
     /// <summary>
-    /// 戦闘画面のメッセージ（問題文など）を更新します
+    /// 
     /// </summary>
     public void UpdateBattleMessage(string text)
     {
@@ -150,6 +178,9 @@ public class UIManager : MonoBehaviour
             battleQuestText.text = text;
         }
     }
+    /// <summary>
+    /// 4択問題の回答を表示するよ。
+    /// </summary>
     public void UpdateBattleMessage(string text, string[] opts)
     {
         if (battleQuestText != null)
@@ -158,40 +189,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // --- パネルの表示/非表示を切り替えるメソッド群 ---
-
-    public void ToggleBattle(bool show)
-    {
-        battlePanel.SetActive(show);
-    }
-    public void Turnstart()
-    {
-        PlSelectPanel.SetActive(true);
-        NetoselectPanel.SetActive(false);
-        HealthDpSlidersAndCharactersPanel.SetActive(true);
-        DifficultSelectPanel.SetActive(false);
-        DifficultAndCheckButtonFramePanel.SetActive(false);
-        DifficultAndSelectButtonFramePanel.SetActive(false);
-        QuestFramePanel.SetActive(false);
-    }
-
-    public void ToggleShop(bool show)
-    {
-        shopPanel.SetActive(show);
-    }
-
-    public void ToggleDojo(bool show)
-    {
-        dojoPanel.SetActive(show);
-    }
-
-    public void ToggleItemDebug(bool show)
-    {
-        itemDebugPanel.SetActive(show);
-    }
-
     /// <summary>
-    /// 画面上の「解答送信」ボタンが押されたときに呼ばれます
+    /// 4択問題でA～Dのいずれかのボタンを押されたとき、または穴埋め問題で「解答送信」ボタンが押されたときに呼ばれるよ。
+    /// クリックされたボタンのテキストを読み取ってanswerに代入→A～Dのいずれかなら4択問題用の処理を、
+    /// それ以外（基本というか、間違いがなければ送信が送られたことになるけど）なら穴埋め問題用の処理を行うよ。
     /// </summary>
     public void OnSubmitButtonClicked(Button clickedButton)
     {
@@ -199,7 +200,6 @@ public class UIManager : MonoBehaviour
         string buttonText = clickedButton.GetComponentInChildren<Text>().text;
         string answer = buttonText;
         battleInfoText.text = answer;
-        // BattleManagerに入力されたテキストを渡します
         if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
         {
             answer = answerInput.text;
@@ -369,13 +369,14 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            
             ItemPanel.SetActive(false);
             EquipandStatusPanel.SetActive(true);
             ConfigPanel.SetActive(false);
             KeyBindPanel.SetActive(false);
         }
-        
+        EquipCharacterSelecter = true;
+        EquipSlots = false;
+        EquipChangeSelecter = false;
     }
     public void OnConfigButtonClicked()
     {
@@ -437,5 +438,34 @@ public class UIManager : MonoBehaviour
             KeyBindPanel.SetActive(false);
         }
     }
-    
+    //この辺にあるif([任意の文字列]==false) return;は、本来選べないボタンを選択/クリックさせないためのやつ
+    public void OnPlayerIconClicked()
+    {
+        if ( EquipCharacterSelecter ==false) return;
+        EquipSlots = true;
+        EquipCharacterSelecter = false;
+    }
+    public void OnNetoIconClicked()
+    {
+        if (EquipCharacterSelecter == false) return;
+        EquipSlots = true;
+        EquipCharacterSelecter = false;
+    }
+    public void OnWeaponSlotClicked(GameObject gameObject)
+    {
+        if (EquipSlots == false) return;
+        gameObject.GetComponentInChildren<Text>().text="Selected";
+        EquipSlots = false;
+        EquipCharacterSelecter = true;
+    }
+    public void OnAccessorySlotClicked(GameObject gameObject)
+    {
+        if(EquipChangeSelecter == false) return;
+        EquipSlots = false;
+        gameObject.GetComponentInChildren<Text>().text = "Selected";
+    }
+    public void OnEquipSelecterClicked(int slotID)
+    {
+        Debug.Log(slotID);
+    }
 }
