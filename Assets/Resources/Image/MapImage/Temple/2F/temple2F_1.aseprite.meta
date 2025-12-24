@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba093d3f5bc6fe646a8df912a6ce4d0f
+guid: ce00233bbe5983243bdfbf4f33604df8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639021678803589288
+  platformSettingsDirtyTick: 639021711878326841
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -138,8 +138,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 320
-      height: 180
-    spriteID: 48db000939ce4104793a4eb14887a101
+      height: 360
+    spriteID: 6589600c748959e4d967bf1bc23e3ff8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,19 +148,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Road
+  - name: Elevator_close
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.79220784, y: -2.4545453}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 192
-      width: 320
-      height: 103
-    spriteID: f3641c4467d38924cb72192d9a7e5806
+      x: 911
+      y: 4
+      width: 77
+      height: 77
+    spriteID: 3fa1131b9888b4d4491e39798433425c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -168,20 +168,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 192}
-  - name: eyes_animation_1
+    uvTransform: {x: 911, y: 4}
+  - name: Elevator_half_open
     originalName: 
-    pivot: {x: 0.51324505, y: -2.0185184}
+    pivot: {x: 1.2380952, y: -2.9393938}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 303
-      width: 302
-      height: 54
-    spriteID: ef340d4f50cf7984dad92620282ed97a
+      x: 596
+      y: 95
+      width: 42
+      height: 66
+    spriteID: f6a8fd16921e2184ab1adcd52eeaf066
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -189,29 +189,97 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 303}
+    uvTransform: {x: 596, y: 95}
+  - name: Elevator_open
+    originalName: 
+    pivot: {x: 1.122449, y: -2.895522}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 243
+      y: 372
+      width: 49
+      height: 67
+    spriteID: 12b0135088dbc8c419e062ebe81e95f7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 243, y: 372}
+  - name: load
+    originalName: 
+    pivot: {x: 0.47882736, y: -1.3373494}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 596
+      y: 4
+      width: 307
+      height: 83
+    spriteID: 000617afc3f06a34696bd66e50a8e035
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 596, y: 4}
+  - name: window
+    originalName: 
+    pivot: {x: 0.3116883, y: -1.8048781}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 372
+      width: 231
+      height: 123
+    spriteID: cafe93d3f09230b4785080c93c9fe47d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 372}
+  - name: pillar
+    originalName: 
+    pivot: {x: 0.5625, y: -1.0167599}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 4
+      width: 256
+      height: 179
+    spriteID: 5a310cad06a24f04abcef12865e6b7b1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 4}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
       value0: 297084606
-      value1: 0
-      value2: 0
-      value3: 0
-    guid: 0
-    name: background
-    layerFlags: 3
-    layerType: 1
-    blendMode: 0
-    cells: []
-    linkedCells: []
-    tileCells: []
-    tileSetIndex: 0
-    parentIndex: -1
-  - layerIndex: 1
-    uuid:
-      value0: 1708824347
       value1: 0
       value2: 0
       value3: 0
@@ -228,61 +296,20 @@ ScriptedImporter:
         x: 0
         y: 0
         width: 320
-        height: 180
-      spriteId: 48db000939ce4104793a4eb14887a101
-    linkedCells: []
-    tileCells: []
-    tileSetIndex: 0
-    parentIndex: 0
-  - layerIndex: 2
-    uuid:
-      value0: 4143129884
-      value1: 0
-      value2: 0
-      value3: 0
-    guid: 0
-    name: Road
-    layerFlags: 3
-    layerType: 1
-    blendMode: 0
-    cells: []
+        height: 360
+      spriteId: 6589600c748959e4d967bf1bc23e3ff8
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
-  - layerIndex: 3
+  - layerIndex: 1
     uuid:
-      value0: 4260196771
+      value0: 1178678920
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Road
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Road
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 320
-        height: 103
-      spriteId: f3641c4467d38924cb72192d9a7e5806
-    linkedCells: []
-    tileCells: []
-    tileSetIndex: 0
-    parentIndex: 2
-  - layerIndex: 4
-    uuid:
-      value0: 407939399
-      value1: 0
-      value2: 0
-      value3: 0
-    guid: 0
-    name: eyes_animation
+    name: Elevator
     layerFlags: 35
     layerType: 1
     blendMode: 0
@@ -291,31 +318,188 @@ ScriptedImporter:
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
-  - layerIndex: 5
+  - layerIndex: 2
     uuid:
-      value0: 1801233877
+      value0: 3635677828
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: eyes_animation_1
+    name: Elevator_close
     layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: eyes_animation_1
+    - name: Elevator_close
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 5
-        y: 109
-        width: 302
-        height: 54
-      spriteId: ef340d4f50cf7984dad92620282ed97a
+        x: 99
+        y: 189
+        width: 77
+        height: 77
+      spriteId: 3fa1131b9888b4d4491e39798433425c
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
-    parentIndex: 4
+    parentIndex: 1
+  - layerIndex: 3
+    uuid:
+      value0: 3257245558
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Elevator_half_open
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Elevator_half_open
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 108
+        y: 194
+        width: 42
+        height: 66
+      spriteId: f6a8fd16921e2184ab1adcd52eeaf066
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 1
+  - layerIndex: 4
+    uuid:
+      value0: 3571638464
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Elevator_open
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Elevator_open
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 105
+        y: 194
+        width: 49
+        height: 67
+      spriteId: 12b0135088dbc8c419e062ebe81e95f7
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 1
+  - layerIndex: 5
+    uuid:
+      value0: 4143128302
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: load
+    layerFlags: 19
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: load
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 13
+        y: 111
+        width: 307
+        height: 83
+      spriteId: 000617afc3f06a34696bd66e50a8e035
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 6
+    uuid:
+      value0: 3406562884
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: wall_obj
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 7
+    uuid:
+      value0: 3239765757
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: window
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: window
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 88
+        y: 222
+        width: 231
+        height: 123
+      spriteId: cafe93d3f09230b4785080c93c9fe47d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 6
+  - layerIndex: 8
+    uuid:
+      value0: 1099314147
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: obj
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 9
+    uuid:
+      value0: 4255335864
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: pillar
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: pillar
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 16
+        y: 182
+        width: 256
+        height: 179
+      spriteId: 5a310cad06a24f04abcef12865e6b7b1
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 8
   tileSets: []
   platformSettings:
   - name: DefaultTexturePlatform
@@ -345,5 +529,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 320, y: 180}
-  previousTextureSize: {x: 512, y: 512}
+  canvasSize: {x: 320, y: 360}
+  previousTextureSize: {x: 1024, y: 512}

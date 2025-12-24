@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639020064321236397
+  platformSettingsDirtyTick: 639021673383996917
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 320
       height: 360
-    spriteID: 48be206a0ba588548916cc5bb8d22db7
+    spriteID: cd354e7f55b3df443989aaf48bf51b05
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 689
       width: 320
       height: 70
-    spriteID: e2eb160a58fa4d4458fd2d8f3fca2ca8
+    spriteID: 693a1141e4d279a4ca9fed4b6379637d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,7 +181,7 @@ ScriptedImporter:
       y: 558
       width: 308
       height: 123
-    spriteID: d52225168dd684141bbe052f8e3170e5
+    spriteID: 74da2a9df4f4f544ebf3562497b7370e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -202,7 +202,7 @@ ScriptedImporter:
       y: 372
       width: 293
       height: 178
-    spriteID: 3590d9c9c5ffd9340b7e3c45aa71510c
+    spriteID: 2e224cbd06e13b948b09349dc937a3e1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -223,7 +223,7 @@ ScriptedImporter:
       y: 372
       width: 125
       height: 131
-    spriteID: 3af1c77d27c608b4390252819d0bb443
+    spriteID: 335bd21412010b8488b8de5c0875331a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -255,7 +255,7 @@ ScriptedImporter:
         y: 0
         width: 320
         height: 360
-      spriteId: 48be206a0ba588548916cc5bb8d22db7
+      spriteId: cd354e7f55b3df443989aaf48bf51b05
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -280,7 +280,7 @@ ScriptedImporter:
         y: 101
         width: 320
         height: 70
-      spriteId: e2eb160a58fa4d4458fd2d8f3fca2ca8
+      spriteId: 693a1141e4d279a4ca9fed4b6379637d
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -293,7 +293,7 @@ ScriptedImporter:
       value3: 0
     guid: 0
     name: wall_obj
-    layerFlags: 35
+    layerFlags: 3
     layerType: 1
     blendMode: 0
     cells: []
@@ -321,7 +321,7 @@ ScriptedImporter:
         y: 205
         width: 308
         height: 123
-      spriteId: d52225168dd684141bbe052f8e3170e5
+      spriteId: 74da2a9df4f4f544ebf3562497b7370e
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -334,7 +334,7 @@ ScriptedImporter:
       value3: 0
     guid: 0
     name: obj
-    layerFlags: 3
+    layerFlags: 35
     layerType: 1
     blendMode: 0
     cells: []
@@ -362,7 +362,7 @@ ScriptedImporter:
         y: 165
         width: 293
         height: 178
-      spriteId: 3590d9c9c5ffd9340b7e3c45aa71510c
+      spriteId: 2e224cbd06e13b948b09349dc937a3e1
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -387,7 +387,7 @@ ScriptedImporter:
         y: 164
         width: 125
         height: 131
-      spriteId: 3af1c77d27c608b4390252819d0bb443
+      spriteId: 335bd21412010b8488b8de5c0875331a
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

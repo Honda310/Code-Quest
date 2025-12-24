@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba093d3f5bc6fe646a8df912a6ce4d0f
+guid: e94a66058ae243642addf5a13d08fa4e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639021678803589288
+  platformSettingsDirtyTick: 639021711878326841
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -138,8 +138,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 320
-      height: 180
-    spriteID: 48db000939ce4104793a4eb14887a101
+      height: 360
+    spriteID: b8883d252ac41e5458612fb7cd3c11a5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,19 +148,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Road
+  - name: load
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -1.7}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 192
+      y: 689
       width: 320
-      height: 103
-    spriteID: f3641c4467d38924cb72192d9a7e5806
+      height: 70
+    spriteID: 3722c226764284c408dc5af35e04d1fe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -168,20 +168,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 192}
-  - name: eyes_animation_1
+    uvTransform: {x: 4, y: 689}
+  - name: window
     originalName: 
-    pivot: {x: 0.51324505, y: -2.0185184}
+    pivot: {x: 0.31034482, y: -1.8048781}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 303
-      width: 302
-      height: 54
-    spriteID: ef340d4f50cf7984dad92620282ed97a
+      y: 558
+      width: 232
+      height: 123
+    spriteID: 640df300e154af34fbfb2381099c12eb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -189,29 +189,34 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 303}
+    uvTransform: {x: 4, y: 558}
+  - name: pillar
+    originalName: 
+    pivot: {x: 0.47781572, y: -1.0224719}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 372
+      width: 293
+      height: 178
+    spriteID: 833641c534b7c9f4bad4c1c86a480e2d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 372}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
       value0: 297084606
-      value1: 0
-      value2: 0
-      value3: 0
-    guid: 0
-    name: background
-    layerFlags: 3
-    layerType: 1
-    blendMode: 0
-    cells: []
-    linkedCells: []
-    tileCells: []
-    tileSetIndex: 0
-    parentIndex: -1
-  - layerIndex: 1
-    uuid:
-      value0: 1708824347
       value1: 0
       value2: 0
       value3: 0
@@ -228,20 +233,45 @@ ScriptedImporter:
         x: 0
         y: 0
         width: 320
-        height: 180
-      spriteId: 48db000939ce4104793a4eb14887a101
+        height: 360
+      spriteId: b8883d252ac41e5458612fb7cd3c11a5
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
-    parentIndex: 0
-  - layerIndex: 2
+    parentIndex: -1
+  - layerIndex: 1
     uuid:
-      value0: 4143129884
+      value0: 4143128302
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Road
+    name: load
+    layerFlags: 19
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: load
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 119
+        width: 320
+        height: 70
+      spriteId: 3722c226764284c408dc5af35e04d1fe
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 2
+    uuid:
+      value0: 3406562884
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: wall_obj
     layerFlags: 3
     layerType: 1
     blendMode: 0
@@ -252,37 +282,37 @@ ScriptedImporter:
     parentIndex: -1
   - layerIndex: 3
     uuid:
-      value0: 4260196771
+      value0: 3239765757
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Road
+    name: window
     layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Road
+    - name: window
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 320
-        height: 103
-      spriteId: f3641c4467d38924cb72192d9a7e5806
+        x: 88
+        y: 222
+        width: 232
+        height: 123
+      spriteId: 640df300e154af34fbfb2381099c12eb
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: 2
   - layerIndex: 4
     uuid:
-      value0: 407939399
+      value0: 1099314147
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: eyes_animation
+    name: obj
     layerFlags: 35
     layerType: 1
     blendMode: 0
@@ -293,25 +323,25 @@ ScriptedImporter:
     parentIndex: -1
   - layerIndex: 5
     uuid:
-      value0: 1801233877
+      value0: 4255335864
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: eyes_animation_1
+    name: pillar
     layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: eyes_animation_1
+    - name: pillar
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 5
-        y: 109
-        width: 302
-        height: 54
-      spriteId: ef340d4f50cf7984dad92620282ed97a
+        x: 20
+        y: 182
+        width: 293
+        height: 178
+      spriteId: 833641c534b7c9f4bad4c1c86a480e2d
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -345,5 +375,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 320, y: 180}
-  previousTextureSize: {x: 512, y: 512}
+  canvasSize: {x: 320, y: 360}
+  previousTextureSize: {x: 512, y: 1024}

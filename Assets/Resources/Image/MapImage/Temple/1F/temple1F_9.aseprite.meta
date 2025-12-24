@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639020064321241731
+  platformSettingsDirtyTick: 639021671964258838
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 320
       height: 360
-    spriteID: 33236c454f74383469fdd34b18a22d14
+    spriteID: 828f04b55e71dc645bdb3dcd6dc38d01
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 690
       width: 320
       height: 70
-    spriteID: 15a63cd871c4f904c8e0a520cc25fd98
+    spriteID: cfe461f84b7b6bf438f2eda80c4d3959
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,7 +181,7 @@ ScriptedImporter:
       y: 558
       width: 231
       height: 124
-    spriteID: d2a38db5a6a0ca1449ebffda365884b9
+    spriteID: c97981524106c7145a5d0c385eec96cc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -202,7 +202,7 @@ ScriptedImporter:
       y: 372
       width: 293
       height: 178
-    spriteID: c27e79a9e37a2284c8b8d5f631215651
+    spriteID: d08075eb812fa7e43937bf366bbc5149
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -234,7 +234,7 @@ ScriptedImporter:
         y: 0
         width: 320
         height: 360
-      spriteId: 33236c454f74383469fdd34b18a22d14
+      spriteId: 828f04b55e71dc645bdb3dcd6dc38d01
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -259,7 +259,7 @@ ScriptedImporter:
         y: 101
         width: 320
         height: 70
-      spriteId: 15a63cd871c4f904c8e0a520cc25fd98
+      spriteId: cfe461f84b7b6bf438f2eda80c4d3959
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -300,7 +300,7 @@ ScriptedImporter:
         y: 205
         width: 231
         height: 124
-      spriteId: d2a38db5a6a0ca1449ebffda365884b9
+      spriteId: c97981524106c7145a5d0c385eec96cc
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -341,7 +341,7 @@ ScriptedImporter:
         y: 165
         width: 293
         height: 178
-      spriteId: c27e79a9e37a2284c8b8d5f631215651
+      spriteId: d08075eb812fa7e43937bf366bbc5149
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

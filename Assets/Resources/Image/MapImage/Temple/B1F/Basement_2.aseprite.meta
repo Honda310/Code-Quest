@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e94dd827f2099e0448ea27693c3e0cba
+guid: 763311068f2033f4497f39f2e7fceacb
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 1
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -74,7 +74,7 @@ ScriptedImporter:
   previousAsepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -89,7 +89,7 @@ ScriptedImporter:
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 639021679588023435
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Basement_2
+  - name: background
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 320
       height: 180
-    spriteID: 20c76742a414b834fa556361b733a484
+    spriteID: e263e53113eaed74fb6b5f71607de2c1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,22 +148,80 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Road
+    originalName: 
+    pivot: {x: 0.5, y: -0.33766234}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 192
+      width: 320
+      height: 77
+    spriteID: 86bbd0633af02974495c38bcf5c3e6d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 192}
+  - name: eyes_animation_1
+    originalName: 
+    pivot: {x: 0.51324505, y: -2.0185184}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 277
+      width: 302
+      height: 54
+    spriteID: 97a31ec08fd8b2c4ea9971bb8176500c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 277}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1365644754
+      value0: 297084606
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Basement_2
-    layerFlags: 0
+    name: background
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 1708824347
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Basement_2
+    - name: background
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,15 +229,121 @@ ScriptedImporter:
         y: 0
         width: 320
         height: 180
-      spriteId: 20c76742a414b834fa556361b733a484
+      spriteId: e263e53113eaed74fb6b5f71607de2c1
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 0
+  - layerIndex: 2
+    uuid:
+      value0: 4143129884
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Road
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
+  - layerIndex: 3
+    uuid:
+      value0: 4260196771
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Road
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Road
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 26
+        width: 320
+        height: 77
+      spriteId: 86bbd0633af02974495c38bcf5c3e6d7
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 2
+  - layerIndex: 4
+    uuid:
+      value0: 407939399
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: eyes_animation
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 5
+    uuid:
+      value0: 1801233877
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: eyes_animation_1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: eyes_animation_1
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 5
+        y: 109
+        width: 302
+        height: 54
+      spriteId: 97a31ec08fd8b2c4ea9971bb8176500c
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
   tileSets: []
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 320, y: 180}
-  previousTextureSize: {x: 512, y: 256}
+  previousTextureSize: {x: 512, y: 512}
