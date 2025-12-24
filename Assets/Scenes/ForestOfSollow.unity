@@ -1743,7 +1743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &121784468
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1757,8 +1757,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2023090240}
-  - {fileID: 700999001}
   - {fileID: 1805361003}
+  - {fileID: 700999001}
   - {fileID: 526783925}
   - {fileID: 1472970648}
   m_Father: {fileID: 2130257027}
@@ -2657,6 +2657,8 @@ GameObject:
   m_Component:
   - component: {fileID: 232121630}
   - component: {fileID: 232121625}
+  - component: {fileID: 232121632}
+  - component: {fileID: 232121631}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -2679,6 +2681,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5616055682615443596, guid: 630061962aea32e49b294117609258a9, type: 3}
   enemySpawnPoint: {fileID: 1534752134}
   currentEnemy: {fileID: 802629717}
+  choicechecker: {fileID: 232121632}
+  writechecker: {fileID: 232121631}
   uimanager: {fileID: 2130257028}
 --- !u!4 &232121630
 Transform:
@@ -2695,6 +2699,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &232121631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232121618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197083aefe6b48046bd8e48d28991f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FillBlankQuest
+--- !u!114 &232121632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232121618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5d7ca05cc5d324f9a4bb7e26f62bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MultipleChoiceQuest
 --- !u!1 &241562236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2779,7 +2807,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnSubmitButtonClicked
         m_Mode: 2
@@ -3741,7 +3769,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnSubmitButtonClicked
         m_Mode: 2
@@ -6824,9 +6852,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnStatusButtonClicked
+        m_MethodName: OnEquipAndStatusButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7792,7 +7820,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnKeyBindButtonClicked
         m_Mode: 1
@@ -8162,7 +8190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &700999001
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11768,7 +11796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: laurel
+  m_Text: Chara Name
 --- !u!222 &1008641316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12021,7 +12049,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnSubmitButtonClicked
         m_Mode: 2
@@ -12658,7 +12686,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnMenuCloseButtonClicked
         m_Mode: 1
@@ -14407,7 +14435,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnConfigButtonClicked
         m_Mode: 1
@@ -15056,7 +15084,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnInventoryButtonClicked
         m_Mode: 1
@@ -20682,7 +20710,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2130257028}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnSubmitButtonClicked
         m_Mode: 2

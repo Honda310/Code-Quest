@@ -18,8 +18,8 @@ public class BattleManager : MonoBehaviour
     private QuestData currentQuestion;
     List<QuestCategory> categories = new List<QuestCategory>();
     private QuestManager questManager;
-    private MultipleChoiceQuest choicechecker;
-    private FillBlankQuest writechecker;
+    [SerializeField] private MultipleChoiceQuest choicechecker;
+    [SerializeField] private FillBlankQuest writechecker;
     [SerializeField] private UIManager uimanager;
     private void Awake()
     {
@@ -29,8 +29,8 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         questManager = GameManager.Instance.questManager;
-        choicechecker = GetComponent<MultipleChoiceQuest>();
-        writechecker = GetComponent<FillBlankQuest>();
+        //choicechecker = GetComponent<MultipleChoiceQuest>();
+        //writechecker = GetComponent<FillBlankQuest>();
 
         // ここで初めて battleManager が存在する
         Debug.Log("BattleManager Setup Completed");
@@ -86,19 +86,17 @@ public class BattleManager : MonoBehaviour
         currentQuestion = questManager.GetNextQuestion();
         if (currentQuestion != null)
         {
-            //GameManager.Instance.uiManager.UpdateBattleMessage($"問題:\n{currentQuestion.QuestionText}",currentQuestion.Options);
+            uimanager.UpdateBattleMessage($"問題:\n{currentQuestion.QuestionText}",currentQuestion.Options);
         }
         else
         {
-            //GameManager.Instance.uiManager.UpdateBattleMessage("問題切れ！");
+            uimanager.UpdateBattleMessage("問題切れ！");
         }
-        GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnStart);
         uimanager.TurnStart();
     }
 
     public void OnSubmitMultiChoiceAnswer(string code)//4択クイズの正解確認
     {
-        if (currentQuestion == null) return;
         if (choicechecker.CheckAnswer(code, currentQuestion))
         {
             QuizCorrect();
@@ -120,6 +118,7 @@ public class BattleManager : MonoBehaviour
         currentEnemy.TakeDamage(player.CurrentAtk);
         Debug.Log(currentEnemy.CurrentDP);
         Debug.Log(currentEnemy.MaxDP);
+        uimanager.UpdateStatus(player, neto, currentEnemy);
         if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
         {
             StartCoroutine(EndBattle(true));

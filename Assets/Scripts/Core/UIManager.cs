@@ -51,8 +51,8 @@ public class UIManager : MonoBehaviour
     /// プレイヤーとネトのHP表示を更新します
     /// </summary>
     private GameManager gm;
-    private Player player;
-    private Neto neto;
+    private Player p;
+    private Neto n;
     public static UIManager Active { get; private set; }
 
     private void Awake()
@@ -63,9 +63,9 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         gm = GameManager.Instance;
-        player = GameManager.Instance.player;
-        neto = GameManager.Instance.neto;
-        UpdateStatus(player,neto);
+        p = GameManager.Instance.player;
+        n = GameManager.Instance.neto;
+        UpdateStatus(p,n);
     }
 
     public void Update()
@@ -90,14 +90,14 @@ public class UIManager : MonoBehaviour
         // テキストコンポーネントが存在する場合のみ更新します
         if (PlayerStatusText != null)
         {
-            PlayerStatusText.text = $"{p.CurrentHP}/{p.MaxHP}"; ;
+            PlayerStatusText.text = $"{p.CurrentHP}/{p.MaxHP}";
             PlayerStatusSlider.maxValue = p.MaxHP;
             PlayerStatusSlider.minValue = 0;
             PlayerStatusSlider.value = p.CurrentHP;
         }
         if (NetoStatusText != null)
         {
-            NetoStatusText.text = $"{n.CurrentHP}/{n.MaxHP}"; ;
+            NetoStatusText.text = $"{n.CurrentHP}/{n.MaxHP}";
             NetoStatusSlider.maxValue = n.MaxHP;
             NetoStatusSlider.minValue = 0;
             NetoStatusSlider.value = n.CurrentHP;
@@ -213,6 +213,7 @@ public class UIManager : MonoBehaviour
         
             // 入力欄を空にします
             answerInput.text = "";
+            QuestFramePanel.SetActive(false);
     }
     //テンプレ用
     //public void OnButtonClicked(Button clickedButton)
@@ -360,7 +361,7 @@ public class UIManager : MonoBehaviour
         }
         
     }
-    public void OnStatusButtonClicked()
+    public void OnEquipAndStatusButtonClicked()
     {
         if (EquipandStatusPanel.activeSelf)
         {
