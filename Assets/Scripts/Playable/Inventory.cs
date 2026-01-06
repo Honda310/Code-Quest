@@ -13,33 +13,22 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// アイテムを追加します
     /// </summary>
-    public void AddItem(SupportItem item, int amount)
+    public void AddItem(Item item, int amount)
     {
-        // すでに持っているか確認する
-        CarryItem target = null;
-        foreach (CarryItem c in items)
-        {
-            if (c.item.ItemID == item.ItemID)
-            {
-                target = c;
-                break;
-            }
-        }
+        CarryItem target = items.Find(c => c.item.ItemID == item.ItemID);
 
         if (target != null)
         {
-            // 持っていれば個数を増やす
             target.quantity += amount;
         }
         else
         {
-            // 持っていなければ新しくリストに追加
             items.Add(new CarryItem(item, amount));
         }
 
         Debug.Log($"{item.ItemName} を {amount}個 入手しました。");
     }
-	public enum ItemType
+    public enum ItemType
 	{
 	    Weapon,
 	    Accessory,
@@ -50,40 +39,18 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public bool HasItem(int itemId)
     {
-        foreach (CarryItem c in items)
-        {
-            if (c.item.ItemID == itemId && c.quantity > 0)
-            {
-                return true;
-            }
-        }
-        return false;
+        return items.Exists(c => c.item.ItemID == itemId && c.quantity > 0);
     }
 
-    /// <summary>
-    /// アイテムを消費します
-    /// </summary>
     public void RemoveItem(int itemId, int amount)
     {
-        CarryItem target = null;
-        foreach (CarryItem c in items)
-        {
-            if (c.item.ItemID == itemId)
-            {
-                target = c;
-                break;
-            }
-        }
+        CarryItem target = items.Find(c => c.item.ItemID == itemId);
+        if (target == null) return;
 
-        if (target != null)
+        target.quantity -= amount;
+        if (target.quantity <= 0)
         {
-            target.quantity -= amount;
-
-            // 個数が0以下になったらリストから削除
-            if (target.quantity <= 0)
-            {
-                items.Remove(target);
-            }
+            items.Remove(target);
         }
     }
 

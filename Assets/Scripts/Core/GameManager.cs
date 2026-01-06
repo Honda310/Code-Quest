@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X)) && ((GameManager.Instance.CurrentMode == GameManager.GameMode.Field) || (GameManager.Instance.CurrentMode == GameManager.GameMode.Menu)))
         {
             UIManager.Active?.MenuToggle();
+            Debug.Log("called");
         }
 
     }

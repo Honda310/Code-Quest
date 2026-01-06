@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
 
     [Header("メニュー画面の各パネル")]
     [SerializeField] private GameObject MenuPanel;
+    [SerializeField] private GameObject MenuBarPanel;
     [SerializeField] private GameObject ItemPanel;
     [SerializeField] private GameObject EquipandStatusPanel;
     [SerializeField] private GameObject ConfigPanel;
@@ -86,6 +87,7 @@ public class UIManager : MonoBehaviour
         p = GameManager.Instance.player;
         n = GameManager.Instance.neto;
         UpdateStatus(p,n);
+        AllPanelClose();
     }
 
     public void Update()
@@ -105,6 +107,27 @@ public class UIManager : MonoBehaviour
             shopPanel.SetActive(false);
         }
     }
+
+    ///<summary>
+    ///メインの画面を除き、すべてのパネルを閉じるメソッドです。
+    ///特にデバッグ時とか、あるいはビルド後にパネルのデフォルトがTrue担ってしまっているときに回避するために作成したよ。
+    ///不都合があるなら、Start内の当該メソッドをコメントアウトすること！
+    ///あと、これが使える他の場面があれば積極的に使っていいよ～
+    ///</summary>>
+    public void AllPanelClose()
+    {
+        MenuPanel.SetActive(false);
+        battlePanel.SetActive(false);
+        shopPanel.SetActive(false);
+        itemDebugPanel.SetActive(false);
+        dojoPanel.SetActive(false);
+        MenuBarPanel.SetActive(false);
+        EquipandStatusPanel.SetActive(false);
+        ItemPanel.SetActive(false);
+        KeyBindPanel.SetActive(false);
+        ConfigPanel.SetActive(false);
+    }
+
     ///<summary>
     ///フィールド上などで、キャラの現在ステータスをUIに反映するためのメソッドです。
     ///戦闘中はPlayer,Neto,Enemyの3引数がある方を使ってね。
@@ -423,11 +446,13 @@ public class UIManager : MonoBehaviour
         if (MenuPanel.activeSelf == false)
         {
             MenuPanel.SetActive(true);
+            MenuBarPanel.SetActive(true);
             gm.SetMode(GameMode.Menu);
         }
         else if (MenuPanel.activeSelf && (((ItemPanel.activeSelf || EquipandStatusPanel.activeSelf) || (ConfigPanel.activeSelf || KeyBindPanel.activeSelf))== false))
         {
             MenuPanel.SetActive(false);
+            MenuBarPanel.SetActive(false);
             gm.SetMode(GameMode.Field);
         }
         else
@@ -441,31 +466,55 @@ public class UIManager : MonoBehaviour
     //この辺にあるif([任意の文字列]==false) return;は、本来選べないボタンを選択/クリックさせないためのやつ
     public void OnPlayerIconClicked()
     {
-        if ( EquipCharacterSelecter ==false) return;
+        if (EquipCharacterSelecter == false)
+        {
+            Debug.Log("そのアイコンはfalseだよ");
+            return;
+        }
+        Debug.Log("キャラアイコンが選択されたよ");
         EquipSlots = true;
         EquipCharacterSelecter = false;
     }
     public void OnNetoIconClicked()
     {
-        if (EquipCharacterSelecter == false) return;
+        if (EquipCharacterSelecter == false)
+        {
+            Debug.Log("そのアイコンはfalseだよ");
+            return;
+        }
+        Debug.Log("キャラアイコンが選択されたよ");
         EquipSlots = true;
         EquipCharacterSelecter = false;
     }
     public void OnWeaponSlotClicked(GameObject gameObject)
     {
-        if (EquipSlots == false) return;
-        gameObject.GetComponentInChildren<Text>().text="Selected";
+        if (EquipSlots == false)
+        {
+            Debug.Log("そのボタンはfalseだよ～");
+            return;
+        }
+        Debug.Log("武器スロットが選択されたよ");
+        gameObject.GetComponentInChildren<Text>().text = "Selected";
         EquipSlots = false;
-        EquipCharacterSelecter = true;
+        EquipChangeSelecter = true;
     }
     public void OnAccessorySlotClicked(GameObject gameObject)
     {
-        if(EquipChangeSelecter == false) return;
-        EquipSlots = false;
+        if (EquipSlots == false)
+        {
+            Debug.Log("そのボタンはfalseだよ～");
+            return;
+        }
+        Debug.Log("アクセサリスロットが選択されたよ");
         gameObject.GetComponentInChildren<Text>().text = "Selected";
+        EquipSlots = false;
+        EquipChangeSelecter = true;
     }
     public void OnEquipSelecterClicked(int slotID)
     {
-        Debug.Log(slotID);
+        if (EquipChangeSelecter == false) return;
+        Debug.Log(slotID+"個目のスロットが選択されたよ～");
+        EquipSlots = true;
+        EquipChangeSelecter = false;
     }
 }

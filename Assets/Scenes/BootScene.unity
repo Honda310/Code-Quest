@@ -401,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 1182703130}
   - component: {fileID: 1182703129}
   - component: {fileID: 1182703127}
+  - component: {fileID: 1182703143}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -747,7 +748,7 @@ MonoBehaviour:
   dojoManager: {fileID: 1182703130}
   player: {fileID: 2088172326}
   neto: {fileID: 881097284}
-  inventory: {fileID: 0}
+  inventory: {fileID: 1182703143}
   spawnPlayer: {fileID: 1182703142}
 --- !u!4 &1182703141
 Transform:
@@ -776,6 +777,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a905953c6df3e46b3d695ca5e90209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPlayer
+--- !u!114 &1182703143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182703126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e80328bdf0f0134298589f233eaaaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  items: []
 --- !u!1001 &2088172322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -806,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.z

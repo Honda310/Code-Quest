@@ -4,10 +4,10 @@
 [System.Serializable]
 public class CarryItem
 {
-    public SupportItem item;
+    public Item item;
     public int quantity;
 
-    public CarryItem(SupportItem item, int quantity)
+    public CarryItem(Item item, int quantity)
     {
         this.item = item;
         this.quantity = quantity;
