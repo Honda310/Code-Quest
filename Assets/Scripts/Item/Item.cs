@@ -9,12 +9,20 @@ public abstract class Item
     public string ItemName; // ñºëO
     public int Rarity;      // ÉåÉAìx
     public string Flavor;   // ê‡ñæï∂
+    public ItemType Type;
 
-    public Item(int id, string name, int rarity, string flavor)
+    public Item(int id, string name, int rarity, ItemType type, string flavor)
     {
         ItemID = id;
         ItemName = name;
         Rarity = rarity;
+        Type = type;
         Flavor = flavor;
+    }
+    public enum ItemType
+    {
+        Weapon,
+        Accessory,
+        Support
     }
 }

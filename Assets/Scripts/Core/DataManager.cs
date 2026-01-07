@@ -1,5 +1,6 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// 【データ管理】
@@ -34,9 +35,9 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 6 || line.Length > 6) continue;
+            if (line.Length < 7 || line.Length > 7) continue;
 			int id = int.Parse(line[0]);
-            Weapon w = new Weapon(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
+            Weapon w = new Weapon(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
             if (!WeaponMaster.ContainsKey(id)) WeaponMaster.Add(id, w);
 
         }
@@ -48,9 +49,9 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 5 || line.Length > 5) continue;
+            if (line.Length < 6 || line.Length > 6) continue;
 			int id = int.Parse(line[0]);
-            Accessory a = new Accessory(id, line[1], int.Parse(line[2]), int.Parse(line[3]), line[4]);
+            Accessory a = new Accessory(id, line[1], int.Parse(line[2]), int.Parse(line[3]), Enum.Parse<Item.ItemType>(line[4]), line[5]);
             if (!AccessoryMaster.ContainsKey(id)) AccessoryMaster.Add(id, a);
         }
         Debug.Log($"アクセサリマスタ: {AccessoryMaster.Count}件 ロード完了");
@@ -63,7 +64,7 @@ public class DataManager : MonoBehaviour
         {
             if (line.Length < 6 || line.Length > 6) continue;
 			int id = int.Parse(line[0]);
-            SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), line[5]);
+            SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
             if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
         }
         Debug.Log($"補助アイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
@@ -105,23 +106,17 @@ public class DataManager : MonoBehaviour
         }
         Debug.Log($"敵マスタ: {EnemyMaster.Count}件 ロード完了");
     }
-	public enum ItemType
-	{
-	    Weapon,
-	    Accessory,
-	    Support
-	}
-	public Item GetItemById(ItemType type, int id)
+	public Item GetItemById(Item.ItemType type, int id)
 	{
 	    switch (type)
 	    {
-	        case ItemType.Weapon:
+	        case Item.ItemType.Weapon:
 	            return WeaponMaster.TryGetValue(id, out var w) ? w : null;
 
-	        case ItemType.Accessory:
+	        case Item.ItemType.Accessory:
 	            return AccessoryMaster.TryGetValue(id, out var a) ? a : null;
 
-	        case ItemType.Support:
+	        case Item.ItemType.Support:
 	            return SupportItemMaster.TryGetValue(id, out var s) ? s : null;
 	    }
 	    return null;

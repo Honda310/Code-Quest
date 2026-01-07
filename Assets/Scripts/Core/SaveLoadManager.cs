@@ -20,7 +20,7 @@ public class SaveLoadManager : MonoBehaviour
         public List<int> inventoryIDs; // 持っているアイテムのIDリスト
         public List<int> inventoryCounts; // 持っているアイテムの個数リスト
     }
-	
+
 
     /// <summary>
     /// ゲームをセーブします
@@ -90,7 +90,7 @@ public class SaveLoadManager : MonoBehaviour
                 int count = data.inventoryCounts[i];
 
                 // IDからアイテムデータを検索
-                Item itemObj = GameManager.Instance.dataManager.GetItemById(DataManager.ItemType.Support,id);
+                Item itemObj = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Support,id);
 
                 // アイテムが存在し、かつサポートアイテムであれば追加
                 if (itemObj != null && itemObj is SupportItem)

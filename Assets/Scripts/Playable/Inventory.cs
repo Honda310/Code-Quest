@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 /// <summary>
 /// yŠ•iŠÇ—z
@@ -63,5 +64,19 @@ public class Inventory : MonoBehaviour
     public void Clear()
     {
         items.Clear();
+    }
+    public List<CarryItem> GetSortedItems()
+        {
+            return items
+                .OrderBy(c => c.item.ItemID)
+                .ToList();
+        }
+
+    public List<CarryItem> GetItemsByType(Item.ItemType type)
+    {
+        return items
+            .Where(c => c.item.Type == type)
+            .OrderBy(c => c.item.ItemID)
+            .ToList();
     }
 }
