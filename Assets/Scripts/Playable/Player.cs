@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public int CurrentHP=100;     // 現在HP
     public int BaseAtk=10;       // 基礎攻撃力
     public int BaseDef=10;       // 基礎防御力
+    public int DebugLimit = 5;
 
     // 装備やアイテムによる加算値（外部から読み取り専用）
     public int WeaponAtk { get; private set; }    // 武器による攻撃力加算
@@ -53,7 +54,6 @@ public class Player : MonoBehaviour
     // スプライト画像をキャッシュする辞書
     // Key: "方向キー_インデックス" (例: "w_1"), Value: 対応するSprite
     private Dictionary<string, Sprite> sprites;
-    public event System.Action StatusChanged;
 
     private static Player instance;
 
@@ -191,22 +191,21 @@ public class Player : MonoBehaviour
     /// 武器を装備し、攻撃力を更新する
     /// </summary>
     /// <param name="weapon">装備する武器データ</param>
-    public void EquipWeapon(Weapon weapon)
+    public void EquipWeapon(Item item)
     {
+        Weapon weapon = item as Weapon;
         WeaponAtk = weapon.Atk;
-        // UIのステータス表示を更新
-        StatusChanged();
+        DebugLimit = weapon.TimeLimit;
     }
 
     /// <summary>
     /// 防具（アクセサリ）を装備し、防御力を更新する
     /// </summary>
     /// <param name="accessory">装備するアクセサリデータ</param>
-    public void EquipAccessory(Accessory accessory)
+    public void EquipAccessory(Item item)
     {
+        Accessory accessory = item as Accessory;
         AccessoryDef = accessory.Def;
-        // UIのステータス表示を更新
-        StatusChanged();
     }
 
     /// <summary>

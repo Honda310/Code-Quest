@@ -73,8 +73,6 @@ public class GameManager : MonoBehaviour
 
         // クイズデータを読み込みます
         questManager.LoadQuests();
-
-        // ログに起動完了を表示します
     }
 
     private void Update()
@@ -84,7 +82,27 @@ public class GameManager : MonoBehaviour
             UIManager.Active?.MenuToggle();
             Debug.Log("called");
         }
-
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                Item item = dataManager.GetItemById(Item.ItemType.Weapon, 30000+i);
+                inventory.AddItem(item,1);
+            }
+            for (int i = 1; i <= 5; i++)
+            {
+                Item item = dataManager.GetItemById(Item.ItemType.Accessory, 20000 + i);
+                inventory.AddItem(item, 1);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            UIManager.Active?.EquipSelectorAllowDown();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            UIManager.Active?.EquipSelectorAllowUp();
+        }
     }
     public void RegisterBattleManager(BattleManager bm)
     {

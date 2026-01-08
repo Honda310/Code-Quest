@@ -5074,7 +5074,7 @@ GameObject:
   - component: {fileID: 422187743}
   - component: {fileID: 422187742}
   m_Layer: 5
-  m_Name: EquipSelectText1
+  m_Name: EquipSelectText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9073,7 +9073,7 @@ GameObject:
   - component: {fileID: 782768137}
   - component: {fileID: 782768136}
   m_Layer: 5
-  m_Name: EquipSelectText1
+  m_Name: EquipSelectText4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13592,7 +13592,7 @@ GameObject:
   - component: {fileID: 1227806435}
   - component: {fileID: 1227806434}
   m_Layer: 5
-  m_Name: EquipSelectText1
+  m_Name: EquipSelectText3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19754,7 +19754,7 @@ GameObject:
   - component: {fileID: 1778774226}
   - component: {fileID: 1778774225}
   m_Layer: 5
-  m_Name: EquipSelectText1
+  m_Name: EquipSelectText5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21919,6 +21919,7 @@ MonoBehaviour:
   CurrentHP: 100
   BaseAtk: 20
   BaseDef: 10
+  DebugLimit: 5
   moveSpeed: 100
 --- !u!4 &1993696367 stripped
 Transform:
@@ -23011,17 +23012,17 @@ MonoBehaviour:
   ConfigPanel: {fileID: 526783924}
   KeyBindPanel: {fileID: 1472970647}
   CharaNameText: {fileID: 1008641315}
-  EquipWeaponName: {fileID: 0}
-  EquipAccessoryName: {fileID: 0}
-  currentHPText: {fileID: 0}
-  CurrentAtkSlot: {fileID: 0}
-  CurrentDefSlot: {fileID: 0}
-  CurrentDebugLimitText: {fileID: 0}
-  EquipItemSelectSlot1: {fileID: 0}
-  EquipItemSelectSlot2: {fileID: 0}
-  EquipItemSelectSlot3: {fileID: 0}
-  EquipItemSelectSlot4: {fileID: 0}
-  EquipItemSelectSlot5: {fileID: 0}
+  EquipWeaponName: {fileID: 596515798}
+  EquipAccessoryName: {fileID: 1368775925}
+  CurrentHPText: {fileID: 921286901}
+  CurrentAtkText: {fileID: 386367736}
+  CurrentDefText: {fileID: 372415503}
+  CurrentDebugLimitText: {fileID: 433812248}
+  EquipItemSelectSlot1: {fileID: 1825526038}
+  EquipItemSelectSlot2: {fileID: 422187742}
+  EquipItemSelectSlot3: {fileID: 1227806434}
+  EquipItemSelectSlot4: {fileID: 782768136}
+  EquipItemSelectSlot5: {fileID: 1778774225}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

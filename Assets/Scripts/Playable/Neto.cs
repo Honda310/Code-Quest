@@ -142,6 +142,11 @@ public class Neto : MonoBehaviour
         if (angle >= 135f && angle < 225f) return 3;
         return 4;
     }
+    public void EquipAccessory(Item item)
+    {
+        Accessory accessory = item as Accessory;
+        AccessoryDef = accessory.Def;
+    }
 
     // FollowPlayer2D ‚©‚çŒÄ‚Î‚ê‚é
     public void UpdateMoveDelta(Vector2 delta)

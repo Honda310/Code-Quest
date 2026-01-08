@@ -66,11 +66,11 @@ public class Inventory : MonoBehaviour
         items.Clear();
     }
     public List<CarryItem> GetSortedItems()
-        {
-            return items
-                .OrderBy(c => c.item.ItemID)
-                .ToList();
-        }
+    {
+        return items
+            .OrderBy(c => c.item.ItemID)
+            .ToList();
+    }
 
     public List<CarryItem> GetItemsByType(Item.ItemType type)
     {
