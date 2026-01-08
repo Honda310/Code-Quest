@@ -1,5 +1,5 @@
-﻿20001,青いブローチ,1,5,test_blue_brooch
-20002,赤いブローチ,2,10,test_red_brooch
-20003,黄色のネックレス,3,15,test_yellow_necklace
-20004,緑色のイヤリング,4,20,test_green_earring
-20005,白銀のブレスレット,5,30,test_silver_bracelet
+﻿20001,青いブローチ,1,5,Accessory,test_blue_brooch
+20002,赤いブローチ,2,10,Accessory,test_red_brooch
+20003,黄色のネックレス,3,15,Accessory,test_yellow_necklace
+20004,緑色のイヤリング,4,20,Accessory,test_green_earring
+20005,白銀のブレスレット,5,30,Accessory,test_silver_bracelet

@@ -67,7 +67,7 @@ public class DataManager : MonoBehaviour
             SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
             if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
         }
-        Debug.Log($"補助アイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
+        Debug.Log($"サポートアイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
     }
 
     // --------------------------------------------------------
