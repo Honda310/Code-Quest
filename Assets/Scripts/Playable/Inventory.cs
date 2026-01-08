@@ -79,4 +79,10 @@ public class Inventory : MonoBehaviour
             .OrderBy(c => c.item.ItemID)
             .ToList();
     }
+    void Refresh(Item.ItemType? filter = null)
+    {
+        List<CarryItem> list = filter.HasValue
+            ? GetItemsByType(filter.Value)
+            : GetSortedItems();
+    }
 }
