@@ -23027,6 +23027,7 @@ MonoBehaviour:
   EquipItemSelectSlot3: {fileID: 1227806434}
   EquipItemSelectSlot4: {fileID: 782768136}
   EquipItemSelectSlot5: {fileID: 1778774225}
+  EquipSelectorcursorPosition: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -4217,7 +4217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.8
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5854,6 +5854,7 @@ GameObject:
   - component: {fileID: 845724294}
   - component: {fileID: 845724296}
   - component: {fileID: 845724295}
+  - component: {fileID: 845724297}
   m_Layer: 0
   m_Name: Square (11)
   m_TagString: Untagged
@@ -5980,6 +5981,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &845724297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845724293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5896602ade5db1b4a888d2110402c923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapChangeScript
+  TransId: 1
 --- !u!1 &855139795
 GameObject:
   m_ObjectHideFlags: 0
@@ -6745,6 +6759,7 @@ MonoBehaviour:
   BaseDef: 10
   moveDelta: {x: 0, y: 0}
   quadrant: 0
+  target: {fileID: 0}
 --- !u!50 &956422156
 Rigidbody2D:
   serializedVersion: 5
@@ -8401,17 +8416,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40896019c21f4b747833b921afd5871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  playerStatusText: {fileID: 0}
-  netoStatusText: {fileID: 0}
+  PlayerStatusText: {fileID: 0}
+  NetoStatusText: {fileID: 0}
+  EnemyStatusText: {fileID: 0}
+  PlayerStatusSlider: {fileID: 0}
+  NetoStatusSlider: {fileID: 0}
+  EnemyStatusSlider: {fileID: 0}
   logText: {fileID: 0}
-  inventoryPanel: {fileID: 0}
   battlePanel: {fileID: 0}
   battleQuestText: {fileID: 0}
   battleInfoText: {fileID: 0}
+  PlSelectLabelText: {fileID: 0}
+  NetoSelectLabelText: {fileID: 0}
+  DifficultSelectText: {fileID: 0}
   answerInput: {fileID: 0}
   shopPanel: {fileID: 0}
   dojoPanel: {fileID: 0}
   itemDebugPanel: {fileID: 0}
+  PlSelectPanel: {fileID: 0}
+  NetoselectPanel: {fileID: 0}
+  HealthDpSlidersAndCharactersPanel: {fileID: 0}
+  DifficultSelectPanel: {fileID: 0}
+  QuestFramePanel: {fileID: 0}
+  DifficultAndCheckButtonFramePanel: {fileID: 0}
+  DifficultAndSelectButtonFramePanel: {fileID: 0}
+  MenuPanel: {fileID: 0}
+  MenuBarPanel: {fileID: 0}
+  ItemPanel: {fileID: 0}
+  EquipandStatusPanel: {fileID: 0}
+  ConfigPanel: {fileID: 0}
+  KeyBindPanel: {fileID: 0}
+  CharaNameText: {fileID: 0}
+  EquipWeaponName: {fileID: 0}
+  EquipAccessoryName: {fileID: 0}
+  CurrentHPText: {fileID: 0}
+  CurrentAtkText: {fileID: 0}
+  CurrentDefText: {fileID: 0}
+  CurrentDebugLimitText: {fileID: 0}
+  EquipItemSelectSlot1: {fileID: 0}
+  EquipItemSelectSlot2: {fileID: 0}
+  EquipItemSelectSlot3: {fileID: 0}
+  EquipItemSelectSlot4: {fileID: 0}
+  EquipItemSelectSlot5: {fileID: 0}
+  EquipSelectorcursorPosition: 0
 --- !u!114 &1294007461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8499,7 +8546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bf9c832fdbe2d42adb1951e565b73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
+  enemyPrefab: {fileID: 0}
+  enemySpawnPoint: {fileID: 0}
   currentEnemy: {fileID: 0}
+  choicechecker: {fileID: 0}
+  writechecker: {fileID: 0}
+  uimanager: {fileID: 0}
 --- !u!114 &1294007468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8560,7 +8612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b736f07f702a1d9409e5e7d20e21126d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  uiManager: {fileID: 0}
   dataManager: {fileID: 1294007471}
   questManager: {fileID: 1294007468}
   eventManager: {fileID: 1294007469}
@@ -8573,6 +8624,7 @@ MonoBehaviour:
   player: {fileID: 1391875385}
   neto: {fileID: 956422155}
   inventory: {fileID: 0}
+  spawnPlayer: {fileID: 0}
 --- !u!4 &1294007473
 Transform:
   m_ObjectHideFlags: 0
@@ -9546,6 +9598,7 @@ MonoBehaviour:
   CurrentHP: 100
   BaseAtk: 10
   BaseDef: 10
+  DebugLimit: 5
   moveSpeed: 500
 --- !u!61 &1391875386
 BoxCollider2D:
@@ -11963,11 +12016,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -142.4
+      value: -140
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.799992
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.z

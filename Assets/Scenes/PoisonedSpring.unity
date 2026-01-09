@@ -594,17 +594,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40896019c21f4b747833b921afd5871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  playerStatusText: {fileID: 0}
-  netoStatusText: {fileID: 0}
+  PlayerStatusText: {fileID: 0}
+  NetoStatusText: {fileID: 0}
+  EnemyStatusText: {fileID: 0}
+  PlayerStatusSlider: {fileID: 0}
+  NetoStatusSlider: {fileID: 0}
+  EnemyStatusSlider: {fileID: 0}
   logText: {fileID: 0}
-  inventoryPanel: {fileID: 0}
   battlePanel: {fileID: 2053120765}
   battleQuestText: {fileID: 206625682}
   battleInfoText: {fileID: 848069577}
+  PlSelectLabelText: {fileID: 0}
+  NetoSelectLabelText: {fileID: 0}
+  DifficultSelectText: {fileID: 0}
   answerInput: {fileID: 1299582740}
   shopPanel: {fileID: 1894122445}
   dojoPanel: {fileID: 1088696}
   itemDebugPanel: {fileID: 940275358}
+  PlSelectPanel: {fileID: 0}
+  NetoselectPanel: {fileID: 0}
+  HealthDpSlidersAndCharactersPanel: {fileID: 0}
+  DifficultSelectPanel: {fileID: 0}
+  QuestFramePanel: {fileID: 0}
+  DifficultAndCheckButtonFramePanel: {fileID: 0}
+  DifficultAndSelectButtonFramePanel: {fileID: 0}
+  MenuPanel: {fileID: 0}
+  MenuBarPanel: {fileID: 0}
+  ItemPanel: {fileID: 0}
+  EquipandStatusPanel: {fileID: 0}
+  ConfigPanel: {fileID: 0}
+  KeyBindPanel: {fileID: 0}
+  CharaNameText: {fileID: 0}
+  EquipWeaponName: {fileID: 0}
+  EquipAccessoryName: {fileID: 0}
+  CurrentHPText: {fileID: 0}
+  CurrentAtkText: {fileID: 0}
+  CurrentDefText: {fileID: 0}
+  CurrentDebugLimitText: {fileID: 0}
+  EquipItemSelectSlot1: {fileID: 0}
+  EquipItemSelectSlot2: {fileID: 0}
+  EquipItemSelectSlot3: {fileID: 0}
+  EquipItemSelectSlot4: {fileID: 0}
+  EquipItemSelectSlot5: {fileID: 0}
+  EquipSelectorcursorPosition: 0
 --- !u!114 &17832972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,7 +724,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bf9c832fdbe2d42adb1951e565b73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
+  enemyPrefab: {fileID: 0}
+  enemySpawnPoint: {fileID: 0}
   currentEnemy: {fileID: 95515340}
+  choicechecker: {fileID: 0}
+  writechecker: {fileID: 0}
+  uimanager: {fileID: 0}
 --- !u!114 &17832979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,7 +790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b736f07f702a1d9409e5e7d20e21126d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  uiManager: {fileID: 717342227}
   dataManager: {fileID: 17832982}
   questManager: {fileID: 17832979}
   eventManager: {fileID: 17832980}
@@ -766,6 +802,7 @@ MonoBehaviour:
   player: {fileID: 874623089}
   neto: {fileID: 140917071}
   inventory: {fileID: 0}
+  spawnPlayer: {fileID: 0}
 --- !u!4 &17832984
 Transform:
   m_ObjectHideFlags: 0
@@ -1407,7 +1444,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   EnemyID: 1
   MaxDP: 20
-  CurrentDP: 0
   Atk: 10
   QuestionCategories: 00000000
 --- !u!58 &95515341
@@ -1995,6 +2031,7 @@ MonoBehaviour:
   BaseDef: 10
   moveDelta: {x: 0, y: 0}
   quadrant: 0
+  target: {fileID: 0}
 --- !u!50 &140917072
 Rigidbody2D:
   serializedVersion: 5
@@ -6167,17 +6204,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40896019c21f4b747833b921afd5871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  playerStatusText: {fileID: 0}
-  netoStatusText: {fileID: 0}
+  PlayerStatusText: {fileID: 0}
+  NetoStatusText: {fileID: 0}
+  EnemyStatusText: {fileID: 0}
+  PlayerStatusSlider: {fileID: 0}
+  NetoStatusSlider: {fileID: 0}
+  EnemyStatusSlider: {fileID: 0}
   logText: {fileID: 0}
-  inventoryPanel: {fileID: 27180213}
   battlePanel: {fileID: 2053120765}
   battleQuestText: {fileID: 206625682}
   battleInfoText: {fileID: 848069577}
+  PlSelectLabelText: {fileID: 0}
+  NetoSelectLabelText: {fileID: 0}
+  DifficultSelectText: {fileID: 0}
   answerInput: {fileID: 1299582740}
   shopPanel: {fileID: 1894122445}
   dojoPanel: {fileID: 1088696}
   itemDebugPanel: {fileID: 940275358}
+  PlSelectPanel: {fileID: 0}
+  NetoselectPanel: {fileID: 0}
+  HealthDpSlidersAndCharactersPanel: {fileID: 0}
+  DifficultSelectPanel: {fileID: 0}
+  QuestFramePanel: {fileID: 0}
+  DifficultAndCheckButtonFramePanel: {fileID: 0}
+  DifficultAndSelectButtonFramePanel: {fileID: 0}
+  MenuPanel: {fileID: 0}
+  MenuBarPanel: {fileID: 0}
+  ItemPanel: {fileID: 0}
+  EquipandStatusPanel: {fileID: 0}
+  ConfigPanel: {fileID: 0}
+  KeyBindPanel: {fileID: 0}
+  CharaNameText: {fileID: 0}
+  EquipWeaponName: {fileID: 0}
+  EquipAccessoryName: {fileID: 0}
+  CurrentHPText: {fileID: 0}
+  CurrentAtkText: {fileID: 0}
+  CurrentDefText: {fileID: 0}
+  CurrentDebugLimitText: {fileID: 0}
+  EquipItemSelectSlot1: {fileID: 0}
+  EquipItemSelectSlot2: {fileID: 0}
+  EquipItemSelectSlot3: {fileID: 0}
+  EquipItemSelectSlot4: {fileID: 0}
+  EquipItemSelectSlot5: {fileID: 0}
+  EquipSelectorcursorPosition: 0
 --- !u!114 &717342228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7346,11 +7415,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 194.5
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46.100006
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7464,6 +7533,7 @@ MonoBehaviour:
   CurrentHP: 100
   BaseAtk: 10
   BaseDef: 10
+  DebugLimit: 5
   moveSpeed: 100
 --- !u!61 &874623090
 BoxCollider2D:
