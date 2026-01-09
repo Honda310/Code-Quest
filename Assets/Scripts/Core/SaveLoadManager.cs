@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using static UnityEditor.Progress;
 
 /// <summary>
 /// 【セーブ・ロード】

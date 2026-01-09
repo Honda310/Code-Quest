@@ -7925,6 +7925,7 @@ GameObject:
   - component: {fileID: 666179741}
   - component: {fileID: 666179743}
   - component: {fileID: 666179742}
+  - component: {fileID: 666179744}
   m_Layer: 3
   m_Name: Square (32)
   m_TagString: Untagged
@@ -8051,6 +8052,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &666179744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666179740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5896602ade5db1b4a888d2110402c923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapChangeScript
+  TransId: 3
 --- !u!1 &666230167
 GameObject:
   m_ObjectHideFlags: 0
@@ -9158,7 +9172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_TagString
@@ -11163,6 +11177,7 @@ GameObject:
   - component: {fileID: 976924437}
   - component: {fileID: 976924439}
   - component: {fileID: 976924438}
+  - component: {fileID: 976924440}
   m_Layer: 3
   m_Name: Square (37)
   m_TagString: Untagged
@@ -11289,6 +11304,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &976924440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976924436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5896602ade5db1b4a888d2110402c923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapChangeScript
+  TransId: 1
 --- !u!1 &979140849
 GameObject:
   m_ObjectHideFlags: 0
@@ -22916,7 +22944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -22935,10 +22963,10 @@ Canvas:
   m_GameObject: {fileID: 2130257022}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1846544233}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0

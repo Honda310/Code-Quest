@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 482548532}
   - component: {fileID: 482548535}
   - component: {fileID: 482548536}
+  - component: {fileID: 482548537}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -375,6 +376,30 @@ MonoBehaviour:
   target: {fileID: 2088172323}
   smoothing: 5
   maxY: 45
+--- !u!114 &482548537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482548531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
+  m_ComponentVersion: 1
+  m_AssetsPPU: 1
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &881097280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -583,6 +608,7 @@ GameObject:
   - component: {fileID: 1182703129}
   - component: {fileID: 1182703127}
   - component: {fileID: 1182703143}
+  - component: {fileID: 1182703144}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -746,6 +772,7 @@ MonoBehaviour:
   itemDebugManager: {fileID: 1182703131}
   shopManager: {fileID: 1182703132}
   dojoManager: {fileID: 1182703130}
+  screenScaler: {fileID: 0}
   player: {fileID: 2088172326}
   neto: {fileID: 881097284}
   inventory: {fileID: 1182703143}
@@ -790,6 +817,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   items: []
+--- !u!114 &1182703144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182703126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71a0cdeef3b8764d9107d03f3db591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenScales
 --- !u!1001 &2088172322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -931,7 +970,8 @@ MonoBehaviour:
   CurrentHP: 100
   BaseAtk: 20
   BaseDef: 10
-  moveSpeed: 100
+  DebugLimit: 5
+  moveSpeed: 1000
 --- !u!50 &2088172327
 Rigidbody2D:
   serializedVersion: 5

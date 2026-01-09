@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public ItemDebugManager itemDebugManager; // アイテムデバッグ機能
     public ShopManager shopManager;           // ショップ機能
     public DojoManager dojoManager;           // ネト道場機能
+    public ScreenScales screenScaler;
 
     [Header("プレイヤーデータ")]
     public Player player;       // 主人公
@@ -102,6 +103,19 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             UIManager.Active?.EquipSelectorAllowUp();
+        }
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            screenScaler.SetScale(ScreenScales.ScreenScale.x4);
+        }
+        else if (Input.GetKeyDown(KeyCode.F11))
+        {
+
+            screenScaler.SetScale(ScreenScales.ScreenScale.x5);
+        }
+        else if (Input.GetKeyDown(KeyCode.F12))
+        {
+            screenScaler.SetScale(ScreenScales.ScreenScale.x6);
         }
     }
     public void RegisterBattleManager(BattleManager bm)
