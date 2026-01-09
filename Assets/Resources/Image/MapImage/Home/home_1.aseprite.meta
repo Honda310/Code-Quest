@@ -1,0 +1,747 @@
+fileFormatVersion: 2
+guid: 156d378510281414c9eae326d40a769d
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639015654354621670
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: background
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 320
+      height: 180
+    spriteID: 79676b606fe9b4247bb2e48128b95bfe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: floor
+    originalName: 
+    pivot: {x: 0.4979757, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 192
+      width: 247
+      height: 96
+    spriteID: 9340503b494e85b4cb2755e7944d8ba4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 192}
+  - name: wall
+    originalName: 
+    pivot: {x: 0.49596775, y: -1.2337662}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 259
+      y: 192
+      width: 248
+      height: 77
+    spriteID: 831c5772d924e784eb628e306b58ba95
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 259, y: 192}
+  - name: bed
+    originalName: 
+    pivot: {x: -2.2500002, y: -0.765625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 4
+      width: 36
+      height: 64
+    spriteID: e214cc9b03a3d8d498c4969787c8a98c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 4}
+  - name: poster_blue
+    originalName: 
+    pivot: {x: 1.825, y: -4.3461537}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 414
+      y: 4
+      width: 40
+      height: 26
+    spriteID: c20047867a929614abea6b65a8fdb232
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 414, y: 4}
+  - name: poster_pumpkin
+    originalName: 
+    pivot: {x: -3.1851852, y: -8.133333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 376
+      y: 108
+      width: 27
+      height: 15
+    spriteID: 71e7d492ad1dde24999accb24e9fac33
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 376, y: 108}
+  - name: poster
+    originalName: 
+    pivot: {x: -5, y: -5.5454545}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 376
+      y: 131
+      width: 14
+      height: 22
+    spriteID: 80ac3bc70102f5048ae2729740324d77
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 376, y: 131}
+  - name: closet
+    originalName: 
+    pivot: {x: 3.2857144, y: -1.3442624}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 76
+      width: 35
+      height: 61
+    spriteID: f0194ca35b4189a46a3369cb834b98e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 76}
+  - name: shelf
+    originalName: 
+    pivot: {x: 2.4666667, y: -1.9069768}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 376
+      y: 4
+      width: 30
+      height: 43
+    spriteID: ace16547a11df9047bd6418a2ba8eba0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 376, y: 4}
+  - name: light
+    originalName: 
+    pivot: {x: -4, y: -1.9111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 376
+      y: 55
+      width: 15
+      height: 45
+    spriteID: efc358ce841a7d44fab406dd6d05ffa2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 376, y: 55}
+  - name: doll_white
+    originalName: 
+    pivot: {x: -2.1904764, y: -3.652174}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 145
+      width: 21
+      height: 23
+    spriteID: 36e6a0aeee1f5af418da1576c169ba72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 145}
+  - name: book
+    originalName: 
+    pivot: {x: 0.4285717, y: -5.3}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 376
+      y: 161
+      width: 7
+      height: 10
+    spriteID: b0c345377e80e5f4092b55dc5da18f3d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 376, y: 161}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    uuid:
+      value0: 297084606
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: background
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 320
+        height: 180
+      spriteId: 79676b606fe9b4247bb2e48128b95bfe
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 1770475899
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: room
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 2
+    uuid:
+      value0: 1065790720
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: floor
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: floor
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 37
+        y: 0
+        width: 247
+        height: 96
+      spriteId: 9340503b494e85b4cb2755e7944d8ba4
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 1
+  - layerIndex: 3
+    uuid:
+      value0: 3245712230
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: wall
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: wall
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 37
+        y: 95
+        width: 248
+        height: 77
+      spriteId: 831c5772d924e784eb628e306b58ba95
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 1
+  - layerIndex: 4
+    uuid:
+      value0: 1921814400
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: furniture
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 5
+    uuid:
+      value0: 1582721992
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: bed
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: bed
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 241
+        y: 49
+        width: 36
+        height: 64
+      spriteId: e214cc9b03a3d8d498c4969787c8a98c
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 6
+    uuid:
+      value0: 3329620613
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: poster_blue
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: poster_blue
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 87
+        y: 113
+        width: 40
+        height: 26
+      spriteId: c20047867a929614abea6b65a8fdb232
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 7
+    uuid:
+      value0: 2210199419
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: poster_pumpkin
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: poster_pumpkin
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 246
+        y: 122
+        width: 27
+        height: 15
+      spriteId: 71e7d492ad1dde24999accb24e9fac33
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 8
+    uuid:
+      value0: 1112663684
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: poster
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: poster
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 230
+        y: 122
+        width: 14
+        height: 22
+      spriteId: 80ac3bc70102f5048ae2729740324d77
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 9
+    uuid:
+      value0: 3053869133
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: closet
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: closet
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 45
+        y: 82
+        width: 35
+        height: 61
+      spriteId: f0194ca35b4189a46a3369cb834b98e1
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 10
+    uuid:
+      value0: 892005943
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: shelf
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: shelf
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 86
+        y: 82
+        width: 30
+        height: 43
+      spriteId: ace16547a11df9047bd6418a2ba8eba0
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 11
+    uuid:
+      value0: 4165317509
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: light
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: light
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 220
+        y: 86
+        width: 15
+        height: 45
+      spriteId: efc358ce841a7d44fab406dd6d05ffa2
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 12
+    uuid:
+      value0: 3095754286
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: doll_white
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: doll_white
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 206
+        y: 84
+        width: 21
+        height: 23
+      spriteId: 36e6a0aeee1f5af418da1576c169ba72
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 13
+    uuid:
+      value0: 3244710916
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: book
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: book
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 157
+        y: 53
+        width: 7
+        height: 10
+      spriteId: b0c345377e80e5f4092b55dc5da18f3d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 320, y: 180}
+  previousTextureSize: {x: 512, y: 512}

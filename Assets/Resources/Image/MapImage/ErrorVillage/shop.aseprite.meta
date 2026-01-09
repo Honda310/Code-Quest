@@ -1,0 +1,985 @@
+fileFormatVersion: 2
+guid: 1e4fe63576007124eb5cdc5d750c17a7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639010571743818414
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: background
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 340
+      height: 180
+    spriteID: 9bb17de7ffe692a4b9ed81ef72b3db31
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: anfai
+    originalName: 
+    pivot: {x: 0.60431653, y: -0.5169492}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 352
+      y: 4
+      width: 139
+      height: 118
+    spriteID: 0ecf745a795d8e54aa46d4d9687f6a14
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 352, y: 4}
+  - name: mainfr
+    originalName: 
+    pivot: {x: 0.5, y: -0.013157895}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 192
+      width: 338
+      height: 76
+    spriteID: 42804305ddae95b4fac07b540aa4b86c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 192}
+  - name: exitfr
+    originalName: 
+    pivot: {x: -1.1917809, y: -0.42857143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 435
+      y: 192
+      width: 73
+      height: 21
+    spriteID: 2ef1c3302e02efd44b0ef2de97234470
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 435, y: 192}
+  - name: talkfr
+    originalName: 
+    pivot: {x: -1.1333333, y: -1.45}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 352
+      y: 130
+      width: 75
+      height: 20
+    spriteID: e1b9003c1873d564a9b43e42e77d0905
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 352, y: 130}
+  - name: tradefr
+    originalName: 
+    pivot: {x: -1.1917809, y: -2.45}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 435
+      y: 130
+      width: 73
+      height: 20
+    spriteID: a3f665c8b5316af41b59fc0ebb649f2d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 435, y: 130}
+  - name: selectfr
+    originalName: 
+    pivot: {x: -1.1038961, y: -0.10937501}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 350
+      y: 192
+      width: 77
+      height: 64
+    spriteID: a18b14fd07477184eac442e58f785c71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 350, y: 192}
+  - name: returntalkfr
+    originalName: 
+    pivot: {x: -1.1917809, y: -0.45000002}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 435
+      y: 221
+      width: 73
+      height: 20
+    spriteID: 9baa0ed7c81dc154a93153593e0dd918
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 435, y: 221}
+  - name: topicworldfr
+    originalName: 
+    pivot: {x: -1.1917809, y: -1.45}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 352
+      y: 158
+      width: 73
+      height: 20
+    spriteID: da2bc25acf8503d47aaccfdb5ca27c7f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 352, y: 158}
+  - name: topicwhoareyoufr
+    originalName: 
+    pivot: {x: -1.1917809, y: -2.45}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 433
+      y: 158
+      width: 73
+      height: 20
+    spriteID: 716c965eb4a3e38489588d7bda7b63cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 433, y: 158}
+  - name: linesfr
+    originalName: 
+    pivot: {x: 0.66945606, y: -0.10937501}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 276
+      width: 239
+      height: 64
+    spriteID: 0be12094419b02f479c57bd99496c4ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 276}
+  - name: iteminfo
+    originalName: 
+    pivot: {x: -0.5399999, y: -0.15}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 444
+      y: 276
+      width: 50
+      height: 60
+    spriteID: 1d4ff67e436e7d74b90ab0ad77dd61b5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 444, y: 276}
+  - name: itemlistfr
+    originalName: 
+    pivot: {x: 0.85405403, y: -0.15}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 251
+      y: 276
+      width: 185
+      height: 60
+    spriteID: dad4aea546e62784badfc87b6702d3d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 251, y: 276}
+  - name: arrowdown
+    originalName: 
+    pivot: {x: -2.8000019, y: -3}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 502
+      y: 276
+      width: 5
+      height: 9
+    spriteID: c94e9614ad795bc4b9b0f5447c4add48
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 502, y: 276}
+  - name: arrowup
+    originalName: 
+    pivot: {x: -2.8000019, y: -4.5555553}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 502
+      y: 293
+      width: 5
+      height: 9
+    spriteID: c071c561c583eb04b8d7741e65754ba8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 502, y: 293}
+  - name: '
+
+      sectionline'
+    originalName: 
+    pivot: {x: -22.999994, y: -1.1739131}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 502
+      y: 310
+      width: 1
+      height: 23
+    spriteID: 4cef88135c28f7044a40d9b995720c7a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 502, y: 310}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    uuid:
+      value0: 297084606
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 1708824347
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: background
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 340
+        height: 180
+      spriteId: 9bb17de7ffe692a4b9ed81ef72b3db31
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 0
+  - layerIndex: 2
+    uuid:
+      value0: 3786229821
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: anfai
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 3
+    uuid:
+      value0: 1477631511
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: anfai
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: anfai
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 86
+        y: 61
+        width: 139
+        height: 118
+      spriteId: 0ecf745a795d8e54aa46d4d9687f6a14
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 2
+  - layerIndex: 5
+    uuid:
+      value0: 1222406943
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: mainfr
+    layerFlags: 19
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: mainfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 1
+        y: 1
+        width: 338
+        height: 76
+      spriteId: 42804305ddae95b4fac07b540aa4b86c
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 6
+    uuid:
+      value0: 1735176686
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: selectfr
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 7
+    uuid:
+      value0: 852068987
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: exitfr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: exitfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 257
+        y: 9
+        width: 73
+        height: 21
+      spriteId: 2ef1c3302e02efd44b0ef2de97234470
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 6
+  - layerIndex: 8
+    uuid:
+      value0: 2673444057
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: talkfr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: talkfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 255
+        y: 29
+        width: 75
+        height: 20
+      spriteId: e1b9003c1873d564a9b43e42e77d0905
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 6
+  - layerIndex: 9
+    uuid:
+      value0: 378166405
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: tradefr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: tradefr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 257
+        y: 49
+        width: 73
+        height: 20
+      spriteId: a3f665c8b5316af41b59fc0ebb649f2d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 6
+  - layerIndex: 10
+    uuid:
+      value0: 1868737843
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: selectfr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: selectfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 255
+        y: 7
+        width: 77
+        height: 64
+      spriteId: a18b14fd07477184eac442e58f785c71
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 6
+  - layerIndex: 11
+    uuid:
+      value0: 2778557736
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: talk
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 12
+    uuid:
+      value0: 741765933
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: returntalkfr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: returntalkfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 257
+        y: 9
+        width: 73
+        height: 20
+      spriteId: 9baa0ed7c81dc154a93153593e0dd918
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 11
+  - layerIndex: 13
+    uuid:
+      value0: 1692258792
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: topicworldfr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: topicworldfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 257
+        y: 29
+        width: 73
+        height: 20
+      spriteId: da2bc25acf8503d47aaccfdb5ca27c7f
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 11
+  - layerIndex: 14
+    uuid:
+      value0: 4020159297
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: topicwhoareyoufr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: topicwhoareyoufr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 257
+        y: 49
+        width: 73
+        height: 20
+      spriteId: 716c965eb4a3e38489588d7bda7b63cc
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 11
+  - layerIndex: 15
+    uuid:
+      value0: 2259737969
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: linesfr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: linesfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 10
+        y: 7
+        width: 239
+        height: 64
+      spriteId: 0be12094419b02f479c57bd99496c4ed
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 16
+    uuid:
+      value0: 1600496903
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: tradeitem
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 17
+    uuid:
+      value0: 2660773239
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: iteminfo
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: iteminfo
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 197
+        y: 9
+        width: 50
+        height: 60
+      spriteId: 1d4ff67e436e7d74b90ab0ad77dd61b5
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 16
+  - layerIndex: 18
+    uuid:
+      value0: 1169896471
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: itemlistfr
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: itemlistfr
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 12
+        y: 9
+        width: 185
+        height: 60
+      spriteId: dad4aea546e62784badfc87b6702d3d9
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 16
+  - layerIndex: 19
+    uuid:
+      value0: 4182471647
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: arrowdown
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: arrowdown
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 184
+        y: 27
+        width: 5
+        height: 9
+      spriteId: c94e9614ad795bc4b9b0f5447c4add48
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 16
+  - layerIndex: 20
+    uuid:
+      value0: 62181712
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: arrowup
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: arrowup
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 184
+        y: 41
+        width: 5
+        height: 9
+      spriteId: c071c561c583eb04b8d7741e65754ba8
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 16
+  - layerIndex: 21
+    uuid:
+      value0: 443530872
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: '
+
+      sectionline'
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: '
+
+        sectionline'
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 193
+        y: 27
+        width: 1
+        height: 23
+      spriteId: 4cef88135c28f7044a40d9b995720c7a
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 16
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 340, y: 180}
+  previousTextureSize: {x: 512, y: 512}

@@ -1,0 +1,441 @@
+fileFormatVersion: 2
+guid: 3b45c9d30af454d45b2128408ebfdb8b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639010571743818414
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: background
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 320
+      height: 180
+    spriteID: e1e74eb5fec6c724ba1a99135495e52e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Road
+    originalName: 
+    pivot: {x: 0.7048458, y: -0.15315315}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 543
+      width: 227
+      height: 111
+    spriteID: 9d568f4cda247ad479e0e0a6511b150a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 543}
+  - name: obj1
+    originalName: 
+    pivot: {x: 0.5204082, y: -0.029411767}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 192
+      width: 294
+      height: 170
+    spriteID: 37f90eae1955166458830039a55abdb7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 192}
+  - name: obj2
+    originalName: 
+    pivot: {x: 0.5171233, y: -0.024242425}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 370
+      width: 292
+      height: 165
+    spriteID: afe880fde6332804292fdfac7a1ced28
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 370}
+  - name: house
+    originalName: 
+    pivot: {x: 0.6956522, y: -0.23448275}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 4
+      width: 115
+      height: 145
+    spriteID: fab61f42b62cced4089dd4ecea387c60
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 4}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    uuid:
+      value0: 297084606
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 1708824347
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: background
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 320
+        height: 180
+      spriteId: e1e74eb5fec6c724ba1a99135495e52e
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 0
+  - layerIndex: 2
+    uuid:
+      value0: 4143129884
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Road
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 3
+    uuid:
+      value0: 4260196771
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Road
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Road
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 17
+        width: 227
+        height: 111
+      spriteId: 9d568f4cda247ad479e0e0a6511b150a
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 2
+  - layerIndex: 4
+    uuid:
+      value0: 1099314147
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: obj
+    layerFlags: 35
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 5
+    uuid:
+      value0: 3402334508
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: obj1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: obj1
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 7
+        y: 5
+        width: 294
+        height: 170
+      spriteId: 37f90eae1955166458830039a55abdb7
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 6
+    uuid:
+      value0: 2999049981
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: obj2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: obj2
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 9
+        y: 4
+        width: 292
+        height: 165
+      spriteId: afe880fde6332804292fdfac7a1ced28
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 4
+  - layerIndex: 7
+    uuid:
+      value0: 82772026
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: house
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: house
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 80
+        y: 34
+        width: 115
+        height: 145
+      spriteId: fab61f42b62cced4089dd4ecea387c60
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 320, y: 180}
+  previousTextureSize: {x: 512, y: 1024}
