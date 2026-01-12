@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     [Header("メニュー画面の各パネル")]
     [SerializeField] private GameObject MenuPanel;
     [SerializeField] private GameObject MenuBarPanel;
+    [SerializeField] private GameObject MenuButtonPanel;
     [SerializeField] private GameObject ItemPanel;
     [SerializeField] private GameObject EquipandStatusPanel;
     [SerializeField] private GameObject ConfigPanel;
