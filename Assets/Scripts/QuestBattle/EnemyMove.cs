@@ -26,35 +26,41 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 direction = Vector2.zero;
-        roop_frame++;
-        if (roop_frame<=200)
+        if (GameManager.GameMode.Field == GameManager.Instance.CurrentMode)
         {
-            direction.x = 1;
-            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-        }else if (roop_frame <= 600)
-        {
-            direction.x = -1;
-            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-        }else if(roop_frame < 800)
-        {
-            direction.x = 1;
-            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+            Vector2 direction = Vector2.zero;
+            roop_frame++;
+            if (roop_frame <= 200)
+            {
+                direction.x = 1;
+                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+            }
+            else if (roop_frame <= 600)
+            {
+                direction.x = -1;
+                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+            }
+            else if (roop_frame < 800)
+            {
+                direction.x = 1;
+                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+                roop_frame = 0;
+            }
+            if (roop_frame % 20 == 0)
+            {
+                tale_moving = tale_moving * -1;
+            }
+            string spriteKey = $"{direction.x}_{tale_moving}";
+            if (sprites.ContainsKey(spriteKey))
+            {
+                GetComponent<SpriteRenderer>().sprite = sprites[spriteKey];
+            }
         }
-        else
-        {
-            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-            roop_frame = 0;
-        }
-        if (roop_frame % 20 == 0)
-        {
-            tale_moving = tale_moving * -1;
-        }
-        string spriteKey = $"{direction.x}_{tale_moving}";
-        if (sprites.ContainsKey(spriteKey))
-        {
-            GetComponent<SpriteRenderer>().sprite = sprites[spriteKey];
-        }
+        
     }
     Sprite Load(string name)
     {

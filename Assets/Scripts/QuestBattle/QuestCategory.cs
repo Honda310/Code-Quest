@@ -4,5 +4,7 @@
 public enum QuestCategory
 {
     Variable_AdditionAndSubtraction,
+    Variable_IncrementAndCompoundAssignmentPrecedence,
+    Variable_MultiplicationAndDivisionAndRemainder,
     None
 }

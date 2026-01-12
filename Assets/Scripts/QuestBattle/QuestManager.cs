@@ -11,6 +11,8 @@ public class QuestManager : MonoBehaviour
         categorizedQuests.Clear();
         // ファイル名とカテゴリを一致させて読み込み
         LoadFromSingleCSV("Data/Variable_AdditionAndSubtraction", QuestCategory.Variable_AdditionAndSubtraction);
+        LoadFromSingleCSV("Data/Variable_IncrementAndCompoundAssignmentPrecedence", QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence);
+        LoadFromSingleCSV("Data/Variable_MultiplicationAndDivisionAndRemainder", QuestCategory.Variable_MultiplicationAndDivisionAndRemainder);
         Debug.Log("[QuestManager] ロード完了");
     }
 

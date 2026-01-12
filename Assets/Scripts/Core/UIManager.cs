@@ -70,6 +70,7 @@ public class UIManager : MonoBehaviour
     private bool OnWeaponEquipSelecting;
     private bool OnPlayerEquipSelecting;
     public int EquipSelectorcursorPosition;
+    private int Test;
 
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
@@ -93,6 +94,7 @@ public class UIManager : MonoBehaviour
         inventory = GameManager.Instance.inventory;
         UpdateStatus(p,n);
         AllPanelClose();
+        Test = 0;
     }
 
     public void Update()
@@ -110,6 +112,12 @@ public class UIManager : MonoBehaviour
         {
             battlePanel.SetActive(false);
             shopPanel.SetActive(false);
+        }
+        Test++;
+        if (Test >= 60)
+        {
+            Debug.Log("asap");
+            Test = 0;
         }
     }
 
@@ -154,20 +162,20 @@ public class UIManager : MonoBehaviour
     {
         if (PlayerStatusText != null)
         {
-            CurrentHPText.text = $"HP  : {p.CurrentHP}/{p.MaxHP}";
-            CurrentAtkText.text= $"ATK : {p.CurrentAtk}";
-            CurrentDefText.text= $"DEF : {p.CurrentDef}";
-            CurrentDebugLimitText.text=$"Lim : {p.DebugLimit}s.";
+            CurrentHPText.text = $"  HP  : {p.CurrentHP}/{p.MaxHP}";
+            CurrentAtkText.text= $"  ATK : {p.CurrentAtk}";
+            CurrentDefText.text= $"  DEF : {p.CurrentDef}";
+            CurrentDebugLimitText.text=$" Lim : {p.DebugLimit}s.";
         }
     }
     public void UpdateStatus(Neto n)
     {
         if (NetoStatusText != null)
         {
-            CurrentHPText.text = $"HP  : {n.CurrentHP}/{p.MaxHP}";
-            CurrentAtkText.text = $"ATK : None";
-            CurrentDefText.text = $"DEF : {n.CurrentDef}";
-            CurrentDebugLimitText.text = $"Lim : None";
+            CurrentHPText.text = $"  HP  : {n.CurrentHP}/{p.MaxHP}";
+            CurrentAtkText.text = $"  ATK : None";
+            CurrentDefText.text = $"  DEF : {n.CurrentDef}";
+            CurrentDebugLimitText.text = $"  Lim : None";
 
         }
     }
@@ -524,7 +532,7 @@ public class UIManager : MonoBehaviour
         }
         OnWeaponEquipSelecting = true;
         EquipSelectorcursorPosition = 0;
-        WeaponSelectorChange(EquipSelectorcursorPosition);
+        WeaponSelectorChange(0);
         Debug.Log("武器スロットが選択されたよ");
         gameObject.GetComponentInChildren<Text>().text = "Selected";
         EquipSlots = false;
@@ -559,7 +567,6 @@ public class UIManager : MonoBehaviour
     }
     public void AccessorySelectorChange(int i)
     {
-
         if (inventory.GetItemsByType(Item.ItemType.Accessory) == null) return;
         List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
         if (accessoryItems[0 + i].item != null) EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
