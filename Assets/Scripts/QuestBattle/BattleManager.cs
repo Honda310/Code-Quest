@@ -71,8 +71,8 @@ public class BattleManager : MonoBehaviour
         // クエストカテゴリ初期化
         categories.Clear();
         categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-        //categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-        //categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
+        categories.Add(QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence);
+        categories.Add(QuestCategory.Variable_MultiplicationAndDivisionAndRemainder);
 
         questManager.CreateDeck(categories);
 
@@ -176,6 +176,10 @@ public class BattleManager : MonoBehaviour
         {
             Destroy(currentEnemy.gameObject);
             GameManager.Instance.MarkEnemyDefeated();
+        }
+        else
+        {
+
         }
 
         GameManager.Instance.SetMode(GameManager.GameMode.Field);

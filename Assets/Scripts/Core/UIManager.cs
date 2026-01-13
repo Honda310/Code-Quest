@@ -402,6 +402,7 @@ public class UIManager : MonoBehaviour
     {
         HealthDpSlidersAndCharactersPanel.SetActive(true);
         PlSelectPanel.SetActive(true);
+        UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
     }
     public void OnInventoryButtonClicked()
     {
