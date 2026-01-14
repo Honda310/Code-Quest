@@ -971,7 +971,7 @@ MonoBehaviour:
   BaseAtk: 20
   BaseDef: 10
   DebugLimit: 5
-  moveSpeed: 1000
+  moveSpeed: 100
 --- !u!50 &2088172327
 Rigidbody2D:
   serializedVersion: 5

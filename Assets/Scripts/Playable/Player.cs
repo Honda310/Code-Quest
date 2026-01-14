@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     // --- 移動・アニメーション関連 ---
     [Header("移動パラメータ")]
-    [SerializeField] private float moveSpeed = 5.0f; // 移動速度
+    [SerializeField] private float moveSpeed; // 移動速度
     private Rigidbody2D rb2d; // 物理演算用コンポーネント
 
     // アニメーション制御用変数

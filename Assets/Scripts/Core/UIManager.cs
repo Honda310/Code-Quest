@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject EquipandStatusPanel;
     [SerializeField] private GameObject ConfigPanel;
     [SerializeField] private GameObject KeyBindPanel;
+    [SerializeField] private GameObject CharaSelector;
+    [SerializeField] private GameObject NetoSelector;
 
     [Header("装備&ステータス画面の各テキスト&ボタン")]
     [SerializeField] private Text CharaNameText;
@@ -165,7 +167,7 @@ public class UIManager : MonoBehaviour
             CurrentHPText.text = $"  HP  : {p.CurrentHP}/{p.MaxHP}";
             CurrentAtkText.text= $"  ATK : {p.CurrentAtk}";
             CurrentDefText.text= $"  DEF : {p.CurrentDef}";
-            CurrentDebugLimitText.text=$" Lim : {p.DebugLimit}s.";
+            CurrentDebugLimitText.text=$"   Lim : {p.DebugLimit}s.";
         }
     }
     public void UpdateStatus(Neto n)
@@ -478,7 +480,8 @@ public class UIManager : MonoBehaviour
     
     public void MenuToggle()
     {
-
+        CharaSelector.SetActive(false);
+        NetoSelector.SetActive(false);
         if (MenuPanel.activeSelf == false)
         {
             MenuPanel.SetActive(true);
@@ -507,6 +510,8 @@ public class UIManager : MonoBehaviour
             Debug.Log("そのアイコンはfalseだよ");
             return;
         }
+        CharaSelector.SetActive(true);
+        NetoSelector.SetActive(false);
         UpdateStatus(p);
         OnPlayerEquipSelecting = true;
         Debug.Log("Charaアイコンが選択されたよ");
@@ -514,6 +519,8 @@ public class UIManager : MonoBehaviour
     }
     public void OnNetoIconClicked()
     {
+        CharaSelector.SetActive(false);
+        NetoSelector.SetActive(true);
         if (EquipCharacterSelecter == false)
         {
             Debug.Log("そのアイコンはfalseだよ");
