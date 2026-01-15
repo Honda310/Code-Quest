@@ -550,11 +550,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 70
-  m_MinHeight: 65
+  m_MinHeight: 55
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 70
-  m_FlexibleHeight: 65
+  m_FlexibleHeight: 55
   m_LayoutPriority: 1
 --- !u!222 &16006081
 CanvasRenderer:
@@ -1316,6 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
   EnemyID: 2
+  enemy: {fileID: 56578613}
 --- !u!114 &56578613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2684,11 +2685,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 320
-  m_MinHeight: 65
+  m_MinHeight: 55
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 320
-  m_FlexibleHeight: 65
+  m_FlexibleHeight: 55
   m_LayoutPriority: 1
 --- !u!222 &99139021
 CanvasRenderer:
@@ -4472,10 +4473,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1609093790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 31, y: -27}
+  m_SizeDelta: {x: 2, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &179628945
 MonoBehaviour:
@@ -5158,7 +5159,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   enemyPrefab: {fileID: 5616055682615443596, guid: 630061962aea32e49b294117609258a9, type: 3}
   enemySpawnPoint: {fileID: 1534752134}
-  currentEnemy: {fileID: 802629717}
   choicechecker: {fileID: 232121632}
   writechecker: {fileID: 232121631}
   uimanager: {fileID: 2130257028}
@@ -6835,11 +6835,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 71
-  m_MinHeight: 11
+  m_MinHeight: 6
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 71
-  m_FlexibleHeight: 11
+  m_FlexibleHeight: 6
   m_LayoutPriority: 1
 --- !u!222 &324268984
 CanvasRenderer:
@@ -8319,10 +8319,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1609093790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -27}
+  m_SizeDelta: {x: 30, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &402010794
 MonoBehaviour:
@@ -9911,11 +9911,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 71
-  m_MinHeight: 65
+  m_MinHeight: 55
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 71
-  m_FlexibleHeight: 65
+  m_FlexibleHeight: 55
   m_LayoutPriority: 1
 --- !u!222 &487449255
 CanvasRenderer:
@@ -10748,7 +10748,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1684867347}
+  - {fileID: 1777846282}
   m_Father: {fileID: 460778994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10770,11 +10772,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 320
-  m_MinHeight: 20
+  m_MinHeight: 30
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 320
-  m_FlexibleHeight: 20
+  m_FlexibleHeight: 30
   m_LayoutPriority: 1
 --- !u!222 &556580187
 CanvasRenderer:
@@ -13484,6 +13486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
   EnemyID: 1
+  enemy: {fileID: 670472903}
 --- !u!114 &670472903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14065,11 +14068,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 70
-  m_MinHeight: 65
+  m_MinHeight: 55
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 70
-  m_FlexibleHeight: 65
+  m_FlexibleHeight: 55
   m_LayoutPriority: 1
 --- !u!1001 &694165362
 PrefabInstance:
@@ -15241,6 +15244,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752028114}
   m_CullTransparentMesh: 1
+--- !u!1 &755799028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755799029}
+  - component: {fileID: 755799031}
+  - component: {fileID: 755799030}
+  - component: {fileID: 755799032}
+  m_Layer: 5
+  m_Name: NetoDamagePop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &755799029
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755799028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 894591814}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6, y: -7}
+  m_SizeDelta: {x: 10, y: 12}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &755799030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755799028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2c3deac6d7b85244f9a061da069277f1, type: 3}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 10
+--- !u!222 &755799031
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755799028}
+  m_CullTransparentMesh: 1
+--- !u!114 &755799032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755799028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9eab5002de91744683e71803906659a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamagePop
+  damageText: {fileID: 755799030}
+  duration: 1.3
+  alphaCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 9.904747
+      outSlope: 9.904747
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.9904747
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.3333334
+      outSlope: -1.3333334
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &756386709
 GameObject:
   m_ObjectHideFlags: 0
@@ -16020,6 +16159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
   EnemyID: 1
+  enemy: {fileID: 802629717}
 --- !u!1 &805527361
 GameObject:
   m_ObjectHideFlags: 0
@@ -16578,6 +16718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
   EnemyID: 3
+  enemy: {fileID: 859797243}
 --- !u!114 &859797243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17339,7 +17480,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 755799029}
   m_Father: {fileID: 673844818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -17419,11 +17561,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 71
-  m_MinHeight: 65
+  m_MinHeight: 55
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 71
-  m_FlexibleHeight: 65
+  m_FlexibleHeight: 55
   m_LayoutPriority: 1
 --- !u!222 &898372078
 CanvasRenderer:
@@ -20418,11 +20560,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 71
-  m_MinHeight: 11
+  m_MinHeight: 6
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 71
-  m_FlexibleHeight: 11
+  m_FlexibleHeight: 6
   m_LayoutPriority: 1
 --- !u!222 &1074410004
 CanvasRenderer:
@@ -25118,8 +25260,8 @@ MonoBehaviour:
   m_MinHeight: 11
   m_PreferredWidth: -1
   m_PreferredHeight: -1
-  m_FlexibleWidth: 11
-  m_FlexibleHeight: 71
+  m_FlexibleWidth: 71
+  m_FlexibleHeight: 11
   m_LayoutPriority: 1
 --- !u!1 &1410973836
 GameObject:
@@ -28657,6 +28799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
   EnemyID: 2
+  enemy: {fileID: 1601054177}
 --- !u!114 &1601054177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29931,6 +30074,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684119166}
   m_CullTransparentMesh: 1
+--- !u!1 &1684867346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684867347}
+  - component: {fileID: 1684867349}
+  - component: {fileID: 1684867350}
+  m_Layer: 5
+  m_Name: BattleLog1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1684867347
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684867346}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 556580185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 160, y: -5.5}
+  m_SizeDelta: {x: 240, y: 11}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1684867349
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684867346}
+  m_CullTransparentMesh: 1
+--- !u!114 &1684867350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684867346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2c3deac6d7b85244f9a061da069277f1, type: 3}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &1693449850
 GameObject:
   m_ObjectHideFlags: 0
@@ -31407,6 +31629,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1777846281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777846282}
+  - component: {fileID: 1777846284}
+  - component: {fileID: 1777846283}
+  m_Layer: 5
+  m_Name: BattleLog2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1777846282
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777846281}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 556580185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 160, y: -16.5}
+  m_SizeDelta: {x: 240, y: 11}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1777846283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777846281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2c3deac6d7b85244f9a061da069277f1, type: 3}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1777846284
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777846281}
+  m_CullTransparentMesh: 1
 --- !u!1 &1778443085
 GameObject:
   m_ObjectHideFlags: 0
@@ -32225,6 +32526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
   EnemyID: 3
+  enemy: {fileID: 1825476720}
 --- !u!114 &1825476720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32906,11 +33208,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 38
-  m_MinHeight: 65
+  m_MinHeight: 55
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 38
-  m_FlexibleHeight: 65
+  m_FlexibleHeight: 55
   m_LayoutPriority: 1
 --- !u!222 &1845775506
 CanvasRenderer:
@@ -35166,11 +35468,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 71
-  m_MinHeight: 11
+  m_MinHeight: 6
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 71
-  m_FlexibleHeight: 11
+  m_FlexibleHeight: 6
   m_LayoutPriority: 1
 --- !u!222 &1996886591
 CanvasRenderer:
@@ -35827,7 +36129,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2c3deac6d7b85244f9a061da069277f1, type: 3}
-    m_FontSize: 20
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -36233,11 +36535,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: 71
-  m_MinHeight: 11
+  m_MinHeight: 6
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 71
-  m_FlexibleHeight: 11
+  m_FlexibleHeight: 6
   m_LayoutPriority: 1
 --- !u!222 &2068089021
 CanvasRenderer:
@@ -37106,7 +37408,8 @@ MonoBehaviour:
   PlayerStatusSlider: {fileID: 1280555506}
   NetoStatusSlider: {fileID: 908510782}
   EnemyStatusSlider: {fileID: 2044226507}
-  logText: {fileID: 0}
+  logText1: {fileID: 1684867350}
+  logText2: {fileID: 1777846283}
   battlePanel: {fileID: 460778991}
   battleQuestText: {fileID: 2043916939}
   battleInfoText: {fileID: 1480011317}

@@ -12,7 +12,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [Header("Spawn Point")]
     [SerializeField] private Transform enemySpawnPoint;
-    public Enemy currentEnemy; // シーン上の敵オブジェクト（プレハブインスタンス）
+    [System.NonSerialized] public Enemy currentEnemy;
     private Player player;
     private Neto neto;
     private QuestData currentQuestion;
@@ -21,26 +21,23 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private MultipleChoiceQuest choicechecker;
     [SerializeField] private FillBlankQuest writechecker;
     [SerializeField] private UIManager uimanager;
+    private bool hitPlayer;
     private void Awake()
     {
         GameManager.Instance.RegisterBattleManager(this);
-        Debug.Log("GameManagerと接続");
     }
     private void Start()
     {
         questManager = GameManager.Instance.questManager;
         //choicechecker = GetComponent<MultipleChoiceQuest>();
         //writechecker = GetComponent<FillBlankQuest>();
-
-        // ここで初めて battleManager が存在する
-        Debug.Log("BattleManager Setup Completed");
     }
 
     /// <summary>
     /// 戦闘開始処理
     /// </summary>
     /// <param name="enemyId">CSVで定義された敵ID</param>
-    public void StartBattle(int enemyId)
+    public void StartBattle(int enemyId,Enemy enemy)
     {
         // プレイヤー取得（BattleScene側で責任を持つ）
         player = GameManager.Instance.player;
@@ -54,21 +51,13 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        // 既存敵がいれば破棄
-        if (currentEnemy != null)
-        {
-            Destroy(currentEnemy.gameObject);
-        }
-
         // 敵生成
-        currentEnemy = Instantiate(
-            enemyPrefab,
-            enemySpawnPoint.position,
-            Quaternion.identity
-        ).GetComponent<Enemy>();
-        currentEnemy.Setup(data);
+        currentEnemy = enemy;
+        
+        currentEnemy.MaxDP = data.MaxDP;
+        currentEnemy.CurrentDP = 0;
+        currentEnemy.Atk = data.Atk;
 
-        // クエストカテゴリ初期化
         categories.Clear();
         categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
         categories.Add(QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence);
@@ -77,6 +66,7 @@ public class BattleManager : MonoBehaviour
         questManager.CreateDeck(categories);
 
         GameManager.Instance.SetMode(GameManager.GameMode.Battle);
+        UIManager.Active?.ShowLog();
 
         NextTurn();
     }
@@ -86,7 +76,7 @@ public class BattleManager : MonoBehaviour
         currentQuestion = questManager.GetNextQuestion();
         if (currentQuestion != null)
         {
-            uimanager.UpdateBattleMessage($"問題:\n{currentQuestion.QuestionText}",currentQuestion.Options);
+            uimanager.UpdateBattleMessage($"出力される内容を答えてネト！\n\n{currentQuestion.QuestionText}",currentQuestion.Options);
         }
         else
         {
@@ -99,11 +89,11 @@ public class BattleManager : MonoBehaviour
     {
         if (choicechecker.CheckAnswer(code, currentQuestion))
         {
-            QuizCorrect();
+            StartCoroutine(QuizCorrect());
         }
         else
         {
-            QuizIncorrect();
+            StartCoroutine(QuizIncorrect());
         }
         NextTurn();
     }
@@ -112,12 +102,11 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    private void QuizCorrect()
+    private IEnumerator QuizCorrect()
     {
-        //GameManager.Instance.uiManager.ShowLog("正解！ 攻撃！");
+        yield return new WaitForSecondsRealtime(0.4f);
         currentEnemy.TakeDamage(player.CurrentAtk);
-        Debug.Log(currentEnemy.CurrentDP);
-        Debug.Log(currentEnemy.MaxDP);
+        UIManager.Active?.ShowLog($"問題に正解、{player.CurrentAtk}ダメージを与えた！");
         uimanager.UpdateStatus(player, neto, currentEnemy);
         if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
         {
@@ -129,34 +118,52 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    private void QuizIncorrect()
+    private IEnumerator QuizIncorrect()
     {
-        //GameManager.Instance.uiManager.ShowLog("不正解...");
+        yield return new WaitForSecondsRealtime(0.4f);
+        UIManager.Active.ShowLog("不正解、ダメージを与えられなかった…");
         StartCoroutine(EnemyTurn());
     }
 
     private IEnumerator EnemyTurn()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
-
-        bool hitPlayer = Random.value > 0.5f;
+        yield return new WaitForSecondsRealtime(0.2f);
+        if (player.CurrentHP>0 && neto.CurrentHP > 0)
+        {
+            hitPlayer = Random.value > 0.5f;
+        }else if (player.CurrentHP <= 0)
+        {
+            hitPlayer = false;
+        }else if (neto.CurrentHP <= 0)
+        {
+            hitPlayer = true;
+        }
+        
         int dmg = currentEnemy.Atk;
-
         if (hitPlayer)
         {
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             player.CurrentHP -= realDmg;
-            //GameManager.Instance.uiManager.ShowLog($"プレイヤーに {realDmg} ダメージ");
+            UIManager.Active?.ShowLog($"プレイヤーが{realDmg}のダメージを受けた！");
         }
         else
         {
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             neto.CurrentHP -= realDmg;
-            //GameManager.Instance.uiManager.ShowLog($"ネトに {realDmg} のダメージ！");
+            UIManager.Active?.ShowLog($"ネトが{realDmg}のダメージを受けた！");
         }
 
         GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnEnd);
+        if(player.CurrentHP <= 0)
+        {
 
+            player.CurrentHP = 0;
+        }
+        if(neto.CurrentHP <= 0)
+        {
+
+            neto.CurrentHP = 0;
+        }
         // 敗北判定
         if (player.CurrentHP <= 0 && neto.CurrentHP <= 0)
         {
@@ -170,18 +177,12 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator EndBattle(bool win)
     {
-        yield return new WaitForSecondsRealtime(1f);
-
+        yield return new WaitForSecondsRealtime(0.5f);
         if (win)
         {
             Destroy(currentEnemy.gameObject);
             GameManager.Instance.MarkEnemyDefeated();
         }
-        else
-        {
-
-        }
-
         GameManager.Instance.SetMode(GameManager.GameMode.Field);
     }
 

@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 {
     public EnemyData Data { get; private set; }
 
-    public int CurrentDP { get; private set; }
+    public int CurrentDP { get; set; }
     public int EnemyID;
     public int MaxDP;
     public int Atk;
@@ -32,7 +32,6 @@ public class Enemy : MonoBehaviour
     {
         // 基本ステータスのコピー
         EnemyID = data.ID;
-        gameObject.name = data.Name; // オブジェクト名も変更しておくと分かりやすい
         MaxDP = data.MaxDP;
         Atk = data.Atk;
         CurrentDP = 0;
@@ -51,8 +50,6 @@ public class Enemy : MonoBehaviour
     {
         if (string.IsNullOrEmpty(fileName)) return;
 
-        // パス: Assets/Resources/Sprites/Enemies/ファイル名
-        // ※フォルダがない場合は作成してください
         string path = "Sprites/Enemies/" + fileName;
 
         Sprite loadedSprite = Resources.Load<Sprite>(path);

@@ -153,17 +153,10 @@ public class GameManager : MonoBehaviour
     }
     public BattleTag battletime { get; private set; }
 
-    public void RequestBattle(int enemyId)
+    public void RequestBattle(int enemyId,Enemy enemy)
     {
         CurrentEnemyID = enemyId;
-
-        if (battleManager == null)
-        {
-            Debug.LogError("BattleManager ‚ª–¢“o˜^‚Å‚·");
-            return;
-        }
-
-        battleManager.StartBattle(enemyId);
+        battleManager.StartBattle(enemyId,enemy);
     }
     public void SetBattleTime(BattleTag mode)
     {

@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider PlayerStatusSlider; 
     [SerializeField] private Slider NetoStatusSlider;   
     [SerializeField] private Slider EnemyStatusSlider;
-    [SerializeField] private Text logText;          // ゲーム内のログメッセージを表示
+    [SerializeField] private Text logText1;
+    [SerializeField] private Text logText2;
 
     [Header("各モードの画面パネル")]
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
@@ -72,7 +73,6 @@ public class UIManager : MonoBehaviour
     private bool OnWeaponEquipSelecting;
     private bool OnPlayerEquipSelecting;
     public int EquipSelectorcursorPosition;
-    private int Test;
 
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
@@ -96,7 +96,6 @@ public class UIManager : MonoBehaviour
         inventory = GameManager.Instance.inventory;
         UpdateStatus(p,n);
         AllPanelClose();
-        Test = 0;
     }
 
     public void Update()
@@ -115,12 +114,7 @@ public class UIManager : MonoBehaviour
             battlePanel.SetActive(false);
             shopPanel.SetActive(false);
         }
-        Test++;
-        if (Test >= 60)
-        {
-            Debug.Log("asap");
-            Test = 0;
-        }
+        
     }
 
     ///<summary>
@@ -167,7 +161,7 @@ public class UIManager : MonoBehaviour
             CurrentHPText.text = $"  HP  : {p.CurrentHP}/{p.MaxHP}";
             CurrentAtkText.text= $"  ATK : {p.CurrentAtk}";
             CurrentDefText.text= $"  DEF : {p.CurrentDef}";
-            CurrentDebugLimitText.text=$"   Lim : {p.DebugLimit}s.";
+            CurrentDebugLimitText.text=$"  Lim : {p.DebugLimit}s.";
         }
     }
     public void UpdateStatus(Neto n)
@@ -213,19 +207,30 @@ public class UIManager : MonoBehaviour
             EnemyStatusSlider.value = e.CurrentDP;
         }
     }
-
+    public void ShowLog()
+    {
+        logText1.text = "";
+        logText2.text = "";
+    }
     /// <summary>
     /// 戦闘ログを更新するためのメソッド。現状、通常会話を振り返ったりできる機能はない…でいいんだよね？
     /// </summary>
     public void ShowLog(string message)
     {
-        // Unityのコンソールにも出す
-        Debug.Log("[Log] " + message);
-
-        if (logText != null)
+        if(logText1.text == "")
         {
-            logText.text = message + "\n" + logText.text;
+            logText1.text = message;
         }
+        else if(logText2.text == "")
+        {
+            logText2.text = message;
+        }
+        else
+        {
+            logText1.text = logText2.text;
+            logText2.text = message;
+        }
+        
     }
 
     /// <summary>
@@ -245,7 +250,7 @@ public class UIManager : MonoBehaviour
     {
         if (battleQuestText != null)
         {
-            battleQuestText.text = text+"\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3] ;
+            battleQuestText.text = text+"\n\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3] ;
         }
     }
 

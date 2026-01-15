@@ -4,7 +4,7 @@ using static GameManager;
 public class EnemySymbol : MonoBehaviour
 {
     [SerializeField] private int EnemyID;
-
+    [SerializeField] private  Enemy enemy;
     private void Start()
     {
         // ‚·‚Å‚É“|‚³‚ê‚Ä‚¢‚é“G‚È‚çÁ‚·
@@ -18,6 +18,6 @@ public class EnemySymbol : MonoBehaviour
     {
         if (!col.gameObject.CompareTag("Player")) return;
 
-        GameManager.Instance.RequestBattle(EnemyID);
+        GameManager.Instance.RequestBattle(EnemyID,enemy);
     }
 }

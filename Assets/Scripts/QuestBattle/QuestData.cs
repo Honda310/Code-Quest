@@ -18,18 +18,15 @@ public class QuestData
         QuestionText = q;
         CorrectAnswer = a;
         Options = null;
-        // 正解コードからキーワードを生成
         Keywords = a.Split(new char[] { ' ', ';', '(', ')', '{', '}' }, System.StringSplitOptions.RemoveEmptyEntries);
     }
-
-    // 4択用の作成（★今回の修正でここが使われます）
     public QuestData(string id, QuestCategory cat, string q, string[] opts, string a)
     {
         ID = id;
         Category = cat;
         QuestionText = q;
         Options = opts;
-        CorrectAnswer = a; // "1", "2", "3", "4" のいずれか
+        CorrectAnswer = a; 
         Keywords = null;   // 4択なのでキーワード判定は不要（nullにする）
     }
 
