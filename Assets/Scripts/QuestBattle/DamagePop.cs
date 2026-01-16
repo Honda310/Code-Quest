@@ -4,7 +4,9 @@ using System.Collections;
 
 public class DamagePop : MonoBehaviour
 {
-    [SerializeField] Text damageText;
+    [SerializeField] Text PlayerFluctuationText;
+    [SerializeField] Text NetoFluctuationText;
+    [SerializeField] Text EnemyFluctuationText;
     [SerializeField] float duration = 1.3f;
     [SerializeField] AnimationCurve alphaCurve;
 
@@ -14,34 +16,82 @@ public class DamagePop : MonoBehaviour
         {
             alphaCurve = new AnimationCurve(
                 new Keyframe(0f, 0f),
-                new Keyframe(0.2f, 1f),
+                new Keyframe(0.15f, 1f),
                 new Keyframe(0.8f, 1f),
-                new Keyframe(1f, 0f)
+                new Keyframe(1.3f, 0f)
             );
         }
     }
 
-    public void Play(int damage)
+    public void PlayerDamagePlay(int damage)
     {
-        damageText.text = damage.ToString();
-        StartCoroutine(Animate());
+        PlayerFluctuationText.text = damage.ToString();
+        StartCoroutine(DamageAnimate(PlayerFluctuationText));
     }
-
-    IEnumerator Animate()
+    public void PlayerHealPlay(int heal)
+    {
+        PlayerFluctuationText.text = heal.ToString();
+        StartCoroutine(HealAnimate(PlayerFluctuationText));
+    }
+    public void NetoDamagePlay(int damage)
+    {
+        NetoFluctuationText.text = damage.ToString();
+        StartCoroutine(DamageAnimate(NetoFluctuationText));
+    }
+    public void NetoHealPlay(int heal)
+    {
+        NetoFluctuationText.text = heal.ToString();
+        StartCoroutine(HealAnimate(NetoFluctuationText));
+    }
+    public void EnemyDpPlay(int damage)
+    {
+        EnemyFluctuationText.text = damage.ToString();
+        StartCoroutine(DpDealAnimate(EnemyFluctuationText));
+    }
+    IEnumerator DamageAnimate(Text Damage)
     {
         float t = 0f;
-        Color c = damageText.color;
+        Color c = Color.red;
 
         while (t < duration)
         {
             float normalized = t / duration;
             c.a = alphaCurve.Evaluate(normalized);
-            damageText.color = c;
+            Damage.color = c;
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+    }
+    IEnumerator DpDealAnimate(Text Damage)
+    {
+        float t = 0f;
+        Color c = new Color32(134, 104, 238, 255);
+
+        while (t < duration)
+        {
+            float normalized = t / duration;
+            c.a = alphaCurve.Evaluate(normalized);
+            Damage.color = c;
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+    }
+    IEnumerator HealAnimate(Text Damage)
+    {
+        float t = 0f;
+        Color c = Color.green;
+
+        while (t < duration)
+        {
+            float normalized = t / duration;
+            c.a = alphaCurve.Evaluate(normalized);
+            Damage.color = c;
 
             t += Time.deltaTime;
             yield return null;
         }
 
-        Destroy(gameObject);
     }
 }

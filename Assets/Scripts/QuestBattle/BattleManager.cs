@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [Header("Spawn Point")]
     [SerializeField] private Transform enemySpawnPoint;
+    [SerializeField] private DamagePop damagePop;
     [System.NonSerialized] public Enemy currentEnemy;
     private Player player;
     private Neto neto;
@@ -106,8 +107,9 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.4f);
         currentEnemy.TakeDamage(player.CurrentAtk);
-        UIManager.Active?.ShowLog($"問題に正解、{player.CurrentAtk}ダメージを与えた！");
+        UIManager.Active?.ShowLog($"問題に正解、{player.CurrentAtk}DPを与えた！");
         uimanager.UpdateStatus(player, neto, currentEnemy);
+        damagePop.EnemyDpPlay(player.CurrentAtk);
         if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
         {
             StartCoroutine(EndBattle(true));
@@ -145,12 +147,14 @@ public class BattleManager : MonoBehaviour
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             player.CurrentHP -= realDmg;
             UIManager.Active?.ShowLog($"プレイヤーが{realDmg}のダメージを受けた！");
+            damagePop.PlayerDamagePlay(realDmg);
         }
         else
         {
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             neto.CurrentHP -= realDmg;
             UIManager.Active?.ShowLog($"ネトが{realDmg}のダメージを受けた！");
+            damagePop.NetoDamagePlay(realDmg);
         }
 
         GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnEnd);

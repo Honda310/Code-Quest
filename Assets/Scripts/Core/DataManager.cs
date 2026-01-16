@@ -21,14 +21,10 @@ public class DataManager : MonoBehaviour
         LoadWeapons("Data/Weapon");
         LoadAccessories("Data/Accessory");
         LoadSupportItems("Data/SupportItem");
-        LoadEnemies("Data/Enemy"); // 敵データロード
+        LoadEnemies("Data/Enemy");
 
         Debug.Log("全データのロードが完了しました。");
     }
-
-    // --- (Weapon, Accessory, SupportItem のロード処理は省略せず記述する場合、以前と同様) ---
-    // ここでは長くなるため省略しますが、以前のコードのままでOKです。
-    // 今回重要な Enemy のロード処理のみ詳細に記述します。
 
     private void LoadWeapons(string path)
     {
@@ -62,7 +58,7 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 6 || line.Length > 6) continue;
+            if (line.Length < 7 || line.Length > 7) continue;
 			int id = int.Parse(line[0]);
             SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
             if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
@@ -70,19 +66,13 @@ public class DataManager : MonoBehaviour
         Debug.Log($"サポートアイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
     }
 
-    // --------------------------------------------------------
-    // ★修正箇所: 敵データのロード（画像ファイル名対応）
-    // --------------------------------------------------------
     private void LoadEnemies(string path)
     {
-        List<string[]> csv = CSVParser.Read(path); // CSVParserを使用
+        List<string[]> csv = CSVParser.Read(path);
 
         for (int i = 1; i < csv.Count; i++)
         {
             string[] line = csv[i];
-
-            // CSV列: [0]ID, [1]Name, [2]MaxDP, [3]Atk, [4]Categories, [5]ImageFileName
-            // 必須列が足りない場合はスキップ
             if (line.Length < 6) continue;
 
             int id = CSVParser.ParseInt(line[0]);
@@ -90,13 +80,10 @@ public class DataManager : MonoBehaviour
             int maxDp = CSVParser.ParseInt(line[2]);
             int atk = CSVParser.ParseInt(line[3]);
 
-            // カテゴリリスト変換 (例: "Variable/Loop")
             List<QuestCategory> categories = CSVParser.ParseEnumList<QuestCategory>(line[4], '/');
 
-            // 画像ファイル名取得
             string imageFileName = line[5];
 
-            // データ生成
             EnemyData data = new EnemyData(id, name, maxDp, atk, categories, imageFileName);
 
             if (!EnemyMaster.ContainsKey(id))
@@ -116,7 +103,7 @@ public class DataManager : MonoBehaviour
 	        case Item.ItemType.Accessory:
 	            return AccessoryMaster.TryGetValue(id, out var a) ? a : null;
 
-	        case Item.ItemType.Support:
+	        case Item.ItemType.SupportItem:
 	            return SupportItemMaster.TryGetValue(id, out var s) ? s : null;
 	    }
 	    return null;

@@ -23,6 +23,6 @@ public abstract class Item
     {
         Weapon,
         Accessory,
-        Support
+        SupportItem
     }
 }

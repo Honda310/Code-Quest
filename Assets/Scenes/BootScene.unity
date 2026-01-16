@@ -772,7 +772,7 @@ MonoBehaviour:
   itemDebugManager: {fileID: 1182703131}
   shopManager: {fileID: 1182703132}
   dojoManager: {fileID: 1182703130}
-  screenScaler: {fileID: 0}
+  screenScaler: {fileID: 1182703144}
   player: {fileID: 2088172326}
   neto: {fileID: 881097284}
   inventory: {fileID: 1182703143}

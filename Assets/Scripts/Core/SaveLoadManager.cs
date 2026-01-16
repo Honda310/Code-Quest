@@ -89,7 +89,7 @@ public class SaveLoadManager : MonoBehaviour
                 int count = data.inventoryCounts[i];
 
                 // IDからアイテムデータを検索
-                Item itemObj = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Support,id);
+                Item itemObj = GameManager.Instance.dataManager.GetItemById(Item.ItemType.SupportItem,id);
 
                 // アイテムが存在し、かつサポートアイテムであれば追加
                 if (itemObj != null && itemObj is SupportItem)
