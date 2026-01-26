@@ -13,10 +13,4 @@ public class SupportItem : Item
         EffectID = effectId;
         EffectSize = effectSize;
     }
-
-    // アイテム使用処理
-    public void Use(Player player, EffectManager manager)
-    {
-        manager.ApplyEffect(EffectID, player, EffectSize);
-    }
 }

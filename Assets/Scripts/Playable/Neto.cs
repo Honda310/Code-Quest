@@ -12,9 +12,9 @@ public class Neto : MonoBehaviour
     public int AccessoryDef { get; private set; }
     public int TemporaryDef { get; private set; }
     public int CurrentDef => BaseDef + AccessoryDef + TemporaryDef;
-
-    public Vector2 moveDelta;           // FollowPlayer から渡される実移動量
-    private Vector2 lastMoveDir = Vector2.right;  // 停止時に向きを保持しておく
+    public string EquipAccessoryName="なし";
+    public Vector2 moveDelta;
+    private Vector2 lastMoveDir = Vector2.right;
 
     private int frame = 0;
     private int MovingIndex = 0;
@@ -145,6 +145,7 @@ public class Neto : MonoBehaviour
     public void EquipAccessory(Item item)
     {
         Accessory accessory = item as Accessory;
+        EquipAccessoryName = accessory.ItemName;
         AccessoryDef = accessory.Def;
     }
 
@@ -154,11 +155,6 @@ public class Neto : MonoBehaviour
         moveDelta = delta;
     }
 
-    // ヒント機能などがあればここに実装
-    public void SpeakHint()
-    {
-        // 未実装
-    }
     public void ApplyTemporaryDef(int val)
     {
         TemporaryDef = val;
@@ -167,6 +163,29 @@ public class Neto : MonoBehaviour
     /// <summary>
     /// すべての一時的なバフ・デバフを解除する
     /// </summary>
+    public void ApplyEffect(Item supportitem)
+    {
+
+        SupportItem item = supportitem as SupportItem;
+        switch (item.EffectID)
+        {
+            case 1: // HP回復
+                int heal = Mathf.Min(item.EffectSize, MaxHP - CurrentHP);
+                CurrentHP += heal;
+                break;
+
+            case 2:
+                break;
+
+            case 3: // 防御力アップ
+                ApplyTemporaryDef(item.EffectSize);
+                break;
+
+            case 99: // バフ解除（デバッグ完了など）
+                ClearBuffs();
+                break;
+        }
+    }
     public void ClearBuffs()
     {
         TemporaryDef = 0;

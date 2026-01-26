@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem; // InputSystemを使用する場合は必要
@@ -16,12 +17,12 @@ public class Player : MonoBehaviour
     public int BaseAtk=10;       // 基礎攻撃力
     public int BaseDef=10;       // 基礎防御力
     public int DebugLimit = 5;
+    [NonSerialized] public string EquipWeaponName="なし";
+    [NonSerialized] public string EquipAccessoryName="なし";
 
-    // 装備やアイテムによる加算値（外部から読み取り専用）
-    public int WeaponAtk { get; private set; }    // 武器による攻撃力加算
-    public int AccessoryDef { get; private set; } // アクセサリによる防御力加算
+    public int WeaponAtk { get; private set; }
+    public int AccessoryDef { get; private set; }
 
-    // 一時的なバフ効果（読み書き可能）
     public int TemporaryAtk { get; set; }
     public int TemporaryDef { get; set; }
 
@@ -194,6 +195,7 @@ public class Player : MonoBehaviour
     public void EquipWeapon(Item item)
     {
         Weapon weapon = item as Weapon;
+        EquipWeaponName = weapon.ItemName;
         WeaponAtk = weapon.Atk;
         DebugLimit = weapon.TimeLimit;
     }
@@ -205,6 +207,7 @@ public class Player : MonoBehaviour
     public void EquipAccessory(Item item)
     {
         Accessory accessory = item as Accessory;
+        EquipAccessoryName = accessory.ItemName;
         AccessoryDef = accessory.Def;
     }
 
@@ -231,5 +234,29 @@ public class Player : MonoBehaviour
     {
         TemporaryAtk = 0;
         TemporaryDef = 0;
+    }
+    public void ApplyEffect(Item supportitem)
+    {
+
+        SupportItem item = supportitem as SupportItem;
+        switch (item.EffectID)  
+        {
+            case 1: // HP回復
+                int heal = Mathf.Min(item.EffectSize, MaxHP - CurrentHP);
+                CurrentHP += heal;
+                break;
+
+            case 2: // 攻撃力アップ
+                ApplyTemporaryAtk(item.EffectSize);
+                break;
+
+            case 3: // 防御力アップ
+                ApplyTemporaryDef(item.EffectSize);
+                break;
+
+            case 99: // バフ解除（デバッグ完了など）
+                ClearBuffs();
+                break;
+        }
     }
 }

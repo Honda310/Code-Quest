@@ -160,12 +160,10 @@ public class BattleManager : MonoBehaviour
         GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnEnd);
         if(player.CurrentHP <= 0)
         {
-
             player.CurrentHP = 0;
         }
         if(neto.CurrentHP <= 0)
         {
-
             neto.CurrentHP = 0;
         }
         // ”s–k”»’è
@@ -187,6 +185,8 @@ public class BattleManager : MonoBehaviour
             Destroy(currentEnemy.gameObject);
             GameManager.Instance.MarkEnemyDefeated();
         }
+        player.ClearBuffs();
+        neto.ClearBuffs();
         GameManager.Instance.SetMode(GameManager.GameMode.Field);
     }
 

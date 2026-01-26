@@ -84,6 +84,11 @@ public class GameManager : MonoBehaviour
             Item item = dataManager.GetItemById(Item.ItemType.Accessory, 20000 + i);
             inventory.AddItem(item, 1);
         }
+        for(int i = 1; i <= 15; i++)
+        {
+            Item item = dataManager.GetItemById(Item.ItemType.SupportItem, 10000 + i);
+            inventory.AddItem(item, 1);
+        }
     }
 
     private void Update()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,11 +47,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject MenuBarPanel;
     [SerializeField] private GameObject MenuButtonPanel;
     [SerializeField] private GameObject ItemPanel;
+    [SerializeField] private GameObject ItemTargetSelectPanel;
+    [SerializeField] private GameObject ItemConfirmPanel;
     [SerializeField] private GameObject EquipandStatusPanel;
     [SerializeField] private GameObject ConfigPanel;
     [SerializeField] private GameObject KeyBindPanel;
     [SerializeField] private GameObject CharaSelector;
     [SerializeField] private GameObject NetoSelector;
+    [SerializeField] private GameObject EquipPanelDisable1;
+    [SerializeField] private GameObject EquipPanelDisable2;
+    [SerializeField] private GameObject EquipPanelDisable3;
 
     [Header("装備&ステータス画面の各テキスト&ボタン")]
     [SerializeField] private Text CharaNameText;
@@ -65,6 +71,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text EquipItemSelectSlot3;
     [SerializeField] private Text EquipItemSelectSlot4;
     [SerializeField] private Text EquipItemSelectSlot5;
+    [SerializeField] private Text InventoryItemSelectSlot1;
+    [SerializeField] private Text InventoryItemSelectSlot2;
+    [SerializeField] private Text InventoryItemSelectSlot3;
+    [SerializeField] private Text InventoryItemSelectSlot4;
+    [SerializeField] private Text InventoryItemSelectSlot5;
+    [SerializeField] private Text InventoryItemValue1;
+    [SerializeField] private Text InventoryItemValue2;
+    [SerializeField] private Text InventoryItemValue3;
+    [SerializeField] private Text InventoryItemValue4;
+    [SerializeField] private Text InventoryItemValue5;
+    [SerializeField] private Text PlayerItemValidText;
+    [SerializeField] private Text NetoItemValidText;
+    [SerializeField] private Text ItemFlavorText;
 
     //装備&ステータス画面の制御系
     private bool EquipCharacterSelecter;
@@ -72,7 +91,14 @@ public class UIManager : MonoBehaviour
     private bool EquipChangeSelecter;
     private bool OnWeaponEquipSelecting;
     private bool OnPlayerEquipSelecting;
-    public int EquipSelectorcursorPosition;
+    private int EquipSelectorcursorPosition=0;
+    private int InventoryItemCursor = 0;
+    private int InventorySlotIdHolder=0;
+    private int CharaIdHolder = 0;
+    private string WeaponItemName;
+    private string AccessoryItemName;
+    private bool PlayerTarget;
+    private bool NetoTarget;
 
     /// <summary>
     /// プレイヤーとネトのHP表示を更新します
@@ -135,6 +161,8 @@ public class UIManager : MonoBehaviour
         ItemPanel.SetActive(false);
         KeyBindPanel.SetActive(false);
         ConfigPanel.SetActive(false);
+        ItemTargetSelectPanel.SetActive(false);
+        ItemConfirmPanel.SetActive(false);
     }
 
     ///<summary>
@@ -172,7 +200,16 @@ public class UIManager : MonoBehaviour
             CurrentAtkText.text = $"  ATK : None";
             CurrentDefText.text = $"  DEF : {n.CurrentDef}";
             CurrentDebugLimitText.text = $"  Lim : None";
-
+        }
+    }
+    public void UpdateStatus()
+    {
+        if (NetoStatusText != null)
+        {
+            CurrentHPText.text = $"  HP  :";
+            CurrentAtkText.text = $"  ATK :";
+            CurrentDefText.text = $"  DEF :";
+            CurrentDebugLimitText.text = $"  Lim :";
         }
     }
 
@@ -408,7 +445,14 @@ public class UIManager : MonoBehaviour
     public void TurnStart()
     {
         HealthDpSlidersAndCharactersPanel.SetActive(true);
-        PlSelectPanel.SetActive(true);
+        if (p.CurrentHP > 0)
+        {
+            PlSelectPanel.SetActive(true);
+        }
+        else
+        {
+
+        }
         UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
     }
     public void OnInventoryButtonClicked()
@@ -423,7 +467,8 @@ public class UIManager : MonoBehaviour
             EquipandStatusPanel.SetActive(false);
             ConfigPanel.SetActive(false);
             KeyBindPanel.SetActive(false);
-
+            List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+            SupportItemSelectorChange(0, supportItems);
         }
         
     }
@@ -443,6 +488,8 @@ public class UIManager : MonoBehaviour
         EquipCharacterSelecter = true;
         EquipSlots = false;
         EquipChangeSelecter = false;
+        EquipPanelDisable2.SetActive(true);
+        EquipPanelDisable3.SetActive(true);
     }
     public void OnConfigButtonClicked()
     {
@@ -485,20 +532,67 @@ public class UIManager : MonoBehaviour
     
     public void MenuToggle()
     {
-        CharaSelector.SetActive(false);
-        NetoSelector.SetActive(false);
         if (MenuPanel.activeSelf == false)
         {
+            CharaSelector.SetActive(false);
+            NetoSelector.SetActive(false);
             MenuPanel.SetActive(true);
             MenuBarPanel.SetActive(true);
+            EquipPanelDisable1.SetActive(false);
+            EquipPanelDisable2.SetActive(false);
+            EquipPanelDisable3.SetActive(false);
+            EquipSlots = false;
+            EquipCharacterSelecter = false;
+            EquipChangeSelecter = false;
             gm.SetMode(GameMode.Menu);
         }
+        //ここから装備&ステータス画面のEsc制御
         else if (MenuPanel.activeSelf && (((ItemPanel.activeSelf || EquipandStatusPanel.activeSelf) || (ConfigPanel.activeSelf || KeyBindPanel.activeSelf))== false))
         {
             MenuPanel.SetActive(false);
             MenuBarPanel.SetActive(false);
             gm.SetMode(GameMode.Field);
         }
+        else if (MenuPanel.activeSelf && EquipSlots)
+        {
+            CharaSelector.SetActive(false);
+            NetoSelector.SetActive(false);
+            EquipSlots = false;
+            EquipPanelDisable2.SetActive(true);
+            OnPlayerEquipSelecting = false;
+            EquipWeaponName.text = "Weapon";
+            EquipAccessoryName.text = "Accessory";
+            UpdateStatus();
+        }
+        else if (MenuPanel.activeSelf && EquipChangeSelecter)
+        {
+            EquipSlots = true;
+            EquipCharacterSelecter = true;
+            EquipChangeSelecter = false;
+            EquipPanelDisable1.SetActive(false);
+            EquipPanelDisable2.SetActive(false);
+            EquipPanelDisable3.SetActive(true);
+            if (OnWeaponEquipSelecting)
+            {
+                EquipWeaponName.text = WeaponItemName;
+            }
+            else
+            {
+                EquipAccessoryName.text = AccessoryItemName;
+            }
+        }
+        //ここまで
+        //ここからインベントリパネルの制御用
+        else if(MenuPanel.activeSelf && ItemTargetSelectPanel.activeSelf)
+        {
+            ItemTargetSelectPanel.SetActive(false);
+            ItemFlavorText.text = "";
+        }
+        else if(MenuPanel.activeSelf && ItemConfirmPanel.activeSelf)
+        {
+            OnItemReconfirmCancel();
+        }
+        //ここまで
         else
         {
             ItemPanel.SetActive(false);
@@ -515,110 +609,161 @@ public class UIManager : MonoBehaviour
             Debug.Log("そのアイコンはfalseだよ");
             return;
         }
+        EquipWeaponName.text = p.EquipWeaponName;
+        EquipAccessoryName.text = p.EquipAccessoryName;
         CharaSelector.SetActive(true);
         NetoSelector.SetActive(false);
         UpdateStatus(p);
         OnPlayerEquipSelecting = true;
         Debug.Log("Charaアイコンが選択されたよ");
         EquipSlots = true;
+        EquipPanelDisable2.SetActive(false);
     }
     public void OnNetoIconClicked()
     {
-        CharaSelector.SetActive(false);
-        NetoSelector.SetActive(true);
         if (EquipCharacterSelecter == false)
         {
             Debug.Log("そのアイコンはfalseだよ");
             return;
         }
+        EquipWeaponName.text = "装備不可";
+        EquipAccessoryName.text = n.EquipAccessoryName;
+        CharaSelector.SetActive(false);
+        NetoSelector.SetActive(true);
         UpdateStatus(n);
         OnPlayerEquipSelecting = false;
         Debug.Log("Netoアイコンが選択されたよ");
         EquipSlots = true;
+        EquipPanelDisable2.SetActive(false);
     }
     public void OnWeaponSlotClicked(GameObject gameObject)
     {
-        if (EquipSlots == false || OnPlayerEquipSelecting ==false)
+        if (EquipSlots == false || OnPlayerEquipSelecting == false)
         {
             Debug.Log("そのボタンはfalseだよ～");
             return;
         }
+        WeaponItemName = gameObject.GetComponentInChildren<Text>().text;
         OnWeaponEquipSelecting = true;
         EquipSelectorcursorPosition = 0;
-        WeaponSelectorChange(0);
+        List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
+        WeaponSelectorChange(0,weaponItems);
         Debug.Log("武器スロットが選択されたよ");
         gameObject.GetComponentInChildren<Text>().text = "Selected";
         EquipSlots = false;
         EquipCharacterSelecter = false;
         EquipChangeSelecter = true;
+        EquipPanelDisable1.SetActive(true);
+        EquipPanelDisable2.SetActive(true);
+        EquipPanelDisable3.SetActive(false);
     }
     public void OnAccessorySlotClicked(GameObject gameObject)
     {
-        if (EquipSlots == false)
+        if (EquipSlots == false )
         {
             Debug.Log("そのボタンはfalseだよ～");
             return;
         }
+        AccessoryItemName = gameObject.GetComponentInChildren<Text>().text;
         OnWeaponEquipSelecting = false;
         EquipSelectorcursorPosition = 0;
-        AccessorySelectorChange(EquipSelectorcursorPosition);
+        List<CarryItem> AccessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
+        AccessorySelectorChange(0,AccessoryItems);
         Debug.Log("アクセサリスロットが選択されたよ");
         gameObject.GetComponentInChildren<Text>().text = "Selected";
         EquipSlots = false;
         EquipCharacterSelecter = false;
         EquipChangeSelecter = true;
+        EquipPanelDisable1.SetActive(true);
+        EquipPanelDisable2.SetActive(true);
+        EquipPanelDisable3.SetActive(false);
     }
-    public void WeaponSelectorChange(int i)
+    public void WeaponSelectorChange(int i, List<CarryItem> weaponItems)
     {
-        if (inventory.GetItemsByType(Item.ItemType.Weapon) == null) return;
-        List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
-        if (weaponItems[0 + i].item != null) EquipItemSelectSlot1.text = weaponItems[0 + i].item.ItemName;
-        if (weaponItems[1 + i].item != null) EquipItemSelectSlot2.text = weaponItems[1 + i].item.ItemName;
-        if (weaponItems[2 + i].item != null) EquipItemSelectSlot3.text = weaponItems[2 + i].item.ItemName;
-        if (weaponItems[3 + i].item != null) EquipItemSelectSlot4.text = weaponItems[3 + i].item.ItemName;
-        if (weaponItems[4 + i].item != null) EquipItemSelectSlot5.text = weaponItems[4 + i].item.ItemName;
+        try
+        {
+            if (weaponItems[0 + i].item != null) EquipItemSelectSlot1.text = weaponItems[0 + i].item.ItemName;
+            if (weaponItems[1 + i].item != null) EquipItemSelectSlot2.text = weaponItems[1 + i].item.ItemName;
+            if (weaponItems[2 + i].item != null) EquipItemSelectSlot3.text = weaponItems[2 + i].item.ItemName;
+            if (weaponItems[3 + i].item != null) EquipItemSelectSlot4.text = weaponItems[3 + i].item.ItemName;
+            if (weaponItems[4 + i].item != null) EquipItemSelectSlot5.text = weaponItems[4 + i].item.ItemName;
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
     }
-    public void AccessorySelectorChange(int i)
+    public void AccessorySelectorChange(int i, List<CarryItem> accessoryItems)
     {
-        if (inventory.GetItemsByType(Item.ItemType.Accessory) == null) return;
-        List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
-        if (accessoryItems[0 + i].item != null) EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
-        if (accessoryItems[1 + i].item != null) EquipItemSelectSlot2.text = accessoryItems[1 + i].item.ItemName;
-        if (accessoryItems[2 + i].item != null) EquipItemSelectSlot3.text = accessoryItems[2 + i].item.ItemName;
-        if (accessoryItems[3 + i].item != null) EquipItemSelectSlot4.text = accessoryItems[3 + i].item.ItemName;
-        if (accessoryItems[4 + i].item != null) EquipItemSelectSlot5.text = accessoryItems[4 + i].item.ItemName;
+        try
+        {
+            if (accessoryItems[0 + i].item != null) EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
+            if (accessoryItems[1 + i].item != null) EquipItemSelectSlot2.text = accessoryItems[1 + i].item.ItemName;
+            if (accessoryItems[2 + i].item != null) EquipItemSelectSlot3.text = accessoryItems[2 + i].item.ItemName;
+            if (accessoryItems[3 + i].item != null) EquipItemSelectSlot4.text = accessoryItems[3 + i].item.ItemName;
+            if (accessoryItems[4 + i].item != null) EquipItemSelectSlot5.text = accessoryItems[4 + i].item.ItemName;
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
     }
     public void EquipSelectorAllowDown()
     {
-        if (inventory.GetItemsByType(Item.ItemType.Accessory) == null) return;
-        List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
-        EquipSelectorcursorPosition++;
-        Mathf.Min(EquipSelectorcursorPosition, accessoryItems.Count-5);
-        if (OnWeaponEquipSelecting)
+        if (EquipChangeSelecter)
         {
-            WeaponSelectorChange(EquipSelectorcursorPosition);
+            if (OnWeaponEquipSelecting)
+            {
+                List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
+                if (weaponItems == null) return;
+                EquipSelectorcursorPosition = Mathf.Min(++EquipSelectorcursorPosition, weaponItems.Count - 5);
+                WeaponSelectorChange(EquipSelectorcursorPosition,weaponItems);
+            }
+            else
+            {
+                List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
+                if (accessoryItems == null) return;
+                EquipSelectorcursorPosition = Mathf.Min(++EquipSelectorcursorPosition, accessoryItems.Count - 5);
+                AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
+
+            }
         }
-        else
+        else if (ItemPanel.activeSelf)
         {
-            AccessorySelectorChange(EquipSelectorcursorPosition);
+            ItemListAllowDown();
         }
     }
     public void EquipSelectorAllowUp()
     {
-        EquipSelectorcursorPosition--;
-        Mathf.Min(EquipSelectorcursorPosition, 0);
-        if (OnWeaponEquipSelecting)
+        if (EquipChangeSelecter)
         {
-            WeaponSelectorChange(EquipSelectorcursorPosition);
+            if (OnWeaponEquipSelecting)
+            {
+                List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
+                if (weaponItems == null) return;
+                EquipSelectorcursorPosition = Mathf.Max(--EquipSelectorcursorPosition, 0);
+                WeaponSelectorChange(EquipSelectorcursorPosition, weaponItems);
+            }
+            else
+            {
+                List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
+                if (accessoryItems == null) return;
+                EquipSelectorcursorPosition = Mathf.Max(--EquipSelectorcursorPosition, 0);
+                AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
+            }
         }
-        else
+        else if (ItemPanel.activeSelf)
         {
-            AccessorySelectorChange(EquipSelectorcursorPosition);
+            ItemListAllowUp();
         }
     }
     public void OnEquipSelecterClicked(int slotID)
     {
-        if (EquipChangeSelecter == false) return;
+        if (EquipChangeSelecter == false)
+        {
+            Debug.Log("EquipChangeSelectorがfalse");
+            return;
+        }
         Debug.Log(slotID+"個目のスロットが選択されたよ～");
         if (OnPlayerEquipSelecting == true)
         {
@@ -632,23 +777,167 @@ public class UIManager : MonoBehaviour
             {
                 List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
                 EquipAccessoryName.text = accessoryItems[slotID - 1].item.ItemName;
-                p.EquipAccessory(accessoryItems[slotID - 1].item);
+                p.EquipAccessory(accessoryItems[EquipSelectorcursorPosition + slotID - 1].item);
             }
             UpdateStatus(p);
         }
-        else 
+        else
         {
             List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
             EquipAccessoryName.text = accessoryItems[slotID - 1].item.ItemName;
-            n.EquipAccessory(accessoryItems[slotID - 1].item);
+            n.EquipAccessory(accessoryItems[EquipSelectorcursorPosition + slotID - 1].item);
             UpdateStatus(n);
         }
         EquipSlots = true;
+        EquipCharacterSelecter = true;
         EquipChangeSelecter = false;
+        EquipPanelDisable1.SetActive(false);
+        EquipPanelDisable2.SetActive(false);
+        EquipPanelDisable3.SetActive(true);
         EquipItemSelectSlot1.text = "";
         EquipItemSelectSlot2.text = "";
         EquipItemSelectSlot3.text = "";
         EquipItemSelectSlot4.text = "";
         EquipItemSelectSlot5.text = "";
+    }
+    //ここからインベントリ関連の制御
+    public void SupportItemSelectorChange(int i, List<CarryItem> supportItems)
+    {
+        try
+        {
+            if (supportItems[0 + i].item != null) InventoryItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
+            if (supportItems[0 + i].item != null) InventoryItemValue1.text = $"{supportItems[0 + i].quantity}";
+            if (supportItems[1 + i].item != null) InventoryItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
+            if (supportItems[0 + i].item != null) InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
+            if (supportItems[2 + i].item != null) InventoryItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
+            if (supportItems[0 + i].item != null) InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
+            if (supportItems[3 + i].item != null) InventoryItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
+            if (supportItems[0 + i].item != null) InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
+            if (supportItems[4 + i].item != null) InventoryItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
+            if (supportItems[0 + i].item != null) InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
+        }
+        catch(IndexOutOfRangeException)
+        {
+
+        }
+    }
+    public void OnItemSelectorClicked(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
+        switch (focus.EffectID)
+        {
+            case 1:
+                if(p.MaxHP > p.CurrentHP)
+                {
+                    PlayerItemValidText.text = $"HPが{Mathf.Min(focus.EffectSize,p.MaxHP-p.CurrentHP)}回復";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidText.text = "HPが最大値";
+                    PlayerTarget = false;
+                }
+                if (p.MaxHP > p.CurrentHP)
+                {
+                    NetoItemValidText.text = $"HPが{Mathf.Min(focus.EffectSize, n.MaxHP - n.CurrentHP)}回復";
+                    NetoTarget = true;
+                }
+                else
+                {
+                    NetoItemValidText.text = "HPが最大値";
+                    NetoTarget = false;
+                }
+                break;
+            case 2:
+                if (focus.EffectSize > p.TemporaryAtk)
+                {
+                    PlayerItemValidText.text = $"攻撃力+{focus.EffectSize - p.TemporaryAtk}";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidText.text = "より強い効果を使用中";
+                    PlayerTarget = false;
+                }
+                NetoItemValidText.text = "ネトは攻撃力を持ちません";
+                NetoTarget = false;
+                break;
+            case 3:
+                if (focus.EffectSize > p.TemporaryDef)
+                {
+                    PlayerItemValidText.text = $"防御力+{focus.EffectSize - p.TemporaryDef}";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidText.text = "より強い効果を使用中";
+                    PlayerTarget = false;
+                }
+                if (focus.EffectSize > n.TemporaryDef)
+                {
+                    NetoItemValidText.text = $"防御力+{focus.EffectSize - n.TemporaryDef}";
+                    NetoTarget = true;
+                }
+                else
+                {
+                    NetoItemValidText.text = "より強い効果を使用中";
+                    NetoTarget = false;
+                }
+                break;
+        }
+        InventorySlotIdHolder = slotID;
+        ItemTargetSelectPanel.SetActive(true);
+        ItemFlavorText.text = focus.Flavor;
+    }
+    public void OnItemTargetButton(int CharaID)
+    {
+        if (CharaID == 0 && PlayerTarget == false) return;
+        if (CharaID == 1 && NetoTarget == false) return;
+        ItemTargetSelectPanel.SetActive(false);
+        ItemConfirmPanel.SetActive(true);
+        CharaIdHolder = CharaID;
+    }
+    public void OnItemReconfirmAccept()
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        Item focus = supportItems[InventorySlotIdHolder + InventoryItemCursor - 1].item;
+        if (CharaIdHolder == 0)
+        {
+            p.ApplyEffect(focus);
+        }
+        else if(CharaIdHolder == 1)
+        {
+            n.ApplyEffect(focus);
+        }
+        ItemFlavorText.text = "";
+        ItemConfirmPanel.SetActive(false);
+        inventory.RemoveItem(focus.ItemID, 1);
+        List<CarryItem> ResupportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        
+        if (InventoryItemCursor + 5 > ResupportItems.Count)
+        {
+            InventoryItemCursor--;
+        }
+        SupportItemSelectorChange(InventoryItemCursor, ResupportItems);
+    }
+    public void OnItemReconfirmCancel()
+    {
+        ItemConfirmPanel.SetActive(false);
+        ItemTargetSelectPanel.SetActive(true);
+    }
+    public void ItemListAllowDown()
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        if (supportItems == null) return;
+        InventoryItemCursor = Mathf.Min(++InventoryItemCursor, supportItems.Count - 5);
+        SupportItemSelectorChange(InventoryItemCursor, supportItems);
+    }
+    public void ItemListAllowUp()
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        if (supportItems == null) return;
+        InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
+        SupportItemSelectorChange(InventoryItemCursor, supportItems);
     }
 }
