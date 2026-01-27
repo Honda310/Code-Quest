@@ -25,13 +25,11 @@ public class Neto : MonoBehaviour
     private Dictionary<string, Sprite> sprites;
     private void Awake()
     {
-        // èdï°ñhé~
         if (instance != null)
         {
             Destroy(gameObject);
             return;
         }
-
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -53,8 +51,6 @@ public class Neto : MonoBehaviour
         if (player != null)
         {
             target = player.transform;
-
-            // ÉVÅ[ÉìëJà⁄íºå„ÇÃèuä‘ÉèÅ[Évñhé~
             Vector3 pos = target.position;
             transform.position = pos;
         }

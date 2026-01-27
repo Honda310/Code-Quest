@@ -15,7 +15,6 @@ public class TreasureBox : MonoBehaviour
         {
             IsOpened = true;
             Debug.Log($"宝箱 {BoxID} を開けました。中身: {ItemID}");
-            // インベントリへの追加処理を呼び出す
         }
     }
 }

@@ -85,6 +85,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text NetoItemValidText;
     [SerializeField] private Text ItemFlavorText;
 
+    [Header("会話イベントなどに使用するいろいろ")]
+    [SerializeField] private GameObject TalkTextBoxPanel;
+    [SerializeField] private Text TalkTextBox;
+
     //装備&ステータス画面の制御系
     private bool EquipCharacterSelecter;
     private bool EquipSlots;
@@ -474,6 +478,10 @@ public class UIManager : MonoBehaviour
     }
     public void OnEquipAndStatusButtonClicked()
     {
+        CurrentHPText.text = $"  HP:";
+        CurrentAtkText.text = $"  ATK :";
+        CurrentDefText.text = $"  DEF :";
+        CurrentDebugLimitText.text = $"  Lim :";
         if (EquipandStatusPanel.activeSelf)
         {
             EquipandStatusPanel.SetActive(false);
@@ -939,5 +947,20 @@ public class UIManager : MonoBehaviour
         if (supportItems == null) return;
         InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
+    }
+    public void TalkingEventStart()
+    {
+        TalkTextBox.text = "";
+        TalkTextBoxPanel.SetActive(true);
+        GameManager.Instance.SetMode(GameMode.Talk);
+    }
+    public void TalkingFowarded(string text)
+    {
+        TalkTextBox.text = text;
+    }
+    public void TalkingEventEnd()
+    {
+        TalkTextBoxPanel.SetActive(false);
+        GameManager.Instance.SetMode(GameMode.Field);
     }
 }

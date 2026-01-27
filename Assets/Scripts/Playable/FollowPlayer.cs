@@ -27,15 +27,10 @@ public class FollowPlayer2D : MonoBehaviour
     void FixedUpdate()
     {
         if (player == null) return;
-
         Vector2 pos = rb.position;
         Vector2 targetPos = player.position;
-
-        // ‹——£
         Vector2 toPlayer = targetPos - pos;
         float dist = toPlayer.magnitude;
-
-        // ’â~‹——£“à ¨ ˆÚ“®—Ê‚ğ0‚Æ‚µ‚Ä‘—‚é
         if (dist <= stopDistance)
         {
             if (neto != null)

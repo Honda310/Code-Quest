@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem; // InputSystemを使用する場合は必要
 
@@ -118,6 +119,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
+        if (!(GameManager.Instance.CurrentMode == GameManager.GameMode.Field)) return; 
         Vector2 direction = Vector2.zero; // 移動方向ベクトル
 
         // --- アニメーションのコマ送り処理 ---
