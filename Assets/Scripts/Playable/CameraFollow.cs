@@ -53,21 +53,29 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (target == null) return;
+        if (SceneManager.GetActiveScene().name=="Dojo")
+        {
+            Vector3 newPos = new Vector3(0,90,-10);
+            transform.position = newPos;
+        }
+        else
+        {
+            if (target == null) return;
 
-        Vector3 targetPos = target.position;
-        targetPos.z = -15f;
+            Vector3 targetPos = target.position;
+            targetPos.z = -15f;
 
-        Vector3 newPos = Vector3.Lerp(
-            transform.position,
-            targetPos,
-            smoothing * Time.deltaTime
-        );
+            Vector3 newPos = Vector3.Lerp(
+                transform.position,
+                targetPos,
+                smoothing * Time.deltaTime
+            );
 
-        newPos.y = Mathf.Min(newPos.y, maxY);
-        newPos.x = Mathf.Round(newPos.x);
-        newPos.y = Mathf.Round(newPos.y);
+            newPos.y = Mathf.Min(newPos.y, maxY);
+            newPos.x = Mathf.Round(newPos.x);
+            newPos.y = Mathf.Round(newPos.y);
 
-        transform.position = newPos;
+            transform.position = newPos;
+        }
     }
 }

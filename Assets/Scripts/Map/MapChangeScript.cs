@@ -21,7 +21,6 @@ public class MapChangeScript : MonoBehaviour
             case 3:
                 GameManager.Instance.mapManager.TransAnotherMap("PoisonedSpring", TransId);
                 break;
-        }   
-        
+        }
     }
 }

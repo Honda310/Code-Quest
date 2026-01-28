@@ -4,7 +4,7 @@ using static GameManager;
 public class TalkEvent : MonoBehaviour
 {
     [SerializeField] private int NpcId;
-    DialogueManager dialogueManager;
+    [SerializeField ]private DialogueManager dialogueManager;
     public Rigidbody2D rb;
     public Transform target;
     private bool Talkable=false;

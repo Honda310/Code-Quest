@@ -6,10 +6,10 @@ public class TalkEventList: MonoBehaviour
     public Dictionary<int, Queue<string>> TalkEventTable = new Dictionary<int, Queue<string>>();
     void Start()
     {
-        TalkEventTable[0] = new Queue<string>(new[]
+        TalkEventTable[1] = new Queue<string>(new[]
         {
             "ｱｰﾝﾌｧｲﾌｧｲﾌｧｲﾌｧｲ",
-            "お前らの宣言した変数を未定義してやるﾌｧｲねぇ！",
+            "お前らの宣言した変数を未定義にしてやるﾌｧｲねぇ！"
         });
     }
     void Update()

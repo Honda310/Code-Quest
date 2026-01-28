@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using static GameManager;
@@ -35,7 +36,7 @@ public class UIManager : MonoBehaviour
 
     [Header("戦闘パネルの各要素")]
     [SerializeField] private GameObject PlSelectPanel;
-    [SerializeField] private GameObject NetoselectPanel;
+    [SerializeField] private GameObject NetoSelectPanel;
     [SerializeField] private GameObject HealthDpSlidersAndCharactersPanel;
     [SerializeField] private GameObject DifficultSelectPanel;
     [SerializeField] private GameObject QuestFramePanel;
@@ -104,15 +105,11 @@ public class UIManager : MonoBehaviour
     private bool PlayerTarget;
     private bool NetoTarget;
 
-    /// <summary>
-    /// プレイヤーとネトのHP表示を更新します
-    /// </summary>
     private GameManager gm;
     private Inventory inventory;
     private Player p;
     private Neto n;
     public static UIManager Active { get; private set; }
-
     private void Awake()
     {
         Active = this;
@@ -127,7 +124,6 @@ public class UIManager : MonoBehaviour
         UpdateStatus(p,n);
         AllPanelClose();
     }
-
     public void Update()
     {
         if(gm == null) return; //Startより先に呼び出されるケースがあるらしい。マジ？
@@ -144,9 +140,7 @@ public class UIManager : MonoBehaviour
             battlePanel.SetActive(false);
             shopPanel.SetActive(false);
         }
-        
     }
-
     ///<summary>
     ///メインの画面を除き、すべてのパネルを閉じるメソッド。
     ///特にデバッグ時とか、あるいはビルド後にパネルのデフォルトがTrueになってしまっているときに回避するために作成したよ。
@@ -168,7 +162,6 @@ public class UIManager : MonoBehaviour
         ItemTargetSelectPanel.SetActive(false);
         ItemConfirmPanel.SetActive(false);
     }
-
     ///<summary>
     ///フィールド上などで、キャラの現在ステータスをUIに反映するためのメソッドです。
     ///戦闘中はPlayer,Neto,Enemyの3引数がある方を使ってね。
@@ -185,7 +178,6 @@ public class UIManager : MonoBehaviour
             NetoStatusText.text = $"Neto HP: {n.CurrentHP}/{n.MaxHP}";
         }
     }
-
     public void UpdateStatus(Player p)
     {
         if (PlayerStatusText != null)
@@ -216,7 +208,6 @@ public class UIManager : MonoBehaviour
             CurrentDebugLimitText.text = $"  Lim :";
         }
     }
-
     ///<summary>
     ///バトル中など、エネミーがいる際の現在ステータスをUIに反映するためのメソッドです。
     ///player,netoのみを処理する、フィールド上でメニュー画面を開いた際を想定したものもあります。
@@ -273,7 +264,6 @@ public class UIManager : MonoBehaviour
         }
         
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -294,7 +284,6 @@ public class UIManager : MonoBehaviour
             battleQuestText.text = text+"\n\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3] ;
         }
     }
-
     /// <summary>
     /// 4択問題でA～Dのいずれかのボタンを押されたとき、または穴埋め問題で「解答送信」ボタンが押されたときに呼ばれるよ。
     /// クリックされたボタンのテキストを読み取ってanswerに代入→A～Dのいずれかなら4択問題用の処理を、
@@ -369,7 +358,7 @@ public class UIManager : MonoBehaviour
     {
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultSelectPanel.SetActive(false);
-        NetoselectPanel.SetActive(true);
+        NetoSelectPanel.SetActive(true);
     }
     public void OnAcceptButtonSelected()
 	{
@@ -395,7 +384,7 @@ public class UIManager : MonoBehaviour
     public void OnPlayerDebugButtonClicked()
     {
         PlSelectPanel.SetActive(false);
-        NetoselectPanel.SetActive(false);
+        NetoSelectPanel.SetActive(false);
         DifficultSelectPanel.SetActive(true);
         DifficultAndSelectButtonFramePanel.SetActive(true);
         DifficultSelectText.text = ("＊挑戦する問題を選択してください");
@@ -422,7 +411,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnNetoSearchButtonClicked()
     {
-        NetoselectPanel.SetActive(false);
+        NetoSelectPanel.SetActive(false);
         HealthDpSlidersAndCharactersPanel.SetActive(false);
         QuestFramePanel.SetActive(true);
     }
@@ -455,7 +444,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-
+            NetoSelectPanel.SetActive(true);
         }
         UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
     }
@@ -499,6 +488,22 @@ public class UIManager : MonoBehaviour
         EquipPanelDisable2.SetActive(true);
         EquipPanelDisable3.SetActive(true);
     }
+    public void OnDojoButtonClicked()
+    {
+        if (SceneManager.GetActiveScene().name == "Dojo")
+        {
+            OnMenuCloseButtonClicked();
+            GameManager.Instance.ReturnBeforeMap();
+            GameManager.Instance.SetMode(GameMode.Field);
+        }
+        else
+        {
+            OnMenuCloseButtonClicked();
+            GameManager.Instance.StackMapNameAndPosition(SceneManager.GetActiveScene().name,p.transform.position,n.transform.position);
+            GameManager.Instance.mapManager.TransAnotherMap("Dojo", 99);
+            GameManager.Instance.SetMode(GameMode.Field);
+        }
+    }
     public void OnConfigButtonClicked()
     {
         if (ConfigPanel.activeSelf)
@@ -536,7 +541,32 @@ public class UIManager : MonoBehaviour
         EquipandStatusPanel.SetActive(false);
         ConfigPanel.SetActive(false);
         KeyBindPanel.SetActive(false);
-    }
+        MenuBarPanel.SetActive(false);
+        ItemPanel.SetActive(false);
+        ItemTargetSelectPanel.SetActive(false);
+        ItemConfirmPanel.SetActive(false);
+        CharaSelector.SetActive(false);
+        NetoSelector.SetActive(false);
+        EquipPanelDisable1.SetActive(true);
+        EquipPanelDisable2.SetActive(true);
+        EquipPanelDisable3.SetActive(true);
+        EquipCharacterSelecter=false;
+        EquipSlots=false;
+        EquipChangeSelecter = false;
+        OnWeaponEquipSelecting = false;
+        OnPlayerEquipSelecting = false;
+        EquipSelectorcursorPosition = 0;
+        InventoryItemCursor = 0;
+        InventorySlotIdHolder = 0;
+        CharaIdHolder = 0;
+        WeaponItemName="Weapon";
+        EquipWeaponName.text = WeaponItemName;
+        AccessoryItemName ="Accessory";
+        EquipAccessoryName.text = AccessoryItemName;
+
+        PlayerTarget =false;
+        NetoTarget=false;
+}
     
     public void MenuToggle()
     {
@@ -960,6 +990,18 @@ public class UIManager : MonoBehaviour
     }
     public void TalkingEventEnd()
     {
+        TalkTextBoxPanel.SetActive(false);
+        GameManager.Instance.SetMode(GameMode.Field);
+    }
+    public void TreasureTakeEventStart(string itemname)
+    {
+        TalkTextBoxPanel.SetActive(true);
+        TalkTextBox.text = itemname + "を獲得した。";
+        GameManager.Instance.SetMode(GameMode.Talk);
+    }
+    public void TreasureTakeEventEnd()
+    {
+        TalkTextBox.text = "";
         TalkTextBoxPanel.SetActive(false);
         GameManager.Instance.SetMode(GameMode.Field);
     }

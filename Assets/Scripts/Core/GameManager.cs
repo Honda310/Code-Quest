@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 【ゲーム進行管理】
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public ShopManager shopManager;           // ショップ機能
     public DojoManager dojoManager;           // ネト道場機能
     public ScreenScales screenScaler;
+    [Header("その他機能")]
+    public TreasureBoxList treasureBoxList;
 
     [Header("プレイヤーデータ")]
     public Player player;       // 主人公
@@ -35,6 +38,10 @@ public class GameManager : MonoBehaviour
 
     private float nextAcceptTime = 0f;
     private const float Cooldown = 0.1f;
+
+    private string BeforeMapName;
+    private Vector3 BeforePlayerPos;
+    private Vector3 BeforeNetoPos;
 
     // 現在戦闘中の敵ID
     public int CurrentEnemyID { get; private set; }
@@ -164,5 +171,17 @@ public class GameManager : MonoBehaviour
     public bool IsEnemyDefeated(int enemyId)
     {
         return defeatedEnemies.Contains(enemyId);
+    }
+    public void StackMapNameAndPosition(string mapname,Vector3 playerPos,Vector3 netoPos)
+    {
+        BeforeMapName=mapname;
+        BeforePlayerPos=playerPos;
+        BeforeNetoPos=netoPos;
+    }
+    public void ReturnBeforeMap()
+    {
+        SceneManager.LoadScene(BeforeMapName);
+        GameManager.Instance.player.transform.position = BeforePlayerPos;
+        GameManager.Instance.neto.transform.position = BeforeNetoPos;
     }
 }
