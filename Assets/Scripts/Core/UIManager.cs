@@ -437,6 +437,13 @@ public class UIManager : MonoBehaviour
     }
     public void TurnStart()
     {
+        PlSelectPanel.SetActive(false);
+        NetoSelectPanel.SetActive(false);
+        QuestFramePanel.SetActive(false);
+        DifficultSelectPanel.SetActive(false);
+        DifficultAndCheckButtonFramePanel.SetActive(false);
+        DifficultAndSelectButtonFramePanel.SetActive(false);
+
         HealthDpSlidersAndCharactersPanel.SetActive(true);
         if (p.CurrentHP > 0)
         {

@@ -96,7 +96,6 @@ public class BattleManager : MonoBehaviour
         {
             StartCoroutine(QuizIncorrect());
         }
-        NextTurn();
     }
     public void OnSubmitFillBrankAnswer(string code)
     {
