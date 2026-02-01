@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static GameManager;
 
 public class FollowPlayer2D : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class FollowPlayer2D : MonoBehaviour
     public float moveSpeed;
     public float stopDistance;
     public float smoothingFactor;
+    public bool Talkable = false;
+    Transform target;
     public Vector2 smoothedDir = Vector2.zero;
     public Vector2 previousMoveDir;
     public LayerMask obstacleLayer;
@@ -24,13 +27,41 @@ public class FollowPlayer2D : MonoBehaviour
         lastPosition = rb.position;
         neto = GetComponent<Neto>();
     }
-
+    private void Update()
+    {
+        if (player == null) return;
+        if (SceneManager.GetActiveScene().name == "Dojo")
+        {
+            Player player = Object.FindFirstObjectByType<Player>();
+            if (player != null)
+            {
+                target = player.transform;
+                Vector2 TargetPos = target.position;
+                Vector2 pos = rb.position;
+                Vector2 toPlayer = TargetPos - pos;
+                float dist = toPlayer.magnitude;
+                if (dist < 20)
+                {
+                    Talkable = true;
+                }
+                else
+                {
+                    Talkable = false;
+                }
+            }
+            if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return)) && GameManager.Instance.CurrentMode == GameMode.Field && Talkable)
+            {
+                DojoManager.Active?.OpenNetoDojoPanel();
+                Debug.Log("Entered");
+            }
+        }
+    }
     void FixedUpdate()
     {
         if (player == null) return;
         if (SceneManager.GetActiveScene().name == "Dojo")
         {
-
+            
         }
         else
         {

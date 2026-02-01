@@ -498,6 +498,8 @@ MonoBehaviour:
   moveSpeed: 100
   stopDistance: 40
   smoothingFactor: 0
+  Talkable: 0
+  checker: 0
   smoothedDir: {x: 0, y: 0}
   previousMoveDir: {x: 0, y: 0}
   obstacleLayer:
@@ -650,11 +652,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182703126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fd56785b33a31d4d87c3a02d1cb51ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DojoManager
+  DojoSelectPanel: {fileID: 0}
+  DojoTellPanel: {fileID: 0}
+  NetoTellText: {fileID: 0}
+  IndexLabel: {fileID: 0}
 --- !u!114 &1182703131
 MonoBehaviour:
   m_ObjectHideFlags: 0

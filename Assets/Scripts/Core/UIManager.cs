@@ -126,7 +126,7 @@ public class UIManager : MonoBehaviour
     }
     public void Update()
     {
-        if(gm == null) return; //Startより先に呼び出されるケースがあるらしい。マジ？
+        if(gm == null) return; //GameManagerを取得しようとしたはいいけど、UpdateがStartより先に呼び出される！ってケースがあるらしい。マジ？
         if (gm.CurrentMode == GameMode.Battle)
         {
             battlePanel.SetActive(true);
@@ -1011,5 +1011,11 @@ public class UIManager : MonoBehaviour
         TalkTextBox.text = "";
         TalkTextBoxPanel.SetActive(false);
         GameManager.Instance.SetMode(GameMode.Field);
+    }
+    public void DojoTalkingEventStart()
+    {
+        TalkTextBox.text = "";
+        TalkTextBoxPanel.SetActive(true);
+        GameManager.Instance.SetMode(GameMode.Talk);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Neto : MonoBehaviour
@@ -78,29 +79,33 @@ public class Neto : MonoBehaviour
     {
         return Resources.Load<Sprite>($"Image/Playable/Neto/2Neto_1normal_{name}");
     }
-
+    private void Update()
+    {
+    }
     void FixedUpdate()
     {
-        // ■■■ 停止している場合（moveDelta = 0） ■■■
-        if (moveDelta.sqrMagnitude < 0.0001f)
+        if (SceneManager.GetActiveScene().name == "Dojo")
         {
-            MovingIndex = 0;
-
-            // ---- lastMoveDir を利用して向きを維持 ----
-            float stopAngle = Mathf.Atan2(lastMoveDir.y, lastMoveDir.x) * Mathf.Rad2Deg;
-            if (stopAngle < 0) stopAngle += 360f;
-            quadrant = GetQuadrant(stopAngle);
-
-            string key = $"{quadrant}_0";
-            if (sprites.ContainsKey(key))
-                GetComponent<SpriteRenderer>().sprite = sprites[key];
-
+            string key = $"4_0";
+            if (sprites.ContainsKey(key)) GetComponent<SpriteRenderer>().sprite = sprites[key];
             return;
         }
+        else
+        {
+            if (moveDelta.sqrMagnitude < 0.0001f)
+            {
+                MovingIndex = 0;
 
-        // ■■■ 実際に動いている場合 ■■■
+                float stopAngle = Mathf.Atan2(lastMoveDir.y, lastMoveDir.x) * Mathf.Rad2Deg;
+                if (stopAngle < 0) stopAngle += 360f;
+                quadrant = GetQuadrant(stopAngle);
 
-        // 進行方向を算出し lastMoveDir に保存
+                string key = $"{quadrant}_0";
+                if (sprites.ContainsKey(key)) GetComponent<SpriteRenderer>().sprite = sprites[key];
+
+                return;
+            }
+        }
         Vector2 moveDir = moveDelta.normalized;
         lastMoveDir = moveDir;
 
@@ -118,7 +123,6 @@ public class Neto : MonoBehaviour
 
         int idx = MovingIndex;
 
-        // 左右（ quadrant 1 と 3 ）は 0/1 までしか存在しない
         if (quadrant == 1 || quadrant == 3)
             idx = Mathf.Min(idx, 1);
 

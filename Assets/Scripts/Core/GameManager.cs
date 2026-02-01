@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
         Field,
         Talk,
         Menu,
+        Dojo,
         Battle,
         Shop,
         SaveLoad,

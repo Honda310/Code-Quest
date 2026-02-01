@@ -6,6 +6,7 @@ public class DojoEvent : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Transform target;
+    public UIManager uiManager;
     private bool Talkable=false;
     void Update()
     {
@@ -19,7 +20,7 @@ public class DojoEvent : MonoBehaviour
                 Vector2 pos = rb.position;
                 Vector2 toPlayer = TargetPos - pos;
                 float dist = toPlayer.magnitude;
-                if (dist < 40)
+                if (dist < 20)
                 {
                     Talkable = true;
                 }
