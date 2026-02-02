@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dojo.unity
     guid: 1f290778040a3db46a411be64e013329
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 0efdbdeb54162f6469aa5d0b42969ad8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

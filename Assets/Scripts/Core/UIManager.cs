@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider EnemyStatusSlider;
     [SerializeField] private Text logText1;
     [SerializeField] private Text logText2;
+    [SerializeField] private string[] logKeeper = new string[2];  
 
     [Header("各モードの画面パネル")]
     [SerializeField] private GameObject battlePanel;    // 戦闘画面
@@ -306,7 +307,20 @@ public class UIManager : MonoBehaviour
             logText1.text = logText2.text;
             logText2.text = message;
         }
-        
+    }
+    public void HideLog()
+    {
+        logKeeper[0] = logText1.text;
+        logKeeper[1] = logText2.text;
+        logText1.text = "";
+        logText2.text = "";
+    }
+    public void RebootLog()
+    {
+        logText1.text = logKeeper[0];
+        logText2.text = logKeeper[1];
+        logKeeper[0] = "";
+        logKeeper[1] = "";
     }
     /// <summary>
     /// 
@@ -352,7 +366,6 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.BattleManager.OnSubmitMultiChoiceAnswer(answer);
         }
-        
             // 入力欄を空にします
             answerInput.text = "";
             QuestFramePanel.SetActive(false);
@@ -392,6 +405,7 @@ public class UIManager : MonoBehaviour
         PlSelectPanel.SetActive(true);
         DifficultSelectPanel.SetActive(false);
         DifficultAndCheckButtonFramePanel.SetActive(false);
+        RebootLog();
     }
 	public void OnReselectButtonSelected()
 	{
@@ -435,6 +449,7 @@ public class UIManager : MonoBehaviour
         DifficultSelectPanel.SetActive(true);
         DifficultAndSelectButtonFramePanel.SetActive(true);
         DifficultSelectText.text = ("＊挑戦する問題を選択してください");
+        HideLog();
     }
     public void OnPlayerDebugButtonSelected()
     {
@@ -626,9 +641,9 @@ public class UIManager : MonoBehaviour
         EquipWeaponName.text = WeaponItemName;
         AccessoryItemName ="Accessory";
         EquipAccessoryName.text = AccessoryItemName;
-
         PlayerTarget =false;
         NetoTarget=false;
+        gm.SetMode(GameMode.Field);
 }
     
     public void MenuToggle()
@@ -1059,7 +1074,7 @@ public class UIManager : MonoBehaviour
     public void TreasureTakeEventStart(string itemname)
     {
         TalkTextBoxPanel.SetActive(true);
-        TalkTextBox.text = itemname + "を獲得した。";
+        TalkTextBox.text = itemname + "を手に入れた！";
         GameManager.Instance.SetMode(GameMode.Talk);
     }
     public void TreasureTakeEventEnd()

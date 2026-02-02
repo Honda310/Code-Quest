@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// 【タイトル画面】
 /// ゲームの開始処理や、プレイヤー名の入力を担当します。
 /// </summary>
-public class TitleManager : MonoBehaviour
+public class GameStartManager : MonoBehaviour
 {
     public GameObject nameInputPanel; // 名前入力画面
     public InputField nameInputField; // 入力ボックス

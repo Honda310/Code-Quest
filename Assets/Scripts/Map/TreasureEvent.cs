@@ -53,7 +53,6 @@ public class TreasureEvent : MonoBehaviour
         }
         IEnumerator SkipCooldown()
         {
-
             yield return new WaitForSeconds(0.15f);
             Skipable = true;
         }

@@ -21,6 +21,7 @@ public class TreasureBoxList : MonoBehaviour
         CreateTreasureBox(3, 30003);
         CreateTreasureBox(4, 30004);
         CreateTreasureBox(5, 30005);
+        CreateTreasureBox(6, 10008);
         dataManager = GameManager.Instance.dataManager;
         inventory = GameManager.Instance.inventory;
     }
@@ -46,7 +47,6 @@ public class TreasureBoxList : MonoBehaviour
         {
             Item item = dataManager.GetItemById(Item.ItemType.SupportItem, id);
             inventory.AddItem(item, 1);
-            Debug.Log("‚¨‚Ü‚¦‚Í"+item.ItemName+"‚ð“¾‚½");
             TreasureBoxTable[TreasureBoxId].accessAble = false;
             return item.ItemName;
         }
@@ -54,7 +54,6 @@ public class TreasureBoxList : MonoBehaviour
         {
             Item item = dataManager.GetItemById(Item.ItemType.Accessory, id);
             inventory.AddItem(item, 1);
-            Debug.Log("‚¨‚Ü‚¦‚Í" + item.ItemName + "‚ð“¾‚½");
             TreasureBoxTable[TreasureBoxId].accessAble = false;
             return item.ItemName;
         }
@@ -62,13 +61,11 @@ public class TreasureBoxList : MonoBehaviour
         {
             Item item = dataManager.GetItemById(Item.ItemType.Weapon, id);
             inventory.AddItem(item, 1);
-            Debug.Log("‚¨‚Ü‚¦‚Í" + item.ItemName + "‚ð“¾‚½");
             TreasureBoxTable[TreasureBoxId].accessAble = false;
             return item.ItemName;
         }
         else
         {
-            Debug.Log("‚¨‚Ü‚¦‚Í‚«‚å‚Þ‚ð“¾‚½");
             TreasureBoxTable[TreasureBoxId].accessAble = false;
             return "null";
         }

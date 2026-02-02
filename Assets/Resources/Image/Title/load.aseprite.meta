@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e7a95db1f92c514cb0492e0385c7c58
+guid: 1a9f4ffa91df2cb41bd7273774b23748
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639005288322304025
+  platformSettingsDirtyTick: 639056469172595890
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: 2Neto_2battle_2breath_
+  - name: load
     originalName: 
-    pivot: {x: 0.56666666, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 30
-      height: 54
-    spriteID: eb2e3db59cb793c438a9b14da5890e5e
+      width: 320
+      height: 180
+    spriteID: ae9abb8aa161dbf478631a1e59071ff7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1406141731
+      value0: 4143128302
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: 2Neto_2battle_2breath_
+    name: load
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: 2Neto_2battle_2breath_
+    - name: load
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 30
-        height: 54
-      spriteId: eb2e3db59cb793c438a9b14da5890e5e
+        width: 320
+        height: 180
+      spriteId: ae9abb8aa161dbf478631a1e59071ff7
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -205,5 +205,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 34, y: 54}
-  previousTextureSize: {x: 64, y: 64}
+  canvasSize: {x: 320, y: 180}
+  previousTextureSize: {x: 512, y: 256}

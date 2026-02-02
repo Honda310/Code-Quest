@@ -143,14 +143,14 @@ public class BattleManager : MonoBehaviour
         {
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             player.CurrentHP -= realDmg;
-            UIManager.Active?.ShowLog($"プレイヤーが{realDmg}のダメージを受けた！");
+            UIManager.Active?.ShowLog($"敵からの攻撃！プレイヤーに{realDmg}のダメージ！");
             damagePop.PlayerDamagePlay(realDmg);
         }
         else
         {
             int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
             neto.CurrentHP -= realDmg;
-            UIManager.Active?.ShowLog($"ネトが{realDmg}のダメージを受けた！");
+            UIManager.Active?.ShowLog($"敵からの攻撃！ネトに{realDmg}のダメージ！");
             damagePop.NetoDamagePlay(realDmg);
         }
         yield return new WaitForSecondsRealtime(0.5f);

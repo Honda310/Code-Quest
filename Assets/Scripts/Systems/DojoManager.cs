@@ -9,8 +9,11 @@ public class DojoManager : MonoBehaviour
 {
     [SerializeField] private GameObject DojoSelectPanel;
     [SerializeField] private GameObject DojoTellPanel;
+    [SerializeField] private GameObject BattleAskPanel;
     [SerializeField] private Text NetoTellText;
     [SerializeField] private Text IndexLabel;
+    [SerializeField] private Text BattleAskText;
+    //[SerializeField] private Text 
 
     private int IdxKeeper;
     private int BookMarker;
@@ -23,6 +26,10 @@ public class DojoManager : MonoBehaviour
                                 ,"次のコードを実行すると、最後に表示される値は何になるネト？\n\npublic class Main {\n    public static void main(String[] args) {\n        int[] nums = { 4, 9, 2, 7 };\n        for (int i = 0; i < nums.length; i++) {\n            System.out.println(nums[i]);\n        }\n    }\n}\n A:4 B:2 C:7 D:9"
                                 ,"【解説】ネト\n配列 nums の中身は次ネト。\nインデックス：0 1 2 3\n値　　　　　：4 9 2 7\n\nfor文はこう動くネト：\ni = 0 → nums[0] = 4 を表示\ni = 1 → nums[1] = 9 を表示\ni = 2 → nums[2] = 2 を表示\ni = 3 → nums[3] = 7 を表示\n\nつまり、最後に出力されるのは 7 、正解は C ネト！"};
     int[] ArrayLengths = new int[4];
+    string[] BattleAsk = {"変数の学習内容を実践しますか？\n（戦闘が始まります）",
+                            "条件分岐の学習内容を実践しますか？\n（戦闘が始まります）",
+                            "ループ文の学習内容を実践しますか？\n（戦闘が始まります）",
+                            "配列の学習内容を実践しますか？\n（戦闘が始まります）"};  
     public static DojoManager Active { get; private set; }
     private void Awake()
     {
@@ -102,5 +109,18 @@ public class DojoManager : MonoBehaviour
         GameManager.Instance.SetMode(GameManager.GameMode.Dojo);
         DojoSelectPanel.SetActive(true);
         DojoTellPanel.SetActive(false);
+    }
+    public void TutorialDoll(int DollId)
+    {
+        BattleAskPanel.SetActive(true);
+        BattleAskText.text = BattleAsk[DollId];
+    }
+    public void tutorialbattleStart()
+    {
+
+    }
+    public void tutorialbattleCancel()
+    {
+        BattleAskPanel.SetActive(false);
     }
 }
