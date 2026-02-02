@@ -42,6 +42,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject QuestFramePanel;
     [SerializeField] private GameObject DifficultAndCheckButtonFramePanel;
     [SerializeField] private GameObject DifficultAndSelectButtonFramePanel;
+    [SerializeField] private Slider TimeLimitSlider;
+    [SerializeField] private Text TimeLimitText;
+    Color skyblue = new Color32(0, 224, 255, 255);
+    Color yellow = new Color32(224, 255, 0, 255);
+    Color red = new Color32(255, 96, 96, 255);
 
     [Header("メニュー画面の各パネル")]
     [SerializeField] private GameObject MenuPanel;
@@ -105,6 +110,11 @@ public class UIManager : MonoBehaviour
     private bool PlayerTarget;
     private bool NetoTarget;
 
+    //先に呼ばれても変なことにならないための予防用初期値
+    private double MaxTimeLimit=10.0;
+    private double CurrentTimeLimit = 10.0;
+    private bool QuestionStart = false;
+
     private GameManager gm;
     private Inventory inventory;
     private Player p;
@@ -139,6 +149,40 @@ public class UIManager : MonoBehaviour
         {
             battlePanel.SetActive(false);
             shopPanel.SetActive(false);
+        }
+        if (QuestionStart)
+        {
+            TimeLimitSlider.value = (float)CurrentTimeLimit;
+            Image fill = TimeLimitSlider.fillRect.GetComponent<Image>();
+            float ratio = TimeLimitSlider.value / TimeLimitSlider.maxValue;
+            TimeLimitText.text= (Math.Floor(TimeLimitSlider.value * 100) / 100).ToString() + "s";
+            if (ratio > 0.5f)
+            {
+                fill.color = skyblue;
+                TimeLimitText.color = skyblue;
+            }else if (ratio > 0.25f)
+            {
+                fill.color = yellow;
+                TimeLimitText.color = yellow;
+            }
+            else
+            {
+                fill.color = red;
+                TimeLimitText.color = red;
+            }
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (QuestionStart)
+        {
+            if (CurrentTimeLimit <= 0 && QuestionStart)
+            {
+                QuestionStart = false;
+                GameManager.Instance.BattleManager.TimeExpired();
+                return;
+            }
+            CurrentTimeLimit = Math.Max(0, CurrentTimeLimit - Time.fixedDeltaTime);
         }
     }
     ///<summary>
@@ -292,9 +336,12 @@ public class UIManager : MonoBehaviour
     public void OnSubmitButtonClicked(Button clickedButton)
     {
 
+        if (QuestionStart == false) return;
+        QuestionStart = false;
         string buttonText = clickedButton.GetComponentInChildren<Text>().text;
         string answer = buttonText;
         battleInfoText.text = answer;
+
         if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
         {
             answer = answerInput.text;
@@ -414,6 +461,7 @@ public class UIManager : MonoBehaviour
         NetoSelectPanel.SetActive(false);
         HealthDpSlidersAndCharactersPanel.SetActive(false);
         QuestFramePanel.SetActive(true);
+        QuizStart();
     }
     public void OnNetoSearchButtonSelected()
     {
@@ -454,6 +502,14 @@ public class UIManager : MonoBehaviour
             NetoSelectPanel.SetActive(true);
         }
         UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
+        MaxTimeLimit = p.DebugLimit;
+    }
+    public void QuizStart()
+    {
+        CurrentTimeLimit = MaxTimeLimit;
+        QuestionStart = true;
+        TimeLimitSlider.maxValue = (float)MaxTimeLimit;
+        TimeLimitSlider.value = (float)MaxTimeLimit;
     }
     public void OnInventoryButtonClicked()
     {

@@ -92,6 +92,11 @@ public class DamagePop : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-
+    }
+    public void TextReset()
+    {
+        PlayerFluctuationText.text = "";
+        NetoFluctuationText.text = "";
+        EnemyFluctuationText.text = "";
     }
 }

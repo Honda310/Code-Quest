@@ -199,7 +199,7 @@ public class Player : MonoBehaviour
         Weapon weapon = item as Weapon;
         EquipWeaponName = weapon.ItemName;
         WeaponAtk = weapon.Atk;
-        DebugLimit = weapon.TimeLimit;
+        DebugLimit = Math.Max(15,weapon.TimeLimit);
     }
 
     /// <summary>

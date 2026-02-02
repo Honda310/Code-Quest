@@ -51,10 +51,7 @@ public class BattleManager : MonoBehaviour
             Debug.LogError($"敵データが見つかりません: ID {enemyId}");
             return;
         }
-
-        // 敵生成
         currentEnemy = enemy;
-        
         currentEnemy.MaxDP = data.MaxDP;
         currentEnemy.CurrentDP = 0;
         currentEnemy.Atk = data.Atk;
@@ -68,7 +65,7 @@ public class BattleManager : MonoBehaviour
 
         GameManager.Instance.SetMode(GameManager.GameMode.Battle);
         UIManager.Active?.ShowLog();
-
+        damagePop.TextReset();
         NextTurn();
     }
 
@@ -97,11 +94,14 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(QuizIncorrect());
         }
     }
+    public void TimeExpired()
+    {
+        StartCoroutine(QuizIncorrect());
+    }
     public void OnSubmitFillBrankAnswer(string code)
     {
 
     }
-
     private IEnumerator QuizCorrect()
     {
         yield return new WaitForSecondsRealtime(0.4f);
@@ -118,17 +118,15 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
     }
-
     private IEnumerator QuizIncorrect()
     {
         yield return new WaitForSecondsRealtime(0.4f);
         UIManager.Active.ShowLog("不正解、ダメージを与えられなかった…");
         StartCoroutine(EnemyTurn());
     }
-
     private IEnumerator EnemyTurn()
     {
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(1.0f);
         if (player.CurrentHP>0 && neto.CurrentHP > 0)
         {
             hitPlayer = Random.value > 0.5f;
@@ -155,7 +153,7 @@ public class BattleManager : MonoBehaviour
             UIManager.Active?.ShowLog($"ネトが{realDmg}のダメージを受けた！");
             damagePop.NetoDamagePlay(realDmg);
         }
-
+        yield return new WaitForSecondsRealtime(0.5f);
         GameManager.Instance.SetBattleTime(GameManager.BattleTag.TurnEnd);
         if(player.CurrentHP <= 0)
         {
@@ -165,7 +163,6 @@ public class BattleManager : MonoBehaviour
         {
             neto.CurrentHP = 0;
         }
-        // 敗北判定
         if (player.CurrentHP <= 0 && neto.CurrentHP <= 0)
         {
             StartCoroutine(EndBattle(false));
