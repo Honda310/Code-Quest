@@ -76,6 +76,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text CharaNameText;
     [SerializeField] private Text EquipWeaponName;
     [SerializeField] private Text EquipAccessoryName;
+    [SerializeField] private Text LevelText;
+    [SerializeField] private Text ExpText;
     [SerializeField] private Text CurrentHPText;
     [SerializeField] private Text CurrentAtkText;
     [SerializeField] private Text CurrentDefText;
@@ -235,6 +237,8 @@ public class UIManager : MonoBehaviour
     {
         if (PlayerStatusText != null)
         {
+            LevelText.text = $"  LV  : {p.CurrentLv}";
+            ExpText.text = $"  EXP : {p.CurrentExp}/{p.NextExp}";
             CurrentHPText.text = $"  HP  : {p.CurrentHP}/{p.MaxHP}";
             CurrentAtkText.text= $"  ATK : {p.CurrentAtk}";
             CurrentDefText.text= $"  DEF : {p.CurrentDef}";
@@ -245,6 +249,8 @@ public class UIManager : MonoBehaviour
     {
         if (NetoStatusText != null)
         {
+            LevelText.text = $"  LV  : None";
+            ExpText.text = $"  EXP : None";
             CurrentHPText.text = $"  HP  : {n.CurrentHP}/{p.MaxHP}";
             CurrentAtkText.text = $"  ATK : None";
             CurrentDefText.text = $"  DEF : {n.CurrentDef}";
@@ -253,13 +259,12 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateStatus()
     {
-        if (NetoStatusText != null)
-        {
-            CurrentHPText.text = $"  HP  :";
-            CurrentAtkText.text = $"  ATK :";
-            CurrentDefText.text = $"  DEF :";
-            CurrentDebugLimitText.text = $"  Lim :";
-        }
+        LevelText.text = $"  LV  :";
+        ExpText.text = $"  EXP :";
+        CurrentHPText.text = $"  HP  :";
+        CurrentAtkText.text = $"  ATK :";
+        CurrentDefText.text = $"  DEF :";
+        CurrentDebugLimitText.text = $"  Lim :";
     }
     ///<summary>
     ///バトル中など、エネミーがいる際の現在ステータスをUIに反映するためのメソッドです。
@@ -554,7 +559,9 @@ public class UIManager : MonoBehaviour
     }
     public void OnEquipAndStatusButtonClicked()
     {
-        CurrentHPText.text = $"  HP:";
+        LevelText.text = $"  LV  :";
+        ExpText.text = $"  EXP :";
+        CurrentHPText.text = $"  HP  :";
         CurrentAtkText.text = $"  ATK :";
         CurrentDefText.text = $"  DEF :";
         CurrentDebugLimitText.text = $"  Lim :";

@@ -14,7 +14,19 @@ public class Player : MonoBehaviour
     public string PlayerName; 
     public int DebugLimit = 15;
     public int CurrentLv = 1;
-    public int TotalExp = 0;
+    public int CurrentExp = 0;
+    public int NextExp
+    {
+        get { return CurrentLv*100; }
+    }
+    public int TotalExp
+    {
+        get { return ((CurrentLv-1)* (2 * 100 + (CurrentLv - 2) * 100) / 2)+CurrentExp; }
+    }
+    public int NextTotalExp
+    {
+        get { return CurrentLv * (2 * 100 + (CurrentLv - 1) * 100) / 2; }
+    }
     public int MaxHP
     {
         get { return 95 + CurrentLv * 5; }
@@ -114,7 +126,7 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// Resourcesフォルダからスプライトをロードするヘルパーメソッド
+    /// Resourcesフォルダからスプライトをロード
     /// </summary>
     Sprite Load(string name)
     {
