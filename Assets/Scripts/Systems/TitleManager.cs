@@ -11,8 +11,7 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            GameManager.Instance.mapManager.TransAnotherMap("LamentForest", 2);
-            Debug.Log("Enter");
+            GameManager.Instance.mapManager.TransAnotherMap("GameStartScene", 2);
         }
     }
 }

@@ -11,13 +11,23 @@ using UnityEngine.InputSystem; // InputSystemを使用する場合は必要
 /// </summary>
 public class Player : MonoBehaviour
 {
-    // --- ステータス関連 ---
-    public string PlayerName; // プレイヤー名
-    public int MaxHP=100;         // 最大HP
-    public int CurrentHP=100;     // 現在HP
-    public int BaseAtk=10;       // 基礎攻撃力
-    public int BaseDef=10;       // 基礎防御力
-    public int DebugLimit = 5;
+    public string PlayerName; 
+    public int DebugLimit = 15;
+    public int CurrentLv = 1;
+    public int TotalExp = 0;
+    public int MaxHP
+    {
+        get { return 95 + CurrentLv * 5; }
+    } 
+    public int CurrentHP = 100;
+    public int BaseAtk
+    {
+        get { return 9 + CurrentLv; }
+    } 
+    public int BaseDef
+    {
+        get { return 9 + CurrentLv; }
+    }
     [NonSerialized] public string EquipWeaponName="なし";
     [NonSerialized] public string EquipAccessoryName="なし";
 

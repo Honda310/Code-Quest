@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject ItemTargetSelectPanel;
     [SerializeField] private GameObject ItemConfirmPanel;
     [SerializeField] private GameObject EquipandStatusPanel;
+    [SerializeField] private GameObject ConfigPanelGameEnd;
     [SerializeField] private GameObject ConfigPanel;
     [SerializeField] private GameObject KeyBindPanel;
     [SerializeField] private GameObject CharaSelector;
@@ -64,6 +65,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject EquipPanelDisable1;
     [SerializeField] private GameObject EquipPanelDisable2;
     [SerializeField] private GameObject EquipPanelDisable3;
+    [SerializeField] private GameObject PointerPanel1;
+    [SerializeField] private GameObject PointerPanel2;
+    [SerializeField] private GameObject PointerPanel3;
+    [SerializeField] private GameObject PointerPanel4;
+    [SerializeField] private GameObject PointerPanel5;
+    [SerializeField] private GameObject PointerPanel6;
 
     [Header("装備&ステータス画面の各テキスト&ボタン")]
     [SerializeField] private Text CharaNameText;
@@ -204,6 +211,7 @@ public class UIManager : MonoBehaviour
         ItemPanel.SetActive(false);
         KeyBindPanel.SetActive(false);
         ConfigPanel.SetActive(false);
+        ConfigPanelGameEnd.SetActive(false);
         ItemTargetSelectPanel.SetActive(false);
         ItemConfirmPanel.SetActive(false);
     }
@@ -537,6 +545,7 @@ public class UIManager : MonoBehaviour
             ItemPanel.SetActive(true);
             EquipandStatusPanel.SetActive(false);
             ConfigPanel.SetActive(false);
+            ConfigPanelGameEnd.SetActive(false);
             KeyBindPanel.SetActive(false);
             List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
             SupportItemSelectorChange(0, supportItems);
@@ -558,6 +567,7 @@ public class UIManager : MonoBehaviour
             ItemPanel.SetActive(false);
             EquipandStatusPanel.SetActive(true);
             ConfigPanel.SetActive(false);
+            ConfigPanelGameEnd.SetActive(false);
             KeyBindPanel.SetActive(false);
         }
         EquipCharacterSelecter = true;
@@ -608,6 +618,7 @@ public class UIManager : MonoBehaviour
             ItemPanel.SetActive(false);
             EquipandStatusPanel.SetActive(false);
             ConfigPanel.SetActive(false);
+            ConfigPanelGameEnd.SetActive(false);
             KeyBindPanel.SetActive(true);
         }
         
@@ -618,6 +629,7 @@ public class UIManager : MonoBehaviour
         ItemPanel.SetActive(false);
         EquipandStatusPanel.SetActive(false);
         ConfigPanel.SetActive(false);
+        ConfigPanelGameEnd.SetActive(false);
         KeyBindPanel.SetActive(false);
         MenuBarPanel.SetActive(false);
         ItemPanel.SetActive(false);
@@ -709,14 +721,72 @@ public class UIManager : MonoBehaviour
             OnItemReconfirmCancel();
         }
         //ここまで
+        //ここからシステムパネルの制御用
+        else if (MenuPanel.activeSelf && ConfigPanel.activeSelf && ConfigPanelGameEnd.activeSelf)
+        {
+            ConfigPanelGameEnd.SetActive(false);
+        }
+        //ここまで
         else
         {
             ItemPanel.SetActive(false);
             EquipandStatusPanel.SetActive(false);
             ConfigPanel.SetActive(false);
+            ConfigPanelGameEnd.SetActive(false);
             KeyBindPanel.SetActive(false);
         }
     }
+    //メニュー画面表層のUI制御
+    public void OnMenuButtonTriggerEnter(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                PointerPanel1.SetActive(true);
+                break;
+            case 1:
+                PointerPanel2.SetActive(true);
+                break;
+            case 2:
+                PointerPanel3.SetActive(true);
+                break;
+            case 3:
+                PointerPanel4.SetActive(true);
+                break;
+            case 4:
+                PointerPanel5.SetActive(true);
+                break;
+            case 5:
+                PointerPanel6.SetActive(true);
+                break;
+        }
+    }
+    public void OnMenuButtonTriggerExit(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                PointerPanel1.SetActive(false);
+                break;
+            case 1:
+                PointerPanel2.SetActive(false);
+                break;
+            case 2:
+                PointerPanel3.SetActive(false);
+                break;
+            case 3:
+                PointerPanel4.SetActive(false);
+                break;
+            case 4:
+                PointerPanel5.SetActive(false);
+                break;
+            case 5:
+                PointerPanel6.SetActive(false);
+                break;
+        }
+    }
+
+    //ここからは、インベントリ関連のUI制御
     //この辺にあるif([任意の文字列]==false) return;は、本来選べないボタンを選択/クリックさせないためのやつ
     public void OnPlayerIconClicked()
     {
@@ -1056,6 +1126,25 @@ public class UIManager : MonoBehaviour
         InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
     }
+    public void ChangeScreenSize(int i)
+    {
+        Screen.SetResolution(320*i, 180*i, FullScreenMode.Windowed);
+    }
+    public void OnGameEndButton()
+    {
+        ConfigPanelGameEnd.SetActive(true);
+    }
+    public void OnTitleBackCancel()
+    {
+        ConfigPanelGameEnd.SetActive(false);
+    }
+    public void OnTitleBackExectute()
+    {
+
+    }
+
+
+    //ここから会話系の制御
     public void TalkingEventStart()
     {
         TalkTextBox.text = "";

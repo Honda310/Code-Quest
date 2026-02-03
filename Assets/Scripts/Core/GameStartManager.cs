@@ -8,32 +8,58 @@ using UnityEngine.UI;
 /// </summary>
 public class GameStartManager : MonoBehaviour
 {
-    public GameObject nameInputPanel; // 名前入力画面
-    public InputField nameInputField; // 入力ボックス
+    //public GameObject nameInputPanel; 
+    //public InputField nameInputField; 
+    [SerializeField] private GameObject StartPanel;
+    [SerializeField] private GameObject LoadPanel;
 
-    // 「はじめから」ボタン
-    public void OnStartClicked()
+    private void Start()
     {
-        nameInputPanel.SetActive(true);
+        StartPanel.SetActive(true);
+        LoadPanel.SetActive(false);
     }
+    //public void OnStartClicked()
+    //{
+    //    nameInputPanel.SetActive(true);
+    //}
+    //public void OnNameDecided()
+    //{
+    //    string name = nameInputField.text;
 
-    // 「決定」ボタン
-    public void OnNameDecided()
+    //    // 名前が空でなければ保存してゲーム開始
+    //    if (!string.IsNullOrEmpty(name))
+    //    {
+    //        PlayerPrefs.SetString("PlayerName", name);
+    //        SceneManager.LoadScene("GameScene");
+    //    }
+    //}
+    private void Update()
     {
-        string name = nameInputField.text;
-
-        // 名前が空でなければ保存してゲーム開始
-        if (!string.IsNullOrEmpty(name))
+        if(Input.GetKeyDown(KeyCode.Escape)|| Input.GetKeyDown(KeyCode.X))
         {
-            PlayerPrefs.SetString("PlayerName", name);
-            // 本編シーンへ移動（シーン名は適宜変更してください）
-            SceneManager.LoadScene("GameScene");
+            StartPanel.SetActive(true);
+            LoadPanel.SetActive(false);
         }
     }
-
-    // 「終了」ボタン
-    public void OnExitClicked()
+    public void OnGameStartButtonClicked()
     {
-        Application.Quit();
+
+    }
+    public void OnGameContinueButtonClicked()
+    {
+        StartPanel.SetActive(false);
+        LoadPanel.SetActive(true);
+    }
+    public void OnEndButtonClicked()
+    {
+
+    }
+    public void OnLoadingButtonClicked(int i)
+    {
+
+    }
+    public void SampleLoadButtonClicked()
+    {
+        GameManager.Instance.mapManager.TransAnotherMap("LamentForest", 2);
     }
 }

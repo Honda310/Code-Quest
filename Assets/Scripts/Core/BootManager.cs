@@ -10,9 +10,8 @@ public class BootManager : MonoBehaviour
         Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
         GameManager.Instance.mapManager.TransAnotherMap("Title", 2);
     }
-
-    // Update is called once per frame
     void Update()
     {
+
     }
 }

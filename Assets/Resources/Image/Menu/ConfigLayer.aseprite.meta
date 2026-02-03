@@ -127,48 +127,6 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ConfigPanel1
-    originalName: 
-    pivot: {x: 0.37795278, y: -72}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 244
-      width: 254
-      height: 1
-    spriteID: 9086e5dada4acde40960608821cd64aa
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 244}
-  - name: ConfigPanel2
-    originalName: 
-    pivot: {x: 0.37890625, y: -0.5217392}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 167
-      width: 256
-      height: 69
-    spriteID: 744c801aa6ec06345a994864dada5070
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 167}
   - name: ConfigPanel3
     originalName: 
     pivot: {x: 0.37890625, y: -0.006451613}
@@ -190,9 +148,118 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: ConfigPanel1
+    originalName: 
+    pivot: {x: 0.37795278, y: -72}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 254
+      y: 244
+      width: 254
+      height: 1
+    spriteID: 44764f92b9487d54daf7737316e43368
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 254, y: 244}
+  - name: ConfigPanel2
+    originalName: 
+    pivot: {x: 0.37890625, y: -0.5217392}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 167
+      width: 256
+      height: 69
+    spriteID: a5a771fab1c08eb479c35330e6e4f823
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 167}
+  - name: ConfigPanelGameEnd
+    originalName: 
+    pivot: {x: 0.3624454, y: -0.25}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 167
+      width: 229
+      height: 24
+    spriteID: 6b7d4d18f7c76b94ca613d79fa6f5018
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 167}
+  - name: EndCheck
+    originalName: 
+    pivot: {x: 0.37190083, y: -1.0142857}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 244
+      width: 242
+      height: 70
+    spriteID: 46a605e2a4f19d145b7df54f292241a3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 244}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
+  - layerIndex: 2
+    uuid:
+      value0: 3891499007
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: ConfigPanel3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ConfigPanel3
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 63
+        y: 1
+        width: 256
+        height: 155
+      spriteId: ccdbc0b062f29e4448d53f32c06cfba2
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
   - layerIndex: 0
     uuid:
       value0: 2728699593
@@ -213,7 +280,7 @@ ScriptedImporter:
         y: 72
         width: 254
         height: 1
-      spriteId: 9086e5dada4acde40960608821cd64aa
+      spriteId: 44764f92b9487d54daf7737316e43368
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -238,32 +305,57 @@ ScriptedImporter:
         y: 36
         width: 256
         height: 69
-      spriteId: 744c801aa6ec06345a994864dada5070
+      spriteId: a5a771fab1c08eb479c35330e6e4f823
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
-  - layerIndex: 2
+  - layerIndex: 3
     uuid:
-      value0: 3891499007
+      value0: 3545681709
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: ConfigPanel3
+    name: ConfigPanelGameEnd
     layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: ConfigPanel3
+    - name: ConfigPanelGameEnd
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 63
-        y: 1
-        width: 256
-        height: 155
-      spriteId: ccdbc0b062f29e4448d53f32c06cfba2
+        x: 77
+        y: 6
+        width: 229
+        height: 24
+      spriteId: 6b7d4d18f7c76b94ca613d79fa6f5018
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 4
+    uuid:
+      value0: 508031149
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: EndCheck
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: EndCheck
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 70
+        y: 71
+        width: 242
+        height: 70
+      spriteId: 46a605e2a4f19d145b7df54f292241a3
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -298,4 +390,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 320, y: 180}
-  previousTextureSize: {x: 512, y: 256}
+  previousTextureSize: {x: 512, y: 512}
