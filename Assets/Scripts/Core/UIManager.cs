@@ -100,6 +100,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text PlayerItemValidText;
     [SerializeField] private Text NetoItemValidText;
     [SerializeField] private Text ItemFlavorText;
+    [SerializeField] private GameObject StatusDetailPanel;
+    [SerializeField] private Text StatusDetailText;
 
     [Header("会話イベントなどに使用するいろいろ")]
     [SerializeField] private GameObject TalkTextBoxPanel;
@@ -251,7 +253,7 @@ public class UIManager : MonoBehaviour
         {
             LevelText.text = $"  LV  : None";
             ExpText.text = $"  EXP : None";
-            CurrentHPText.text = $"  HP  : {n.CurrentHP}/{p.MaxHP}";
+            CurrentHPText.text = $"  HP  : {n.CurrentHP}/{n.MaxHP}";
             CurrentAtkText.text = $"  ATK : None";
             CurrentDefText.text = $"  DEF : {n.CurrentDef}";
             CurrentDebugLimitText.text = $"  Lim : None";
@@ -669,16 +671,21 @@ public class UIManager : MonoBehaviour
     {
         if (MenuPanel.activeSelf == false)
         {
-            CharaSelector.SetActive(false);
-            NetoSelector.SetActive(false);
             MenuPanel.SetActive(true);
             MenuBarPanel.SetActive(true);
+            CharaSelector.SetActive(false);
+            NetoSelector.SetActive(false);
             EquipPanelDisable1.SetActive(false);
             EquipPanelDisable2.SetActive(false);
             EquipPanelDisable3.SetActive(false);
             EquipSlots = false;
             EquipCharacterSelecter = false;
             EquipChangeSelecter = false;
+            for (int i = 0; i<6; i++)
+            {
+                OnMenuButtonTriggerExit(i);
+                OnStatusDetailTriggerExit();
+            }
             gm.SetMode(GameMode.Menu);
         }
         //ここから装備&ステータス画面のEsc制御
@@ -791,6 +798,101 @@ public class UIManager : MonoBehaviour
                 PointerPanel6.SetActive(false);
                 break;
         }
+    }
+    public void OnStatusDetailTriggerEnter(int i)
+    {
+        if (CharaSelector.activeSelf) {
+            switch (i)
+            {
+                case 0:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"詳細情報なし";
+                    break;
+                case 1:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"次のレベルまで：{p.NextExp - p.CurrentExp}\n累計経験値　　：{p.TotalExp}\n　　　　　　　 ({p.TotalExp}/{p.NextTotalExp})\n次のレベルになるために\n必要になる経験値は\n現在のレベル×100";
+                    break;
+                case 2:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"レベル1ごと、\n最大HPは5上がる";
+                    break;
+                case 3:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"基礎攻撃力　　：{p.BaseAtk}\n装備補正　　　：{p.WeaponAtk}\nアイテム補正　：{p.TemporaryAtk}\nレベル1ごと、\n基礎攻撃力も1上がる";
+                    break;
+                case 4:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"基礎防御力　　：{p.BaseDef}\n装備補正　　　：{p.AccessoryDef}\nアイテム補正　：{p.TemporaryDef}\nレベル1ごと、\n基礎防御力も1上がる";
+                    break;
+                case 5:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"デバッグの制限時間は\nレベルに依存せず、\n装備武器で決定される";
+                    break;
+            }
+        }else if (NetoSelector.activeSelf)
+        {
+            switch (i)
+            {
+                case 0:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"レベルが存在しない\nキャラクター";
+                    break;
+                case 1:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"レベルが存在しない\nキャラクター";
+                    break;
+                case 2:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"このキャラクターの\n最大HPは固定です";
+                    break;
+                case 3:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"攻撃力が存在しない\nキャラクター";
+                    break;
+                case 4:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"基礎防御力　　：{n.BaseDef}\n装備補正　　　：{n.AccessoryDef}\nアイテム補正　：{n.TemporaryDef}\nこのキャラクターの\n基礎防御力は固定です";
+                    break;
+                case 5:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"制限時間が存在しない\nキャラクター";
+                    break;
+            }
+        }
+        else
+        {
+            switch (i)
+            {
+                case 0:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"詳細情報なし";
+                    break;
+                case 1:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"次のレベルになるために\n必要になる経験値は\n現在のレベル×100";
+                    break;
+                case 2:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"レベル1ごと、\n最大HPは5上がる";
+                    break;
+                case 3:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"レベル1ごと、\n基礎攻撃力も1上がる";
+                    break;
+                case 4:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"レベル1ごと、\n基礎防御力も1上がる";
+                    break;
+                case 5:
+                    StatusDetailPanel.SetActive(true);
+                    StatusDetailText.text = $"デバッグの制限時間は\nレベルに依存せず、\n装備武器で決定される";
+                    break;
+            }
+        }
+    }
+    public void OnStatusDetailTriggerExit()
+    {
+        StatusDetailPanel.SetActive(false);
     }
 
     //ここからは、インベントリ関連のUI制御

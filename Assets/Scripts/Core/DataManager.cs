@@ -73,7 +73,7 @@ public class DataManager : MonoBehaviour
         for (int i = 1; i < csv.Count; i++)
         {
             string[] line = csv[i];
-            if (line.Length < 6) continue;
+            if (line.Length < 7) continue;
 
             int id = CSVParser.ParseInt(line[0]);
             string name = line[1];
@@ -83,8 +83,9 @@ public class DataManager : MonoBehaviour
             List<QuestCategory> categories = CSVParser.ParseEnumList<QuestCategory>(line[4], '/');
 
             string imageFileName = line[5];
+            int Exp = CSVParser.ParseInt(line[6]);
 
-            EnemyData data = new EnemyData(id, name, maxDp, atk, categories, imageFileName);
+            EnemyData data = new EnemyData(id, name, maxDp, atk, categories, imageFileName,Exp);
 
             if (!EnemyMaster.ContainsKey(id))
             {
@@ -126,10 +127,16 @@ public class EnemyData
     public int MaxDP;
     public int Atk;
     public List<QuestCategory> Categories;
-    public string ImageFileName; // š‰æ‘œƒtƒ@ƒCƒ‹–¼
-
-    public EnemyData(int id, string name, int dp, int atk, List<QuestCategory> cats, string imgName)
+    public string ImageFileName;
+    public int Exp;
+    public EnemyData(int id, string name, int dp, int atk, List<QuestCategory> categories, string imgName, int exp)
     {
-        ID = id; Name = name; MaxDP = dp; Atk = atk; Categories = cats; ImageFileName = imgName;
+        ID = id;
+        Name = name;
+        MaxDP = dp;
+        Atk = atk;
+        Categories = categories;
+        ImageFileName = imgName;
+        Exp = exp;
     }
 }

@@ -55,6 +55,7 @@ public class BattleManager : MonoBehaviour
         currentEnemy.MaxDP = data.MaxDP;
         currentEnemy.CurrentDP = 0;
         currentEnemy.Atk = data.Atk;
+        currentEnemy.Exp = data.Exp;
 
         categories.Clear();
         categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
@@ -141,7 +142,7 @@ public class BattleManager : MonoBehaviour
         int dmg = currentEnemy.Atk;
         if (hitPlayer)
         {
-            int realDmg = Mathf.Max(0, dmg - neto.CurrentDef);
+            int realDmg = Mathf.Max(0, dmg - player.CurrentDef);
             player.CurrentHP -= realDmg;
             UIManager.Active?.ShowLog($"敵からの攻撃！プレイヤーに{realDmg}のダメージ！");
             damagePop.PlayerDamagePlay(realDmg);
@@ -183,7 +184,7 @@ public class BattleManager : MonoBehaviour
         }
         player.ClearBuffs();
         neto.ClearBuffs();
+        player.GainExperience(currentEnemy.Exp);
         GameManager.Instance.SetMode(GameManager.GameMode.Field);
     }
-
 }

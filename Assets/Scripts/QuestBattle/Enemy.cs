@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     public List<QuestCategory> QuestionCategories;
 
     private SpriteRenderer spriteRenderer;
-
+    public int Exp;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
 
         // ‰æ‘œ‚Ìƒ[ƒh‚Æİ’è
         LoadSprite(data.ImageFileName);
+        Exp = data.Exp;
     }
 
     /// <summary>

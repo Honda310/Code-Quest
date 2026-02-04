@@ -48,7 +48,7 @@ public static class CSVParser
     public static int ParseInt(string value, int defaultValue = 0)
     {
         if (string.IsNullOrEmpty(value)) return defaultValue;
-        // TryParseを使うことで、変換失敗時もエラーを出さずに処理を続行できます
+        // TryParseを使うことで、変換失敗時もエラーを出さずに処理を続行できます。できるらしい。
         return int.TryParse(value, out int result) ? result : defaultValue;
     }
 

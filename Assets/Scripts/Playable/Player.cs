@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem; // InputSystemを使用する場合は必要
 
 /// <summary>
 /// 【プレイヤー管理クラス】
@@ -67,16 +65,14 @@ public class Player : MonoBehaviour
 
     // --- 移動・アニメーション関連 ---
     [Header("移動パラメータ")]
-    [SerializeField] private float moveSpeed; // 移動速度
-    private Rigidbody2D rb2d; // 物理演算用コンポーネント
+    [SerializeField] private float moveSpeed;
+    private Rigidbody2D rb2d;
 
     // アニメーション制御用変数
-    private int frame = 0; // アニメーションフレームカウンタ
-    private string lastInputKey = "d"; // 最後に押された方向キー（待機時の向き用）
-    private int MovingIndex = 0; // 歩行アニメーションの段階 (0:停止, 1:右足, 2:左足など)
+    private int frame = 0;
+    private string lastInputKey = "d";
+    private int MovingIndex = 0;
 
-    // スプライト画像をキャッシュする辞書
-    // Key: "方向キー_インデックス" (例: "w_1"), Value: 対応するSprite
     private Dictionary<string, Sprite> sprites;
 
     private static Player instance;
@@ -98,28 +94,20 @@ public class Player : MonoBehaviour
     /// </summary>
     void Start()
     {
-        // コンポーネントの取得
         rb2d = GetComponent<Rigidbody2D>();
-
-        // スプライト画像の読み込みと辞書への登録
-        // Resourcesフォルダ内のパス: "Image/Playable/..."
         sprites = new Dictionary<string, Sprite>()
         {
-            // --- 上向き (Wキー) ---
-            { "w_0", Load("1forward_1stop") },          // 停止
-            { "w_1", Load("1forward_2moveleftleg") },   // 左足踏み出し
-            { "w_2", Load("1forward_3moverightleg") },  // 右足踏み出し
+            { "w_0", Load("1forward_1stop") },          
+            { "w_1", Load("1forward_2moveleftleg") },   
+            { "w_2", Load("1forward_3moverightleg") },  
 
-            // --- 下向き (Sキー) ---
             { "s_0", Load("2back_1stop") },
             { "s_1", Load("2back_2moveleftleg") },
             { "s_2", Load("2back_3moverightleg") },
 
-            // --- 左向き (Aキー) ---
             { "a_0", Load("3left_1stop") },
             { "a_1", Load("3left_2move") },
 
-            // --- 右向き (Dキー) ---
             { "d_0", Load("4right_1stop") },
             { "d_1", Load("4right_2move") },
         };
@@ -142,56 +130,44 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         if (!(GameManager.Instance.CurrentMode == GameManager.GameMode.Field)) return; 
-        Vector2 direction = Vector2.zero; // 移動方向ベクトル
-
-        // --- アニメーションのコマ送り処理 ---
+        Vector2 direction = Vector2.zero; 
         frame++;
+        if (frame == 15) MovingIndex = 1;      
+        else if (frame == 30) MovingIndex = 0; 
+        else if (frame == 45) MovingIndex = 2;
+        else if (frame == 60) MovingIndex = 0; 
 
-        // 15フレームごとにアニメーションパターンを切り替える
-        if (frame == 15) MovingIndex = 1;      // 足踏み1
-        else if (frame == 30) MovingIndex = 0; // 停止位置に戻る
-        else if (frame == 45) MovingIndex = 2; // 足踏み2 (逆足)
-        else if (frame == 60) MovingIndex = 0; // 停止位置に戻る
-
-        // 60フレームで1ループ
         if (frame >= 60) frame = 0;
 
-        // --- キー入力の判定 ---
-        // 上下左右の入力を検知し、移動方向と「最後の入力キー」を更新
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             direction.y = 1;
             lastInputKey = "w";
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             direction.y = -1;
             lastInputKey = "s";
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             direction.x = 1;
             lastInputKey = "d";
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             direction.x = -1;
             lastInputKey = "a";
         }
-
-        // --- スプライトの切り替え ---
-        // 移動していない場合は停止スプライト(Index 0)、移動中はコマ送り(MovingIndex)を使用
         int idx = (direction == Vector2.zero) ? 0 : MovingIndex;
         string key = lastInputKey;
-
-        // 左右移動のアニメーションは2パターンしかない（0と1）ため、インデックスを制限する
+        //※左右は左踏み出しと右踏み出しがなく、踏み出しが1つなので、丸めるための処理を行う部分
         if (key == "a" || key == "d")
         {
             idx = Mathf.Min(idx, 1);
         }
 
-        // 辞書から該当するスプライトを取得して反映
         string spriteKey = $"{key}_{idx}";
         if (sprites.ContainsKey(spriteKey))
         {
@@ -207,11 +183,6 @@ public class Player : MonoBehaviour
 
         rb2d.MovePosition(newPos);
     }
-
-    // ==========================================
-    // ステータス操作メソッド群
-    // ==========================================
-
     /// <summary>
     /// 武器を装備し、攻撃力を更新する
     /// </summary>
@@ -265,22 +236,32 @@ public class Player : MonoBehaviour
         SupportItem item = supportitem as SupportItem;
         switch (item.EffectID)  
         {
-            case 1: // HP回復
+            case 1:
                 int heal = Mathf.Min(item.EffectSize, MaxHP - CurrentHP);
                 CurrentHP += heal;
                 break;
 
-            case 2: // 攻撃力アップ
+            case 2:
                 ApplyTemporaryAtk(item.EffectSize);
                 break;
 
-            case 3: // 防御力アップ
+            case 3:
                 ApplyTemporaryDef(item.EffectSize);
                 break;
 
-            case 99: // バフ解除（デバッグ完了など）
+            case 99:
                 ClearBuffs();
                 break;
+        }
+    }
+    public void GainExperience(int exp)
+    {
+        CurrentExp += exp;
+        while(NextExp <= CurrentExp)
+        {
+            CurrentExp -= NextExp;
+            CurrentLv ++;
+            CurrentHP = MaxHP;
         }
     }
 }
