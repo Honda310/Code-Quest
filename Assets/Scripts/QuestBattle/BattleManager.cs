@@ -10,8 +10,6 @@ public class BattleManager : MonoBehaviour
 {
     [Header("Enemy Prefab")]
     [SerializeField] private Enemy enemyPrefab;
-    [Header("Spawn Point")]
-    [SerializeField] private Transform enemySpawnPoint;
     [SerializeField] private DamagePop damagePop;
     [System.NonSerialized] public Enemy currentEnemy;
     private Player player;

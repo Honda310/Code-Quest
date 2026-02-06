@@ -1000,12 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a89621f255d10478c0a594081a8bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  PlayerName: 
-  MaxHP: 100
-  CurrentHP: 100
-  BaseAtk: 20
-  BaseDef: 10
-  DebugLimit: 5
+  CurrentHP: 0
   moveSpeed: 100
 --- !u!50 &2088172327
 Rigidbody2D:

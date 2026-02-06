@@ -27,7 +27,7 @@ public class TreasureEvent : MonoBehaviour
             Vector2 pos = rb.position;
             Vector2 toPlayer = TargetPos - pos;
             float dist = toPlayer.magnitude;
-            if (dist < 40)
+            if (dist < 20)
             {
                 OpenAble = true;
             }

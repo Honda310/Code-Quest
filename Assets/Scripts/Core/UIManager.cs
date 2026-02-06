@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using static GameManager;
+using static UnityEditor.Progress;
 
 /// <summary>
 /// 【UI管理】
@@ -71,6 +72,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PointerPanel4;
     [SerializeField] private GameObject PointerPanel5;
     [SerializeField] private GameObject PointerPanel6;
+    [SerializeField] private Slider PlHpSlider;
+    [SerializeField] private Slider NetoHpSlider;
+    [SerializeField] private Text PlHpText;
+    [SerializeField] private Text NetoHpText;
 
     [Header("装備&ステータス画面の各テキスト&ボタン")]
     [SerializeField] private Text CharaNameText;
@@ -102,6 +107,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text ItemFlavorText;
     [SerializeField] private GameObject StatusDetailPanel;
     [SerializeField] private Text StatusDetailText;
+    [SerializeField] private GameObject ItemDetailPanel;
+    [SerializeField] private Text ItemDetailText;
+    [SerializeField] private GameObject EquipItemFlavorPanel;
+    [SerializeField] private Text EquipItemFlavorText;
+
+    [Header("細かいUIの調整用")]
+    //例えば、スロット2にある選択中に下にスクロールした場合、Entered,Exit制御では
+    //前のアイテムが表示され続けてしまう問題がある。上から、
+    //アイテム画面からのアイテム選択時
+    private int SelectorItemIDKeeper=1;
+    //戦闘画面からのアイテム選択時
+    //private int SelectorItemIDKeeper_VerBattle=0;
+    //装備画面での装備選択時
+    private int SelectorEquipIDKeeper=1; 
 
     [Header("会話イベントなどに使用するいろいろ")]
     [SerializeField] private GameObject TalkTextBoxPanel;
@@ -167,7 +186,7 @@ public class UIManager : MonoBehaviour
             TimeLimitSlider.value = (float)CurrentTimeLimit;
             Image fill = TimeLimitSlider.fillRect.GetComponent<Image>();
             float ratio = TimeLimitSlider.value / TimeLimitSlider.maxValue;
-            TimeLimitText.text= (Math.Floor(TimeLimitSlider.value * 100) / 100).ToString() + "s";
+            TimeLimitText.text= (Math.Floor(TimeLimitSlider.value * 100) / 100).ToString("F1") + "s";
             if (ratio > 0.5f)
             {
                 fill.color = skyblue;
@@ -268,6 +287,15 @@ public class UIManager : MonoBehaviour
         CurrentDefText.text = $"  DEF :";
         CurrentDebugLimitText.text = $"  Lim :";
     }
+    public void UpdateHpSlider()
+    {
+        PlHpSlider.maxValue = p.MaxHP;
+        PlHpSlider.value = p.CurrentHP;
+        PlHpText.text = $"{PlHpSlider.value}/{PlHpSlider.maxValue}";
+        NetoHpSlider.maxValue = n.MaxHP;
+        NetoHpSlider.value = n.CurrentHP;
+        NetoHpText.text = $"{NetoHpSlider.value}/{NetoHpSlider.maxValue}";
+    }
     ///<summary>
     ///バトル中など、エネミーがいる際の現在ステータスをUIに反映するためのメソッドです。
     ///player,netoのみを処理する、フィールド上でメニュー画面を開いた際を想定したものもあります。
@@ -354,7 +382,8 @@ public class UIManager : MonoBehaviour
     {
         if (battleQuestText != null)
         {
-            battleQuestText.text = text+"\n\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3] ;
+            battleQuestText.text = text+"\n\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3];
+
         }
     }
     /// <summary>
@@ -369,7 +398,6 @@ public class UIManager : MonoBehaviour
         QuestionStart = false;
         string buttonText = clickedButton.GetComponentInChildren<Text>().text;
         string answer = buttonText;
-        battleInfoText.text = answer;
 
         if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
         {
@@ -685,8 +713,12 @@ public class UIManager : MonoBehaviour
             {
                 OnMenuButtonTriggerExit(i);
                 OnStatusDetailTriggerExit();
+                OnItemDetailTriggerExit();
+                OnEquipSelectorExit();
+                OnItemSelectorExit();
             }
             gm.SetMode(GameMode.Menu);
+            UpdateHpSlider();
         }
         //ここから装備&ステータス画面のEsc制御
         else if (MenuPanel.activeSelf && (((ItemPanel.activeSelf || EquipandStatusPanel.activeSelf) || (ConfigPanel.activeSelf || KeyBindPanel.activeSelf))== false))
@@ -894,7 +926,11 @@ public class UIManager : MonoBehaviour
     {
         StatusDetailPanel.SetActive(false);
     }
-
+    public void OnItemDetailTriggerExit()
+    {
+        ItemDetailPanel.SetActive(false);
+        ItemDetailText.text = "";
+    }
     //ここからは、インベントリ関連のUI制御
     //この辺にあるif([任意の文字列]==false) return;は、本来選べないボタンを選択/クリックさせないためのやつ
     public void OnPlayerIconClicked()
@@ -1020,8 +1056,8 @@ public class UIManager : MonoBehaviour
                 if (accessoryItems == null) return;
                 EquipSelectorcursorPosition = Mathf.Min(++EquipSelectorcursorPosition, accessoryItems.Count - 5);
                 AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
-
             }
+            EquipDetailTextUpdate(SelectorEquipIDKeeper);
         }
         else if (ItemPanel.activeSelf)
         {
@@ -1046,20 +1082,15 @@ public class UIManager : MonoBehaviour
                 EquipSelectorcursorPosition = Mathf.Max(--EquipSelectorcursorPosition, 0);
                 AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
             }
+            EquipDetailTextUpdate(SelectorEquipIDKeeper);
         }
         else if (ItemPanel.activeSelf)
         {
             ItemListAllowUp();
         }
     }
-    public void OnEquipSelecterClicked(int slotID)
+    public void OnEquipSelectorClicked(int slotID)
     {
-        if (EquipChangeSelecter == false)
-        {
-            Debug.Log("EquipChangeSelectorがfalse");
-            return;
-        }
-        Debug.Log(slotID+"個目のスロットが選択されたよ～");
         if (OnPlayerEquipSelecting == true)
         {
             if (OnWeaponEquipSelecting)
@@ -1094,6 +1125,35 @@ public class UIManager : MonoBehaviour
         EquipItemSelectSlot3.text = "";
         EquipItemSelectSlot4.text = "";
         EquipItemSelectSlot5.text = "";
+        OnEquipSelectorExit();
+    }
+    public void OnEquipSelectorEntered(int slotID)
+    {
+        SelectorItemIDKeeper = slotID;
+        EquipItemFlavorPanel.SetActive(true);
+        EquipDetailTextUpdate(slotID);
+    }
+    public void EquipDetailTextUpdate(int slotID)
+    {
+        if (OnWeaponEquipSelecting)
+        {
+            List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
+            Item item = weaponItems[EquipSelectorcursorPosition + slotID - 1].item;
+            Weapon SelectWeapon = item as Weapon;
+            EquipItemFlavorText.text = $"攻撃力：{SelectWeapon.Atk}\nデバッグ時間：{SelectWeapon.TimeLimit}s\nレアリティ：{SelectWeapon.Rarity}\n\n{SelectWeapon.Flavor}";
+        }
+        else
+        {
+            List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
+            Item item = accessoryItems[EquipSelectorcursorPosition + slotID - 1].item;
+            Accessory SelectAccessory = item as Accessory;
+            EquipItemFlavorText.text = $"防御力：{SelectAccessory.Def}\nレアリティ：{SelectAccessory.Rarity}\n\n{SelectAccessory.Flavor}";
+        }
+    }
+    public void OnEquipSelectorExit()
+    {
+        EquipItemFlavorPanel.SetActive(false);
+        EquipItemFlavorText.text = "";
     }
     //ここからインベントリ関連の制御
     public void SupportItemSelectorChange(int i, List<CarryItem> supportItems)
@@ -1103,13 +1163,13 @@ public class UIManager : MonoBehaviour
             if (supportItems[0 + i].item != null) InventoryItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
             if (supportItems[0 + i].item != null) InventoryItemValue1.text = $"{supportItems[0 + i].quantity}";
             if (supportItems[1 + i].item != null) InventoryItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
-            if (supportItems[0 + i].item != null) InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
+            if (supportItems[1 + i].item != null) InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
             if (supportItems[2 + i].item != null) InventoryItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
-            if (supportItems[0 + i].item != null) InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
+            if (supportItems[2 + i].item != null) InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
             if (supportItems[3 + i].item != null) InventoryItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
-            if (supportItems[0 + i].item != null) InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
+            if (supportItems[3 + i].item != null) InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
             if (supportItems[4 + i].item != null) InventoryItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
-            if (supportItems[0 + i].item != null) InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
+            if (supportItems[4 + i].item != null) InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
         }
         catch(IndexOutOfRangeException)
         {
@@ -1185,6 +1245,21 @@ public class UIManager : MonoBehaviour
         ItemTargetSelectPanel.SetActive(true);
         ItemFlavorText.text = focus.Flavor;
     }
+    public void OnItemSelectorEntered(int slotID)
+    {
+        SelectorEquipIDKeeper = slotID;
+        ItemDetailUpdate(slotID);
+    }
+    public void OnItemSelectorExit()
+    {
+        ItemFlavorText.text = "";
+    }
+    public void ItemDetailUpdate(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
+        ItemFlavorText.text = focus.Flavor;
+    }
     public void OnItemTargetButton(int CharaID)
     {
         if (CharaID == 0 && PlayerTarget == false) return;
@@ -1205,6 +1280,7 @@ public class UIManager : MonoBehaviour
         {
             n.ApplyEffect(focus);
         }
+        UpdateHpSlider();
         ItemFlavorText.text = "";
         ItemConfirmPanel.SetActive(false);
         inventory.RemoveItem(focus.ItemID, 1);
@@ -1227,6 +1303,8 @@ public class UIManager : MonoBehaviour
         if (supportItems == null) return;
         InventoryItemCursor = Mathf.Min(++InventoryItemCursor, supportItems.Count - 5);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
+        if (ItemFlavorText.text == "") return;
+        ItemDetailUpdate(SelectorItemIDKeeper);
     }
     public void ItemListAllowUp()
     {
@@ -1234,6 +1312,8 @@ public class UIManager : MonoBehaviour
         if (supportItems == null) return;
         InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
+        if (ItemFlavorText.text == "") return;
+        ItemDetailUpdate(SelectorItemIDKeeper);
     }
     public void ChangeScreenSize(int i)
     {
@@ -1251,8 +1331,6 @@ public class UIManager : MonoBehaviour
     {
 
     }
-
-
     //ここから会話系の制御
     public void TalkingEventStart()
     {
@@ -1286,5 +1364,14 @@ public class UIManager : MonoBehaviour
         TalkTextBox.text = "";
         TalkTextBoxPanel.SetActive(true);
         GameManager.Instance.SetMode(GameMode.Talk);
+    }
+    //セーブのためのパネルを表示するメソッド
+    public void SavePanelEnable()
+    {
+
+    }
+    public void SavePanelDisable()
+    {
+
     }
 }

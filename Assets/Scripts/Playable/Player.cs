@@ -9,10 +9,10 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
-    public string PlayerName; 
-    public int DebugLimit = 15;
-    public int CurrentLv = 1;
-    public int CurrentExp = 0;
+    [NonSerialized]public string PlayerName;
+    [NonSerialized] public int DebugLimit = 15;
+    [NonSerialized] public int CurrentLv = 1;
+    [NonSerialized] public int CurrentExp = 0;
     public int NextExp
     {
         get { return CurrentLv*100; }
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         get { return 95 + CurrentLv * 5; }
     } 
-    public int CurrentHP = 100;
+    [NonSerialized] public int CurrentHP = 100;
     public int BaseAtk
     {
         get { return 9 + CurrentLv; }
@@ -254,6 +254,11 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+    /// <summary>
+    /// BattleManagerの戦闘勝利時に呼び出され、経験値を増加する。
+    /// その後、増加した経験値をもとにレベルアップできなくなるまでレベルアップ処理を繰り返すメソッド。
+    /// </summary>
+    /// <param name="exp"></param>
     public void GainExperience(int exp)
     {
         CurrentExp += exp;

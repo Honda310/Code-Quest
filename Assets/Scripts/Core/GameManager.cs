@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X)) && ((GameManager.Instance.CurrentMode == GameManager.GameMode.Field) || (GameManager.Instance.CurrentMode == GameManager.GameMode.Menu)))
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X)) && ((CurrentMode == GameMode.Field) || (CurrentMode == GameMode.Menu)))
         {
             UIManager.Active?.MenuToggle();
             Debug.Log("called");
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
     public void ReturnBeforeMap()
     {
         SceneManager.LoadScene(BeforeMapName);
-        GameManager.Instance.player.transform.position = BeforePlayerPos;
-        GameManager.Instance.neto.transform.position = BeforeNetoPos;
+        player.transform.position = BeforePlayerPos;
+        neto.transform.position = BeforeNetoPos;
     }
 }
