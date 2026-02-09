@@ -70,4 +70,15 @@ public class TreasureBoxList : MonoBehaviour
             return "null";
         }
     }
+    public void LoadFromSaveData(Dictionary<int, TreasureBoxData> dictionary)
+    {
+        for (int i = 1; i <= dictionary.Count; i++)
+        {
+            if (dictionary[i].accessAble)
+            {
+                TreasureBoxTable[i].accessAble = false;
+            }
+        }
+        
+    }
 }

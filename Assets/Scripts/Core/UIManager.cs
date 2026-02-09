@@ -125,6 +125,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject TalkTextBoxPanel;
     [SerializeField] private Text TalkTextBox;
     [SerializeField] private GameObject SaveLoadPanel;
+    [SerializeField] private Text SaveDetailText;
     [SerializeField] private GameObject TalkBranchPanel;
 
     //装備&ステータス画面の制御系
@@ -141,6 +142,7 @@ public class UIManager : MonoBehaviour
     private string AccessoryItemName;
     private bool PlayerTarget;
     private bool NetoTarget;
+    private int SaveSlotId = 1;
 
     //先に呼ばれても変なことにならないための予防用初期値
     private double MaxTimeLimit=10.0;
@@ -1194,7 +1196,7 @@ public class UIManager : MonoBehaviour
                     PlayerItemValidText.text = "HPが最大値";
                     PlayerTarget = false;
                 }
-                if (p.MaxHP > p.CurrentHP)
+                if (n.MaxHP > n.CurrentHP)
                 {
                     NetoItemValidText.text = $"HPが{Mathf.Min(focus.EffectSize, n.MaxHP - n.CurrentHP)}回復";
                     NetoTarget = true;
@@ -1370,13 +1372,21 @@ public class UIManager : MonoBehaviour
     public void SavePanelEnable()
     {
         SaveLoadPanel.SetActive(true);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SaveDetailText.text = $"現在マップ{currentScene.name}\nLv:{p.CurrentLv}  Exp{p.CurrentExp}/{p.NextExp}";
+
     }
     public void SaveExecute()
     {
-        
+        GameManager.Instance.SaveManage(SaveSlotId);
     }
     public void SavePanelDisable()
     {
+        GameManager.Instance.SetMode(GameManager.GameMode.Field);
         SaveLoadPanel.SetActive(false);
+    }
+    public void SaveSlotChange(int i)
+    {
+        SaveSlotId = i;
     }
 }

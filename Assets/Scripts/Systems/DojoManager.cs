@@ -10,6 +10,7 @@ public class DojoManager : MonoBehaviour
     [SerializeField] private GameObject DojoSelectPanel;
     [SerializeField] private GameObject DojoTellPanel;
     [SerializeField] private GameObject BattleAskPanel;
+    [SerializeField] private GameObject DojoPanel;
     [SerializeField] private Text NetoTellText;
     [SerializeField] private Text IndexLabel;
     [SerializeField] private Text BattleAskText;
@@ -49,6 +50,7 @@ public class DojoManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Escape)|| Input.GetKeyDown(KeyCode.X))
             {
                 GameManager.Instance.SetMode(GameManager.GameMode.Field);
+                DojoPanel.SetActive(false);
                 DojoSelectPanel.SetActive(false);
                 DojoTellPanel.SetActive(false);
             }
@@ -107,11 +109,13 @@ public class DojoManager : MonoBehaviour
     public void OpenNetoDojoPanel()
     {
         GameManager.Instance.SetMode(GameManager.GameMode.Dojo);
+        DojoPanel.SetActive(true);
         DojoSelectPanel.SetActive(true);
         DojoTellPanel.SetActive(false);
     }
     public void TutorialDoll(int DollId)
     {
+        DojoPanel.SetActive(true);
         BattleAskPanel.SetActive(true);
         BattleAskText.text = BattleAsk[DollId];
     }
@@ -121,6 +125,7 @@ public class DojoManager : MonoBehaviour
     }
     public void tutorialbattleCancel()
     {
+        DojoPanel.SetActive(false);
         BattleAskPanel.SetActive(false);
     }
 }

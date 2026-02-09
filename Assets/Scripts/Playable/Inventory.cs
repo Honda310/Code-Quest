@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +10,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     // 所持しているアイテムのリスト
-    [SerializeField] private List<CarryItem> items = new List<CarryItem>();
+    [NonSerialized] public List<CarryItem> items = new List<CarryItem>();
 
     /// <summary>
     /// アイテムを追加します
@@ -84,5 +85,9 @@ public class Inventory : MonoBehaviour
         List<CarryItem> list = filter.HasValue
             ? GetItemsByType(filter.Value)
             : GetSortedItems();
+    }
+    public void LoadItems(List<CarryItem> list)
+    {
+        items = list;
     }
 }
