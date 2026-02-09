@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Net;
 
 /// <summary>
 /// 【セーブ・ロード】
@@ -14,8 +15,15 @@ public class SaveLoadManager : MonoBehaviour
     public class SaveData
     {
         public string saveDate;
-        public Player player;
-        public Neto neto;
+        public string playername;
+        public int currentlv;
+        public int exp;
+        public Weapon plEquipweapon;
+        public Accessory plEquipaccessory;
+        public int plTempAtk;
+        public int plTempDef;
+        public Accessory netoEquipaccessory;
+        public int netoTempDef;
         public List<CarryItem> carryitems;
         public EnemyList enemyList;
         public TreasureBoxList treasureList;
@@ -34,8 +42,15 @@ public class SaveLoadManager : MonoBehaviour
     {
         SaveData data = new SaveData();
         data.saveDate = System.DateTime.Now.ToString();     //セーブした日時⓪
-        data.player = p;                                    //プレイヤーの情報①
-        data.neto = n;                                      //ネトちゃんの情報②
+        data.playername = p.PlayerName;                     //プレイヤーの情報①
+        data.currentlv = p.CurrentLv;
+        data.exp = p.CurrentExp;
+        data.plEquipweapon = p.CurrentEquipWeapon;
+        data.plEquipaccessory = p.CurrentEquipAccessory;
+        data.plTempAtk = p.TemporaryAtk;
+        data.plTempDef = p.TemporaryDef;
+        data.netoEquipaccessory = n.CurrentEquipAccessory;  //ネトちゃんの情報②
+        data.netoTempDef = n.TemporaryDef;
         data.carryitems = items;                            //インベントリ情報③
         data.treasureList = boxList;                        //開封済み宝箱の情報④
         data.enemyList = enemies;                           //討伐済みのエネミー情報⑤
@@ -90,13 +105,13 @@ public class SaveLoadManager : MonoBehaviour
         Player player = Object.FindFirstObjectByType<Player>();
         if (player != null)
         {
-            player.LoadFromSaveData(loadedData.player);
+            player.LoadFromSaveData(loadedData.playername, loadedData.currentlv, loadedData.exp, loadedData.plEquipweapon, loadedData.plEquipaccessory, loadedData.plTempAtk, loadedData.plTempDef);
             player.transform.position = loadedData.charavector;
         }
         Neto neto = Object.FindFirstObjectByType<Neto>();
         if (neto != null)
         {
-            neto.LoadFromSaveData(loadedData.neto);
+            neto.LoadFromSaveData(loadedData.netoEquipaccessory, loadedData.netoTempDef);
         }
         Inventory inventory = Object.FindFirstObjectByType<Inventory>();
         if (inventory != null)

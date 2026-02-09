@@ -8,7 +8,7 @@ public class Neto : MonoBehaviour
     public int MaxHP;
     public int CurrentHP;
     public int BaseDef;
-    private Accessory equipAccessory;
+    public Accessory equipAccessory;
 
     public int AccessoryDef { get; private set; }
     public int TemporaryDef { get; private set; }

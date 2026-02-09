@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     [NonSerialized] public int CurrentLv = 1;
     [NonSerialized] public int CurrentExp = 0;
     [NonSerialized] public int DebugLimit = 15;
-    private Weapon CurrentEquipWeapon;
-    private Accessory CurrentEquipAccessory;
+    public Weapon CurrentEquipWeapon;
+    public Accessory CurrentEquipAccessory;
     [NonSerialized] public string EquipWeaponName = "なし";
     [NonSerialized] public string EquipAccessoryName = "なし";
     public int NextExp
