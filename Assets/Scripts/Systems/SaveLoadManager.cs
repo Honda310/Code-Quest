@@ -17,7 +17,9 @@ public class SaveLoadManager : MonoBehaviour
         public Neto neto;
         public string currentMapName;
         public Vector2 charavector;
-        //public 
+        public Inventory inventory;
+        //public EnemyList enemis;
+        public TreasureBoxList treasureList;
         public List<int> inventoryIDs;
         public List<int> inventoryCounts;
     }
@@ -27,16 +29,14 @@ public class SaveLoadManager : MonoBehaviour
     /// ゲームをセーブします
     /// </summary>
     /// <param name="slotId">0はオートセーブ、1,2は手動セーブ</param>
-    public void SaveGame(Player p, Neto n, Inventory inv, int slotId)
+    public void SaveGame(Player p, Neto n, Inventory inv, int slotId,TreasureBoxList boxList)
     {
         SaveData data = new SaveData();
-
-        // データの詰め込み
         data.saveDate = System.DateTime.Now.ToString();
         data.player = p;
         data.neto = n;
-        data.inventoryIDs = new List<int>();
-        data.inventoryCounts = new List<int>();
+        data.inventory = inv;
+        data.treasureList = boxList;
         List<CarryItem> items = inv.GetItems();
         foreach (CarryItem item in items)
         {
