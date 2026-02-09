@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using static GameManager;
-using static UnityEditor.Progress;
 
 /// <summary>
 /// 【UI管理】
@@ -125,6 +124,8 @@ public class UIManager : MonoBehaviour
     [Header("会話イベントなどに使用するいろいろ")]
     [SerializeField] private GameObject TalkTextBoxPanel;
     [SerializeField] private Text TalkTextBox;
+    [SerializeField] private GameObject SaveLoadPanel;
+    [SerializeField] private GameObject TalkBranchPanel;
 
     //装備&ステータス画面の制御系
     private bool EquipCharacterSelecter;
@@ -1368,10 +1369,14 @@ public class UIManager : MonoBehaviour
     //セーブのためのパネルを表示するメソッド
     public void SavePanelEnable()
     {
-
+        SaveLoadPanel.SetActive(true);
+    }
+    public void SaveExecute()
+    {
+        
     }
     public void SavePanelDisable()
     {
-
+        SaveLoadPanel.SetActive(false);
     }
 }

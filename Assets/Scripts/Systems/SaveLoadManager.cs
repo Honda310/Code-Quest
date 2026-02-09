@@ -12,53 +12,57 @@ public class SaveLoadManager : MonoBehaviour
     [System.Serializable]
     public class SaveData
     {
-        public string saveDate;         // セーブ日時
-        public int playerHP;            // プレイヤーHP
-        public int netoHP;              // ネトHP
-        public string currentMapScene;  // 現在のマップ名
-        public List<int> inventoryIDs; // 持っているアイテムのIDリスト
-        public List<int> inventoryCounts; // 持っているアイテムの個数リスト
+        public string saveDate;
+        public Player player;
+        public Neto neto;
+        public string currentMapName;
+        public Vector2 charavector;
+        //public 
+        public List<int> inventoryIDs;
+        public List<int> inventoryCounts;
     }
 
 
     /// <summary>
     /// ゲームをセーブします
     /// </summary>
-    /// <param name="slotId">0はオートセーブ、1以降は手動セーブ</param>
+    /// <param name="slotId">0はオートセーブ、1,2は手動セーブ</param>
     public void SaveGame(Player p, Neto n, Inventory inv, int slotId)
     {
         SaveData data = new SaveData();
 
         // データの詰め込み
         data.saveDate = System.DateTime.Now.ToString();
-        data.playerHP = p.CurrentHP;
-        data.netoHP = n.CurrentHP;
-
-        // インベントリの保存（ループで処理）
+        data.player = p;
+        data.neto = n;
         data.inventoryIDs = new List<int>();
         data.inventoryCounts = new List<int>();
-
-        // Inventoryクラスからアイテムリストを取得
         List<CarryItem> items = inv.GetItems();
         foreach (CarryItem item in items)
         {
             data.inventoryIDs.Add(item.item.ItemID);
             data.inventoryCounts.Add(item.quantity);
         }
-
-        // JSON文字列に変換
         string json = JsonUtility.ToJson(data);
-
-        // ファイル名を決定
         string fileName;
-        if (slotId == 0) fileName = "autosave.json";
-        else fileName = "save" + slotId + ".json";
-
-        // パスを結合して書き込み
-        string path = Path.Combine(Application.persistentDataPath, fileName);
-        File.WriteAllText(path, json);
-
-        Debug.Log("セーブ完了: " + path);
+        if (slotId == 0)
+        {
+            fileName = "autosave.json";
+            string path = Path.Combine(Application.persistentDataPath, fileName);
+            File.WriteAllText(path, json);
+            Debug.Log("セーブ完了: " + path);
+        }
+        else if(slotId == 1 || slotId==2)
+        {
+            fileName = "save" + slotId + ".json";
+            string path = Path.Combine(Application.persistentDataPath, fileName);
+            File.WriteAllText(path, json);
+            Debug.Log("セーブ完了: " + path);
+        }
+        else
+        {
+            Debug.Log("保存先が違うことによるエラーです。SavePointManagerを確認してください。");
+        }
     }
 
     /// <summary>
@@ -78,8 +82,8 @@ public class SaveLoadManager : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             // ステータスを復元
-            p.CurrentHP = data.playerHP;
-            n.CurrentHP = data.netoHP;
+            p = data.player;
+            n = data.neto;
 
             // インベントリを復元
             inv.Clear();
@@ -97,11 +101,10 @@ public class SaveLoadManager : MonoBehaviour
                     inv.AddItem((SupportItem)itemObj, count);
                 }
             }
-            Debug.Log("ロード完了");
         }
         else
         {
-            Debug.LogWarning("セーブデータがありません");
+
         }
     }
 

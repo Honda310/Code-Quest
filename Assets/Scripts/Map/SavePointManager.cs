@@ -31,9 +31,10 @@ public class SavePointManager : MonoBehaviour
             GameManager.Instance.SetMode(GameManager.GameMode.SaveLoad);
             uiManager.SavePanelEnable();
         }
-        else if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return)) && GameManager.Instance.CurrentMode == GameManager.GameMode.SaveLoad && Savable)
+        else if ((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape)) && GameManager.Instance.CurrentMode == GameManager.GameMode.SaveLoad && Savable)
         {
-            
+            GameManager.Instance.SetMode(GameManager.GameMode.Field);
+            uiManager.SavePanelDisable();
         }
     }
 }
