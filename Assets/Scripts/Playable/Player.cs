@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     [NonSerialized] public int CurrentLv = 1;
     [NonSerialized] public int CurrentExp = 0;
     [NonSerialized] public int DebugLimit = 15;
-    private Weapon equipweapon;
-    private Accessory equipAccessory;
+    private Weapon CurrentEquipWeapon;
+    private Accessory CurrentEquipAccessory;
     [NonSerialized] public string EquipWeaponName = "なし";
     [NonSerialized] public string EquipAccessoryName = "なし";
     public int NextExp
@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
     public void EquipWeapon(Item item)
     {
         Weapon weapon = item as Weapon;
-        equipweapon = weapon;
+        CurrentEquipWeapon = weapon;
         EquipWeaponName = weapon.ItemName;
         WeaponAtk = weapon.Atk;
         DebugLimit = Math.Max(15,weapon.TimeLimit);
@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
     public void EquipAccessory(Item item)
     {
         Accessory accessory = item as Accessory;
-        equipAccessory = accessory;
+        CurrentEquipAccessory = accessory;
         EquipAccessoryName = accessory.ItemName;
         AccessoryDef = accessory.Def;
     }
@@ -273,18 +273,18 @@ public class Player : MonoBehaviour
             CurrentHP = MaxHP;
         }
     }
-    public void LoadFromSaveData(Player p)
+    public void LoadFromSaveData(string playername,int currentlv,int currentexp,Weapon equipweapon,Accessory equipaccessory,int tempatk,int tempdef)
     {
-        PlayerName = p.PlayerName;
-        CurrentLv = p.CurrentLv;
-        CurrentExp = p.CurrentExp;
-        equipweapon = p.equipweapon;
-        equipAccessory = p.equipAccessory;
-        TemporaryAtk = p.TemporaryAtk;
-        TemporaryDef = p.TemporaryDef;
-        EquipWeaponName = p.equipweapon.ItemName;
-        WeaponAtk = p.equipweapon.Atk;
-        EquipAccessoryName = p.equipAccessory.ItemName;
-        AccessoryDef = p.equipAccessory.Def;
+        PlayerName = playername;
+        CurrentLv = currentlv;
+        CurrentExp = currentexp;
+        CurrentEquipWeapon = equipweapon;
+        CurrentEquipAccessory = equipaccessory;
+        TemporaryAtk = tempatk;
+        TemporaryDef = tempdef;
+        EquipWeaponName = equipweapon.ItemName;
+        WeaponAtk = equipweapon.Atk;
+        EquipAccessoryName = equipaccessory.ItemName;
+        AccessoryDef = equipaccessory.Def;
     }
 }
