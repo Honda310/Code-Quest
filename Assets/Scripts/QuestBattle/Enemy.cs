@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     public int Exp;
+    public bool Defeated;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

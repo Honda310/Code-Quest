@@ -6,7 +6,7 @@ public class SavePointManager : MonoBehaviour
     public Rigidbody2D rb;
     private Transform target;
     private bool Savable=false;
-    UIManager uiManager;
+    [SerializeField] UIManager uiManager;
     void Update()
     {
         Player player = Object.FindFirstObjectByType<Player>();

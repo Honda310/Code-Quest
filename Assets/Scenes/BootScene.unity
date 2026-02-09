@@ -607,12 +607,12 @@ GameObject:
   - component: {fileID: 1182703145}
   - component: {fileID: 1182703132}
   - component: {fileID: 1182703131}
-  - component: {fileID: 1182703130}
   - component: {fileID: 1182703129}
   - component: {fileID: 1182703127}
   - component: {fileID: 1182703143}
   - component: {fileID: 1182703144}
   - component: {fileID: 1182703146}
+  - component: {fileID: 1182703147}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -644,24 +644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9799e2e6e040ea247907cb44c9f59dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WriteProgramQuest
---- !u!114 &1182703130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182703126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fd56785b33a31d4d87c3a02d1cb51ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DojoManager
-  DojoSelectPanel: {fileID: 0}
-  DojoTellPanel: {fileID: 0}
-  BattleAskPanel: {fileID: 0}
-  NetoTellText: {fileID: 0}
-  IndexLabel: {fileID: 0}
-  BattleAskText: {fileID: 0}
 --- !u!114 &1182703131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,9 +763,9 @@ MonoBehaviour:
   mapManager: {fileID: 1182703138}
   itemDebugManager: {fileID: 1182703131}
   shopManager: {fileID: 1182703132}
-  dojoManager: {fileID: 1182703130}
   screenScaler: {fileID: 1182703144}
   treasureBoxList: {fileID: 1182703145}
+  enemyList: {fileID: 1182703147}
   player: {fileID: 2088172326}
   neto: {fileID: 881097284}
   inventory: {fileID: 1182703143}
@@ -827,7 +809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e80328bdf0f0134298589f233eaaaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  items: []
 --- !u!114 &1182703144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,6 +845,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70e8fec7a068494193f6c73e83f6d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TalkEventList
+--- !u!114 &1182703147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182703126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d2d1b4cac30ad4b9c0be6e4927a828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyList
 --- !u!1001 &2088172322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1000,7 +993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a89621f255d10478c0a594081a8bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  CurrentHP: 0
   moveSpeed: 100
 --- !u!50 &2088172327
 Rigidbody2D:

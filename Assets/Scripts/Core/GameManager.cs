@@ -24,10 +24,10 @@ public class GameManager : MonoBehaviour
     [Header("マネージャー群 (ゲーム独自機能)")]
     public ItemDebugManager itemDebugManager; // アイテムデバッグ機能
     public ShopManager shopManager;           // ショップ機能
-    public DojoManager dojoManager;           // ネト道場機能
     public ScreenScales screenScaler;
     [Header("その他機能")]
     public TreasureBoxList treasureBoxList;
+    public EnemyList enemyList;
 
     [Header("プレイヤーデータ")]
     public Player player;       // 主人公
@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // すでに存在している場合は、重複しないように自分を削除します
             Destroy(gameObject);
         }
     }
@@ -184,5 +183,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(BeforeMapName);
         player.transform.position = BeforePlayerPos;
         neto.transform.position = BeforeNetoPos;
+    }
+    public void SaveManage(int i)
+    {
+        saveLoadManager.SaveGame(player, neto, inventory.items, i, treasureBoxList, enemyList);
     }
 }

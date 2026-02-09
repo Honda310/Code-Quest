@@ -1,116 +1,130 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 /// <summary>
-/// yƒZ[ƒuEƒ[ƒhz
-/// ƒQ[ƒ€ƒf[ƒ^‚ğJSONŒ`®‚Åƒtƒ@ƒCƒ‹‚É•Û‘¶E“Ç‚İ‚İ‚µ‚Ü‚·B
+/// ã€ã‚»ãƒ¼ãƒ–ãƒ»ãƒ­ãƒ¼ãƒ‰ã€‘
+/// ã‚²ãƒ¼ãƒ ãƒ‡ãƒ¼ã‚¿ã‚’JSONå½¢å¼ã§ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ãƒ»èª­ã¿è¾¼ã¿ã—ã¾ã™ã€‚
 /// </summary>
 public class SaveLoadManager : MonoBehaviour
 {
-    // •Û‘¶‚·‚éƒf[ƒ^‚ÌŒ`‚ğ’è‹`‚·‚éƒNƒ‰ƒX
+    // ä¿å­˜ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®å½¢ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹
     [System.Serializable]
     public class SaveData
     {
         public string saveDate;
         public Player player;
         public Neto neto;
-        public string currentMapName;
-        public Vector2 charavector;
-        public Inventory inventory;
-        //public EnemyList enemis;
+        public List<CarryItem> carryitems;
+        public EnemyList enemyList;
         public TreasureBoxList treasureList;
         public List<int> inventoryIDs;
         public List<int> inventoryCounts;
+        public string currentMapName;
+        public Vector3 charavector;
     }
-
+    private SaveData loadedData;
 
     /// <summary>
-    /// ƒQ[ƒ€‚ğƒZ[ƒu‚µ‚Ü‚·
+    /// ã‚²ãƒ¼ãƒ ã‚’ã‚»ãƒ¼ãƒ–ã—ã¾ã™
     /// </summary>
-    /// <param name="slotId">0‚ÍƒI[ƒgƒZ[ƒuA1,2‚Íè“®ƒZ[ƒu</param>
-    public void SaveGame(Player p, Neto n, Inventory inv, int slotId,TreasureBoxList boxList)
+    /// <param name="slotId">0ã¯ã‚ªãƒ¼ãƒˆã‚»ãƒ¼ãƒ–ã€1,2ã¯æ‰‹å‹•ã‚»ãƒ¼ãƒ–</param>
+    public void SaveGame(Player p, Neto n, List<CarryItem> items, int slotId,TreasureBoxList boxList,EnemyList enemies)
     {
         SaveData data = new SaveData();
-        data.saveDate = System.DateTime.Now.ToString();
-        data.player = p;
-        data.neto = n;
-        data.inventory = inv;
-        data.treasureList = boxList;
-        List<CarryItem> items = inv.GetItems();
-        foreach (CarryItem item in items)
-        {
-            data.inventoryIDs.Add(item.item.ItemID);
-            data.inventoryCounts.Add(item.quantity);
-        }
-        string json = JsonUtility.ToJson(data);
+        data.saveDate = System.DateTime.Now.ToString();     //ã‚»ãƒ¼ãƒ–ã—ãŸæ—¥æ™‚â“ª
+        data.player = p;                                    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æƒ…å ±â‘ 
+        data.neto = n;                                      //ãƒãƒˆã¡ã‚ƒã‚“ã®æƒ…å ±â‘¡
+        data.carryitems = items;                            //ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªæƒ…å ±â‘¢
+        data.treasureList = boxList;                        //é–‹å°æ¸ˆã¿å®ç®±ã®æƒ…å ±â‘£
+        data.enemyList = enemies;                           //è¨ä¼æ¸ˆã¿ã®ã‚¨ãƒãƒŸãƒ¼æƒ…å ±â‘¤
+        Scene currentScene = SceneManager.GetActiveScene(); //ç¾åœ¨ã‚·ãƒ¼ãƒ³ã®å–å¾—
+        data.currentMapName = currentScene.name;            //ã‚»ãƒ¼ãƒ–ã—ãŸãƒãƒƒãƒ—åã®æƒ…å ±â‘¥
+        data.charavector = p.transform.position;   //ã‚»ãƒ¼ãƒ–ã—ãŸåº§æ¨™ã®æƒ…å ±â‘¦
+        string json = JsonUtility.ToJson(data);             
         string fileName;
         if (slotId == 0)
         {
             fileName = "autosave.json";
             string path = Path.Combine(Application.persistentDataPath, fileName);
             File.WriteAllText(path, json);
-            Debug.Log("ƒZ[ƒuŠ®—¹: " + path);
+            Debug.Log("ã‚»ãƒ¼ãƒ–å®Œäº†: " + path);
         }
         else if(slotId == 1 || slotId==2)
         {
             fileName = "save" + slotId + ".json";
             string path = Path.Combine(Application.persistentDataPath, fileName);
             File.WriteAllText(path, json);
-            Debug.Log("ƒZ[ƒuŠ®—¹: " + path);
+            Debug.Log("ã‚»ãƒ¼ãƒ–å®Œäº†: " + path);
         }
         else
         {
-            Debug.Log("•Û‘¶æ‚ªˆá‚¤‚±‚Æ‚É‚æ‚éƒGƒ‰[‚Å‚·BSavePointManager‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B");
+            Debug.Log("ä¿å­˜å…ˆãŒé•ã†ã“ã¨ã«ã‚ˆã‚‹ã‚¨ãƒ©ãƒ¼ã§ã™ã€‚SavePointManagerã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚");
         }
     }
 
     /// <summary>
-    /// ƒQ[ƒ€‚ğƒ[ƒh‚µ‚Ü‚·
+    /// ã‚²ãƒ¼ãƒ ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™
     /// </summary>
-    public void LoadGame(Player p, Neto n, Inventory inv, int slotId)
+    public void LoadGame(int slotId)
     {
         string fileName;
-        if (slotId == 0) fileName = "autosave.json";
-        else fileName = "save" + slotId + ".json";
+
+        if (slotId == 0)
+            fileName = "autosave.json";
+        else if (slotId == 1 || slotId == 2)
+            fileName = "save" + slotId + ".json";
+        else
+        {
+            Debug.LogError("ä¸æ­£ãªã‚¹ãƒ­ãƒƒãƒˆIDã§ã™");
+            return;
+        }
 
         string path = Path.Combine(Application.persistentDataPath, fileName);
 
-        if (File.Exists(path))
+
+        string json = File.ReadAllText(path);
+        loadedData = JsonUtility.FromJson<SaveData>(json);
+
+        Player player = Object.FindFirstObjectByType<Player>();
+        if (player != null)
         {
-            string json = File.ReadAllText(path);
-            SaveData data = JsonUtility.FromJson<SaveData>(json);
-
-            // ƒXƒe[ƒ^ƒX‚ğ•œŒ³
-            p = data.player;
-            n = data.neto;
-
-            // ƒCƒ“ƒxƒ“ƒgƒŠ‚ğ•œŒ³
-            inv.Clear();
-            for (int i = 0; i < data.inventoryIDs.Count; i++)
-            {
-                int id = data.inventoryIDs[i];
-                int count = data.inventoryCounts[i];
-
-                // ID‚©‚çƒAƒCƒeƒ€ƒf[ƒ^‚ğŒŸõ
-                Item itemObj = GameManager.Instance.dataManager.GetItemById(Item.ItemType.SupportItem,id);
-
-                // ƒAƒCƒeƒ€‚ª‘¶İ‚µA‚©‚ÂƒTƒ|[ƒgƒAƒCƒeƒ€‚Å‚ ‚ê‚Î’Ç‰Á
-                if (itemObj != null && itemObj is SupportItem)
-                {
-                    inv.AddItem((SupportItem)itemObj, count);
-                }
-            }
+            player.LoadFromSaveData(loadedData.player);
+            player.transform.position = loadedData.charavector;
         }
-        else
+        Neto neto = Object.FindFirstObjectByType<Neto>();
+        if (neto != null)
         {
-
+            neto.LoadFromSaveData(loadedData.neto);
         }
+        Inventory inventory = Object.FindFirstObjectByType<Inventory>();
+        if (inventory != null)
+        {
+            inventory.LoadItems(loadedData.carryitems);
+        }
+        TreasureBoxList treasureList = Object.FindFirstObjectByType<TreasureBoxList>();
+        if (treasureList != null)
+        {
+            treasureList.LoadFromSaveData(loadedData.treasureList.TreasureBoxTable);
+        }
+        EnemyList enemyList = Object.FindFirstObjectByType<EnemyList>();
+        if (enemyList != null)
+        {
+            enemyList.LoadFromSaveData(loadedData.enemyList.enemyDefeated);
+        }
+        SceneManager.LoadScene(loadedData.currentMapName);
+        player.transform.position = loadedData.charavector;
+        neto.transform.position = loadedData.charavector;
     }
 
     /// <summary>
-    /// ƒI[ƒgƒZ[ƒu‚ğíœ‚µ‚Ü‚·
+    /// Sceneãƒ­ãƒ¼ãƒ‰å®Œäº†å¾Œã«ãƒ‡ãƒ¼ã‚¿ã‚’åæ˜ 
     /// </summary>
+    /// <summary>
+    /// ã‚ªãƒ¼ãƒˆã‚»ãƒ¼ãƒ–ã‚’å‰Šé™¤ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã€æ­£å¸¸çµ‚äº†æ™‚ã«å‘¼ã³å‡ºã™ç”¨
+    /// </summary>
+
     public void DeleteAutoSave()
     {
         string path = Path.Combine(Application.persistentDataPath, "autosave.json");

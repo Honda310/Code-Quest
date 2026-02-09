@@ -22,7 +22,7 @@ public class DataManager : MonoBehaviour
         LoadAccessories("Data/Accessory");
         LoadSupportItems("Data/SupportItem");
         LoadEnemies("Data/Enemy");
-
+        
         Debug.Log("全データのロードが完了しました。");
     }
 

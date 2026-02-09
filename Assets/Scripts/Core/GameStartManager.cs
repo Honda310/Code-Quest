@@ -29,9 +29,10 @@ public class GameStartManager : MonoBehaviour
     //    // 名前が空でなければ保存してゲーム開始
     //    if (!string.IsNullOrEmpty(name))
     //    {
-    //        PlayerPrefs.SetString("PlayerName", name);
-    //        SceneManager.LoadScene("GameScene");
+    //        //プレイヤーネーム決定場所
+    //        SceneManager.LoadScene("");
     //    }
+    //    enemyList.EnemyListTake(Gamemanager.Instance.DataManager.EnemyMaster);
     //}
     private void Update()
     {
@@ -56,7 +57,7 @@ public class GameStartManager : MonoBehaviour
     }
     public void OnLoadingButtonClicked(int i)
     {
-
+        GameManager.Instance.saveLoadManager.LoadGame(i);
     }
     public void SampleLoadButtonClicked()
     {

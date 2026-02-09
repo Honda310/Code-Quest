@@ -9,10 +9,14 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
-    [NonSerialized]public string PlayerName;
-    [NonSerialized] public int DebugLimit = 15;
+    [NonSerialized] public string PlayerName;
     [NonSerialized] public int CurrentLv = 1;
     [NonSerialized] public int CurrentExp = 0;
+    [NonSerialized] public int DebugLimit = 15;
+    private Weapon equipweapon;
+    private Accessory equipAccessory;
+    [NonSerialized] public string EquipWeaponName = "なし";
+    [NonSerialized] public string EquipAccessoryName = "なし";
     public int NextExp
     {
         get { return CurrentLv*100; }
@@ -38,8 +42,6 @@ public class Player : MonoBehaviour
     {
         get { return 9 + CurrentLv; }
     }
-    [NonSerialized] public string EquipWeaponName="なし";
-    [NonSerialized] public string EquipAccessoryName="なし";
 
     public int WeaponAtk { get; private set; }
     public int AccessoryDef { get; private set; }
@@ -190,6 +192,7 @@ public class Player : MonoBehaviour
     public void EquipWeapon(Item item)
     {
         Weapon weapon = item as Weapon;
+        equipweapon = weapon;
         EquipWeaponName = weapon.ItemName;
         WeaponAtk = weapon.Atk;
         DebugLimit = Math.Max(15,weapon.TimeLimit);
@@ -202,6 +205,7 @@ public class Player : MonoBehaviour
     public void EquipAccessory(Item item)
     {
         Accessory accessory = item as Accessory;
+        equipAccessory = accessory;
         EquipAccessoryName = accessory.ItemName;
         AccessoryDef = accessory.Def;
     }
@@ -268,5 +272,19 @@ public class Player : MonoBehaviour
             CurrentLv ++;
             CurrentHP = MaxHP;
         }
+    }
+    public void LoadFromSaveData(Player p)
+    {
+        PlayerName = p.PlayerName;
+        CurrentLv = p.CurrentLv;
+        CurrentExp = p.CurrentExp;
+        equipweapon = p.equipweapon;
+        equipAccessory = p.equipAccessory;
+        TemporaryAtk = p.TemporaryAtk;
+        TemporaryDef = p.TemporaryDef;
+        EquipWeaponName = p.equipweapon.ItemName;
+        WeaponAtk = p.equipweapon.Atk;
+        EquipAccessoryName = p.equipAccessory.ItemName;
+        AccessoryDef = p.equipAccessory.Def;
     }
 }

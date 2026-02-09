@@ -8,6 +8,7 @@ public class Neto : MonoBehaviour
     public int MaxHP;
     public int CurrentHP;
     public int BaseDef;
+    private Accessory equipAccessory;
 
     public int AccessoryDef { get; private set; }
     public int TemporaryDef { get; private set; }
@@ -188,5 +189,12 @@ public class Neto : MonoBehaviour
     public void ClearBuffs()
     {
         TemporaryDef = 0;
+    }
+    public void LoadFromSaveData(Neto n)
+    {
+        equipAccessory = n.equipAccessory;
+        TemporaryDef = n.TemporaryDef;
+        EquipAccessoryName = n.equipAccessory.ItemName;
+        AccessoryDef = n.equipAccessory.Def;
     }
 }
