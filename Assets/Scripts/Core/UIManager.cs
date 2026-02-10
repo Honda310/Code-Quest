@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -1372,13 +1373,31 @@ public class UIManager : MonoBehaviour
     public void SavePanelEnable()
     {
         SaveLoadPanel.SetActive(true);
+        SaveSlotId = 1;
         Scene currentScene = SceneManager.GetActiveScene();
-        SaveDetailText.text = $"åªç›É}ÉbÉv{currentScene.name}\nLv:{p.CurrentLv}  Exp{p.CurrentExp}/{p.NextExp}";
-
+        string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
+        string json1 = File.ReadAllText(path1);
+        SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+        SaveDetailText.text = $"{loadedData1.playername}\n{loadedData1.currentMapName}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
     }
     public void SaveExecute()
     {
         GameManager.Instance.SaveManage(SaveSlotId);
+        string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
+        string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
+        string json1 = File.ReadAllText(path1);
+        string json2 = File.ReadAllText(path2);
+        SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+        SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+        if (SaveSlotId == 1)
+        {
+
+            SaveDetailText.text = $"{loadedData1.playername}\n{loadedData1.currentMapName}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+        }
+        else
+        {
+            SaveDetailText.text = $"{loadedData2.playername}\n{loadedData2.currentMapName}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData1.currentlv * 100}";
+        }
     }
     public void SavePanelDisable()
     {
@@ -1388,5 +1407,20 @@ public class UIManager : MonoBehaviour
     public void SaveSlotChange(int i)
     {
         SaveSlotId = i;
+        string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
+        string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
+        string json1 = File.ReadAllText(path1);
+        string json2 = File.ReadAllText(path2);
+        SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+        SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+        if (SaveSlotId == 1)
+        {
+
+            SaveDetailText.text = $"{loadedData1.playername}\n{loadedData1.currentMapName}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+        }
+        else
+        {
+            SaveDetailText.text = $"{loadedData2.playername}\n{loadedData2.currentMapName}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData1.currentlv * 100}";
+        }
     }
 }

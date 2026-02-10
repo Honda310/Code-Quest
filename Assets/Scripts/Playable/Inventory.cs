@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
 {
     // 所持しているアイテムのリスト
     [NonSerialized] public List<CarryItem> items = new List<CarryItem>();
+    public DataManager dataManager;
 
     /// <summary>
     /// アイテムを追加します
@@ -86,8 +87,25 @@ public class Inventory : MonoBehaviour
             ? GetItemsByType(filter.Value)
             : GetSortedItems();
     }
-    public void LoadItems(List<CarryItem> list)
+    public void LoadItems(List<CarryItemForSave> list)
     {
-        items = list;
+        foreach (var data in list)
+        {
+            if (data.ItemId <= 20000 && data.ItemId > 10000)
+            {
+                Item item = dataManager.GetItemById(Item.ItemType.SupportItem, data.ItemId);
+                AddItem(item, data.quantity);
+            }
+            else if (data.ItemId <= 30000)
+            {
+                Item item = dataManager.GetItemById(Item.ItemType.Accessory, data.ItemId);
+                AddItem(item, data.quantity);
+            }
+            else if (data.ItemId <= 40000)
+            {
+                Item item = dataManager.GetItemById(Item.ItemType.Weapon, data.ItemId);
+                AddItem(item, data.quantity);
+            }
+        }
     }
 }

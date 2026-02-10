@@ -1158,11 +1158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   EnemyID: 1
-  MaxDP: 0
-  Atk: 20
   QuestionCategories: 00000000
-  Exp: 0
-  Defeated: 0
 --- !u!58 &56578614
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14090,11 +14086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   EnemyID: 1
-  MaxDP: 0
-  Atk: 20
   QuestionCategories: 00000000
-  Exp: 0
-  Defeated: 0
 --- !u!58 &670472904
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16810,11 +16802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   EnemyID: 1
-  MaxDP: 0
-  Atk: 20
   QuestionCategories: 00000000
-  Exp: 0
-  Defeated: 0
 --- !u!114 &802629720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17460,7 +17448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
-  EnemyID: 3
+  EnemyID: 5
   enemy: {fileID: 859797243}
 --- !u!114 &859797243
 MonoBehaviour:
@@ -17474,12 +17462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  EnemyID: 1
-  MaxDP: 0
-  Atk: 20
+  EnemyID: 5
   QuestionCategories: 00000000
-  Exp: 0
-  Defeated: 0
 --- !u!58 &859797244
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19575,6 +19559,20 @@ MonoBehaviour:
   MaxHP: 100
   CurrentHP: 100
   BaseDef: 10
+  equipAccessory:
+    ItemID: 0
+    ItemName: 
+    Rarity: 0
+    Flavor: 
+    Type: 0
+    Def: 0
+  CurrentEquipAccessory:
+    ItemID: 0
+    ItemName: 
+    Rarity: 0
+    Flavor: 
+    Type: 0
+    Def: 0
   EquipAccessoryName: "\u306A\u3057"
   moveDelta: {x: 0, y: 0}
   quadrant: 0
@@ -30984,7 +30982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6cd75a4bb98064ebcf56cb061dec77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
-  TreasureId: 6
+  TreasureId: 46
   ColorId: 2
   uiManager: {fileID: 2130257028}
   rb: {fileID: 1559853356}
@@ -31786,7 +31784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
-  EnemyID: 2
+  EnemyID: 3
   enemy: {fileID: 1601054177}
 --- !u!114 &1601054177
 MonoBehaviour:
@@ -31801,11 +31799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   EnemyID: 1
-  MaxDP: 0
-  Atk: 20
   QuestionCategories: 00000000
-  Exp: 0
-  Defeated: 0
 --- !u!58 &1601054178
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -36362,7 +36356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
-  EnemyID: 3
+  EnemyID: 4
   enemy: {fileID: 1825476720}
 --- !u!114 &1825476720
 MonoBehaviour:
@@ -36377,11 +36371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   EnemyID: 1
-  MaxDP: 0
-  Atk: 20
   QuestionCategories: 00000000
-  Exp: 0
-  Defeated: 0
 --- !u!58 &1825476721
 CircleCollider2D:
   m_ObjectHideFlags: 0

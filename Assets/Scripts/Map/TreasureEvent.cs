@@ -16,6 +16,14 @@ public class TreasureEvent : MonoBehaviour
     private void Start()
     {
         treasureBoxList = GameManager.Instance.treasureBoxList;
+        if (treasureBoxList.TreasureBoxTable[TreasureId].accessAble)
+        {
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>($"Image/OnMapObject/{ColorId}_1treasureBox");
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>($"Image/OnMapObject/{ColorId}_2treasureBox");
+        }
     }
     void Update()
     {

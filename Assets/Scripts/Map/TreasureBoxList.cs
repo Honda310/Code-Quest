@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 /// <summary>
 /// 宝箱の開閉状態と中身を管理するクラスです。
 /// </summary>
@@ -9,6 +9,7 @@ public class TreasureBoxData
     public int itemId;
     public bool accessAble;
 }
+[System.Serializable]
 public class TreasureBoxList : MonoBehaviour
 {
     public Dictionary<int, TreasureBoxData> TreasureBoxTable = new Dictionary<int, TreasureBoxData>();
@@ -16,14 +17,12 @@ public class TreasureBoxList : MonoBehaviour
     private Inventory inventory;
     void Start()
     {
-        CreateTreasureBox(1, 30001);
-        CreateTreasureBox(2, 30002);
-        CreateTreasureBox(3, 30003);
-        CreateTreasureBox(4, 30004);
-        CreateTreasureBox(5, 30005);
-        CreateTreasureBox(6, 10008);
         dataManager = GameManager.Instance.dataManager;
         inventory = GameManager.Instance.inventory;
+    }
+    public void TreasureBoxDataCreate()
+    {
+        
     }
     /// <summary>
     /// 可読性のためだけに存在するメソッド。
@@ -70,15 +69,15 @@ public class TreasureBoxList : MonoBehaviour
             return "null";
         }
     }
-    public void LoadFromSaveData(Dictionary<int, TreasureBoxData> dictionary)
+    ///<summary>
+    ///Start時に読み込んだTreasureBoxTable内の要素TreasureBoxData
+    ///その中にある、アクセス可能を示すAccessableをセーブデータから復元するメソッド
+    ///</summary>
+    public void LoadFromSaveData(int[] BoxId,bool[] AccessAble)
     {
-        for (int i = 1; i <= dictionary.Count; i++)
+        for (int i = 0; i < Mathf.Min(BoxId.Length,AccessAble.Length); i++)
         {
-            if (dictionary[i].accessAble)
-            {
-                TreasureBoxTable[i].accessAble = false;
-            }
+            TreasureBoxTable[BoxId[i]].accessAble = AccessAble[i];
         }
-        
     }
 }

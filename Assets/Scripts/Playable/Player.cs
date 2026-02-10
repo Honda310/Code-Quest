@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     [NonSerialized] public int CurrentLv = 1;
     [NonSerialized] public int CurrentExp = 0;
     [NonSerialized] public int DebugLimit = 15;
-    public Weapon CurrentEquipWeapon;
-    public Accessory CurrentEquipAccessory;
+    [NonSerialized] public Weapon CurrentEquipWeapon;
+    [NonSerialized] public Accessory CurrentEquipAccessory;
     [NonSerialized] public string EquipWeaponName = "なし";
     [NonSerialized] public string EquipAccessoryName = "なし";
     public int NextExp
@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
             { "d_0", Load("4right_1stop") },
             { "d_1", Load("4right_2move") },
         };
+        PlayerName = "コンカレ太郎";
     }
 
     /// <summary>
@@ -282,6 +283,7 @@ public class Player : MonoBehaviour
         CurrentEquipAccessory = equipaccessory;
         TemporaryAtk = tempatk;
         TemporaryDef = tempdef;
+        DebugLimit = equipweapon.TimeLimit;
         EquipWeaponName = equipweapon.ItemName;
         WeaponAtk = equipweapon.Atk;
         EquipAccessoryName = equipaccessory.ItemName;

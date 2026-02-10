@@ -531,7 +531,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817957868}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -557,8 +557,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B3\u30F3\u30AB\u30EC\u592A\u90CE\n\u5606\u304D\u306E\u68EE 01:43:59
-    2026/02/03 09:18\nLv:1 HP:100/100"
+  m_Text: 
 --- !u!222 &817957871
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -776,6 +775,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameStartManager
   StartPanel: {fileID: 42409823}
   LoadPanel: {fileID: 202374871}
+  SaveSlotText0: {fileID: 308991724}
+  SaveSlotText1: {fileID: 817957870}
+  SaveSlotText2: {fileID: 1210758232}
 --- !u!1 &1273732875
 GameObject:
   m_ObjectHideFlags: 0

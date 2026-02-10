@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Overlays;
 using UnityEngine;
 
 /// <summary>
@@ -12,9 +13,8 @@ public class DataManager : MonoBehaviour
     public Dictionary<int, Weapon> WeaponMaster = new Dictionary<int, Weapon>();
     public Dictionary<int, Accessory> AccessoryMaster = new Dictionary<int, Accessory>();
     public Dictionary<int, SupportItem> SupportItemMaster = new Dictionary<int, SupportItem>();
-
-    // 敵データ検索用辞書
     public Dictionary<int, EnemyData> EnemyMaster = new Dictionary<int, EnemyData>();
+    public Dictionary<int, int> TreasureBoxMaster = new Dictionary<int, int>();
 
     public void LoadAllData()
     {
@@ -22,6 +22,7 @@ public class DataManager : MonoBehaviour
         LoadAccessories("Data/Accessory");
         LoadSupportItems("Data/SupportItem");
         LoadEnemies("Data/Enemy");
+        LoadTreasureBoxes("Data/TreasureBox");
         
         Debug.Log("全データのロードが完了しました。");
     }
@@ -91,8 +92,27 @@ public class DataManager : MonoBehaviour
             {
                 EnemyMaster.Add(id, data);
             }
+            GameManager.Instance.enemyList.EnemyRegist(id);
         }
         Debug.Log($"敵マスタ: {EnemyMaster.Count}件 ロード完了");
+    }
+    private void LoadTreasureBoxes(string path)
+    {
+        List<string[]> csv = CSVParser.Read(path);
+        for(int i = 1 ; i < csv.Count;i++)
+        {
+            string[] line = csv[i];
+            if(line.Length < 2) continue;
+            int id = CSVParser.ParseInt(line[0]);
+            int itemid = CSVParser.ParseInt(line[1]);
+            GameManager.Instance.treasureBoxList.CreateTreasureBox(id, itemid);
+            if (!TreasureBoxMaster.ContainsKey(id))
+            {
+                TreasureBoxMaster.Add(id, itemid);
+            }
+        }
+        Debug.Log($"宝箱マスタ：{TreasureBoxMaster.Count}件 ロード完了");
+        
     }
 	public Item GetItemById(Item.ItemType type, int id)
 	{

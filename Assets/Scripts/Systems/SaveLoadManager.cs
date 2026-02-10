@@ -2,7 +2,19 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using System.Net;
+using System.Linq;
+[System.Serializable]
+public class CarryItemForSave
+{
+    public int ItemId;
+    public int quantity;
+
+    public CarryItemForSave(int itemid, int quantity)
+    {
+        ItemId = itemid;
+        this.quantity = quantity;
+    }
+}
 
 /// <summary>
 /// 【セーブ・ロード】
@@ -24,11 +36,11 @@ public class SaveLoadManager : MonoBehaviour
         public int plTempDef;
         public Accessory netoEquipaccessory;
         public int netoTempDef;
-        public List<CarryItem> carryitems;
-        public EnemyList enemyList;
-        public TreasureBoxList treasureList;
-        public List<int> inventoryIDs;
-        public List<int> inventoryCounts;
+        public List<CarryItemForSave> carryitem;
+        public int[] enemyDefeatedID;
+        public bool[] isEnemyDefeated;
+        public int[] BoxId;
+        public bool[] BoxAccessable;
         public string currentMapName;
         public Vector3 charavector;
     }
@@ -41,22 +53,27 @@ public class SaveLoadManager : MonoBehaviour
     public void SaveGame(Player p, Neto n, List<CarryItem> items, int slotId,TreasureBoxList boxList,EnemyList enemies)
     {
         SaveData data = new SaveData();
-        data.saveDate = System.DateTime.Now.ToString();     //セーブした日時⓪
-        data.playername = p.PlayerName;                     //プレイヤーの情報①
+        data.saveDate = System.DateTime.Now.ToString();                             //セーブした日時⓪
+        data.playername = p.PlayerName;                                             //プレイヤーの情報①
         data.currentlv = p.CurrentLv;
         data.exp = p.CurrentExp;
         data.plEquipweapon = p.CurrentEquipWeapon;
         data.plEquipaccessory = p.CurrentEquipAccessory;
         data.plTempAtk = p.TemporaryAtk;
         data.plTempDef = p.TemporaryDef;
-        data.netoEquipaccessory = n.CurrentEquipAccessory;  //ネトちゃんの情報②
+        data.netoEquipaccessory = n.CurrentEquipAccessory;                          //ネトちゃんの情報②
         data.netoTempDef = n.TemporaryDef;
-        data.carryitems = items;                            //インベントリ情報③
-        data.treasureList = boxList;                        //開封済み宝箱の情報④
-        data.enemyList = enemies;                           //討伐済みのエネミー情報⑤
-        Scene currentScene = SceneManager.GetActiveScene(); //現在シーンの取得
-        data.currentMapName = currentScene.name;            //セーブしたマップ名の情報⑥
-        data.charavector = p.transform.position;   //セーブした座標の情報⑦
+        data.carryitem = items
+            .Select(ci => new CarryItemForSave(ci.item.ItemID, ci.quantity))
+            .ToList();                                                              //インベントリ情報③
+        data.BoxId = boxList.TreasureBoxTable.Keys.ToArray();
+        TreasureBoxData[] treasureBoxDatas = boxList.TreasureBoxTable.Values.ToArray();
+        data.BoxAccessable = treasureBoxDatas.Select(d => d.accessAble).ToArray();  //開封済み宝箱の情報④
+        data.enemyDefeatedID = enemies.enemyDefeated.Keys.ToArray();
+        data.isEnemyDefeated = enemies.enemyDefeated.Values.ToArray();              //討伐済みのエネミー情報⑤
+        Scene currentScene = SceneManager.GetActiveScene();                         //現在シーンの取得
+        data.currentMapName = currentScene.name;                                    //セーブしたマップ名の情報⑥
+        data.charavector = p.transform.position;                                    //セーブした座標の情報⑦
         string json = JsonUtility.ToJson(data);             
         string fileName;
         if (slotId == 0)
@@ -87,21 +104,36 @@ public class SaveLoadManager : MonoBehaviour
         string fileName;
 
         if (slotId == 0)
+        {
             fileName = "autosave.json";
+        } 
         else if (slotId == 1 || slotId == 2)
+        {
             fileName = "save" + slotId + ".json";
+        }
         else
         {
             Debug.LogError("不正なスロットIDです");
             return;
         }
-
         string path = Path.Combine(Application.persistentDataPath, fileName);
-
-
         string json = File.ReadAllText(path);
         loadedData = JsonUtility.FromJson<SaveData>(json);
-
+        Inventory inventory = Object.FindFirstObjectByType<Inventory>();
+        if (inventory != null)
+        {
+            inventory.LoadItems(loadedData.carryitem);
+        }
+        TreasureBoxList treasureList = Object.FindFirstObjectByType<TreasureBoxList>();
+        if (treasureList != null)
+        {
+            treasureList.LoadFromSaveData(loadedData.BoxId, loadedData.BoxAccessable);
+        }
+        EnemyList enemyList = Object.FindFirstObjectByType<EnemyList>();
+        if (enemyList != null)
+        {
+            enemyList.LoadFromSaveData( loadedData.enemyDefeatedID, loadedData.isEnemyDefeated);
+        }
         Player player = Object.FindFirstObjectByType<Player>();
         if (player != null)
         {
@@ -112,21 +144,6 @@ public class SaveLoadManager : MonoBehaviour
         if (neto != null)
         {
             neto.LoadFromSaveData(loadedData.netoEquipaccessory, loadedData.netoTempDef);
-        }
-        Inventory inventory = Object.FindFirstObjectByType<Inventory>();
-        if (inventory != null)
-        {
-            inventory.LoadItems(loadedData.carryitems);
-        }
-        TreasureBoxList treasureList = Object.FindFirstObjectByType<TreasureBoxList>();
-        if (treasureList != null)
-        {
-            treasureList.LoadFromSaveData(loadedData.treasureList.TreasureBoxTable);
-        }
-        EnemyList enemyList = Object.FindFirstObjectByType<EnemyList>();
-        if (enemyList != null)
-        {
-            enemyList.LoadFromSaveData(loadedData.enemyList.enemyDefeated);
         }
         SceneManager.LoadScene(loadedData.currentMapName);
         player.transform.position = loadedData.charavector;

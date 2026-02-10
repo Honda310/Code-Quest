@@ -162,16 +162,6 @@ public class GameManager : MonoBehaviour
     {
         battletime = mode;
     }
-    public void MarkEnemyDefeated()
-    {
-        defeatedEnemies.Add(CurrentEnemyID);
-    }
-
-    // マップ復帰時に敵を消す判定用
-    public bool IsEnemyDefeated(int enemyId)
-    {
-        return defeatedEnemies.Contains(enemyId);
-    }
     public void StackMapNameAndPosition(string mapname,Vector3 playerPos,Vector3 netoPos)
     {
         BeforeMapName=mapname;

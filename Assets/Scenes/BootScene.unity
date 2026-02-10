@@ -556,6 +556,20 @@ MonoBehaviour:
   MaxHP: 100
   CurrentHP: 100
   BaseDef: 10
+  equipAccessory:
+    ItemID: 0
+    ItemName: 
+    Rarity: 0
+    Flavor: 
+    Type: 0
+    Def: 0
+  CurrentEquipAccessory:
+    ItemID: 0
+    ItemName: 
+    Rarity: 0
+    Flavor: 
+    Type: 0
+    Def: 0
   EquipAccessoryName: "\u306A\u3057"
   moveDelta: {x: 0, y: 0}
   quadrant: 0
@@ -809,6 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e80328bdf0f0134298589f233eaaaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  dataManager: {fileID: 1182703139}
 --- !u!114 &1182703144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +1008,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a89621f255d10478c0a594081a8bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  CurrentEquipWeapon:
+    ItemID: 0
+    ItemName: 
+    Rarity: 0
+    Flavor: 
+    Type: 0
+    Atk: 0
+    TimeLimit: 0
+  CurrentEquipAccessory:
+    ItemID: 0
+    ItemName: 
+    Rarity: 0
+    Flavor: 
+    Type: 0
+    Def: 0
   moveSpeed: 100
 --- !u!50 &2088172327
 Rigidbody2D:

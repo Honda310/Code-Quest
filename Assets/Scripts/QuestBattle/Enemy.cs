@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// y“GƒLƒƒƒ‰ƒNƒ^[z
@@ -12,15 +13,15 @@ public class Enemy : MonoBehaviour
 
     public int CurrentDP { get; set; }
     public int EnemyID;
-    public int MaxDP;
-    public int Atk;
+    [NonSerialized] public int MaxDP;
+    [NonSerialized] public int Atk;
 
     [Header("o‘èİ’è")]
     public List<QuestCategory> QuestionCategories;
 
     private SpriteRenderer spriteRenderer;
-    public int Exp;
-    public bool Defeated;
+    [NonSerialized] public int Exp;
+    [NonSerialized] public bool Defeated;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

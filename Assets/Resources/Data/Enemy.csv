@@ -1,4 +1,8 @@
 EnemyID,Name,MaxDP,Atk,Categories,ImageFileName,Exp
 1,test,100,20,Variable_AdditionAndSubtraction,1_1Gabetta_left,20
-2,test,80,25,Variable_IncrementAndCompoundAssignmentPrecedence,1_1Gabetta_left,25
-3,test,60,35,Variable_MultiplicationAndDivisionAndRemainder,1_1Gabetta_left,30
+2,test,100,20,Variable_AdditionAndSubtraction,1_1Gabetta_left,20
+3,test,80,25,Variable_IncrementAndCompoundAssignmentPrecedence,1_1Gabetta_left,25
+4,test,80,25,Variable_IncrementAndCompoundAssignmentPrecedence,1_1Gabetta_left,25
+5,test,60,35,Variable_MultiplicationAndDivisionAndRemainder,1_1Gabetta_left,30
+6,test,60,35,Variable_MultiplicationAndDivisionAndRemainder,1_1Gabetta_left,30
+

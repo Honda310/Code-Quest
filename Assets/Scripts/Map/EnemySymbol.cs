@@ -8,12 +8,12 @@ public class EnemySymbol : MonoBehaviour
     private void Start()
     {
         // ‚·‚Å‚É“|‚³‚ê‚Ä‚¢‚é“G‚È‚çÁ‚·
-        if (GameManager.Instance.IsEnemyDefeated(EnemyID))
+        if (GameManager.Instance.enemyList.enemyDefeated[EnemyID])
         {
             Destroy(gameObject);
         }
     }
-
+    
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (!col.gameObject.CompareTag("Player")) return;

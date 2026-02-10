@@ -178,7 +178,7 @@ public class BattleManager : MonoBehaviour
         if (win)
         {
             Destroy(currentEnemy.gameObject);
-            GameManager.Instance.MarkEnemyDefeated();
+            GameManager.Instance.enemyList.EnemyDefeat(currentEnemy.EnemyID);
         }
         player.ClearBuffs();
         neto.ClearBuffs();
