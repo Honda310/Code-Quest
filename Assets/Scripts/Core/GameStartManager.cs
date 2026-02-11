@@ -18,6 +18,7 @@ public class GameStartManager : MonoBehaviour
     [SerializeField] private Text SaveSlotText2;
     [SerializeField] private GameObject NameInputPanel;
     [SerializeField] private Text NameInputText;
+    [SerializeField] private Text OverLengthText;
     private SaveLoadManager.SaveData loadedData1;
     private SaveLoadManager.SaveData loadedData2;
     private void Start()
@@ -40,18 +41,27 @@ public class GameStartManager : MonoBehaviour
     public void OnNameDecided()
     {
         string name = NameInputText.text;
+        int NameLength = GetTextLength(name);
 
-        if (!string.IsNullOrEmpty(name)&&GetTextLength(name)<=12)
+        if (!string.IsNullOrEmpty(name)&& NameLength <= 12)
         {
             NameInputPanel.SetActive(false);
-            SceneManager.LoadScene("ToNeto");
+            GameManager.Instance.player.PlayerName = name;
+            GameManager.Instance.mapManager.TransAnotherMap("ToNeto", 0);
         }
         else
         {
-            
+            if (NameLength%2==0)
+            {
+                OverLengthText.text = $"この名前は{NameLength/2}文字扱いです。\n意図しない全角やスペースが入っていませんか？";
+            }
+            else
+            {
+                OverLengthText.text = $"この名前は{NameLength / 2}.5文字扱いです。\n意図しない全角やスペースが入っていませんか？";
+            }
         }
     }
-    int GetTextLength(string text)
+    private int GetTextLength(string text)
     {
         int length = 0;
 
@@ -72,7 +82,7 @@ public class GameStartManager : MonoBehaviour
     }
     public void OnGameStartButtonClicked()
     {
-
+        NameInputPanel.SetActive(true);
     }
     public void OnGameContinueButtonClicked()
     {
@@ -89,6 +99,6 @@ public class GameStartManager : MonoBehaviour
     }
     public void SampleLoadButtonClicked()
     {
-        GameManager.Instance.mapManager.TransAnotherMap("LamentForest", 2);
+        GameManager.Instance.mapManager.TransAnotherMap("LamentForest", 4);
     }
 }

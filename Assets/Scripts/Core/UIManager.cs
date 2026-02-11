@@ -599,6 +599,7 @@ public class UIManager : MonoBehaviour
         CurrentAtkText.text = $"  ATK :";
         CurrentDefText.text = $"  DEF :";
         CurrentDebugLimitText.text = $"  Lim :";
+        CharaNameText.text = "Chara Name";
         if (EquipandStatusPanel.activeSelf)
         {
             EquipandStatusPanel.SetActive(false);
@@ -721,6 +722,7 @@ public class UIManager : MonoBehaviour
                 OnEquipSelectorExit();
                 OnItemSelectorExit();
             }
+            
             gm.SetMode(GameMode.Menu);
             UpdateHpSlider();
         }
@@ -733,6 +735,7 @@ public class UIManager : MonoBehaviour
         }
         else if (MenuPanel.activeSelf && EquipSlots)
         {
+            CharaNameText.text = "Chara Name";
             CharaSelector.SetActive(false);
             NetoSelector.SetActive(false);
             EquipSlots = false;
@@ -944,6 +947,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("そのアイコンはfalseだよ");
             return;
         }
+        CharaNameText.text = p.PlayerName;
         EquipWeaponName.text = p.EquipWeaponName;
         EquipAccessoryName.text = p.EquipAccessoryName;
         CharaSelector.SetActive(true);
@@ -961,6 +965,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("そのアイコンはfalseだよ");
             return;
         }
+        CharaNameText.text = "Neto";
         EquipWeaponName.text = "装備不可";
         EquipAccessoryName.text = n.EquipAccessoryName;
         CharaSelector.SetActive(false);
