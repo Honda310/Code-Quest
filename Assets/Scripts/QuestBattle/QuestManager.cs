@@ -10,9 +10,12 @@ public class QuestManager : MonoBehaviour
     {
         categorizedQuests.Clear();
         // ファイル名とカテゴリを一致させて読み込み
-        LoadFromSingleCSV("Data/Variable_AdditionAndSubtraction", QuestCategory.Variable_AdditionAndSubtraction);
-        LoadFromSingleCSV("Data/Variable_IncrementAndCompoundAssignmentPrecedence", QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence);
-        LoadFromSingleCSV("Data/Variable_MultiplicationAndDivisionAndRemainder", QuestCategory.Variable_MultiplicationAndDivisionAndRemainder);
+        LoadFromSingleCSV("Data/SelectQuestion/Variable_AdditionAndSubtraction", QuestCategory.Variable_AdditionAndSubtraction);
+        LoadFromSingleCSV("Data/SelectQuestion/Variable_IncrementAndCompoundAssignmentPrecedence", QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence);
+        LoadFromSingleCSV("Data/SelectQuestion/Variable_MultiplicationAndDivisionAndRemainder", QuestCategory.Variable_MultiplicationAndDivisionAndRemainder);
+        LoadFromSingleCSV("Data/SelectQuestion/IF_BasicComparison", QuestCategory.IF_BasicComparison);
+        LoadFromSingleCSV("Data/SelectQuestion/IF_ElseIf", QuestCategory.IF_ElseIf);
+        LoadFromSingleCSV("Data/SelectQuestion/IF_LogicalOperator", QuestCategory.IF_LogicalOperator);
         Debug.Log("[QuestManager] ロード完了");
     }
 

@@ -24707,7 +24707,7 @@ MonoBehaviour:
   DojoSelectPanel: {fileID: 1797655335}
   DojoTellPanel: {fileID: 164061825}
   BattleAskPanel: {fileID: 759955702}
-  DojoPanel: {fileID: 0}
+  DojoPanel: {fileID: 1170312169}
   NetoTellText: {fileID: 791883110}
   IndexLabel: {fileID: 224204148}
   BattleAskText: {fileID: 1640611011}

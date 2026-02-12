@@ -1,0 +1,19 @@
+ID,QuestionText,CorrectAnswer
+5201,int i = 0;\n// iが5より小さい「あいだ」繰り返すための命令を(****)に書いてね\n(****) (i < 5) {\n    i++;\n},while
+5202,"boolean flag = true;\n// flagがtrueの「あいだ」繰り返すための命令を(****)に書いてね\n(****) (flag) {\n    System.out.println(""Loop"");\n}",while
+5203,int j = 5;\n// jが0より大きい「あいだ」繰り返すための命令を(****)に書いてね\n(****) (j > 0) {\n    j--;\n},while
+5204,int count = 1;\n// countが10以下の「あいだ」繰り返すための命令を(****)に書いてね\n(****) (count <= 10) {\n    count++;\n},while
+5205,int x = 1;\n// xが0じゃない「あいだ」繰り返すための命令を(****)に書いてね\n(****) (x != 0) {\n    x = 0;\n},while
+5206,"boolean condition = false;\n// do-while文の最後で、繰り返す条件を書くための命令を(****)に書いてね\ndo {\n    System.out.println(""Run"");\n} (****) (condition);",while
+5207,"boolean condition = true;\n// 条件が正しい「あいだ」繰り返すための命令を(****)に書いてね\n(****) (condition) {\n    System.out.println(""Check"");\n}",while
+5208,"boolean isValid = true;\n// isValidが正しい「あいだ」繰り返すための命令を(****)に書いてね\n(****) (isValid) {\n    System.out.println(""Valid"");\n}",while
+5209,"boolean condition = false;\n// do-while文の最後につける命令を(****)に書いてね\ndo {\n    System.out.println(""Exec"");\n} (****) (condition);",while
+5210,"int x = 20;\n// do-while文（後判定ループ）の最後に書く命令を(****)に書いてね\ndo {\n    System.out.println(""First"");\n} (****) (x < 10);",while
+5211,int i = 0;\n// 条件を先にチェックして繰り返す命令を(****)に書いてね\n(****) (i < 10) {\n    i++;\n},while
+5212,"boolean flag = true;\n// flagがtrueの「あいだ」繰り返すための命令を(****)に書いてね\n(****) (flag == true) {\n    System.out.println(""True"");\n}",while
+5213,"int y = 0;\n// 必ず1回実行するループ（do-while）の最後に書く命令を(****)に書いてね\ndo {\n    System.out.println(""Once"");\n} (****) (y > 0);",while
+5214,"boolean isReady = false;\n// do-while文の条件を書く場所に使う命令を(****)に書いてね\ndo {\n    System.out.println(""Action"");\n} (****) (isReady);",while
+5215,"int count = 0;\n// do-while文の最後に書く命令を(****)に書いてね\ndo {\n    System.out.println(""Init"");\n} (****) (count > 0);",while
+5216,"int result = 1;\n// 条件を満たす「あいだ」繰り返す命令を(****)に書いてね\n(****) (result == 1) {\n    System.out.println(""Loop"");\n}",while
+5217,"int temp = -1;\n// tempが0より小さい「あいだ」繰り返す命令を(****)に書いてね\n(****) (temp < 0) {\n    System.out.println(""Cold"");\n}",while
+5218,"boolean isFalse = false;\n// do-while文の最後に書く命令を(****)に書いてね\ndo {\n    System.out.println(""Run"");\n} (****) (isFalse);",while

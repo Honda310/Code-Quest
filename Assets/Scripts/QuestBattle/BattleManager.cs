@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 /// <summary>
 /// 【戦闘管理】
@@ -16,6 +17,7 @@ public class BattleManager : MonoBehaviour
     private Neto neto;
     private QuestData currentQuestion;
     List<QuestCategory> categories = new List<QuestCategory>();
+    private GameObject EnemySkin;
     private QuestManager questManager;
     [SerializeField] private MultipleChoiceQuest choicechecker;
     [SerializeField] private FillBlankQuest writechecker;
@@ -54,11 +56,9 @@ public class BattleManager : MonoBehaviour
         currentEnemy.CurrentDP = 0;
         currentEnemy.Atk = data.Atk;
         currentEnemy.Exp = data.Exp;
-
         categories.Clear();
-        categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-        categories.Add(QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence);
-        categories.Add(QuestCategory.Variable_MultiplicationAndDivisionAndRemainder);
+        categories = data.Categories;
+        //EnemySkin.GetComponent<Image> = data.ImageFileName;
 
         questManager.CreateDeck(categories);
 
@@ -77,7 +77,9 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            uimanager.UpdateBattleMessage("問題切れ！");
+            questManager.CreateDeck(categories);
+            currentQuestion = questManager.GetNextQuestion();
+            uimanager.UpdateBattleMessage($"出力される内容を答えてネト！\n\n{currentQuestion.QuestionText}", currentQuestion.Options);
         }
         uimanager.TurnStart();
     }

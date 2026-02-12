@@ -1,0 +1,37 @@
+﻿ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+4101,for (int i = 0; i < 2; i++) {\n for (int j = 0; j < 2; j++) {\n System.out.print(j);\n }\n},1,101,11,11,B
+4102,for (int i = 1; i <= 3; i++) {\n for (int j = 1; j <= 1; j++) {\n System.out.print(i);\n }\n},123,112233,1,3,A
+4103,"for (int i = 0; i < 2; i++) {\n for (int j = 0; j < 1; j++) {\n System.out.print(""X"");\n }\n}",X,XX,XXX,XXXX,B
+4104,int count = 0;\nfor (int i = 0; i < 3; i++) {\n for (int j = 0; j < 2; j++) {\n count++;\n }\n}\nSystem.out.println(count);,3,6,5,0,B
+4105,for (int i = 1; i <= 2; i++) {\n for (int j = i; j <= i; j++) {\n System.out.print(j);\n }\n},12,112,1,2,A
+4106,for (int i = 1; i < 3; i++) {\n for (int j = 1; j < 3; j++) {\n System.out.print(i);\n }\n},1122,1212,1,2,A
+4107,"for (int i = 0; i < 1; i++) {\n for (int j = 0; j < 4; j++) {\n System.out.print(""Y"");\n }\n}",Y,YY,YYY,YYYY,D
+4108,int sum = 0;\nfor (int i = 1; i <= 2; i++) {\n for (int j = 1; j <= 2; j++) {\n sum += j;\n }\n}\nSystem.out.println(sum);,3,6,4,1,B
+4109,for (int i = 0; i < 3; i++) {\n for (int j = i; j < i + 1; j++) {\n System.out.print(j);\n }\n},12,0,1122,12,A
+4110,for (int i = 1; i <= 2; i++) {\n for (int j = 2; j >= 1; j--) {\n System.out.print(i);\n }\n},1122,1212,1,2,A
+4111,int x = 0;\nfor (int i = 0; i < 2; i++) {\n for (int j = 0; j < 2; j++) {\n x += 1;\n }\n}\nSystem.out.println(x);,2,4,3,0,B
+4112,for (int i = 1; i < 3; i++) {\n for (int j = i; j < 3; j++) {\n System.out.print(i);\n }\n},112,1122,12,2,A
+4113,for (int i = 0; i < 2; i++) {\n for (int j = 0; j < 3; j++) {\n if (j == 1) continue;\n System.out.print(i);\n }\n},2,11,1,1,B
+4114,for (int i = 1; i <= 2; i++) {\n for (int j = 1; j < 3; j++) {\n System.out.print(j);\n }\n},1212,12,122,1,A
+4115,int total = 0;\nfor (int i = 1; i < 3; i++) {\n for (int j = 1; j < 2; j++) {\n total += i;\n }\n}\nSystem.out.println(total);,1,3,2,4,B
+4116,for (int i = 1; i < 3; i++) {\n for (int j = 0; j < i; j++) {\n System.out.print(i);\n }\n},122,112,12,2,A
+4117,for (int i = 0; i < 1; i++) {\n for (int j = 0; j < 3; j++) {\n System.out.print(j);\n }\n},0,12,123,0,B
+4118,for (int i = 0; i < 2; i++) {\n for (int j = 0; j < 1; j++) {\n System.out.print(i);\n }\n},1,11,101,10,A
+4119,int sum = 0;\nfor (int i = 1; i <= 5; i++) {\n sum += i;\n}\nSystem.out.println(sum);,10,15,5,1,B
+4120,int product = 1;\nfor (int i = 1; i <= 4; i++) {\n product *= i;\n}\nSystem.out.println(product);,4,24,10,1,B
+4121,int count = 0;\nfor (int i = 1; i <= 10; i++) {\n if (i % 2 == 0) count++;\n}\nSystem.out.println(count);,4,5,10,0,B
+4122,int total = 0;\nfor (int i = 0; i < 5; i++) {\n total += 10;\n}\nSystem.out.println(total);,10,50,5,0,B
+4123,int x = 1;\nfor (int i = 0; i < 3; i++) {\n x *= 3;\n}\nSystem.out.println(x);,9,27,3,1,B
+4124,int avg = 0;\nint sum = 0;\nfor (int i = 1; i <= 3; i++) {\n sum += i;\n}\navg = sum / 3;\nSystem.out.println(avg);,3,2,1,6,B
+4125,int result = 0;\nfor (int i = 1; i < 5; i++) {\n if (i % 2 != 0) result++;\n}\nSystem.out.println(result);,1,2,3,4,B
+4126,int y = 0;\nfor (int i = 0; i < 5; i++) {\n y += i;\n}\nSystem.out.println(y);,5,10,4,0,B
+4127,int total = 100;\nfor (int i = 0; i < 2; i++) {\n total -= 10;\n}\nSystem.out.println(total);,90,80,100,20,B
+4128,int z = 1;\nfor (int i = 0; i < 4; i++) {\n z *= 1;\n}\nSystem.out.println(z);,4,1,0,エラー,B
+4129,int sum = 0;\nfor (int i = 10; i <= 30; i += 10) {\n sum += i;\n}\nSystem.out.println(sum);,30,60,40,10,B
+4130,"for (int i = 0; i < 3; i++) {\n for (int j = 0; j < 1; j++) {\n System.out.print(""L"");\n }\n}",L,LL,LLL,何も表示されない,C
+4131,int x = 0;\nfor (int i = 0; i < 2; i++) {\n x = x + 10;\n}\nSystem.out.println(x);,10,20,0,2,B
+4132,for (int j = 1; j <= 5; j += 3) {\n System.out.print(j);\n},14,147,12345,4,A
+4133,int count = 0;\nfor (int i = 10; i > 0; i -= 5) {\n count++;\n}\nSystem.out.println(count);,1,2,3,4,B
+4134,for (int l = 0; l <= 2; l++) {\n System.out.print(l * 2);\n},24,24,12,4,A
+4135,int num = 1;\nfor (int i = 0; i < 3; i++) {\n num *= 1;\n}\nSystem.out.println(num);,3,1,0,エラー,B
+4136,for (int i = 0; i < 1; i++) {\n for (int j = 0; j < 3; j++) {\n System.out.print(j);\n }\n},0,12,123,0,B

@@ -1,0 +1,20 @@
+﻿ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+2201,"int a = 5;\nif (a > 3 && a < 7) {\n System.out.println(""OK"");\n} else {\n System.out.println(""NG"");\n}",OK,NG,3,7,A
+2202,int x = 10;\nif (x == 5 || x == 10) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},1,2,5,10,A
+2203,"int num = 3;\nif (!(num == 4)) {\n System.out.println(""True"");\n} else {\n System.out.println(""False"");\n}",True,False,4,エラー,A
+2204,"int score = 90;\nif (score >= 80 && score < 100) {\n System.out.println(""Good"");\n} else {\n System.out.println(""Bad"");\n}",Good,Bad,80,100,A
+2205,"int temp = 25;\nif (temp < 0 || temp > 30) {\n System.out.println(""極端"");\n} else {\n System.out.println(""普通"");\n}",極端,普通,0,30,B
+2206,int i = 5;\nif (i % 2 == 0 && i > 3) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},1,2,3,5,B
+2207,"int j = 1;\nif (j == 0 || j == 1) {\n System.out.println(""Hit"");\n} else {\n System.out.println(""Miss"");\n}",Hit,Miss,0,1,A
+2208,"int k = 10;\nif (!(k > 10)) {\n System.out.println(""A"");\n} else {\n System.out.println(""B"");\n}",A,B,10,エラー,A
+2209,"int l = 7;\nif (l >= 5 && l <= 10) {\n System.out.println(""Range"");\n} else {\n System.out.println(""Out"");\n}",Range,Out,5,10,A
+2210,int m = 5;\nif (m < 0 || m > 10) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},1,2,0,10,B
+2211,"int n = 4;\nif (n > 5 && n < 10) {\n System.out.println(""Yes"");\n} else {\n System.out.println(""No"");\n}",Yes,No,5,10,B
+2212,"int p = 0;\nif (p == 0 || p == 1) {\n System.out.println(""P"");\n} else {\n System.out.println(""Q"");\n}",P,Q,0,1,A
+2213,int q = 15;\nif (q > 10 && q < 20) {\n System.out.println(1);\n} else {\n System.out.println(0);\n},1,0,10,20,A
+2214,"int r = 100;\nif (r < 50 || r > 150) {\n System.out.println(""Extreme"");\n} else {\n System.out.println(""Normal"");\n}",Extreme,Normal,50,150,B
+2215,"int s = 8;\nif (!(s % 2 == 0)) {\n System.out.println(""Odd"");\n} else {\n System.out.println(""Even"");\n}",Odd,Even,8,エラー,B
+2216,int t = 5;\nif (t > 0 && t != 5) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},1,2,0,5,B
+2217,"int u = 10;\nif (u < 5 || u > 5) {\n System.out.println(""A"");\n} else {\n System.out.println(""B"");\n}",A,B,5,10,A
+2218,"int v = 10;\nif (v >= 10 && v < 20) {\n System.out.println(""OK"");\n} else {\n System.out.println(""NG"");\n}",OK,NG,10,20,A
+2219,"int w = 5;\nif (w == 5 && w != 0) {\n System.out.println(""Yes"");\n} else {\n System.out.println(""No"");\n}",Yes,No,5,0,A

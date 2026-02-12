@@ -1,0 +1,21 @@
+ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+6001,"""// 要素数3の配列を作る正しい書き方は？\nint[] a = ____;""","""int[3]""","""{3}""","""new int[3]""","""(3)""",C
+6002,"""// 初期化子で配列を作る\nint[] a = ____;""","""[10■ 20]""","""{10■ 20}""","""(10■ 20)""","""new {10■ 20}""",B
+6003,"""// int配列の初期値\nint[] a = new int[1];\nSystem.out.println(a[0]); // 出力: ____""","""1""","""null""","""undefined""","""0""",D
+6004,"""// String配列の初期値\nString[] s = new String[1];\nSystem.out.println(s[0]); // 出力: ____""","""null""","""0""","""""""","""String""",A
+6005,"""// boolean配列の初期値\nboolean[] b = new boolean[1];\nSystem.out.println(b[0]); // 出力: ____""","""true""","""0""","""false""","""null""",C
+6006,"""// double配列の初期値\ndouble[] d = new double[1];\nSystem.out.println(d[0]); // 出力: ____""","""0""","""null""","""NaN""","""0.0""",D
+6007,"""// 空の配列を作る\nint[] a = ____;\nSystem.out.println(a.length); // 0""","""null""","""new int[0]""","""{}""","""(0)""",B
+6008,"""// 変数でサイズ指定\nint size = 5;\nint[] a = ____;""","""new int[size]""","""int[size]""","""new int(size)""","""[size]""",A
+6009,"""// char配列の要素数\nchar[] c = {'A'■ 'B'};\nSystem.out.println(c.length); // 出力: ____""","""1""","""0""","""3""","""2""",D
+6010,"""// 宣言のみで使用\nint[] a;\n// System.out.println(a); // 結果は？""","""null""","""0""","""要素数不定""","""コンパイルエラー""",D
+6011,"""// float配列の宣言\nfloat[] f = {1.5f■ 2.5f};\n// 正しい宣言は ____""","""float[] f""","""float f""","""f float[]""","""Float f""",A
+6012,"""// nullの代入\nint[] a = ____;\nif (a == null) System.out.println(""ok"");""","""0""","""void""","""null""","""empty""",C
+6013,"""// long配列の型\n____ nums = new long[3];""","""int[]""","""double[]""","""long[]""","""String[]""",C
+6014,"""// byte配列の作成\nbyte[] b = ____;""","""byte[10]""","""new byte[10]""","""(byte)10""","""[10]""",B
+6015,"""// 要素1つの配列\nint[] a = ____;""","""{1}""","""(1)""","""[1]""","""<1>""",A
+6016,"""// short配列の長さ\nshort[] s = new short[5];\nSystem.out.println(s.length); // 出力: ____""","""4""","""0""","""null""","""5""",D
+6017,"""// 複数宣言\nint[] a■ b;\n// b = new int[3]; は可能？""","""不可能""","""可能""","""エラー""","""警告""",B
+6018,"""// C言語スタイル\nint a[] = {1■ 2};\n// これは有効？""","""無効""","""エラー""","""有効""","""非推奨""",C
+6019,"""// 宣言後の代入\nint[] a;\na = ____ {1■ 2■ 3};""","""{""","""int[]""","""(int[])""","""new int[]""",D
+6020,"""// varでの宣言\nvar a = new int[]{1■ 2};\nSystem.out.println(a[0]); // 出力: ____""","""1""","""2""","""0""","""null""",A

@@ -1,0 +1,39 @@
+﻿ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+2001,"int a = 5;\nif (a > 5) {\n System.out.println(""A"");\n} else {\n System.out.println(""B"");\n}",A,B,5,エラー,B
+2002,"int x = 10;\nif (x == 10) {\n System.out.println(""OK"");\n} else {\n System.out.println(""NG"");\n}",OK,NG,10,エラー,A
+2003,"int num = 3;\nif (num == 4) {\n System.out.println(""NG"");\n}\nSystem.out.println(""次へ"");",NG,次へ,NG\n次へ,エラー,B
+2004,"int score = 50;\nif (score > 50) {\n System.out.println(""合格"");\n} else {\n System.out.println(""不合格"");\n}",合格,不合格,50,エラー,B
+2005,"int temp = -1;\nif (temp < 0) {\n System.out.println(""マイナス"");\n} else {\n System.out.println(""ゼロ以上"");\n}",マイナス,ゼロ以上,0,エラー,A
+2006,int i = 8;\nif (i == 7) {\n System.out.println(1);\n}\nSystem.out.println(2);,1,2,1\n2,エラー,B
+2007,"int j = 4;\nif (j > 5) {\n System.out.println(""大"");\n} else {\n System.out.println(""小"");\n}",大,小,4,エラー,B
+2008,"int k = 10;\nif (k != 10) {\n System.out.println(""NG"");\n} else {\n System.out.println(""OK"");\n}",NG,OK,10,エラー,B
+2009,"int l = 5;\nif (l == 5) {\n System.out.println(""Five"");\n}\nSystem.out.println(""Next"");",Five,Next,Five\nNext,エラー,C
+2010,"int m = 1;\nif (m == 0) {\n System.out.println(""Zero"");\n}\nif (m == 1) {\n System.out.println(""One"");\n}",Zero,One,Zero\nOne,エラー,B
+2011,"int n = 7;\nif (n < 7) {\n System.out.println(""Low"");\n} else {\n System.out.println(""High"");\n}",Low,High,7,エラー,B
+2012,"int p = 10;\nif (p != 10) {\n System.out.println(""A"");\n}\nif (p == 10) {\n System.out.println(""B"");\n}",A,B,A\nB,何も表示されない,B
+2013,int q = 3;\nif (q > 5) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},1,2,1\n2,3,B
+2014,"int r = 5;\nif (r == 5) {\n System.out.println(""Match"");\n} else {\n System.out.println(""Miss"");\n}",Match,Miss,5,エラー,A
+2015,"int s = 0;\nif (s < 1) {\n System.out.println(""Go"");\n} else {\n System.out.println(""Stop"");\n}",Go,Stop,0,1,A
+2016,"int t = 8;\nif (t == 7) {\n System.out.println(""T"");\n}\nSystem.out.println(""F"");",T,F,T\nF,エラー,B
+2017,"int u = 1;\nif (u != 1) {\n System.out.println(""No"");\n} else {\n System.out.println(""Yes"");\n}",No,Yes,1,エラー,B
+2018,"int v = 2;\nif (v > 2) {\n System.out.println(""Big"");\n} else {\n System.out.println(""Small"");\n}",Big,Small,2,エラー,B
+2019,"int w = 10;\nif (w == 10) {\n System.out.println(""""A"""");\n}",A,10,何も表示されない,エラー,A
+2020,"int a = 5;\nif (a >= 5) {\n System.out.println(""OK"");\n} else {\n System.out.println(""NG"");\n}",OK,NG,5,エラー,A
+2021,int x = 10;\nif (x <= 10) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},1,2,10,エラー,A
+2022,"int num = 4;\nif (num > 4) {\n System.out.println(""NG"");\n} else {\n System.out.println(""OK"");\n}",NG,OK,4,エラー,B
+2023,"int score = 50;\nif (score >= 50) {\n System.out.println(""合格"");\n} else {\n System.out.println(""不合格"");\n}",合格,不合格,50,エラー,A
+2024,"int temp = 0;\nif (temp <= 0) {\n System.out.println(""ゼロ以下"");\n} else {\n System.out.println(""プラス"");\n}",ゼロ以下,プラス,0,エラー,A
+2025,int i = 7;\nif (i <= 7) {\n System.out.println(1);\n}\nSystem.out.println(2);,1,2,1\n2,エラー,C
+2026,"int j = 5;\nif (j >= 5) {\n System.out.println(""大"");\n} else {\n System.out.println(""小"");\n}",大,小,5,エラー,A
+2027,"int k = 10;\nif (k <= 9) {\n System.out.println(""NG"");\n} else {\n System.out.println(""OK"");\n}",NG,OK,10,エラー,B
+2028,"int l = 4;\nif (l >= 4) {\n System.out.println(""Four"");\n}\nSystem.out.println(""Next"");",Four,Next,Four\nNext,エラー,C
+2029,"int m = 2;\nif (m >= 0) {\n System.out.println(""Zero"");\n}\nif (m <= 2) {\n System.out.println(""Two"");\n}",Zero,Two,Zero\nTwo,エラー,C
+2030,"int n = 7;\nif (n <= 6) {\n System.out.println(""Low"");\n} else {\n System.out.println(""High"");\n}",Low,High,7,エラー,B
+2031,"int p = 1;\nif (p > 1) {\n System.out.println(""A"");\n}\nif (p <= 1) {\n System.out.println(""B"");\n}",A,B,A\nB,何も表示されない,B
+2032,int q = 6;\nif (q < 6) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},1,2,1\n2,6,B
+2033,"int r = 5;\nif (r <= 5) {\n System.out.println(""Match"");\n} else {\n System.out.println(""Miss"");\n}",Match,Miss,5,エラー,A
+2034,"int s = 1;\nif (s <= 1) {\n System.out.println(""Go"");\n} else {\n System.out.println(""Stop"");\n}",Go,Stop,1,エラー,A
+2035,"int t = 8;\nif (t > 8) {\n System.out.println(""T"");\n}\nSystem.out.println(""F"");",T,F,T\nF,エラー,B
+2036,"int u = 1;\nif (u >= 2) {\n System.out.println(""No"");\n} else {\n System.out.println(""Yes"");\n}",No,Yes,1,エラー,B
+2037,"int v = 3;\nif (v >= 3) {\n System.out.println(""Big"");\n} else {\n System.out.println(""Small"");\n}",Big,Small,3,エラー,A
+2038,"int w = 10;\nif (w >= 10) {\n System.out.println(""A"");\n}",A,10,何も表示されない,エラー,A
