@@ -420,6 +420,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -672923094545035687, guid: b6f63e3f680b6bf4783cd72009e16727, type: 3}
+    - target: {fileID: 3626916397498700004, guid: daf562fd9123d7f468ed121249757e38, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60
@@ -894,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1008,21 +1012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a89621f255d10478c0a594081a8bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  CurrentEquipWeapon:
-    ItemID: 0
-    ItemName: 
-    Rarity: 0
-    Flavor: 
-    Type: 0
-    Atk: 0
-    TimeLimit: 0
-  CurrentEquipAccessory:
-    ItemID: 0
-    ItemName: 
-    Rarity: 0
-    Flavor: 
-    Type: 0
-    Def: 0
   moveSpeed: 100
 --- !u!50 &2088172327
 Rigidbody2D:

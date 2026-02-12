@@ -75,26 +75,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        // マスタデータをCSVから読み込みます
         dataManager.LoadAllData();
-
-        // クイズデータを読み込みます
         questManager.LoadQuests();
-        for (int i = 1; i <= 10; i++)
-        {
-            Item item = dataManager.GetItemById(Item.ItemType.Weapon, 30000 + i);
-            inventory.AddItem(item, 1);
-        }
-        for (int i = 1; i <= 5; i++)
-        {
-            Item item = dataManager.GetItemById(Item.ItemType.Accessory, 20000 + i);
-            inventory.AddItem(item, 1);
-        }
-        for(int i = 1; i <= 15; i++)
-        {
-            Item item = dataManager.GetItemById(Item.ItemType.SupportItem, 10000 + i);
-            inventory.AddItem(item, 1);
-        }
     }
 
     private void Update()

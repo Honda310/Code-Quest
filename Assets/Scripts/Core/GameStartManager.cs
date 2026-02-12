@@ -19,20 +19,37 @@ public class GameStartManager : MonoBehaviour
     [SerializeField] private GameObject NameInputPanel;
     [SerializeField] private Text NameInputText;
     [SerializeField] private Text OverLengthText;
+    private Item FirstWeapon;
+    private Item FirstAccessory;
     private SaveLoadManager.SaveData loadedData1;
     private SaveLoadManager.SaveData loadedData2;
     private void Start()
     {
         StartPanel.SetActive(true);
         LoadPanel.SetActive(false);
-        string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
-        string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
-        string json1 = File.ReadAllText(path1);
-        string json2 = File.ReadAllText(path2);
-        loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
-        loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
-        SaveSlotText1.text = $"{loadedData1.playername}\n{loadedData1.currentMapName}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
-        SaveSlotText2.text = $"{loadedData2.playername}\n{loadedData2.currentMapName}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData1.currentlv * 100}";
+        try
+        {
+            string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
+            string json1 = File.ReadAllText(path1);
+            loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+            SaveSlotText1.text = $"{loadedData1.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData1.currentMapName)}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+        }
+        catch
+        {
+            SaveSlotText1.text = "セーブデータがありません";
+        }
+        try
+        {
+            string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
+            string json2 = File.ReadAllText(path2);
+            loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+            SaveSlotText2.text = $"{loadedData2.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData2.currentMapName)}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData1.currentlv * 100}";
+        }
+        catch
+        {
+            SaveSlotText1.text = "セーブデータがありません";
+        }
+        
     }
     public void OnStartClicked()
     {
@@ -47,6 +64,37 @@ public class GameStartManager : MonoBehaviour
         {
             NameInputPanel.SetActive(false);
             GameManager.Instance.player.PlayerName = name;
+
+            for (int i = 1; i <= 5; i++)
+            {
+                Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30000 + i);
+                GameManager.Instance.inventory.AddItem(item, 1);
+            }
+            for (int i = 1; i <= 1; i++)
+            {
+                Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Accessory, 20000 + i);
+                GameManager.Instance.inventory.AddItem(item, 1);
+            }
+            for (int i = 1; i <= 3; i++)
+            {
+                Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.SupportItem, 10000 + i);
+                GameManager.Instance.inventory.AddItem(item, 1);
+            }
+            for (int i = 6; i <= 8; i++)
+            {
+                Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.SupportItem, 10000 + i);
+                GameManager.Instance.inventory.AddItem(item, 1);
+            }
+            for (int i = 11; i <= 13; i++)
+            {
+                Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.SupportItem, 10000 + i);
+                GameManager.Instance.inventory.AddItem(item, 1);
+            }
+            FirstWeapon = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30001);
+            FirstAccessory = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Accessory, 20001);
+            GameManager.Instance.player.EquipWeapon(FirstWeapon);
+            GameManager.Instance.player.EquipAccessory(FirstAccessory);
+            GameManager.Instance.neto.EquipAccessory(FirstAccessory);
             GameManager.Instance.mapManager.TransAnotherMap("ToNeto", 0);
         }
         else
@@ -78,6 +126,7 @@ public class GameStartManager : MonoBehaviour
         {
             StartPanel.SetActive(true);
             LoadPanel.SetActive(false);
+            NameInputPanel.SetActive(false);
         }
     }
     public void OnGameStartButtonClicked()
@@ -99,6 +148,10 @@ public class GameStartManager : MonoBehaviour
     }
     public void SampleLoadButtonClicked()
     {
-        GameManager.Instance.mapManager.TransAnotherMap("LamentForest", 4);
+        //GameManager.Instance.mapManager.TransAnotherMap("LamentForest", 4);
+    }
+    public void GameEnd()
+    {
+        Application.Quit();
     }
 }

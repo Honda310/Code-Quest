@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,9 +7,22 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MapManager : MonoBehaviour
 {
+    Dictionary<string,string> MapNameConvert;
+    private void Start()
+    {
+        MapNameConvert = new Dictionary<string,string>();
+        MapNameConvert["ToNeto"] = "‚Í‚¶‚Ü‚è‚Ì“¹";
+        MapNameConvert["InFrontOfLamentForest"] = "’Q‚«‚ÌX‘O";
+        MapNameConvert["LamentForest"] = "’Q‚«‚ÌX";
+        MapNameConvert["PoisonedSpring"] = "“ÅŠQòŒ¹";
+    }
     public void TransAnotherMap(string sceneName,int spawnID)
     {
         SceneManager.LoadScene(sceneName);
         GameManager.Instance.spawnPlayer.CharacterSpawn(spawnID);
+    }
+    public string MapNameConvertor(string sceneName)
+    {
+        return MapNameConvert[sceneName];
     }
 }

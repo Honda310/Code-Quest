@@ -7,19 +7,39 @@ public class EnemyMove : MonoBehaviour
     int roop_frame=0;
     float moveSpeed = 85.0f;
     int tale_moving=-1;
-    private Dictionary<string, Sprite> sprites;
+    private Dictionary<string, Sprite> PromdSprites;
+    private Dictionary<string, Sprite> GabettaSprites;
+    private Dictionary<string, Sprite> PackettonSprites;
+    [SerializeField] private Enemy enemy;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Vector2 pos = rb.position;
-        sprites = new Dictionary<string, Sprite>()
+        PromdSprites = new Dictionary<string, Sprite>()
         {
-            { "-1_-1", Load("3left") },
-            { "-1_1", Load("3left_tail") },
+            { "-1_-1", Load("promd/3Enemy_06EasyEn_1normal_3left") },
+            { "-1_1", Load("promd/3Enemy_06EasyEn_1normal_3left_tail") },
 
-            { "1_-1", Load("4right") },
-            { "1_1", Load("4right_tail") },
+            { "1_-1", Load("promd/3Enemy_06EasyEn_1normal_4right") },
+            { "1_1", Load("promd/3Enemy_06EasyEn_1normal_4right_tail") },
+        };
+        GabettaSprites = new Dictionary<string, Sprite>()
+        {
+            { "-1_-1", Load("Gabetta/1_1Gabetta_left") },
+            { "-1_1", Load("Gabetta/1_1Gabetta_left") },
+
+            { "1_-1", Load("Gabetta/2_1Gabetta_right") },
+            { "1_1", Load("Gabetta/2_1Gabetta_right") },
+        };
+        PackettonSprites = new Dictionary<string, Sprite>()
+        {
+            { "-1_-1", Load("Packetton/1_1paketton_left") },
+            { "-1_1", Load("Packetton/1_2paketton_battleMotion_left") },
+
+            { "1_-1", Load("Packetton/2_1paketton_right") },
+            { "1_1", Load("Packetton/2_2paketton_battleMotion_right") },
         };
     }
 
@@ -55,15 +75,35 @@ public class EnemyMove : MonoBehaviour
                 tale_moving = tale_moving * -1;
             }
             string spriteKey = $"{direction.x}_{tale_moving}";
-            if (sprites.ContainsKey(spriteKey))
+            if (enemy.EnemyName == "Promd")
             {
-                GetComponent<SpriteRenderer>().sprite = sprites[spriteKey];
+                if (PromdSprites.ContainsKey(spriteKey))
+                {
+                    GetComponent<SpriteRenderer>().sprite = PromdSprites[spriteKey];
+                }
+            }
+            else if(enemy.EnemyName == "Gabetta")
+            {
+                if (GabettaSprites.ContainsKey(spriteKey))
+                {
+                    GetComponent<SpriteRenderer>().sprite = GabettaSprites[spriteKey];
+                }
+            }
+            else if(enemy.EnemyName == "Packetton")
+            {
+                if (PackettonSprites.ContainsKey(spriteKey))
+                {
+                    GetComponent<SpriteRenderer>().sprite = PackettonSprites[spriteKey];
+                }
+            }
+            else
+            {
+                Debug.Log(enemy.EnemyName);
             }
         }
-        
     }
     Sprite Load(string name)
     {
-        return Resources.Load<Sprite>($"Image/Enemy/promd/3Enemy_06EasyEn_1normal_{name}");
+        return Resources.Load<Sprite>($"Image/Enemy/{name}");
     }
 }

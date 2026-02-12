@@ -46,6 +46,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject DifficultAndSelectButtonFramePanel;
     [SerializeField] private Slider TimeLimitSlider;
     [SerializeField] private Text TimeLimitText;
+    [SerializeField] private Text PlayerName;
+    [SerializeField] private Image EnemyImage;
+    [SerializeField] private Text EnemyName;
     Color skyblue = new Color32(0, 224, 255, 255);
     Color yellow = new Color32(224, 255, 0, 255);
     Color red = new Color32(255, 96, 96, 255);
@@ -111,6 +114,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text ItemDetailText;
     [SerializeField] private GameObject EquipItemFlavorPanel;
     [SerializeField] private Text EquipItemFlavorText;
+
 
     [Header("細かいUIの調整用")]
     //例えば、スロット2にある選択中に下にスクロールした場合、Entered,Exit制御では
@@ -330,6 +334,12 @@ public class UIManager : MonoBehaviour
             EnemyStatusSlider.minValue = 0;
             EnemyStatusSlider.value = e.CurrentDP;
         }
+    }
+    public void EnemySetUp(string path,string name)
+    {
+        PlayerName.text = p.PlayerName ;
+        EnemyName.text = name ;
+        EnemyImage.sprite = Resources.Load<Sprite>($"Image/Enemy/{path}");
     }
     public void ShowLog()
     {
@@ -1022,11 +1032,16 @@ public class UIManager : MonoBehaviour
     {
         try
         {
-            if (weaponItems[0 + i].item != null) EquipItemSelectSlot1.text = weaponItems[0 + i].item.ItemName;
-            if (weaponItems[1 + i].item != null) EquipItemSelectSlot2.text = weaponItems[1 + i].item.ItemName;
-            if (weaponItems[2 + i].item != null) EquipItemSelectSlot3.text = weaponItems[2 + i].item.ItemName;
-            if (weaponItems[3 + i].item != null) EquipItemSelectSlot4.text = weaponItems[3 + i].item.ItemName;
-            if (weaponItems[4 + i].item != null) EquipItemSelectSlot5.text = weaponItems[4 + i].item.ItemName;
+            if (0 + i < weaponItems.Count)
+                EquipItemSelectSlot1.text = weaponItems[0 + i].item.ItemName;
+            if (1 + i < weaponItems.Count)
+                EquipItemSelectSlot2.text = weaponItems[1 + i].item.ItemName;
+            if (2 + i < weaponItems.Count)
+                EquipItemSelectSlot3.text = weaponItems[2 + i].item.ItemName;
+            if (3 + i < weaponItems.Count)
+                EquipItemSelectSlot4.text = weaponItems[3 + i].item.ItemName;
+            if (4 + i < weaponItems.Count) 
+                EquipItemSelectSlot5.text = weaponItems[4 + i].item.ItemName;
         }
         catch (IndexOutOfRangeException)
         {
@@ -1037,11 +1052,20 @@ public class UIManager : MonoBehaviour
     {
         try
         {
-            if (accessoryItems[0 + i].item != null) EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
-            if (accessoryItems[1 + i].item != null) EquipItemSelectSlot2.text = accessoryItems[1 + i].item.ItemName;
-            if (accessoryItems[2 + i].item != null) EquipItemSelectSlot3.text = accessoryItems[2 + i].item.ItemName;
-            if (accessoryItems[3 + i].item != null) EquipItemSelectSlot4.text = accessoryItems[3 + i].item.ItemName;
-            if (accessoryItems[4 + i].item != null) EquipItemSelectSlot5.text = accessoryItems[4 + i].item.ItemName;
+            if (0 + i < accessoryItems.Count)
+                EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
+
+            if (1 + i < accessoryItems.Count)
+                EquipItemSelectSlot2.text = accessoryItems[1 + i].item.ItemName;
+
+            if (2 + i < accessoryItems.Count)
+                EquipItemSelectSlot3.text = accessoryItems[2 + i].item.ItemName;
+
+            if (3 + i < accessoryItems.Count)
+                EquipItemSelectSlot4.text = accessoryItems[3 + i].item.ItemName;
+
+            if (4 + i < accessoryItems.Count)
+                EquipItemSelectSlot5.text = accessoryItems[4 + i].item.ItemName;
         }
         catch (IndexOutOfRangeException)
         {
@@ -1055,14 +1079,14 @@ public class UIManager : MonoBehaviour
             if (OnWeaponEquipSelecting)
             {
                 List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
-                if (weaponItems == null) return;
+                if (weaponItems == null || weaponItems.Count <= 5) return;
                 EquipSelectorcursorPosition = Mathf.Min(++EquipSelectorcursorPosition, weaponItems.Count - 5);
                 WeaponSelectorChange(EquipSelectorcursorPosition,weaponItems);
             }
             else
             {
                 List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
-                if (accessoryItems == null) return;
+                if (accessoryItems == null || accessoryItems.Count<=5) return;
                 EquipSelectorcursorPosition = Mathf.Min(++EquipSelectorcursorPosition, accessoryItems.Count - 5);
                 AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
             }
@@ -1080,14 +1104,14 @@ public class UIManager : MonoBehaviour
             if (OnWeaponEquipSelecting)
             {
                 List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
-                if (weaponItems == null) return;
+                if (weaponItems == null || weaponItems.Count <= 5) return;
                 EquipSelectorcursorPosition = Mathf.Max(--EquipSelectorcursorPosition, 0);
                 WeaponSelectorChange(EquipSelectorcursorPosition, weaponItems);
             }
             else
             {
                 List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
-                if (accessoryItems == null) return;
+                if (accessoryItems == null || accessoryItems.Count <= 5) return;
                 EquipSelectorcursorPosition = Mathf.Max(--EquipSelectorcursorPosition, 0);
                 AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
             }
@@ -1169,16 +1193,32 @@ public class UIManager : MonoBehaviour
     {
         try
         {
-            if (supportItems[0 + i].item != null) InventoryItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
-            if (supportItems[0 + i].item != null) InventoryItemValue1.text = $"{supportItems[0 + i].quantity}";
-            if (supportItems[1 + i].item != null) InventoryItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
-            if (supportItems[1 + i].item != null) InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
-            if (supportItems[2 + i].item != null) InventoryItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
-            if (supportItems[2 + i].item != null) InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
-            if (supportItems[3 + i].item != null) InventoryItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
-            if (supportItems[3 + i].item != null) InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
-            if (supportItems[4 + i].item != null) InventoryItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
-            if (supportItems[4 + i].item != null) InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
+
+            if (0 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
+                InventoryItemValue1.text = $"{supportItems[0 + i].quantity}";
+            }
+            if(1 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
+                InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
+            }
+            if(2 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
+                InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
+            }
+            if(3 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
+                InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
+            }
+            if(4 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
+                InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
+            }
         }
         catch(IndexOutOfRangeException)
         {
@@ -1309,7 +1349,7 @@ public class UIManager : MonoBehaviour
     public void ItemListAllowDown()
     {
         List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
-        if (supportItems == null) return;
+        if (supportItems == null || supportItems.Count <= 5) return;
         InventoryItemCursor = Mathf.Min(++InventoryItemCursor, supportItems.Count - 5);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
         if (ItemFlavorText.text == "") return;
@@ -1318,7 +1358,7 @@ public class UIManager : MonoBehaviour
     public void ItemListAllowUp()
     {
         List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
-        if (supportItems == null) return;
+        if (supportItems == null || supportItems.Count <= 5) return;
         InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
         if (ItemFlavorText.text == "") return;
@@ -1338,7 +1378,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnTitleBackExectute()
     {
-
+        SceneManager.LoadScene("BootScene");
     }
     //ここから会話系の制御
     public void TalkingEventStart()
@@ -1381,27 +1421,51 @@ public class UIManager : MonoBehaviour
         SaveSlotId = 1;
         Scene currentScene = SceneManager.GetActiveScene();
         string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
-        string json1 = File.ReadAllText(path1);
-        SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
-        SaveDetailText.text = $"{loadedData1.playername}\n{loadedData1.currentMapName}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+        string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
+        try
+        {
+            if (SaveSlotId == 1)
+            {
+                string json1 = File.ReadAllText(path1);
+                SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+                SaveDetailText.text = $"{loadedData1.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData1.currentMapName)}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            }
+            else
+            {
+                string json2 = File.ReadAllText(path2);
+                SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+                SaveDetailText.text = $"{loadedData2.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData2.currentMapName)}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData2.currentlv * 100}";
+            }
+        }
+        catch (Exception)
+        {
+            SaveDetailText.text = "セーブデータがありません。";
+        }
     }
     public void SaveExecute()
     {
         GameManager.Instance.SaveManage(SaveSlotId);
         string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
         string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
-        string json1 = File.ReadAllText(path1);
-        string json2 = File.ReadAllText(path2);
-        SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
-        SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
-        if (SaveSlotId == 1)
+        try
         {
-
-            SaveDetailText.text = $"{loadedData1.playername}\n{loadedData1.currentMapName}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            if (SaveSlotId == 1)
+            {
+                string json1 = File.ReadAllText(path1);
+                SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+                SaveDetailText.text = $"{loadedData1.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData1.currentMapName)}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            }
+            else
+            {
+                string json2 = File.ReadAllText(path2);
+                SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+                SaveDetailText.text = $"{loadedData2.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData2.currentMapName)}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData2.currentlv * 100}";
+            }
         }
-        else
+        catch (Exception)
         {
-            SaveDetailText.text = $"{loadedData2.playername}\n{loadedData2.currentMapName}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData1.currentlv * 100}";
+            SaveDetailText.text = "セーブデータがありません。";
+
         }
     }
     public void SavePanelDisable()
@@ -1414,18 +1478,24 @@ public class UIManager : MonoBehaviour
         SaveSlotId = i;
         string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
         string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
-        string json1 = File.ReadAllText(path1);
-        string json2 = File.ReadAllText(path2);
-        SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
-        SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
-        if (SaveSlotId == 1)
+        try 
         {
-
-            SaveDetailText.text = $"{loadedData1.playername}\n{loadedData1.currentMapName}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            if (SaveSlotId == 1)
+            {
+                string json1 = File.ReadAllText(path1);
+                SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+                SaveDetailText.text = $"{loadedData1.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData1.currentMapName)}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            }
+            else
+            {
+                string json2 = File.ReadAllText(path2);
+                SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+                SaveDetailText.text = $"{loadedData2.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData2.currentMapName)}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData2.currentlv * 100}";
+            }
         }
-        else
+        catch (Exception)
         {
-            SaveDetailText.text = $"{loadedData2.playername}\n{loadedData2.currentMapName}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData1.currentlv * 100}";
+            SaveDetailText.text = "セーブデータがありません。";
         }
     }
 }

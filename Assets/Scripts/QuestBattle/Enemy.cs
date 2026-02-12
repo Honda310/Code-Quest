@@ -6,7 +6,7 @@ using System;
 /// 【敵キャラクター】
 /// ステータス管理と、画像の動的ロードを担当します。
 /// </summary>
-[RequireComponent(typeof(SpriteRenderer))] // SpriteRendererを必須にする
+[RequireComponent(typeof(SpriteRenderer))] 
 public class Enemy : MonoBehaviour
 {
     public EnemyData Data { get; private set; }
@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public int EnemyID;
     [NonSerialized] public int MaxDP;
     [NonSerialized] public int Atk;
+    [NonSerialized] public string EnemyName;
 
     [Header("出題設定")]
     public List<QuestCategory> QuestionCategories;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Setup(GameManager.Instance.dataManager.EnemyMaster[EnemyID]);
     }
 
     /// <summary>
@@ -42,31 +44,9 @@ public class Enemy : MonoBehaviour
         QuestionCategories = new List<QuestCategory>(data.Categories);
 
         // 画像のロードと設定
-        LoadSprite(data.ImageFileName);
         Exp = data.Exp;
+        EnemyName = data.Name;
     }
-
-    /// <summary>
-    /// Resourcesフォルダから画像を読み込みます
-    /// </summary>
-    private void LoadSprite(string fileName)
-    {
-        if (string.IsNullOrEmpty(fileName)) return;
-
-        string path = "Sprites/Enemies/" + fileName;
-
-        Sprite loadedSprite = Resources.Load<Sprite>(path);
-
-        if (loadedSprite != null)
-        {
-            spriteRenderer.sprite = loadedSprite;
-        }
-        else
-        {
-            Debug.LogWarning($"[Enemy] 画像が見つかりません: {path}");
-        }
-    }
-
     public void TakeDamage(int dmg)
     {
         CurrentDP += dmg;

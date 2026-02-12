@@ -13,8 +13,10 @@ public class SpawnPlayer : MonoBehaviour
                 break;
             //ネトと会うまでの道(出口)に移動
             case 1:
-                GameManager.Instance.player.transform.position = new Vector3(2350, -500, 0);
-                GameManager.Instance.neto.transform.position = new Vector3(2350, -500, 0);
+                //GameManager.Instance.player.transform.position = new Vector3(2350, -500, 0);
+                //GameManager.Instance.neto.transform.position = new Vector3(2350, -500, 0);
+                GameManager.Instance.player.transform.position = new Vector3(1000, -500, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(1000, -500, 0);
                 break;
             //嘆きの森前(入口)に移動
             case 2:

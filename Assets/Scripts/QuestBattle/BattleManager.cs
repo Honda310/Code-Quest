@@ -58,12 +58,12 @@ public class BattleManager : MonoBehaviour
         currentEnemy.Exp = data.Exp;
         categories.Clear();
         categories = data.Categories;
-        //EnemySkin.GetComponent<Image> = data.ImageFileName;
 
         questManager.CreateDeck(categories);
 
         GameManager.Instance.SetMode(GameManager.GameMode.Battle);
-        UIManager.Active?.ShowLog();
+        uimanager.ShowLog();
+        uimanager.EnemySetUp(data.ImageFileName,data.Name);
         damagePop.TextReset();
         NextTurn();
     }
