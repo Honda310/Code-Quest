@@ -17,7 +17,6 @@ public class BattleManager : MonoBehaviour
     private Neto neto;
     private QuestData currentQuestion;
     List<QuestCategory> categories = new List<QuestCategory>();
-    private GameObject EnemySkin;
     private QuestManager questManager;
     [SerializeField] private MultipleChoiceQuest choicechecker;
     [SerializeField] private FillBlankQuest writechecker;
@@ -73,13 +72,13 @@ public class BattleManager : MonoBehaviour
         currentQuestion = questManager.GetNextQuestion();
         if (currentQuestion != null)
         {
-            uimanager.UpdateBattleMessage($"出力される内容を答えてネト！\n\n{currentQuestion.QuestionText}",currentQuestion.Options);
+            uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}",currentQuestion.Options);
         }
         else
         {
             questManager.CreateDeck(categories);
             currentQuestion = questManager.GetNextQuestion();
-            uimanager.UpdateBattleMessage($"出力される内容を答えてネト！\n\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
         }
         uimanager.TurnStart();
     }

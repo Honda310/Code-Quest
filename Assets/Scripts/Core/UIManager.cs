@@ -396,7 +396,7 @@ public class UIManager : MonoBehaviour
     {
         if (battleQuestText != null)
         {
-            battleQuestText.text = text+"\n\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3];
+            battleQuestText.text = text+"\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3];
 
         }
     }
