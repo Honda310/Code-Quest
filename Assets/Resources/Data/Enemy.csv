@@ -5,8 +5,8 @@ EnemyID,Name,MaxDP,Atk,Categories,ImageFileName,EXP
 4,Packetton,110,20,Variable_MultiplicationAndDivisionAndRemainder,Packetton/1_2paketton_battleMotion_left,35
 5,Gabetta,90,30,Variable_MultiplicationAndDivisionAndRemainder,Gabetta/1_2Gabetta_battleMotion_left,35
 6,Gabetta,120,20,Variable_IncrementAndCompoundAssignmentPrecedence,Gabetta/1_2Gabetta_battleMotion_left,35
-7,Promd,100,25,IF_BasicComparison,3Enemy_06EasyEn_1normal_3left,35
-8,Promd,80,30,IF_BasicComparison,3Enemy_06EasyEn_1normal_3left,35
+7,Promd,100,25,IF_BasicComparison,promd/3Enemy_06EasyEn_1normal_3left,35
+8,Promd,80,30,IF_BasicComparison,promd/3Enemy_06EasyEn_1normal_3left,35
 9,Packetton,90,20,IF_ElseIf,Packetton/1_2paketton_battleMotion_left,35
 10,Packetton,110,20,IF_LogicalOperator,Packetton/1_2paketton_battleMotion_left,35
 11,Gabetta,90,30,IF_LogicalOperator,Gabetta/1_2Gabetta_battleMotion_left,35

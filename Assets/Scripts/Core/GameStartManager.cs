@@ -65,13 +65,14 @@ public class GameStartManager : MonoBehaviour
             NameInputPanel.SetActive(false);
             GameManager.Instance.player.PlayerName = name;
 
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 11; i++)
+            //for (int i = 1; i <= 5; i++)
             {
                 Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30000 + i);
                 GameManager.Instance.inventory.AddItem(item, 1);
             }
-            for (int i = 1; i <= 1; i++)
-            {
+            for (int i = 1; i <= 1 ; i++)
+                {
                 Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Accessory, 20000 + i);
                 GameManager.Instance.inventory.AddItem(item, 1);
             }
@@ -90,7 +91,8 @@ public class GameStartManager : MonoBehaviour
                 Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.SupportItem, 10000 + i);
                 GameManager.Instance.inventory.AddItem(item, 1);
             }
-            FirstWeapon = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30001);
+            //FirstWeapon = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30001);
+            FirstWeapon = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30011);
             FirstAccessory = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Accessory, 20001);
             GameManager.Instance.player.EquipWeapon(FirstWeapon);
             GameManager.Instance.player.EquipAccessory(FirstAccessory);

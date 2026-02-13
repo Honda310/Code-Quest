@@ -1498,4 +1498,28 @@ public class UIManager : MonoBehaviour
             SaveDetailText.text = "セーブデータがありません。";
         }
     }
+    public void QuizModeChange(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                GameManager.Instance.SetQuizMode(GameManager.QuizMode.Normal);
+                break;
+            case 1:
+                GameManager.Instance.SetQuizMode(GameManager.QuizMode.IntelligenceQuoitent);
+                break;
+            case 2:
+                GameManager.Instance.SetQuizMode(GameManager.QuizMode.Preschool);
+                break;
+            case 3:
+                GameManager.Instance.SetQuizMode(GameManager.QuizMode.ElementarySchool);
+                break;
+            case 4:
+                GameManager.Instance.SetQuizMode(GameManager.QuizMode.JuniorHighSchool);
+                break;
+            case 5:
+                GameManager.Instance.SetQuizMode(GameManager.QuizMode.Trivia);
+                break;
+        }
+    }
 }

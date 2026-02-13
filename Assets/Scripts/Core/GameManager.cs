@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static BattleManager;
 
 /// <summary>
 /// yƒQ[ƒ€isŠÇ—z
@@ -69,7 +70,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    public enum QuizMode
+    {
+        IntelligenceQuoitent,
+        Preschool,
+        ElementarySchool,
+        JuniorHighSchool,
+        Trivia,
+        Normal
+    };
     /// <summary>
     /// Awake‚ÌŒã‚ÉŒÄ‚Î‚ê‚é‰Šú‰»ˆ—
     /// </summary>
@@ -77,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
         dataManager.LoadAllData();
         questManager.LoadQuests();
+        SetQuizMode(QuizMode.Normal);
     }
 
     private void Update()
@@ -159,5 +169,11 @@ public class GameManager : MonoBehaviour
     public void SaveManage(int i)
     {
         saveLoadManager.SaveGame(player, neto, inventory.items, i, treasureBoxList, enemyList);
+    }
+
+    public QuizMode CurrentQuiz;
+    public void SetQuizMode(QuizMode mode)
+    {
+        CurrentQuiz = mode;
     }
 }

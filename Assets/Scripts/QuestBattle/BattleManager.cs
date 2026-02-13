@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using static GameManager;
 
 /// <summary>
 /// ÅyêÌì¨ä«óùÅz
@@ -22,6 +23,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private FillBlankQuest writechecker;
     [SerializeField] private UIManager uimanager;
     private bool hitPlayer;
+    
     private void Awake()
     {
         GameManager.Instance.RegisterBattleManager(this);
@@ -56,10 +58,31 @@ public class BattleManager : MonoBehaviour
         currentEnemy.Atk = data.Atk;
         currentEnemy.Exp = data.Exp;
         categories.Clear();
-        categories = data.Categories;
-
+        if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.Normal)
+        {
+            categories = data.Categories;
+        }
+        else if(GameManager.Instance.CurrentQuiz == GameManager.QuizMode.Trivia)
+        {
+            categories.Add(QuestCategory.Trivia);
+        }
+        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.Preschool)
+        {
+            categories.Add(QuestCategory.PreschoolProgram);
+        }
+        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.ElementarySchool)
+        {
+            categories.Add(QuestCategory.ElementarySchoolProgram);
+        }
+        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.JuniorHighSchool)
+        {
+            categories.Add(QuestCategory.JuniorHighSchoolProgram);
+        }
+        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.IntelligenceQuoitent)
+        {
+            categories.Add(QuestCategory.IntelligenceQuoitent);
+        }
         questManager.CreateDeck(categories);
-
         GameManager.Instance.SetMode(GameManager.GameMode.Battle);
         uimanager.ShowLog();
         uimanager.EnemySetUp(data.ImageFileName,data.Name);

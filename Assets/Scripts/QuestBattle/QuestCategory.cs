@@ -9,5 +9,10 @@ public enum QuestCategory
     IF_BasicComparison,
     IF_ElseIf,
     IF_LogicalOperator,
+    IntelligenceQuoitent,
+    PreschoolProgram,
+    ElementarySchoolProgram,
+    JuniorHighSchoolProgram,
+    Trivia,
     None
 }

@@ -16,6 +16,11 @@ public class QuestManager : MonoBehaviour
         LoadFromSingleCSV("Data/SelectQuestion/IF_BasicComparison", QuestCategory.IF_BasicComparison);
         LoadFromSingleCSV("Data/SelectQuestion/IF_ElseIf", QuestCategory.IF_ElseIf);
         LoadFromSingleCSV("Data/SelectQuestion/IF_LogicalOperator", QuestCategory.IF_LogicalOperator);
+        LoadFromSingleCSV("Data/Exhibition/IntelligenceQuoitent", QuestCategory.IntelligenceQuoitent);
+        LoadFromSingleCSV("Data/Exhibition/PreschoolProgram", QuestCategory.PreschoolProgram);
+        LoadFromSingleCSV("Data/Exhibition/ElementarySchoolProgram", QuestCategory.ElementarySchoolProgram);
+        LoadFromSingleCSV("Data/Exhibition/JuniorHighSchoolProgram", QuestCategory.JuniorHighSchoolProgram);
+        LoadFromSingleCSV("Data/Exhibition/Trivia", QuestCategory.Trivia);
         Debug.Log("[QuestManager] ロード完了");
     }
 
@@ -30,6 +35,7 @@ public class QuestManager : MonoBehaviour
         {
             string[] cols = csv[i];
             cols[1] = cols[1].Replace("\\n", "\n");
+            cols[1] = cols[1].Replace("■",",");
             // ★修正：列数で形式を判別
             if (cols.Length >= 7)
             {
@@ -67,7 +73,7 @@ public class QuestManager : MonoBehaviour
         for (int i = 0; i < pool.Count; i++)
         {
             QuestData temp = pool[i];
-            int r = UnityEngine.Random.Range(i, pool.Count);
+            int r = Random.Range(i, pool.Count);
             pool[i] = pool[r];
             pool[r] = temp;
         }
