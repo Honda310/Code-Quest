@@ -788,6 +788,7 @@ MonoBehaviour:
   neto: {fileID: 881097284}
   inventory: {fileID: 1182703143}
   spawnPlayer: {fileID: 1182703142}
+  CurrentQuiz: 0
 --- !u!4 &1182703141
 Transform:
   m_ObjectHideFlags: 0
@@ -953,6 +954,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2088172325}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: daf562fd9123d7f468ed121249757e38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2088172328}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: daf562fd9123d7f468ed121249757e38, type: 3}
 --- !u!4 &2088172323 stripped
 Transform:
@@ -1040,6 +1044,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2088172328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088172324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4207ecf643601d74491d14c3ee837d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodingManager
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

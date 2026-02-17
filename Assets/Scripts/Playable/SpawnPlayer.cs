@@ -47,8 +47,6 @@ public class SpawnPlayer : MonoBehaviour
                 GameManager.Instance.player.transform.position = new Vector3(0, 60, 0);
                 GameManager.Instance.neto.transform.position = new Vector3(0, 100, 0);
                 break;
-            
             }
     }
-    
 }

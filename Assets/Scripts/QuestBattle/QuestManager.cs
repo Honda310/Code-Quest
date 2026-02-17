@@ -50,7 +50,6 @@ public class QuestManager : MonoBehaviour
                 list.Add(new QuestData(cols[0], category, cols[1], cols[2]));
             }
         }
-        Debug.Log(list.Count);
         if (list.Count > 0)
         {
             if (categorizedQuests.ContainsKey(catName)) categorizedQuests[catName].AddRange(list);

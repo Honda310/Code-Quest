@@ -124,7 +124,8 @@ public class UIManager : MonoBehaviour
     //戦闘画面からのアイテム選択時
     //private int SelectorItemIDKeeper_VerBattle=0;
     //装備画面での装備選択時
-    private int SelectorEquipIDKeeper=1; 
+    private int SelectorEquipIDKeeper=1;
+    [SerializeField] MapNamePopUp mapnamepop;
 
     [Header("会話イベントなどに使用するいろいろ")]
     [SerializeField] private GameObject TalkTextBoxPanel;
@@ -172,6 +173,7 @@ public class UIManager : MonoBehaviour
         inventory = GameManager.Instance.inventory;
         UpdateStatus(p,n);
         AllPanelClose();
+        mapnamepop.MapNamePopUP(SceneManager.GetActiveScene().name);
     }
     public void Update()
     {

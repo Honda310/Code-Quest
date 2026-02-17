@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using static GameManager;
 
 /// <summary>
 /// yí“¬ŠÇ—z
