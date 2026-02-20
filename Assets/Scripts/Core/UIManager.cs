@@ -121,9 +121,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject DebugQuestDisplayPanel;
     [SerializeField] private GameObject DebugInputPanel;
     [SerializeField] private GameObject DebugHintDisplayPanel;
+    [SerializeField] private GameObject DebugCorrectPanel;
+    [SerializeField] private GameObject DebugInCorrectPanel;
     [SerializeField] private Text DebugQuestText;
     [SerializeField] private Text DebugInputText;
     [SerializeField] private Text DebugHintText;
+    [SerializeField] private Text DebugErrorText;
 
     [Header("細かいUIの調整用")]
     //例えば、スロット2にある選択中に下にスクロールした場合、Entered,Exit制御では
@@ -1509,6 +1512,8 @@ public class UIManager : MonoBehaviour
         DebugQuestDisplayPanel.SetActive(false);
         DebugInputPanel.SetActive(false);
         DebugHintDisplayPanel.SetActive(false);
+        DebugCorrectPanel.SetActive(false);
+        DebugCorrectPanel.SetActive(false);
     }
     public void OnDebugTextReset()
     {
@@ -1536,7 +1541,12 @@ public class UIManager : MonoBehaviour
         codingManager.CodeSending(DebugInputText.text);
         if (codingManager.AnswerCheck())
         {
-
+            DebugCorrectPanel.SetActive(true);
+        }
+        else
+        {
+            DebugInCorrectPanel.SetActive(true);
+            DebugErrorText.text = "";
         }
     }
     public void OnCodingCancelButtonClicked()
@@ -1545,5 +1555,13 @@ public class UIManager : MonoBehaviour
         DebugPanel.SetActive(false);
         OnDebugPanelReset();
         OnDebugTextReset();
+    }
+    public void OnDebugCorrectCheckButton()
+    {
+        OnCodingCancelButtonClicked();
+    }
+    public void OnDebugInCorrectCheckButton()
+    {
+        DebugInCorrectPanel.SetActive(false);
     }
 }
