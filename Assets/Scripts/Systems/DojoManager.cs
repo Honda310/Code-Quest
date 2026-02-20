@@ -140,11 +140,11 @@ public class DojoManager : MonoBehaviour
         BattleAskPanel.SetActive(true);
         BattleAskText.text = BattleAsk[DollId];
     }
-    public void tutorialbattleStart()
+    public void TutorialbattleStart()
     {
 
     }
-    public void tutorialbattleCancel()
+    public void TutorialbattleCancel()
     {
         DojoPanel.SetActive(false);
         BattleAskPanel.SetActive(false);

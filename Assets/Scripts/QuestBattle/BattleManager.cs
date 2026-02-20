@@ -56,30 +56,7 @@ public class BattleManager : MonoBehaviour
         currentEnemy.Atk = data.Atk;
         currentEnemy.Exp = data.Exp;
         categories.Clear();
-        if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.Normal)
-        {
-            categories = data.Categories;
-        }
-        else if(GameManager.Instance.CurrentQuiz == GameManager.QuizMode.Trivia)
-        {
-            categories.Add(QuestCategory.Trivia);
-        }
-        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.Preschool)
-        {
-            categories.Add(QuestCategory.PreschoolProgram);
-        }
-        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.ElementarySchool)
-        {
-            categories.Add(QuestCategory.ElementarySchoolProgram);
-        }
-        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.JuniorHighSchool)
-        {
-            categories.Add(QuestCategory.JuniorHighSchoolProgram);
-        }
-        else if (GameManager.Instance.CurrentQuiz == GameManager.QuizMode.IntelligenceQuoitent)
-        {
-            categories.Add(QuestCategory.IntelligenceQuoitent);
-        }
+        categories = data.Categories;
         questManager.CreateDeck(categories);
         GameManager.Instance.SetMode(GameManager.GameMode.Battle);
         uimanager.ShowLog();

@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Diagnostics;
+using UnityEngine.SceneManagement;
 public class CodingManager : MonoBehaviour
 {
-    Dictionary<string, Variable> variables = new();
+    private Stack<Dictionary<string, Variable>> scopes = new Stack<Dictionary<string, Variable>>();
     private List<Token> tokens;
     private int current = 0;
+    private QuestManager questManager;
+    private object AnswerObject="";
     public enum VarType
     {
         Int,
@@ -46,7 +50,24 @@ public class CodingManager : MonoBehaviour
         RightBrace,
         Semicolon, 
         Print,
+        And,
+        Or,
+        Not,
+        True,
+        False,
+        Int,
+        Bool,
+        LessEqual,
+        GreaterEqual,
+        Increment,
+        Decrement,
+        LeftBracket,
+        RightBracket,
+        New,
+        StringLiteral,
+        String,
     }
+
     public class Variable
     {
         public VarType Type;
@@ -69,14 +90,29 @@ public class CodingManager : MonoBehaviour
             Lexeme = lexeme;
         }
     }
+    class BoolExpr : Expr
+    {
+        bool value;
+
+        public BoolExpr(bool value)
+        {
+            this.value = value;
+        }
+
+        public override object Evaluate(CodingManager manager)
+        {
+            return value;
+        }
+    }
+
     abstract class Expr
     {
-        public abstract int Evaluate(Dictionary<string, Variable> variables);
+        public abstract object Evaluate(CodingManager manager);
     }
 
     abstract class Stmt
     {
-        public abstract void Execute(Dictionary<string, Variable> variables);
+        public abstract void Execute(CodingManager manager);
     }
 
     class BinaryExpr : Expr
@@ -84,28 +120,58 @@ public class CodingManager : MonoBehaviour
         Expr left;
         Token op;
         Expr right;
-
         public BinaryExpr(Expr left, Token op, Expr right)
         {
             this.left = left;
             this.op = op;
             this.right = right;
         }
-        public override int Evaluate(Dictionary<string, Variable> variables)
+        public override object Evaluate(CodingManager manager)
         {
-            int l = left.Evaluate(variables);
-            int r = right.Evaluate(variables);
+            object leftVal = left.Evaluate(manager);
+            object rightVal = right.Evaluate(manager);
 
             switch (op.Type)
             {
-                case TokenType.Plus: return l + r;
-                case TokenType.Minus: return l - r;
-                case TokenType.Multiply: return l * r;
-                case TokenType.Divide: return l / r;
-                case TokenType.Less: return l < r ? 1 : 0;
-                case TokenType.Greater:  return l > r ? 1 : 0;
-                case TokenType.EqualEqual: return l == r ? 1 : 0;
-                case TokenType.NotEqual: return l != r ? 1 : 0;
+                case TokenType.LessEqual:
+                    return (int)leftVal <= (int)rightVal;
+
+                case TokenType.GreaterEqual:
+                    return (int)leftVal >= (int)rightVal;
+
+                case TokenType.Plus:
+                    if (leftVal is string || rightVal is string)
+                    {
+                        return leftVal.ToString() + rightVal.ToString();
+                    }
+                    return (int)leftVal + (int)rightVal;
+
+                case TokenType.Minus:
+                    return (int)leftVal - (int)rightVal;
+
+                case TokenType.Multiply:
+                    return (int)leftVal * (int)rightVal;
+
+                case TokenType.Divide:
+                    return (int)leftVal / (int)rightVal;
+
+                case TokenType.Less:
+                    return (int)leftVal < (int)rightVal;
+
+                case TokenType.Greater:
+                    return (int)leftVal > (int)rightVal;
+
+                case TokenType.EqualEqual:
+                    return Equals(leftVal, rightVal);
+
+                case TokenType.NotEqual:
+                    return !Equals(leftVal, rightVal);
+
+                case TokenType.And:
+                    return (bool)leftVal && (bool)rightVal;
+
+                case TokenType.Or:
+                    return (bool)leftVal || (bool)rightVal;
             }
 
             throw new Exception("不明な演算子");
@@ -121,7 +187,7 @@ public class CodingManager : MonoBehaviour
             this.value = value;
         }
 
-        public override int Evaluate(Dictionary<string, Variable> variables)
+        public override object Evaluate(CodingManager manager)
         {
             return value;
         }
@@ -134,12 +200,132 @@ public class CodingManager : MonoBehaviour
         {
             this.name = name;
         }
-
-        public override int Evaluate(Dictionary<string, Variable> variables)
+        public override object Evaluate(CodingManager manager)
         {
-            return (int)variables[name].Value;
+            Variable v = manager.Resolve(name);
+
+            return v.Value;
         }
     }
+    class UnaryExpr : Expr
+    {
+        Token op;
+        Expr right;
+
+        public UnaryExpr(Token op, Expr right)
+        {
+            this.op = op;
+            this.right = right;
+        }
+        public override object Evaluate(CodingManager manager)
+        {
+            object r = right.Evaluate(manager);
+
+            switch (op.Type)
+            {
+                case TokenType.Not:
+                    return !(bool)r;
+            }
+
+            throw new Exception("不明な単項演算子");
+        }
+    }
+    class StringExpr : Expr
+    {
+        string value;
+
+        public StringExpr(string value)
+        {
+            this.value = value;
+        }
+
+        public override object Evaluate(CodingManager manager)
+        {
+            return value;
+        }
+    }
+
+    class ArrayAccessExpr : Expr
+    {
+        string name;
+        Expr indexExpr;
+
+        public ArrayAccessExpr(string name, Expr indexExpr)
+        {
+            this.name = name;
+            this.indexExpr = indexExpr;
+        }
+
+        public override object Evaluate(CodingManager manager)
+        {
+            Variable v = manager.Resolve(name);
+
+            if (v.Type != VarType.IntArray)
+                throw new Exception($"{name} は配列ではありません");
+
+            if (v.Type != VarType.IntArray)
+                throw new Exception($"{name} はint配列ではありません");
+            int[] array = (int[])v.Value;
+            int index = (int)indexExpr.Evaluate(manager);
+
+            if (index < 0 || index >= array.Length)
+                throw new Exception("配列の範囲外アクセス");
+
+            return array[index];
+        }
+    }
+
+
+    class ArrayDeclarationStmt : Stmt
+    {
+        string name;
+        Expr sizeExpr;
+
+        public ArrayDeclarationStmt(string name, Expr sizeExpr)
+        {
+            this.name = name;
+            this.sizeExpr = sizeExpr;
+        }
+
+        public override void Execute(CodingManager manager)
+        {
+            int size = (int)sizeExpr.Evaluate(manager);
+
+            if (size <= 0)
+                throw new Exception("配列サイズは1以上必要です");
+
+            manager.scopes.Peek()[name] = new Variable(VarType.IntArray, new int[size]);
+        }
+    }
+    class ArrayAssignmentStmt : Stmt
+    {
+        string name;
+        Expr indexExpr;
+        Expr valueExpr;
+
+        public ArrayAssignmentStmt(string name, Expr indexExpr, Expr valueExpr)
+        {
+            this.name = name;
+            this.indexExpr = indexExpr;
+            this.valueExpr = valueExpr;
+        }
+
+        public override void Execute(CodingManager manager)
+        {
+            Variable v = manager.Resolve(name);
+
+            int[] array = (int[])v.Value;
+
+            int index = (int)indexExpr.Evaluate(manager);
+            int value = (int)valueExpr.Evaluate(manager);
+
+            if (index < 0 || index >= array.Length)
+                throw new Exception("配列の範囲外アクセス");
+
+            array[index] = value;
+        }
+    }
+
     class AssignmentStmt : Stmt
     {
         string name;
@@ -151,10 +337,21 @@ public class CodingManager : MonoBehaviour
             this.valueExpr = valueExpr;
         }
 
-        public override void Execute(Dictionary<string, Variable> variables)
+        public override void Execute(CodingManager manager)
         {
-            int value = valueExpr.Evaluate(variables);
-            variables[name] = new Variable(VarType.Int, value);
+            Variable existing = manager.Resolve(name);
+            object value = valueExpr.Evaluate(manager);
+
+            if (existing.Type == VarType.Int && value is not int)
+                throw new Exception("int型にint以外を代入できません");
+
+            if (existing.Type == VarType.Bool && value is not bool)
+                throw new Exception("bool型にbool以外を代入できません");
+
+            if (existing.Type == VarType.String && value is not string)
+                throw new Exception("string型にstring以外を代入できません");
+
+            existing.Value = value;
         }
     }
     class IfStmt : Stmt
@@ -170,17 +367,27 @@ public class CodingManager : MonoBehaviour
             this.elseBranch = elseBranch;
         }
 
-        public override void Execute(Dictionary<string, Variable> variables)
+        public override void Execute(CodingManager manager)
         {
-            if (condition.Evaluate(variables) != 0)
+            object cond = condition.Evaluate(manager);
+
+            if (cond is not bool)
+                throw new Exception("ifの条件式はboolでなければなりません");
+            if ((bool)cond)
             {
+                manager.PushScope();
+
                 foreach (var stmt in thenBranch)
-                    stmt.Execute(variables);
+                    stmt.Execute(manager);
+                manager.PopScope();
             }
             else if (elseBranch != null)
             {
+                manager.PushScope();
+
                 foreach (var stmt in elseBranch)
-                    stmt.Execute(variables);
+                    stmt.Execute(manager);
+                manager.PopScope();
             }
         }
     }
@@ -191,30 +398,208 @@ public class CodingManager : MonoBehaviour
     class PrintStmt : Stmt
     {
         Expr expression;
-
         public PrintStmt(Expr expression)
         {
             this.expression = expression;
         }
 
-        public override void Execute(Dictionary<string, Variable> variables)
+        public override void Execute(CodingManager manager)
         {
-            int value = expression.Evaluate(variables);
-            Debug.Log(value);
+            manager.AnswerObject = expression.Evaluate(manager);
         }
     }
+    class WhileStmt : Stmt
+    {
+        Expr condition;
+        List<Stmt> body;
 
+        public WhileStmt(Expr condition, List<Stmt> body)
+        {
+            this.condition = condition;
+            this.body = body;
+        }
+
+        public override void Execute(CodingManager manager)
+        {
+            Stopwatch sw = Stopwatch.StartNew();
+
+            while (true)
+            {
+                if (sw.ElapsedMilliseconds > 1500)
+                    throw new Exception("無限ループ");
+
+                object cond = condition.Evaluate(manager);
+
+                if (cond is not bool)
+                    throw new Exception("whileの条件式はboolでなければなりません");
+
+                if (!(bool)cond)
+                    break;
+
+                manager.PushScope();
+
+                foreach (var stmt in body)
+                    stmt.Execute(manager);
+
+                manager.PopScope();
+            }
+        }
+    }
+    class VarDeclarationStmt : Stmt
+    {
+        string name;
+        VarType type;
+        Expr initializer;
+
+        public VarDeclarationStmt(VarType type, string name, Expr initializer)
+        {
+            this.type = type;
+            this.name = name;
+            this.initializer = initializer;
+        }
+
+        public override void Execute(CodingManager manager)
+        {
+            object value = initializer.Evaluate(manager);
+
+            if (type == VarType.Int && value is not int)
+                throw new Exception("int型にint以外を代入できません");
+
+            if (type == VarType.Bool && value is not bool)
+                throw new Exception("bool型にbool以外を代入できません");
+
+            if (type == VarType.String && value is not string)
+                throw new Exception("string型にstring以外を代入できません");
+
+            manager.scopes.Peek()[name] = new Variable(type, value);
+        }
+    }
+    class ForStmt : Stmt
+    {
+        Stmt initializer;
+        Expr condition;
+        Stmt increment;
+        List<Stmt> body;
+
+        public ForStmt(Stmt initializer, Expr condition, Stmt increment, List<Stmt> body)
+        {
+            this.initializer = initializer;
+            this.condition = condition;
+            this.increment = increment;
+            this.body = body;
+        }
+
+        public override void Execute(CodingManager manager)
+        {
+            manager.PushScope();
+
+            initializer.Execute(manager);
+
+            Stopwatch sw = Stopwatch.StartNew();
+
+            while (true)
+            {
+                if (sw.ElapsedMilliseconds > 1500)
+                    throw new Exception("実行時間制限を超過しています\n無限ループの可能性があります");
+
+                object cond = condition.Evaluate(manager);
+
+                if (cond is not bool)
+                    throw new Exception("for条件はboolが型のみです");
+
+                if (!(bool)cond)
+                    break;
+
+                manager.PushScope();
+
+                foreach (var stmt in body)
+                    stmt.Execute(manager);
+
+                manager.PopScope();
+
+                increment.Execute(manager);
+            }
+
+            manager.PopScope();
+        }
+
+    }
+    class IncrementStmt : Stmt
+    {
+        string name;
+
+        public IncrementStmt(string name)
+        {
+            this.name = name;
+        }
+
+        public override void Execute(CodingManager manager)
+        {
+            Variable v = manager.Resolve(name);
+
+            if (v.Type != VarType.Int)
+                throw new Exception("++はint型にしか使えません");
+
+            v.Value = (int)v.Value + 1;
+        }
+    }
+    class DecrementStmt : Stmt
+    {
+        string name;
+
+        public DecrementStmt(string name)
+        {
+            this.name = name;
+        }
+
+        public override void Execute(CodingManager manager)
+        {
+            Variable v = manager.Resolve(name);
+
+            if (v.Type != VarType.Int)
+                throw new Exception("--はint型にしか使えません");
+
+            v.Value = (int)v.Value - 1;
+        }
+    }
     private Expr ParseExpression()
     {
-        return ParseComparison();
+        return ParseOr();
     }
+    private Expr ParseOr()
+    {
+        Expr expr = ParseAnd();
 
+        while (Match(TokenType.Or))
+        {
+            Token op = Previous();
+            Expr right = ParseAnd();
+            expr = new BinaryExpr(expr, op, right);
+        }
+
+        return expr;
+    }
+    private Expr ParseAnd()
+    {
+        Expr expr = ParseComparison();
+
+        while (Match(TokenType.And))
+        {
+            Token op = Previous();
+            Expr right = ParseComparison();
+            expr = new BinaryExpr(expr, op, right);
+        }
+
+        return expr;
+    }
     private Expr ParseComparison()
     {
         Expr expr = ParseTerm();
 
         while (Match(TokenType.Less) ||
                Match(TokenType.Greater) ||
+               Match(TokenType.LessEqual) ||
+               Match(TokenType.GreaterEqual) ||
                Match(TokenType.EqualEqual) ||
                Match(TokenType.NotEqual))
         {
@@ -263,7 +648,6 @@ public class CodingManager : MonoBehaviour
             Advance();
             return;
         }
-
         throw new Exception("想定外のトークンです");
     }
     private Expr ParseTerm()
@@ -281,6 +665,17 @@ public class CodingManager : MonoBehaviour
     }
     private Expr ParseFactor()
     {
+        if (Match(TokenType.Not))
+        {
+            Token op = Previous();
+            Expr right = ParseFactor();
+            return new UnaryExpr(op, right);
+        }
+        if (Match(TokenType.True))
+            return new BoolExpr(true);
+
+        if (Match(TokenType.False))
+            return new BoolExpr(false);
         Expr expr = ParsePrimary();
 
         while (Match(TokenType.Multiply) ||
@@ -297,6 +692,10 @@ public class CodingManager : MonoBehaviour
 
     private Expr ParsePrimary()
     {
+        if (Match(TokenType.StringLiteral))
+        {
+            return new StringExpr(Previous().Lexeme);
+        }
         if (Match(TokenType.Number))
         {
             return new NumberExpr(int.Parse(Previous().Lexeme));
@@ -304,20 +703,25 @@ public class CodingManager : MonoBehaviour
 
         if (Match(TokenType.Identifier))
         {
-            return new VariableExpr(Previous().Lexeme);
-        }
+            string name = Previous().Lexeme;
 
+            if (Match(TokenType.LeftBracket))
+            {
+                Expr index = ParseExpression();
+                Consume(TokenType.RightBracket);
+                return new ArrayAccessExpr(name, index);
+            }
+
+            return new VariableExpr(name);
+        }
         if (Match(TokenType.LeftParen))
         {
             Expr expr = ParseExpression();
             Consume(TokenType.RightParen);
             return expr;
         }
-
         throw new Exception("不正な式です");
     }
-
-
     public void Tokenize(string input)
     {
         tokens = new List<Token>();
@@ -359,6 +763,22 @@ public class CodingManager : MonoBehaviour
                     tokens.Add(new Token(TokenType.Else, identifier));
                 else if (identifier == "print")
                     tokens.Add(new Token(TokenType.Print, identifier));
+                else if (identifier == "while")
+                    tokens.Add(new Token(TokenType.While, identifier));
+                else if (identifier == "true")
+                    tokens.Add(new Token(TokenType.True, identifier));
+                else if (identifier == "false")
+                    tokens.Add(new Token(TokenType.False, identifier));
+                else if (identifier == "int")
+                    tokens.Add(new Token(TokenType.Int, identifier));
+                else if (identifier == "bool")
+                    tokens.Add(new Token(TokenType.Bool, identifier));
+                else if (identifier == "string")
+                    tokens.Add(new Token(TokenType.String, identifier));
+                else if (identifier == "for")
+                    tokens.Add(new Token(TokenType.For, identifier));
+                else if (identifier == "new")
+                    tokens.Add(new Token(TokenType.New, identifier));
                 else
                     tokens.Add(new Token(TokenType.Identifier, identifier));
                 continue;
@@ -377,8 +797,63 @@ public class CodingManager : MonoBehaviour
                     i += 2;
                     continue;
                 }
+                if (input[i] == '&' && input[i + 1] == '&')
+                {
+                    tokens.Add(new Token(TokenType.And, "&&"));
+                    i += 2;
+                    continue;
+                }
+                if (input[i] == '|' && input[i + 1] == '|')
+                {
+                    tokens.Add(new Token(TokenType.Or, "||"));
+                    i += 2;
+                    continue;
+                }
+                if (input[i] == '<' && input[i + 1] == '=')
+                {
+                    tokens.Add(new Token(TokenType.LessEqual, "<="));
+                    i += 2;
+                    continue;
+                }
+                if (input[i] == '>' && input[i + 1] == '=')
+                {
+                    tokens.Add(new Token(TokenType.GreaterEqual, ">="));
+                    i += 2;
+                    continue;
+                }
+
+                if (input[i] == '+' && input[i + 1] == '+')
+                {
+                    tokens.Add(new Token(TokenType.Increment, "++"));
+                    i += 2;
+                    continue;
+                }
+                if (input[i] == '-' && input[i + 1] == '-')
+                {
+                    tokens.Add(new Token(TokenType.Decrement, "--"));
+                    i += 2;
+                    continue;
+                }
             }
-            // 記号
+            if (c == '"')
+            {
+                i++;
+                string str = "";
+
+                while (i < input.Length && input[i] != '"')
+                {
+                    str += input[i];
+                    i++;
+                }
+
+                if (i >= input.Length)
+                {
+                    throw new Exception("文字列が閉じられていません");
+                }
+                i++;
+                tokens.Add(new Token(TokenType.StringLiteral, str));
+                continue;
+            }
             switch (c)
             {
                 case '+': tokens.Add(new Token(TokenType.Plus, "+")); break;
@@ -394,34 +869,108 @@ public class CodingManager : MonoBehaviour
                 case '>': tokens.Add(new Token(TokenType.Greater, ">")); break;
                 case '{': tokens.Add(new Token(TokenType.LeftBrace, "{")); break;
                 case '}': tokens.Add(new Token(TokenType.RightBrace, "}")); break;
+                case '!': tokens.Add(new Token(TokenType.Not, "!")); break;
+                case '[': tokens.Add(new Token(TokenType.LeftBracket, "[")); break;
+                case ']': tokens.Add(new Token(TokenType.RightBracket, "]")); break;
             }
             i++;
         }
     }
-    //private void ParseAssignment()
-    //{
-    //    string name = Previous().Lexeme;
-
-    //    Consume(TokenType.Assign);
-
-    //    int value = ParseExpression();
-
-    //    variables[name] = new Variable(VarType.Int, value);
-    //}
-    //private bool ParseCondition()
-    //{
-    //    int left = ParseExpression();
-
-    //    if (Match(TokenType.Less))
-    //        return left < ParseExpression();
-
-    //    if (Match(TokenType.Greater))
-    //        return left > ParseExpression();
-
-    //    throw new Exception("条件式エラー");
-    //}
     private Stmt ParseStatement()
     {
+        if (Match(TokenType.For))
+        {
+            Consume(TokenType.LeftParen);
+
+            Stmt initializer;
+            if (Match(TokenType.Int))
+            {
+                Consume(TokenType.Identifier);
+                string name = Previous().Lexeme;
+                Consume(TokenType.Assign);
+                Expr initExpr = ParseExpression();
+                initializer = new VarDeclarationStmt(VarType.Int, name, initExpr);
+            }
+            else
+            {
+                Consume(TokenType.Identifier);
+                string name = Previous().Lexeme;
+                Consume(TokenType.Assign);
+                Expr initExpr = ParseExpression();
+                initializer = new AssignmentStmt(name, initExpr);
+            }
+
+            Consume(TokenType.Semicolon);
+
+            Expr condition = ParseExpression();
+            Consume(TokenType.Semicolon);
+
+            Consume(TokenType.Identifier);
+            string incName = Previous().Lexeme;
+
+            Stmt increment;
+
+            if (Match(TokenType.Increment))
+                increment = new IncrementStmt(incName);
+            else if (Match(TokenType.Decrement))
+                increment = new DecrementStmt(incName);
+            else
+            {
+                Consume(TokenType.Assign);
+                Expr valueExpr = ParseExpression();
+                increment = new AssignmentStmt(incName, valueExpr);
+            }
+
+            Consume(TokenType.RightParen);
+            Consume(TokenType.LeftBrace);
+
+            List<Stmt> body = new();
+            while (!Check(TokenType.RightBrace))
+            {
+                body.Add(ParseStatement());
+            }
+
+            Consume(TokenType.RightBrace);
+
+            return new ForStmt(initializer, condition, increment, body);
+        }
+        if (Check(TokenType.Int) && CheckNext(TokenType.LeftBracket))
+        {
+            Advance();
+            Advance();
+
+            Consume(TokenType.RightBracket);
+            Consume(TokenType.Identifier);
+            string name = Previous().Lexeme;
+
+            Consume(TokenType.Assign);
+            Consume(TokenType.New);
+            Consume(TokenType.Int);
+            Consume(TokenType.LeftBracket);
+            Expr sizeExpr = ParseExpression();
+            Consume(TokenType.RightBracket);
+            Consume(TokenType.Semicolon);
+
+            return new ArrayDeclarationStmt(name, sizeExpr);
+        }
+
+        if (Match(TokenType.While))
+        {
+            Consume(TokenType.LeftParen);
+            Expr condition = ParseExpression();
+            Consume(TokenType.RightParen);
+            Consume(TokenType.LeftBrace);
+
+            List<Stmt> body = new List<Stmt>();
+            while (!Check(TokenType.RightBrace))
+            {
+                body.Add(ParseStatement());
+            }
+
+            Consume(TokenType.RightBrace);
+
+            return new WhileStmt(condition, body);
+        }
         if (Match(TokenType.If))
         {
             Consume(TokenType.LeftParen);
@@ -440,14 +989,24 @@ public class CodingManager : MonoBehaviour
 
             if (Match(TokenType.Else))
             {
-                Consume(TokenType.LeftBrace);
-
-                elseBranch = new List<Stmt>();
-                while (!Check(TokenType.RightBrace))
+                if (Check(TokenType.If))
                 {
-                    elseBranch.Add(ParseStatement());
+                    List<Stmt> nested = new List<Stmt>();
+                    nested.Add(ParseStatement());
+                    elseBranch = nested;
                 }
-                Consume(TokenType.RightBrace);
+                else
+                {
+                    Consume(TokenType.LeftBrace);
+
+                    elseBranch = new List<Stmt>();
+                    while (!Check(TokenType.RightBrace))
+                    {
+                        elseBranch.Add(ParseStatement());
+                    }
+
+                    Consume(TokenType.RightBrace);
+                }
             }
 
             return new IfStmt(condition, thenBranch, elseBranch);
@@ -461,56 +1020,65 @@ public class CodingManager : MonoBehaviour
 
             return new PrintStmt(expr);
         }
+        if (Match(TokenType.Int) || Match(TokenType.Bool) || Match(TokenType.String))
+        {
+            Token typeToken = Previous();
+
+            VarType varType = typeToken.Type switch
+            {
+                TokenType.Int => VarType.Int,
+                TokenType.Bool => VarType.Bool,
+                TokenType.String => VarType.String,_ => throw new Exception("未対応型")
+            };
+
+            Consume(TokenType.Identifier);
+            string name = Previous().Lexeme;
+
+            Consume(TokenType.Assign);
+            Expr initializer = ParseExpression();
+            Consume(TokenType.Semicolon);
+
+            return new VarDeclarationStmt(varType, name, initializer);
+        }
         if (Match(TokenType.Identifier))
         {
             string name = Previous().Lexeme;
+
+            if (Match(TokenType.LeftBracket))
+            {
+                Expr index = ParseExpression();
+                Consume(TokenType.RightBracket);
+                Consume(TokenType.Assign);
+                Expr value = ParseExpression();
+                Consume(TokenType.Semicolon);
+
+                return new ArrayAssignmentStmt(name, index, value);
+            }
+
+            if (Match(TokenType.Increment))
+            {
+                Consume(TokenType.Semicolon);
+                return new IncrementStmt(name);
+            }
+
+            if (Match(TokenType.Decrement))
+            {
+                Consume(TokenType.Semicolon);
+                return new DecrementStmt(name);
+            }
+
             Consume(TokenType.Assign);
             Expr valueExpr = ParseExpression();
             Consume(TokenType.Semicolon);
 
             return new AssignmentStmt(name, valueExpr);
         }
-
         throw new Exception("不正な文です");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    void Start()
+    private bool CheckNext(TokenType type)
     {
-        Tokenize(@"
-                a = 5;
-                print(a);
-                print(a + 3);
-
-                if (a > 3) {
-                    print(100);
-                }
-                ");
-
-        List<Stmt> program = ParseProgram();
-
-        foreach (var stmt in program)
-        {
-            stmt.Execute(variables);
-        }
-
-        Debug.Log("a = " + variables["a"].Value);
+        if (current + 1 >= tokens.Count) return false;
+        return tokens[current + 1].Type == type;
     }
     private List<Stmt> ParseProgram()
     {
@@ -520,7 +1088,94 @@ public class CodingManager : MonoBehaviour
         {
             statements.Add(ParseStatement());
         }
-
         return statements;
+    }
+    public void PushScope()
+    {
+        scopes.Push(new Dictionary<string, Variable>());
+    }
+
+    public void PopScope()
+    {
+        scopes.Pop();
+    }
+    public Variable Resolve(string name)
+    {
+        foreach (var scope in scopes)
+        {
+            if (scope.ContainsKey(name))
+                return scope[name];
+        }
+        throw new Exception($"未宣言の変数 {name}");
+    }
+    private void Awake()
+    {
+        scopes.Clear();
+        scopes.Push(new Dictionary<string, Variable>());
+    }
+    public void CodeSending(string code)
+    {
+        Tokenize(code);
+
+        List<Stmt> program = ParseProgram();
+
+        foreach (var stmt in program)
+        {
+            stmt.Execute(this);
+        }
+    }
+    public bool AnswerCheck()
+    {
+        String ans="";
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "LamentForest":
+                ans = questManager.GetCodingQuestion(0).CorrectAnswer;
+                break;
+            case "PoisonedSpring":
+                ans = questManager.GetCodingQuestion(1).CorrectAnswer;
+                break;
+            case "CorrupedTown":
+                ans = questManager.GetCodingQuestion(2).CorrectAnswer;
+                break;
+            case "Temple":
+                ans = questManager.GetCodingQuestion(3).CorrectAnswer;
+                break;
+            case "defalut":
+                ans = "";
+                break;
+        }
+        if (ans == AnswerObject.ToString())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private void Start()
+    {
+        CodeSending(@" int x = 5;
+                    print(x);
+
+                    if (x > 3) {
+                        int y = 100;
+                        print(y);
+                    }
+
+                    for (int i = 0; i < 3; i++) {
+                        print(i);
+                    }
+
+                    int[] arr = new int[3];
+                    arr[0] = 10;
+                    arr[1] = 20;
+                    print(arr[1]);
+
+                    while (x > 0) {
+                        print(x);
+                        x--;
+                    }");
     }
 }

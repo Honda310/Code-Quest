@@ -115,6 +115,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject EquipItemFlavorPanel;
     [SerializeField] private Text EquipItemFlavorText;
 
+    [Header("コーディング問題用")]
+    [SerializeField] private CodingManager codingManager;
+    [SerializeField] private GameObject DebugPanel;
+    [SerializeField] private GameObject DebugQuestDisplayPanel;
+    [SerializeField] private GameObject DebugInputPanel;
+    [SerializeField] private GameObject DebugHintDisplayPanel;
+    [SerializeField] private Text DebugQuestText;
+    [SerializeField] private Text DebugInputText;
+    [SerializeField] private Text DebugHintText;
 
     [Header("細かいUIの調整用")]
     //例えば、スロット2にある選択中に下にスクロールした場合、Entered,Exit制御では
@@ -244,9 +253,16 @@ public class UIManager : MonoBehaviour
         ItemPanel.SetActive(false);
         KeyBindPanel.SetActive(false);
         ConfigPanel.SetActive(false);
-        ConfigPanelGameEnd.SetActive(false);
         ItemTargetSelectPanel.SetActive(false);
         ItemConfirmPanel.SetActive(false);
+    }
+    public void MenuElementClose()
+    {
+        EquipandStatusPanel.SetActive(false);
+        ItemPanel.SetActive(false);
+        KeyBindPanel.SetActive(false);
+        ConfigPanel.SetActive(false);
+        ConfigPanelGameEnd.SetActive(false);
     }
     ///<summary>
     ///フィールド上などで、キャラの現在ステータスをUIに反映するためのメソッドです。
@@ -593,11 +609,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            MenuElementClose();
             ItemPanel.SetActive(true);
-            EquipandStatusPanel.SetActive(false);
-            ConfigPanel.SetActive(false);
-            ConfigPanelGameEnd.SetActive(false);
-            KeyBindPanel.SetActive(false);
             List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
             SupportItemSelectorChange(0, supportItems);
         }
@@ -618,11 +631,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            ItemPanel.SetActive(false);
+            MenuElementClose();
             EquipandStatusPanel.SetActive(true);
-            ConfigPanel.SetActive(false);
-            ConfigPanelGameEnd.SetActive(false);
-            KeyBindPanel.SetActive(false);
         }
         EquipCharacterSelecter = true;
         EquipSlots = false;
@@ -654,10 +664,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            ItemPanel.SetActive(false);
-            EquipandStatusPanel.SetActive(false);
+            MenuElementClose();
             ConfigPanel.SetActive(true);
-            KeyBindPanel.SetActive(false);
         }
         
     }
@@ -669,10 +677,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            ItemPanel.SetActive(false);
-            EquipandStatusPanel.SetActive(false);
-            ConfigPanel.SetActive(false);
-            ConfigPanelGameEnd.SetActive(false);
+            MenuElementClose();
             KeyBindPanel.SetActive(true);
         }
         
@@ -1421,7 +1426,6 @@ public class UIManager : MonoBehaviour
     {
         SaveLoadPanel.SetActive(true);
         SaveSlotId = 1;
-        Scene currentScene = SceneManager.GetActiveScene();
         string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
         string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
         try
@@ -1500,28 +1504,46 @@ public class UIManager : MonoBehaviour
             SaveDetailText.text = "セーブデータがありません。";
         }
     }
-    public void QuizModeChange(int i)
+    public void OnDebugPanelReset()
     {
-        switch (i)
+        DebugQuestDisplayPanel.SetActive(false);
+        DebugInputPanel.SetActive(false);
+        DebugHintDisplayPanel.SetActive(false);
+    }
+    public void OnDebugTextReset()
+    {
+        DebugQuestText.text = "";
+        DebugInputText.text = "";
+        DebugHintText.text = "";
+    }
+    public void OnCodingQuestDisplayButtonClicked()
+    {
+        OnDebugPanelReset();
+        DebugQuestDisplayPanel.SetActive(true);
+    }
+    public void OnCodeWriteDisplayButtonClicked()
+    {
+        OnDebugPanelReset();
+        DebugInputPanel.SetActive(true);
+    }
+    public void OnHintDisplayButtonClicked()
+    {
+        OnDebugPanelReset();
+        DebugHintDisplayPanel.SetActive(true);
+    }
+    public void OnCodeSendingButtonClicked()
+    {
+        codingManager.CodeSending(DebugInputText.text);
+        if (codingManager.AnswerCheck())
         {
-            case 0:
-                GameManager.Instance.SetQuizMode(GameManager.QuizMode.Normal);
-                break;
-            case 1:
-                GameManager.Instance.SetQuizMode(GameManager.QuizMode.IntelligenceQuoitent);
-                break;
-            case 2:
-                GameManager.Instance.SetQuizMode(GameManager.QuizMode.Preschool);
-                break;
-            case 3:
-                GameManager.Instance.SetQuizMode(GameManager.QuizMode.ElementarySchool);
-                break;
-            case 4:
-                GameManager.Instance.SetQuizMode(GameManager.QuizMode.JuniorHighSchool);
-                break;
-            case 5:
-                GameManager.Instance.SetQuizMode(GameManager.QuizMode.Trivia);
-                break;
+
         }
+    }
+    public void OnCodingCancelButtonClicked()
+    {
+        GameManager.Instance.SetMode(GameMode.Field);
+        DebugPanel.SetActive(false);
+        OnDebugPanelReset();
+        OnDebugTextReset();
     }
 }

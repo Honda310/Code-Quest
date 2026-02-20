@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class QuestManager : MonoBehaviour
 {
     private Dictionary<string, List<QuestData>> categorizedQuests = new Dictionary<string, List<QuestData>>();
+    List<CodingQuestData> codingQuestList = new List<CodingQuestData>();
     private Queue<QuestData> currentDeck = new Queue<QuestData>();
 
     public void LoadQuests()
@@ -16,14 +17,8 @@ public class QuestManager : MonoBehaviour
         LoadFromSingleCSV("Data/SelectQuestion/IF_BasicComparison", QuestCategory.IF_BasicComparison);
         LoadFromSingleCSV("Data/SelectQuestion/IF_ElseIf", QuestCategory.IF_ElseIf);
         LoadFromSingleCSV("Data/SelectQuestion/IF_LogicalOperator", QuestCategory.IF_LogicalOperator);
-        LoadFromSingleCSV("Data/Exhibition/IntelligenceQuoitent", QuestCategory.IntelligenceQuoitent);
-        LoadFromSingleCSV("Data/Exhibition/PreschoolProgram", QuestCategory.PreschoolProgram);
-        LoadFromSingleCSV("Data/Exhibition/ElementarySchoolProgram", QuestCategory.ElementarySchoolProgram);
-        LoadFromSingleCSV("Data/Exhibition/JuniorHighSchoolProgram", QuestCategory.JuniorHighSchoolProgram);
-        LoadFromSingleCSV("Data/Exhibition/Trivia", QuestCategory.Trivia);
         Debug.Log("[QuestManager] ロード完了");
     }
-
     private void LoadFromSingleCSV(string path, QuestCategory category)
     {
         List<string[]> csv = CSVParser.Read(path);
@@ -36,15 +31,13 @@ public class QuestManager : MonoBehaviour
             string[] cols = csv[i];
             cols[1] = cols[1].Replace("\\n", "\n");
             cols[1] = cols[1].Replace("■",",");
-            // ★修正：列数で形式を判別
-            if (cols.Length >= 7)
+            if (cols.Length == 7)
             {
-                cols[1] = cols[1].Replace("\\n", "\n");
                 // [4択形式] ID, 問題, A, B, C, D, 答え
                 string[] opts = new string[] { cols[2], cols[3], cols[4], cols[5] };
                 list.Add(new QuestData(cols[0], category, cols[1], opts, cols[6]));
             }
-            else if (cols.Length >= 3)
+            else if (cols.Length == 3)
             {
                 // [記述形式] ID, 問題, 答え
                 list.Add(new QuestData(cols[0], category, cols[1], cols[2]));
@@ -56,7 +49,21 @@ public class QuestManager : MonoBehaviour
             else categorizedQuests.Add(catName, list);
         }
     }
-
+    private void LoadFromSingleCSV(string path)
+    {
+        List<string[]> csv = CSVParser.Read(path);
+        
+        for (int i = 1; i < csv.Count; i++)
+        {
+            string[] cols = csv[i];
+            if (cols.Length == 5)
+            {
+                cols[1] = cols[1].Replace("\\n", "\n");
+                cols[1] = cols[1].Replace("■", ",");
+                codingQuestList.Add(new CodingQuestData(cols[0], cols[1], cols[2], cols[3], cols[4]));
+            }
+        }
+    }
     public void CreateDeck(List<QuestCategory> categories)
     {
         currentDeck.Clear();
@@ -83,5 +90,9 @@ public class QuestManager : MonoBehaviour
     public QuestData GetNextQuestion()
     {
         return currentDeck.Count > 0 ? currentDeck.Dequeue() : null;
+    }
+    public CodingQuestData GetCodingQuestion(int value)
+    {
+        return codingQuestList[value];
     }
 }

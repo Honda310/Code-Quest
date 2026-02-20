@@ -30,11 +30,12 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 7 || line.Length > 7) continue;
-			int id = int.Parse(line[0]);
-            Weapon w = new Weapon(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
-            if (!WeaponMaster.ContainsKey(id)) WeaponMaster.Add(id, w);
-
+            if (line.Length == 7)
+            {
+                int id = int.Parse(line[0]);
+                Weapon w = new Weapon(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
+                if (!WeaponMaster.ContainsKey(id)) WeaponMaster.Add(id, w);
+            }
         }
         Debug.Log($"武器マスタ: {WeaponMaster.Count}件 ロード完了");
     }
@@ -44,10 +45,12 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 6 || line.Length > 6) continue;
-			int id = int.Parse(line[0]);
-            Accessory a = new Accessory(id, line[1], int.Parse(line[2]), int.Parse(line[3]), Enum.Parse<Item.ItemType>(line[4]), line[5]);
-            if (!AccessoryMaster.ContainsKey(id)) AccessoryMaster.Add(id, a);
+            if (line.Length == 6)
+            {
+                int id = int.Parse(line[0]);
+                Accessory a = new Accessory(id, line[1], int.Parse(line[2]), int.Parse(line[3]), Enum.Parse<Item.ItemType>(line[4]), line[5]);
+                if (!AccessoryMaster.ContainsKey(id)) AccessoryMaster.Add(id, a);
+            }
         }
         Debug.Log($"アクセサリマスタ: {AccessoryMaster.Count}件 ロード完了");
     }
@@ -57,10 +60,12 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 7 || line.Length > 7) continue;
-			int id = int.Parse(line[0]);
-            SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
-            if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
+            if (line.Length == 7)
+            {
+                int id = int.Parse(line[0]);
+                SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
+                if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
+            }
         }
         Debug.Log($"サポートアイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
     }
