@@ -170,7 +170,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject SaveLoadPanel;
     [SerializeField] private Text SaveDetailText;
     [SerializeField] private GameObject TalkBranchPanel;
-
     //装備&ステータス画面の制御系
     private bool EquipCharacterSelecter;
     private bool EquipSlots;
@@ -186,7 +185,6 @@ public class UIManager : MonoBehaviour
     private bool PlayerTarget;
     private bool NetoTarget;
     private int SaveSlotId = 1;
-
     //先に呼ばれても変なことにならないための予防用初期値
     private double MaxTimeLimit=10.0;
     private double CurrentTimeLimit = 10.0;
@@ -443,7 +441,6 @@ public class UIManager : MonoBehaviour
         if (battleQuestText != null)
         {
             battleQuestText.text = text+"\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3];
-
         }
     }
     /// <summary>
@@ -584,6 +581,7 @@ public class UIManager : MonoBehaviour
     public void OnNetoSearchButtonClicked()
     {
         NetoSelectPanel.SetActive(false);
+        OnNetoScan = true;
         PlayerTurnOrderStart();
     }
     public void OnNetoSearchButtonSelected()
@@ -898,12 +896,16 @@ public class UIManager : MonoBehaviour
         }
         if (OnNetoScan)
         {
-
+            
         }
         if (OnPlayerAttack)
         {
             QuizStart();
             QuestFramePanel.SetActive(true);
+        }
+        else
+        {
+            GameManager.Instance.BattleManager.NotAttackTurn();
         }
     }
     public void QuizStart()
@@ -1050,7 +1052,6 @@ public class UIManager : MonoBehaviour
                 OnEquipSelectorExit();
                 OnItemSelectorExit();
             }
-            
             gm.SetMode(GameMode.Menu);
             UpdateHpSlider();
         }

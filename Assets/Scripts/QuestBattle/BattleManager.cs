@@ -120,6 +120,10 @@ public class BattleManager : MonoBehaviour
         UIManager.Active.ShowLog("不正解、ダメージを与えられなかった…");
         StartCoroutine(EnemyTurn());
     }
+    public void NotAttackTurn()
+    {
+        StartCoroutine(EnemyTurn());
+    }
     private IEnumerator EnemyTurn()
     {
         yield return new WaitForSecondsRealtime(1.0f);
