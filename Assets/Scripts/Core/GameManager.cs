@@ -104,7 +104,10 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Active?.EquipSelectorAllowUp();
         }
-        
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X)) && CurrentMode == GameMode.Battle)
+        {
+            UIManager.Active?.BattleMenuBack();
+        }
     }
     public void RegisterBattleManager(BattleManager bm)
     {

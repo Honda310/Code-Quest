@@ -39,16 +39,41 @@ public class UIManager : MonoBehaviour
     [Header("戦闘パネルの各要素")]
     [SerializeField] private GameObject PlSelectPanel;
     [SerializeField] private GameObject NetoSelectPanel;
-    [SerializeField] private GameObject HealthDpSlidersAndCharactersPanel;
     [SerializeField] private GameObject DifficultSelectPanel;
     [SerializeField] private GameObject QuestFramePanel;
     [SerializeField] private GameObject DifficultAndCheckButtonFramePanel;
     [SerializeField] private GameObject DifficultAndSelectButtonFramePanel;
+    [SerializeField] private GameObject BattleItemPanel;
+    [SerializeField] private GameObject BattleItemListPanel;
+    [SerializeField] private GameObject BattleItemTargetSelectPanel;
+    [SerializeField] private GameObject BattleItemReconfirmPanel;
     [SerializeField] private Slider TimeLimitSlider;
     [SerializeField] private Text TimeLimitText;
     [SerializeField] private Text PlayerName;
     [SerializeField] private Image EnemyImage;
     [SerializeField] private Text EnemyName;
+    [SerializeField] private Text BattleItemSelectSlot1;
+    [SerializeField] private Text BattleItemSelectSlot2;
+    [SerializeField] private Text BattleItemSelectSlot3;
+    [SerializeField] private Text BattleItemSelectSlot4;
+    [SerializeField] private Text BattleItemSelectSlot5;
+    [SerializeField] private Text BattleItemValue1;
+    [SerializeField] private Text BattleItemValue2;
+    [SerializeField] private Text BattleItemValue3;
+    [SerializeField] private Text BattleItemValue4;
+    [SerializeField] private Text BattleItemValue5;
+    [SerializeField] private Text BattleItemFlavorText;
+    [SerializeField] private Text PlayerItemValidTextInBattle;
+    [SerializeField] private Text NetoItemValidTextInBattle;
+    private bool OnPlayerAttack;
+    private bool ItemUsedByPlayer;
+    private bool OnNetoScan;
+    private bool ItemUsedByNeto;
+    private int ItemUsingCharaID;
+    private int ItemUsedCharaIDByPlayer;
+    private int ItemUsedCharaIDByNeto;
+    private Item PlayerUseItemInBattle;
+    private Item NetoUseItemInBattle;
     Color skyblue = new Color32(0, 224, 255, 255);
     Color yellow = new Color32(224, 255, 0, 255);
     Color red = new Color32(255, 96, 96, 255);
@@ -448,11 +473,6 @@ public class UIManager : MonoBehaviour
             answerInput.text = "";
             QuestFramePanel.SetActive(false);
     }
-    //テンプレ用
-    //public void OnButtonClicked(Button clickedButton)
-    //{
-
-    //}
     public void OnSelectNormalButtonClicked()
     {
         DifficultAndCheckButtonFramePanel.SetActive(true);
@@ -498,6 +518,8 @@ public class UIManager : MonoBehaviour
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultSelectPanel.SetActive(false);
         NetoSelectPanel.SetActive(true);
+        RebootLog();
+        OnPlayerAttack = true;
     }
     public void OnAcceptButtonSelected()
 	{
@@ -539,7 +561,17 @@ public class UIManager : MonoBehaviour
     }
     public void OnPlayerItemButtonClicked()
     {
-		
+        ItemUsingCharaID = 0;
+        SelectorItemIDKeeper = 0;
+        InventoryItemCursor = 0;
+        PlSelectPanel.SetActive(false);
+        NetoSelectPanel.SetActive(false);
+        BattleItemPanel.SetActive(true);
+        BattleItemListPanel.SetActive(true);
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItemSelectorChangeInBattle(0, supportItems);
+        ItemUsingCharaID = 0;
+        HideLog();
     }
     public void OnPlayerItemButtonSelected()
     {
@@ -552,9 +584,7 @@ public class UIManager : MonoBehaviour
     public void OnNetoSearchButtonClicked()
     {
         NetoSelectPanel.SetActive(false);
-        HealthDpSlidersAndCharactersPanel.SetActive(false);
-        QuestFramePanel.SetActive(true);
-        QuizStart();
+        PlayerTurnOrderStart();
     }
     public void OnNetoSearchButtonSelected()
     {
@@ -566,7 +596,16 @@ public class UIManager : MonoBehaviour
     }
     public void OnNetoItemButtonClicked()
     {
-		
+        PlSelectPanel.SetActive(false);
+        NetoSelectPanel.SetActive(false);
+        ItemUsingCharaID = 1;
+        SelectorItemIDKeeper = 0;
+        InventoryItemCursor = 0;
+        BattleItemPanel.SetActive(true);
+        BattleItemListPanel.SetActive(true);
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItemSelectorChangeInBattle(0, supportItems);
+        ItemUsingCharaID = 1;
     }
     public void OnNetoItemButtonSelected()
     {
@@ -576,6 +615,221 @@ public class UIManager : MonoBehaviour
     {
         NetoSelectLabelText.text = ("");
     }
+    public void SupportItemSelectorChangeInBattle(int i, List<CarryItem> supportItems)
+    {
+        try
+        {
+            if (0 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
+                BattleItemValue1.text = $"{supportItems[0 + i].quantity}";
+            }
+            if (1 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
+                BattleItemValue2.text = $"{supportItems[1 + i].quantity}";
+            }
+            if (2 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
+                BattleItemValue3.text = $"{supportItems[2 + i].quantity}";
+            }
+            if (3 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
+                BattleItemValue4.text = $"{supportItems[3 + i].quantity}";
+            }
+            if (4 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
+                BattleItemValue5.text = $"{supportItems[4 + i].quantity}";
+            }
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
+    }
+    public void ItemListAllowDownInBattle()
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        if (supportItems == null || supportItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Min(++InventoryItemCursor, supportItems.Count - 5);
+        SupportItemSelectorChangeInBattle(InventoryItemCursor, supportItems);
+        if (ItemFlavorText.text == "") return;
+        ItemDetailUpdateInBattle(SelectorItemIDKeeper);
+    }
+    public void ItemListAllowUpInBattle()
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        if (supportItems == null || supportItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
+        SupportItemSelectorChangeInBattle(InventoryItemCursor, supportItems);
+        if (ItemFlavorText.text == "") return;
+        ItemDetailUpdateInBattle(SelectorItemIDKeeper);
+    }
+    public void ItemDetailUpdateInBattle(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
+        BattleItemFlavorText.text = focus.Flavor;
+    }
+    public void OnItemSelectorClickedInBattle(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
+        switch (focus.EffectID)
+        {
+            case 1:
+                if (p.MaxHP > p.CurrentHP)
+                {
+                    PlayerItemValidTextInBattle.text = $"HPが{Mathf.Min(focus.EffectSize, p.MaxHP - p.CurrentHP)}回復";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidTextInBattle.text = "HPが最大値";
+                    PlayerTarget = false;
+                }
+                if (n.MaxHP > n.CurrentHP)
+                {
+                    NetoItemValidTextInBattle.text = $"HPが{Mathf.Min(focus.EffectSize, n.MaxHP - n.CurrentHP)}回復";
+                    NetoTarget = true;
+                }
+                else
+                {
+                    NetoItemValidTextInBattle.text = "HPが最大値";
+                    NetoTarget = false;
+                }
+                break;
+            case 2:
+                if (focus.EffectSize > p.TemporaryAtk)
+                {
+                    PlayerItemValidTextInBattle.text = $"攻撃力+{focus.EffectSize - p.TemporaryAtk}";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidTextInBattle.text = "より強い効果を使用中";
+                    PlayerTarget = false;
+                }
+                NetoItemValidTextInBattle.text = "ネトは攻撃力を持ちません";
+                NetoTarget = false;
+                break;
+            case 3:
+                if (focus.EffectSize > p.TemporaryDef)
+                {
+                    PlayerItemValidTextInBattle.text = $"防御力+{focus.EffectSize - p.TemporaryDef}";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidTextInBattle.text = "より強い効果を使用中";
+                    PlayerTarget = false;
+                }
+                if (focus.EffectSize > n.TemporaryDef)
+                {
+                    NetoItemValidTextInBattle.text = $"防御力+{focus.EffectSize - n.TemporaryDef}";
+                    NetoTarget = true;
+                }
+                else
+                {
+                    NetoItemValidTextInBattle.text = "より強い効果を使用中";
+                    NetoTarget = false;
+                }
+                break;
+        }
+        InventorySlotIdHolder = slotID;
+        BattleItemTargetSelectPanel.SetActive(true);
+        ItemFlavorText.text = focus.Flavor;
+        if (ItemUsingCharaID == 0)
+        {
+            PlayerUseItemInBattle = focus;
+        }
+        else
+        {
+            NetoUseItemInBattle = focus;
+        }
+    }
+
+    public void OnItemSelectorEnteredInBattle(int slotID)
+    {
+        SelectorEquipIDKeeper = slotID;
+        ItemDetailUpdateInBattle(slotID);
+    }
+    public void OnItemSelectorExitInBattle()
+    {
+        BattleItemFlavorText.text = "";
+    }
+    public void OnItemTargetButtonInBattle(int CharaID)
+    {
+        if (CharaID == 0 && PlayerTarget == false) return;
+        if (CharaID == 1 && NetoTarget == false) return;
+        BattleItemTargetSelectPanel.SetActive(false);
+        BattleItemReconfirmPanel.SetActive(true);
+        CharaIdHolder = CharaID;
+    }
+    public void OnItemReconfirmAcceptInBattle()
+    {
+        ItemFlavorText.text = "";
+        BattleItemReconfirmPanel.SetActive(false);
+        BattleItemPanel.SetActive(false);
+        if (ItemUsingCharaID==0)
+        {
+            ItemUsedCharaIDByPlayer = CharaIdHolder;
+            NetoSelectPanel.SetActive(true);
+            RebootLog();
+        }
+        else
+        {
+            ItemUsedCharaIDByNeto = CharaIdHolder;
+            PlayerTurnOrderStart();
+        }
+    }
+    public void OnItemReconfirmCancelInBattle()
+    {
+        BattleItemReconfirmPanel.SetActive(false);
+    }
+    public void BattleMenuBack()
+    {
+        if (NetoSelectPanel.activeSelf && p.CurrentHP > 0)
+        {
+            NetoSelectPanel.SetActive(false);
+            PlSelectPanel.SetActive(true);
+            OnPlayerAttack = false;
+            ItemUsedByPlayer = false;
+        }
+        if (BattleItemTargetSelectPanel.activeSelf)
+        {
+            BattleItemTargetSelectPanel.SetActive(false);
+        }
+        else if (BattleItemReconfirmPanel.activeSelf)
+        {
+            BattleItemReconfirmPanel.SetActive(false);
+        }
+        else if (BattleItemPanel.activeSelf)
+        {
+            BattleItemPanel.SetActive(false);
+            if (ItemUsingCharaID==0)
+            {
+                PlSelectPanel.SetActive(true);
+                RebootLog();
+            }
+            else
+            {
+                NetoSelectPanel.SetActive(true);
+                RebootLog();
+            }
+        }
+        if (DifficultAndSelectButtonFramePanel.activeSelf)
+        {
+            OnReselectButtonClicked();
+        }
+        else if (DifficultAndCheckButtonFramePanel.activeSelf)
+        {
+            OnCancelButtonClicked();
+        }
+    }
     public void TurnStart()
     {
         PlSelectPanel.SetActive(false);
@@ -584,8 +838,10 @@ public class UIManager : MonoBehaviour
         DifficultSelectPanel.SetActive(false);
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultAndSelectButtonFramePanel.SetActive(false);
-
-        HealthDpSlidersAndCharactersPanel.SetActive(true);
+        BattleItemPanel.SetActive(false);
+        BattleItemListPanel.SetActive(false);
+        BattleItemTargetSelectPanel.SetActive(false);
+        BattleItemReconfirmPanel.SetActive(false);
         if (p.CurrentHP > 0)
         {
             PlSelectPanel.SetActive(true);
@@ -595,7 +851,60 @@ public class UIManager : MonoBehaviour
             NetoSelectPanel.SetActive(true);
         }
         UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
+        OnPlayerAttack = false;
+        ItemUsedByPlayer = false;
+        OnNetoScan = false;
+        ItemUsedByNeto = false;
         MaxTimeLimit = p.DebugLimit;
+    }
+    private void PlayerTurnOrderStart()
+    {
+        if (ItemUsedByPlayer)
+        {
+            if (ItemUsedCharaIDByPlayer == 0)
+            {
+                p.ApplyEffect(PlayerUseItemInBattle);
+            }
+            else if (ItemUsedCharaIDByPlayer == 1)
+            {
+                n.ApplyEffect(PlayerUseItemInBattle);
+            }
+            inventory.RemoveItem(PlayerUseItemInBattle.ItemID, 1);
+            List<CarryItem> ResupportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+            if (InventoryItemCursor + 5 > ResupportItems.Count)
+            {
+                InventoryItemCursor--;
+            }
+            UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
+        }
+        if (ItemUsedByNeto)
+        {
+            if (ItemUsedCharaIDByNeto == 0)
+            {
+                p.ApplyEffect(NetoUseItemInBattle);
+            }
+            else if (ItemUsedCharaIDByNeto == 1)
+            {
+                n.ApplyEffect(NetoUseItemInBattle);
+            }
+            inventory.RemoveItem(NetoUseItemInBattle.ItemID, 1);
+            List<CarryItem> ResupportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+
+            if (InventoryItemCursor + 5 > ResupportItems.Count)
+            {
+                InventoryItemCursor--;
+            }
+            UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
+        }
+        if (OnNetoScan)
+        {
+
+        }
+        if (OnPlayerAttack)
+        {
+            QuizStart();
+            QuestFramePanel.SetActive(true);
+        }
     }
     public void QuizStart()
     {
@@ -617,7 +926,6 @@ public class UIManager : MonoBehaviour
             List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
             SupportItemSelectorChange(0, supportItems);
         }
-        
     }
     public void OnEquipAndStatusButtonClicked()
     {
@@ -718,7 +1026,7 @@ public class UIManager : MonoBehaviour
         PlayerTarget =false;
         NetoTarget=false;
         gm.SetMode(GameMode.Field);
-}
+    }
     
     public void MenuToggle()
     {

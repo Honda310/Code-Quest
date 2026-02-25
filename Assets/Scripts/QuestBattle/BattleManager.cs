@@ -32,7 +32,6 @@ public class BattleManager : MonoBehaviour
         //choicechecker = GetComponent<MultipleChoiceQuest>();
         //writechecker = GetComponent<FillBlankQuest>();
     }
-
     /// <summary>
     /// 戦闘開始処理
     /// </summary>
@@ -80,8 +79,7 @@ public class BattleManager : MonoBehaviour
         }
         uimanager.TurnStart();
     }
-
-    public void OnSubmitMultiChoiceAnswer(string code)//4択クイズの正解確認
+    public void OnSubmitMultiChoiceAnswer(string code)
     {
         if (choicechecker.CheckAnswer(code, currentQuestion))
         {
