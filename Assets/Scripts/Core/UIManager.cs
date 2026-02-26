@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -68,6 +69,8 @@ public class UIManager : MonoBehaviour
     private bool OnPlayerAttack;
     private bool ItemUsedByPlayer;
     private bool OnNetoScan;
+    private bool HardQuestion;
+    public int EnemyScanCount = 0;
     private bool ItemUsedByNeto;
     private int ItemUsingCharaID;
     private int ItemUsedCharaIDByPlayer;
@@ -194,6 +197,7 @@ public class UIManager : MonoBehaviour
     private Inventory inventory;
     private Player p;
     private Neto n;
+    Dictionary<QuestCategory, string> categoris = new Dictionary<QuestCategory, string>();
     public static UIManager Active { get; private set; }
     private void Awake()
     {
@@ -209,6 +213,19 @@ public class UIManager : MonoBehaviour
         UpdateStatus(p,n);
         AllPanelClose();
         mapnamepop.MapNamePopUP(SceneManager.GetActiveScene().name);
+        categoris[QuestCategory.Variable_AdditionAndSubtraction] = "変数の加算減算";
+        categoris[QuestCategory.Variable_MultiplicationAndDivisionAndRemainder] = "変数の乗算、除算、剰余算";
+        categoris[QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence] = "変数の複合代入";
+        categoris[QuestCategory.IF_BasicComparison] = "条件分岐の基本比較";
+        categoris[QuestCategory.IF_ElseIf] = "複数の条件分岐";
+        categoris[QuestCategory.IF_LogicalOperator] = "複合条件による分岐";
+        categoris[QuestCategory.ForWhile_Basic] = "基本的な反復処理";
+        categoris[QuestCategory.ForWhile_WhileAndDoWhile] = "While文について";
+        categoris[QuestCategory.ForWhile_Nest] = "for文のネストについて";
+        categoris[QuestCategory.Array_Length_Loop] = "配列を用いた反復処理";
+        categoris[QuestCategory.Array_Types_Values] = "配列の型と値";
+        categoris[QuestCategory.Array_Decl_Init] = "配列の宣言と初期化";
+        categoris[QuestCategory.Array_Access_Index] = "配列の添字";
     }
     public void Update()
     {
@@ -485,7 +502,9 @@ public class UIManager : MonoBehaviour
     }
     public void OnSelectHardButtonClicked()
     {
-		
+        HardQuestion = true;
+        DifficultAndCheckButtonFramePanel.SetActive(true);
+        DifficultAndSelectButtonFramePanel.SetActive(false);
     }
     public void OnSelectHardButtonSelected()
     {
@@ -604,6 +623,7 @@ public class UIManager : MonoBehaviour
         List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
         SupportItemSelectorChangeInBattle(0, supportItems);
         ItemUsingCharaID = 1;
+        HideLog();
     }
     public void OnNetoItemButtonSelected()
     {
@@ -796,6 +816,7 @@ public class UIManager : MonoBehaviour
             PlSelectPanel.SetActive(true);
             OnPlayerAttack = false;
             ItemUsedByPlayer = false;
+            HardQuestion = false;
         }
         if (BattleItemTargetSelectPanel.activeSelf)
         {
@@ -854,6 +875,7 @@ public class UIManager : MonoBehaviour
         OnNetoScan = false;
         ItemUsedByNeto = false;
         MaxTimeLimit = p.DebugLimit;
+        HardQuestion = false;
     }
     private void PlayerTurnOrderStart()
     {
@@ -896,24 +918,41 @@ public class UIManager : MonoBehaviour
         }
         if (OnNetoScan)
         {
-            
+            if (EnemyScanCount==0)
+            {
+                logText1.text = "ネトは敵をスキャンした！";
+                logText2.text = $"この敵は{QuestCategoriesTranslate(GameManager.Instance.BattleManager.currentEnemy.QuestionCategories)}を出題してくるよ。";
+            }
+            else
+            {
+                logText1.text = "ネトは敵をスキャンした！";
+                logText2.text = $"この敵が受けるダメージが5上昇した！(現在：{EnemyScanCount*5})";
+            }
+            EnemyScanCount++;
         }
         if (OnPlayerAttack)
         {
-            QuizStart();
-            QuestFramePanel.SetActive(true);
+            StartCoroutine(QuizStart());
         }
         else
         {
             GameManager.Instance.BattleManager.NotAttackTurn();
         }
     }
-    public void QuizStart()
+    private string QuestCategoriesTranslate(QuestCategory category)
+    {
+        return categoris[category];
+    }
+    public IEnumerator QuizStart()
     {
         CurrentTimeLimit = MaxTimeLimit;
-        QuestionStart = true;
         TimeLimitSlider.maxValue = (float)MaxTimeLimit;
         TimeLimitSlider.value = (float)MaxTimeLimit;
+        GameManager.Instance.BattleManager.QuestSet(HardQuestion);
+        yield return new WaitForSecondsRealtime(2.0f);
+        QuestFramePanel.SetActive(true);
+        QuestionStart = true;
+        HideLog();
     }
     public void OnInventoryButtonClicked()
     {
@@ -1029,7 +1068,6 @@ public class UIManager : MonoBehaviour
         NetoTarget=false;
         gm.SetMode(GameMode.Field);
     }
-    
     public void MenuToggle()
     {
         if (MenuPanel.activeSelf == false)

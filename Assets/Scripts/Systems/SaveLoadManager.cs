@@ -119,32 +119,19 @@ public class SaveLoadManager : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, fileName);
         string json = File.ReadAllText(path);
         loadedData = JsonUtility.FromJson<SaveData>(json);
+
         Inventory inventory = Object.FindFirstObjectByType<Inventory>();
-        if (inventory != null)
-        {
-            inventory.LoadItems(loadedData.carryitem);
-        }
         TreasureBoxList treasureList = Object.FindFirstObjectByType<TreasureBoxList>();
-        if (treasureList != null)
-        {
-            treasureList.LoadFromSaveData(loadedData.BoxId, loadedData.BoxAccessable);
-        }
         EnemyList enemyList = Object.FindFirstObjectByType<EnemyList>();
-        if (enemyList != null)
-        {
-            enemyList.LoadFromSaveData( loadedData.enemyDefeatedID, loadedData.isEnemyDefeated);
-        }
         Player player = Object.FindFirstObjectByType<Player>();
-        if (player != null)
-        {
-            player.LoadFromSaveData(loadedData.playername, loadedData.currentlv, loadedData.exp, loadedData.plEquipweapon, loadedData.plEquipaccessory, loadedData.plTempAtk, loadedData.plTempDef);
-            player.transform.position = loadedData.charavector;
-        }
         Neto neto = Object.FindFirstObjectByType<Neto>();
-        if (neto != null)
-        {
-            neto.LoadFromSaveData(loadedData.netoEquipaccessory, loadedData.netoTempDef);
-        }
+        
+        inventory.LoadItems(loadedData.carryitem);
+        treasureList.LoadFromSaveData(loadedData.BoxId, loadedData.BoxAccessable);
+        enemyList.LoadFromSaveData(loadedData.enemyDefeatedID, loadedData.isEnemyDefeated);
+        player.LoadFromSaveData(loadedData.playername, loadedData.currentlv, loadedData.exp, loadedData.plEquipweapon, loadedData.plEquipaccessory, loadedData.plTempAtk, loadedData.plTempDef);
+        player.transform.position = loadedData.charavector;
+        neto.LoadFromSaveData(loadedData.netoEquipaccessory, loadedData.netoTempDef);
         SceneManager.LoadScene(loadedData.currentMapName);
         player.transform.position = loadedData.charavector;
         neto.transform.position = loadedData.charavector;
@@ -156,7 +143,6 @@ public class SaveLoadManager : MonoBehaviour
     /// <summary>
     /// オートセーブを削除するメソッド、正常終了時に呼び出す用
     /// </summary>
-
     public void DeleteAutoSave()
     {
         string path = Path.Combine(Application.persistentDataPath, "autosave.json");

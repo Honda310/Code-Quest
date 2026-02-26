@@ -15,7 +15,7 @@ public class BattleManager : MonoBehaviour
     private Player player;
     private Neto neto;
     private QuestData currentQuestion;
-    List<QuestCategory> categories = new List<QuestCategory>();
+    private QuestCategory categories;
     private QuestManager questManager;
     [SerializeField] private MultipleChoiceQuest choicechecker;
     [SerializeField] private FillBlankQuest writechecker;
@@ -29,8 +29,6 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         questManager = GameManager.Instance.questManager;
-        //choicechecker = GetComponent<MultipleChoiceQuest>();
-        //writechecker = GetComponent<FillBlankQuest>();
     }
     /// <summary>
     /// 戦闘開始処理
@@ -54,30 +52,45 @@ public class BattleManager : MonoBehaviour
         currentEnemy.CurrentDP = 0;
         currentEnemy.Atk = data.Atk;
         currentEnemy.Exp = data.Exp;
-        categories.Clear();
         categories = data.Categories;
-        questManager.CreateDeck(categories);
+        questManager.CreateDeckNormal(categories);
+        questManager.CreateDeckHard(categories);
         GameManager.Instance.SetMode(GameManager.GameMode.Battle);
         uimanager.ShowLog();
         uimanager.EnemySetUp(data.ImageFileName,data.Name);
         damagePop.TextReset();
-        NextTurn();
+        uimanager.EnemyScanCount = 0;
     }
-
-    public void NextTurn()
+    public void QuestSet(bool hard)
     {
-        currentQuestion = questManager.GetNextQuestion();
-        if (currentQuestion != null)
+        if (hard)
         {
-            uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}",currentQuestion.Options);
+            currentQuestion = questManager.GetNextQuestionHard();
+            if (currentQuestion != null)
+            {
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            }
+            else
+            {
+                questManager.CreateDeckHard(categories);
+                currentQuestion = questManager.GetNextQuestionHard();
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            }
         }
         else
         {
-            questManager.CreateDeck(categories);
-            currentQuestion = questManager.GetNextQuestion();
-            uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            currentQuestion = questManager.GetNextQuestionNormal();
+            if (currentQuestion != null)
+            {
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            }
+            else
+            {
+                questManager.CreateDeckNormal(categories);
+                currentQuestion = questManager.GetNextQuestionNormal();
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            }
         }
-        uimanager.TurnStart();
     }
     public void OnSubmitMultiChoiceAnswer(string code)
     {
@@ -101,10 +114,11 @@ public class BattleManager : MonoBehaviour
     private IEnumerator QuizCorrect()
     {
         yield return new WaitForSecondsRealtime(0.4f);
-        currentEnemy.TakeDamage(player.CurrentAtk);
-        UIManager.Active?.ShowLog($"問題に正解、{player.CurrentAtk}DPを与えた！");
+        int dmg = player.CurrentAtk + (uimanager.EnemyScanCount - 1) * 5;
+        currentEnemy.TakeDamage(dmg);
+        UIManager.Active?.ShowLog($"問題に正解、{dmg}DPを与えた！");
         uimanager.UpdateStatus(player, neto, currentEnemy);
-        damagePop.EnemyDpPlay(player.CurrentAtk);
+        damagePop.EnemyDpPlay(dmg);
         if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
         {
             StartCoroutine(EndBattle(true));
@@ -169,7 +183,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            NextTurn();
+            uimanager.TurnStart();
         }
     }
 

@@ -46,10 +46,6 @@ public class GameManager : MonoBehaviour
 
     // Œ»İí“¬’†‚Ì“GID
     public int CurrentEnemyID { get; private set; }
-
-    // “|‚µ‚½“G‚ÌŠÇ—
-    private HashSet<int> defeatedEnemies = new HashSet<int>();
-
     /// <summary>
     /// ƒQ[ƒ€‹N“®‚ÉÅ‰‚ÉŒÄ‚Î‚ê‚éˆ—
     /// </summary>
@@ -88,7 +84,6 @@ public class GameManager : MonoBehaviour
         questManager.LoadQuests();
         SetQuizMode(QuizMode.Normal);
     }
-
     private void Update()
     {
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X)) && ((CurrentMode == GameMode.Field) || (CurrentMode == GameMode.Menu)))
@@ -173,7 +168,6 @@ public class GameManager : MonoBehaviour
     {
         saveLoadManager.SaveGame(player, neto, inventory.items, i, treasureBoxList, enemyList);
     }
-
     public QuizMode CurrentQuiz;
     public void SetQuizMode(QuizMode mode)
     {

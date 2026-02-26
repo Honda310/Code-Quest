@@ -18,14 +18,12 @@ public class Enemy : MonoBehaviour
     [NonSerialized] public string EnemyName;
 
     [Header("出題設定")]
-    public List<QuestCategory> QuestionCategories;
+    public QuestCategory QuestionCategories;
 
-    private SpriteRenderer spriteRenderer;
     [NonSerialized] public int Exp;
     [NonSerialized] public bool Defeated;
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         Setup(GameManager.Instance.dataManager.EnemyMaster[EnemyID]);
     }
 
@@ -41,7 +39,7 @@ public class Enemy : MonoBehaviour
         CurrentDP = 0;
 
         // カテゴリ設定のコピー
-        QuestionCategories = new List<QuestCategory>(data.Categories);
+        QuestionCategories = data.Categories;
 
         // 画像のロードと設定
         Exp = data.Exp;

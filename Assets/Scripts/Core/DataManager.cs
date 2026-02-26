@@ -84,7 +84,7 @@ public class DataManager : MonoBehaviour
             int maxDp = CSVParser.ParseInt(line[2]);
             int atk = CSVParser.ParseInt(line[3]);
 
-            List<QuestCategory> categories = CSVParser.ParseEnumList<QuestCategory>(line[4], '/');
+            QuestCategory categories = CSVParser.ParseEnum(line[4], QuestCategory.None);
 
             string imageFileName = line[5];
             int Exp = CSVParser.ParseInt(line[6]);
@@ -144,10 +144,10 @@ public class EnemyData
     public string Name;
     public int MaxDP;
     public int Atk;
-    public List<QuestCategory> Categories;
+    public QuestCategory Categories;
     public string ImageFileName;
     public int Exp;
-    public EnemyData(int id, string name, int dp, int atk, List<QuestCategory> categories, string imgName, int exp)
+    public EnemyData(int id, string name, int dp, int atk, QuestCategory categories, string imgName, int exp)
     {
         ID = id;
         Name = name;
