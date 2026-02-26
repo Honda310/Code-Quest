@@ -151,6 +151,14 @@ public class BattleManager : MonoBehaviour
         UIManager.Active.ShowLog("不正解、ダメージを与えられなかった…");
         StartCoroutine(EnemyTurn());
     }
+    public void HealAnimate(int heal,Player p)
+    {
+        damagePop.PlayerHealPlay(heal);
+    }
+    public void HealAnimate(int heal,Neto n)
+    {
+        damagePop.NetoHealPlay(heal);
+    }
     public void NotAttackTurn()
     {
         StartCoroutine(EnemyTurn());

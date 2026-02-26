@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -589,6 +590,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnPlayerItemButtonClicked()
     {
+        ItemUsedByPlayer = true;
         ItemUsingCharaID = 0;
         SelectorItemIDKeeper = 0;
         InventoryItemCursor = 0;
@@ -625,6 +627,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnNetoItemButtonClicked()
     {
+        ItemUsedByNeto = true;
         PlSelectPanel.SetActive(false);
         NetoSelectPanel.SetActive(false);
         ItemUsingCharaID = 1;
@@ -895,10 +898,40 @@ public class UIManager : MonoBehaviour
         {
             if (ItemUsedCharaIDByPlayer == 0)
             {
+                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, p.MaxHP - p.CurrentHP);
+                        ShowLog($"{p.PlayerName}のHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal, p);
+                        break;
+                    case 2:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryAtk}上昇した！");
+                        break;
+                    case 3:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryDef}上昇した！");
+                        break;
+                }
                 p.ApplyEffect(PlayerUseItemInBattle);
             }
             else if (ItemUsedCharaIDByPlayer == 1)
             {
+                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, n.MaxHP - n.CurrentHP);
+                        ShowLog($"NetoのHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal, p);
+                        break;
+                    case 2:
+                        ShowLog($"Netoは攻撃力を持ちません。効果なし");
+                        break;
+                    case 3:
+                        ShowLog($"Netoの攻撃力が一時的に{item.EffectSize - n.TemporaryDef}上昇した！");
+                        break;
+                }
                 n.ApplyEffect(PlayerUseItemInBattle);
             }
             inventory.RemoveItem(PlayerUseItemInBattle.ItemID, 1);
@@ -913,10 +946,40 @@ public class UIManager : MonoBehaviour
         {
             if (ItemUsedCharaIDByNeto == 0)
             {
+                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, p.MaxHP - p.CurrentHP);
+                        ShowLog($"{p.PlayerName}のHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal,p);
+                        break;
+                    case 2:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryAtk}上昇した！");
+                        break;
+                    case 3:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryDef}上昇した！");
+                        break;
+                }
                 p.ApplyEffect(NetoUseItemInBattle);
             }
             else if (ItemUsedCharaIDByNeto == 1)
             {
+                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, n.MaxHP - n.CurrentHP);
+                        ShowLog($"NetoのHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal,n);
+                        break;
+                    case 2:
+                        ShowLog($"Netoは攻撃力を持ちません。効果なし");
+                        break;
+                    case 3:
+                        ShowLog($"Netoの攻撃力が一時的に{item.EffectSize - n.TemporaryDef}上昇した！");
+                        break;
+                }
                 n.ApplyEffect(NetoUseItemInBattle);
             }
             inventory.RemoveItem(NetoUseItemInBattle.ItemID, 1);
