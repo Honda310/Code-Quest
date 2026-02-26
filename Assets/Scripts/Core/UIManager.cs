@@ -32,7 +32,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text PlSelectLabelText;    
     [SerializeField] private Text NetoSelectLabelText;  
     [SerializeField] private Text DifficultSelectText;  
-    [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
     [SerializeField] private GameObject itemDebugPanel; // アイテムデバッグ画面
@@ -42,6 +41,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject NetoSelectPanel;
     [SerializeField] private GameObject DifficultSelectPanel;
     [SerializeField] private GameObject QuestFramePanel;
+    [SerializeField] private GameObject NormalQuestFramePanel;
+    [SerializeField] private GameObject HardQuestFramePanel;
     [SerializeField] private GameObject DifficultAndCheckButtonFramePanel;
     [SerializeField] private GameObject DifficultAndSelectButtonFramePanel;
     [SerializeField] private GameObject BattleItemPanel;
@@ -50,6 +51,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject BattleItemReconfirmPanel;
     [SerializeField] private Slider TimeLimitSlider;
     [SerializeField] private Text TimeLimitText;
+    [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
     [SerializeField] private Text PlayerName;
     [SerializeField] private Image EnemyImage;
     [SerializeField] private Text EnemyName;
@@ -66,6 +68,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text BattleItemFlavorText;
     [SerializeField] private Text PlayerItemValidTextInBattle;
     [SerializeField] private Text NetoItemValidTextInBattle;
+    [SerializeField] private Text FillBlankAnswer;
     private bool OnPlayerAttack;
     private bool ItemUsedByPlayer;
     private bool OnNetoScan;
@@ -473,15 +476,14 @@ public class UIManager : MonoBehaviour
         string buttonText = clickedButton.GetComponentInChildren<Text>().text;
         string answer = buttonText;
 
-        if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
+        if (answer=="A" || answer == "B" || answer == "C" || answer == "D")
         {
-            answer = answerInput.text;
-            GameManager.Instance.BattleManager.OnSubmitFillBrankAnswer(answer);
-            Debug.Log("fill");
+            GameManager.Instance.BattleManager.OnSubmitMultiChoiceAnswer(answer);
         }
         else
         {
-            GameManager.Instance.BattleManager.OnSubmitMultiChoiceAnswer(answer);
+            answer = answerInput.text;
+            GameManager.Instance.BattleManager.OnSubmitFillBrankAnswer(answer);
         }
             // 入力欄を空にします
             answerInput.text = "";
@@ -502,13 +504,23 @@ public class UIManager : MonoBehaviour
     }
     public void OnSelectHardButtonClicked()
     {
-        HardQuestion = true;
-        DifficultAndCheckButtonFramePanel.SetActive(true);
-        DifficultAndSelectButtonFramePanel.SetActive(false);
+        if (GameManager.Instance.BattleManager.ChallengableHard)
+        {
+            HardQuestion = true;
+            DifficultAndCheckButtonFramePanel.SetActive(true);
+            DifficultAndSelectButtonFramePanel.SetActive(false);
+        }
     }
     public void OnSelectHardButtonSelected()
     {
-        DifficultSelectText.text = ("＊穴埋め問題に挑戦する");
+        if (GameManager.Instance.BattleManager.ChallengableHard)
+        {
+            DifficultSelectText.text = ("＊穴埋め問題に挑戦する");
+        }
+        else
+        {
+            DifficultSelectText.text = ("＊このマップでは穴埋め問題に挑戦できません。");
+        }
     }
     public void OnSelectHardButtonDeSelected()
     {
@@ -950,7 +962,18 @@ public class UIManager : MonoBehaviour
         TimeLimitSlider.value = (float)MaxTimeLimit;
         GameManager.Instance.BattleManager.QuestSet(HardQuestion);
         yield return new WaitForSecondsRealtime(2.0f);
-        QuestFramePanel.SetActive(true);
+        if (HardQuestion)
+        {
+            QuestFramePanel.SetActive(true);
+            NormalQuestFramePanel.SetActive(false);
+            HardQuestFramePanel.SetActive(true);
+        }
+        else
+        {
+            QuestFramePanel.SetActive(true);
+            NormalQuestFramePanel.SetActive(true);
+            HardQuestFramePanel.SetActive(false);
+        }
         QuestionStart = true;
         HideLog();
     }

@@ -18,12 +18,9 @@ public class QuestManager : MonoBehaviour
         LoadFromSingleCSV("Data/SelectQuestion/IF_BasicComparison", QuestCategory.IF_BasicComparison);
         LoadFromSingleCSV("Data/SelectQuestion/IF_ElseIf", QuestCategory.IF_ElseIf);
         LoadFromSingleCSV("Data/SelectQuestion/IF_LogicalOperator", QuestCategory.IF_LogicalOperator);
-        LoadFromSingleCSV("Data/SelectQuestion/Variable_AdditionAndSubtraction", QuestCategory.Variable_AdditionAndSubtractionHard);
-        LoadFromSingleCSV("Data/SelectQuestion/Variable_IncrementAndCompoundAssignmentPrecedence", QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedenceHard);
-        LoadFromSingleCSV("Data/SelectQuestion/Variable_MultiplicationAndDivisionAndRemainder", QuestCategory.Variable_MultiplicationAndDivisionAndRemainderHard);
-        LoadFromSingleCSV("Data/SelectQuestion/IF_BasicComparison", QuestCategory.IF_BasicComparisonHard);
-        LoadFromSingleCSV("Data/SelectQuestion/IF_ElseIf", QuestCategory.IF_ElseIfHard);
-        LoadFromSingleCSV("Data/SelectQuestion/IF_LogicalOperator", QuestCategory.IF_LogicalOperatorHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_BasicComparison", QuestCategory.IF_BasicComparisonHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_ElseIf", QuestCategory.IF_ElseIfHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_LogicalOperator", QuestCategory.IF_LogicalOperatorHard);
         Debug.Log("[QuestManager] ロード完了");
     }
     private void LoadFromSingleCSV(string path, QuestCategory category)
@@ -54,6 +51,7 @@ public class QuestManager : MonoBehaviour
             if (categorizedQuests.ContainsKey(catName)) categorizedQuests[catName].AddRange(list);
             else categorizedQuests.Add(catName, list);
         }
+        Debug.Log("Loaded: " + catName + " Count: " + list.Count);
     }
     private void LoadFromCodingCSV(string path)
     {

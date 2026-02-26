@@ -16,8 +16,6 @@ public class QuestData
         Category = cat;
         QuestionText = q;
         CorrectAnswer = a;
-        Options = null;
-        Keywords = a.Split(new char[] { ' ', ';', '(', ')', '{', '}' }, System.StringSplitOptions.RemoveEmptyEntries);
     }
     public QuestData(string id, QuestCategory cat, string q, string[] opts, string a)
     {

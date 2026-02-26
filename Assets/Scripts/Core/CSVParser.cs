@@ -10,7 +10,6 @@ using System.IO;
 /// </summary>
 public static class CSVParser
 {
-    // --- ファイル読み込み ---
 
     /// <summary>
     /// ResourcesフォルダからCSVを読み込み、行ごとのリストにして返します。
@@ -40,8 +39,6 @@ public static class CSVParser
         return list;
     }
 
-    // --- 型変換メソッド ---
-
     /// <summary>
     /// 文字列を整数(int)に変換します。失敗したら0を返します。
     /// </summary>
@@ -49,9 +46,9 @@ public static class CSVParser
     {
         if (string.IsNullOrEmpty(value)) return defaultValue;
         // TryParseを使うことで、変換失敗時もエラーを出さずに処理を続行できます。できるらしい。
+        // 三項演算子とdefaultValueの設定によってEscapeしてるだけやんけ！AIに嘘つかれたのでは？
         return int.TryParse(value, out int result) ? result : defaultValue;
     }
-
     /// <summary>
     /// 文字列を小数(float)に変換します。
     /// </summary>
@@ -64,6 +61,8 @@ public static class CSVParser
     /// <summary>
     /// 文字列をEnum（列挙型）に変換します。
     /// 例: "Variable" -> QuestCategory.Variable
+    /// defaultValueにはQuestCategory.Noneなど、
+    /// 変換に失敗したときに分類したいものなどを入力することになります。
     /// </summary>
     public static T ParseEnum<T>(string value, T defaultValue) where T : struct
     {
@@ -74,20 +73,21 @@ public static class CSVParser
     /// <summary>
     /// 区切り文字でつながった文字列を、Enumのリストに変換します。
     /// 例: "Variable/Loop" -> { Variable, Loop }
+    /// つかってないよ。たぶん。使いたいときに開放しよう。ないと思うよ。
     /// </summary>
-    public static List<T> ParseEnumList<T>(string value, char separator = '/') where T : struct
-    {
-        var list = new List<T>();
-        if (string.IsNullOrEmpty(value)) return list;
+    //public static List<T> ParseEnumList<T>(string value, char separator = '/') where T : struct
+    //{
+    //    var list = new List<T>();
+    //    if (string.IsNullOrEmpty(value)) return list;
 
-        string[] items = value.Split(separator);
-        foreach (var item in items)
-        {
-            if (Enum.TryParse(item.Trim(), true, out T result))
-            {
-                list.Add(result);
-            }
-        }
-        return list;
-    }
+    //    string[] items = value.Split(separator);
+    //    foreach (var item in items)
+    //    {
+    //        if (Enum.TryParse(item.Trim(), true, out T result))
+    //        {
+    //            list.Add(result);
+    //        }
+    //    }
+    //    return list;
+    //}
 }

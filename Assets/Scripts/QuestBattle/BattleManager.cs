@@ -21,6 +21,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private FillBlankQuest writechecker;
     [SerializeField] private UIManager uimanager;
     private bool hitPlayer;
+    public bool ChallengableHard=false;
     
     private void Awake()
     {
@@ -54,12 +55,21 @@ public class BattleManager : MonoBehaviour
         currentEnemy.Exp = data.Exp;
         categories = data.Categories;
         questManager.CreateDeckNormal(categories);
-        questManager.CreateDeckHard(categories);
+        if (!(categories == QuestCategory.Variable_AdditionAndSubtraction || categories == QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence || categories == QuestCategory.Variable_MultiplicationAndDivisionAndRemainder))
+        {
+            questManager.CreateDeckHard(categories);
+            ChallengableHard = true;
+        }
+        else
+        {
+            ChallengableHard = false;
+        }
         GameManager.Instance.SetMode(GameManager.GameMode.Battle);
         uimanager.ShowLog();
         uimanager.EnemySetUp(data.ImageFileName,data.Name);
         damagePop.TextReset();
         uimanager.EnemyScanCount = 0;
+        uimanager.TurnStart();
     }
     public void QuestSet(bool hard)
     {
@@ -68,13 +78,13 @@ public class BattleManager : MonoBehaviour
             currentQuestion = questManager.GetNextQuestionHard();
             if (currentQuestion != null)
             {
-                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}");
             }
             else
             {
                 questManager.CreateDeckHard(categories);
                 currentQuestion = questManager.GetNextQuestionHard();
-                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}");
             }
         }
         else
@@ -103,13 +113,20 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(QuizIncorrect());
         }
     }
+    public void OnSubmitFillBrankAnswer(string code)
+    {
+        if (writechecker.CheckAnswer(code, currentQuestion.CorrectAnswer))
+        {
+            StartCoroutine(QuizCorrect());
+        }
+        else
+        {
+            StartCoroutine(QuizIncorrect());
+        }
+    }
     public void TimeExpired()
     {
         StartCoroutine(QuizIncorrect());
-    }
-    public void OnSubmitFillBrankAnswer(string code)
-    {
-
     }
     private IEnumerator QuizCorrect()
     {
