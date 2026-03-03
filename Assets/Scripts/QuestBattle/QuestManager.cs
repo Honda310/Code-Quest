@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 public class QuestManager : MonoBehaviour
 {
@@ -57,16 +58,19 @@ public class QuestManager : MonoBehaviour
     private void LoadFromCodingCSV(string path)
     {
         List<string[]> csv = CSVParser.Read(path);
-        
+
         for (int i = 1; i < csv.Count; i++)
         {
             string[] cols = csv[i];
             if (cols.Length == 7)
             {
+                int id = int.Parse(cols[0]);
                 cols[1] = cols[1].Replace("\\n", "\n");
                 cols[1] = cols[1].Replace("■", ",");
+                cols[5] = cols[5].Replace("\\n", "\n");
+                cols[6] = cols[6].Replace("\\n", "\n");
                 string[] answers = { cols[2], cols[3], cols[4] };
-                codingQuestList.Add(new CodingQuestData(cols[0], cols[1], answers, cols[5], cols[6]));
+                codingQuestList.Add(new CodingQuestData(id, cols[1], answers, cols[5], cols[6]));
             }
         }
     }
@@ -116,6 +120,8 @@ public class QuestManager : MonoBehaviour
     }
     public CodingQuestData GetCodingQuestion(int value)
     {
+        Debug.Log($"value: {value}");
+        Debug.Log($"Count: {codingQuestList.Count}");
         return codingQuestList[value];
     }
 }

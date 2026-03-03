@@ -160,7 +160,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text DebugInputText;
     [SerializeField] private Text DebugHintText;
     [SerializeField] private Text DebugErrorText;
-    [SerializeField] private QuestManager questManager;
+    private QuestManager questManager;
     private CodingQuestData currentCodingQuest;
 
     [Header("ショップパネル用")]
@@ -247,6 +247,7 @@ public class UIManager : MonoBehaviour
         p = GameManager.Instance.player;
         n = GameManager.Instance.neto;
         inventory = GameManager.Instance.inventory;
+        questManager = GameManager.Instance.questManager;
         UpdateStatus(p,n);
         AllPanelClose();
         mapnamepop.MapNamePopUP(SceneManager.GetActiveScene().name);
@@ -2109,6 +2110,7 @@ public class UIManager : MonoBehaviour
         if (codingManager.AnswerCheck(currentCodingQuest))
         {
             DebugCorrectPanel.SetActive(true);
+            p.RepairedLine[currentCodingQuest.ID] = true;
         }
         else
         {

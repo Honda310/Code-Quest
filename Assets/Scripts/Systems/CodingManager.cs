@@ -1114,13 +1114,13 @@ public class CodingManager : MonoBehaviour
         {
             case "LamentForest":
                 BaseCode[0] = @"int a=10;
-                                int b=20
+                                int b=20;
                                 ";
                 BaseCode[1] = @"int a=5;
-                                int b=10
+                                int b=10;
                                 ";
                 BaseCode[2] = @"int a=30;
-                                int b=5
+                                int b=5;
                                 ";
                 break;
             case "PoisonedSpring":
@@ -1147,6 +1147,10 @@ public class CodingManager : MonoBehaviour
                 BaseCode[2] = @"";
                 break;
         }
+        UnityEngine.Debug.Log(BaseCode[0] + code);
+        UnityEngine.Debug.Log(BaseCode[1] + code);
+        UnityEngine.Debug.Log(BaseCode[2] + code);
+
         Tokenize(BaseCode[0] +code);
         AnsCheck[0] = AnswerObject.ToString();
         Tokenize(BaseCode[1] + code);
