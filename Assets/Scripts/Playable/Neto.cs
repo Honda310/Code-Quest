@@ -8,10 +8,12 @@ public class Neto : MonoBehaviour
     public int MaxHP;
     public int CurrentHP;
     public int BaseDef;
+    public Accessory equipAccessory;
 
     public int AccessoryDef { get; private set; }
     public int TemporaryDef { get; private set; }
     public int CurrentDef => BaseDef + AccessoryDef + TemporaryDef;
+    public Accessory CurrentEquipAccessory;
     public string EquipAccessoryName="‚È‚µ";
     public Vector2 moveDelta;
     private Vector2 lastMoveDir = Vector2.right;
@@ -144,6 +146,7 @@ public class Neto : MonoBehaviour
     public void EquipAccessory(Item item)
     {
         Accessory accessory = item as Accessory;
+        CurrentEquipAccessory = accessory;
         EquipAccessoryName = accessory.ItemName;
         AccessoryDef = accessory.Def;
     }
@@ -188,5 +191,12 @@ public class Neto : MonoBehaviour
     public void ClearBuffs()
     {
         TemporaryDef = 0;
+    }
+    public void LoadFromSaveData(Accessory equipaccessory,int tempdef)
+    {
+        CurrentEquipAccessory = equipaccessory;
+        TemporaryDef = tempdef;
+        EquipAccessoryName = equipaccessory.ItemName;
+        AccessoryDef = equipaccessory.Def;
     }
 }

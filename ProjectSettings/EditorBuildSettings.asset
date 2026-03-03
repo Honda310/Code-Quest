@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameStartScene.unity
     guid: 1a413ea5fcccd3844868d1d2cd7fe8ca
+  - enabled: 1
+    path: Assets/Scenes/ToNeto.unity
+    guid: 8cd705a62feab974b85e334d4a50d50b
+  - enabled: 1
+    path: Assets/Scenes/InFrontOfLamentForest.unity
+    guid: b1f62898469434c4ab994d1d56f83668
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

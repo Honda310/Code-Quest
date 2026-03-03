@@ -1,0 +1,21 @@
+ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+6301,"""// int初期値\nint[] a = new int[1];\nSystem.out.println(a[0]); // ____""","""1""","""null""","""undefined""","""0""",D
+6302,"""// double初期値\ndouble[] d = new double[1];\nSystem.out.println(d[0]); // ____""","""0""","""null""","""NaN""","""0.0""",D
+6303,"""// boolean初期値\nboolean[] b = new boolean[1];\nSystem.out.println(b[0]); // ____""","""true""","""0""","""null""","""false""",D
+6304,"""// String初期値\nString[] s = new String[1];\nSystem.out.println(s[0]); // ____""","""null""","""""""","""0""","""false""",A
+6305,"""// 参照コピー\nint[] a = {1};\nint[] b = a;\nb[0] = 9;\nSystem.out.println(a[0]); // ____""","""1""","""0""","""null""","""9""",D
+6306,"""// 参照比較\nint[] a = {1};\nint[] b = {1};\nSystem.out.println(a == b); // ____""","""true""","""error""","""null""","""false""",D
+6307,"""// 同一性比較\nint[] a = {1};\nint[] b = a;\nSystem.out.println(a == b); // ____""","""false""","""error""","""null""","""true""",D
+6308,"""// char初期値\nchar[] c = new char[1];\n// c[0] はヌル文字？""","""いいえ""","""エラー""","""不明""","""はい""",D
+6309,"""// 配列出力\nint[] a = {1};\nSystem.out.println(a);\n// [1]と出る？""","""いいえ""","""はい""","""エラー""","""null""",A
+6310,"""// 文字列化\nint[] a = {1};\nSystem.out.println(Arrays.toString(a)); // ____""","""1""","""{1}""","""(1)""","""[1]""",D
+6311,"""// ソート\nint[] a = {3■ 1};\nArrays.sort(a);\nSystem.out.println(a[0]); // ____""","""3""","""2""","""0""","""1""",D
+6312,"""// 内容比較\nint[] a = {1};\nint[] b = {1};\nSystem.out.println(Arrays.equals(a■ b)); // ____""","""false""","""error""","""null""","""true""",D
+6313,"""// final要素変更\nfinal int[] a = {10};\na[0] = 20;\n// 可能？""","""不可""","""無視""","""警告""","""可能""",D
+6314,"""// final再代入\nfinal int[] a = {10};\n// a = new int[3];\n// 可能？""","""可能""","""警告""","""無視""","""不可""",D
+6315,"""// null代入\nString[] s = new String[1];\ns[0] = null;\n// 可能？""","""不可""","""エラー""","""空文字""","""可能""",D
+6316,"""// 異型代入\nint[] a = new int[1];\n// a[0] = 3.5;\n// 結果は？""","""代入される""","""切り捨て""","""実行時エラー""","""エラー""",D
+6317,"""// var型推論\nvar a = new int[]{1};\n// aの型は？""","""int""","""Object""","""var""","""int[]""",D
+6318,"""// Object代入\nObject obj = new int[]{1};\n// 可能？""","""いいえ""","""エラー""","""不明""","""はい""",D
+6319,"""// short初期値\nshort[] s = new short[1];\nSystem.out.println(s[0]); // ____""","""0.0""","""null""","""false""","""0""",D
+6320,"""// long初期値\nlong[] l = new long[1];\nSystem.out.println(l[0]); // ____""","""0.0""","""null""","""false""","""0""",D

@@ -1,0 +1,21 @@
+ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+6201,"""// 長さ取得\nint[] a = {1■ 2■ 3};\nSystem.out.println(____); // 3""","""a.size()""","""a.count""","""a.length()""","""a.length""",D
+6202,"""// 確保サイズ\nint[] a = new int[10];\nSystem.out.println(a.length); // ____""","""9""","""0""","""10""","""11""",C
+6203,"""// 最後の要素\nint[] a = {1■ 2■ 3};\nSystem.out.println(____); // 3""","""a[a.length]""","""a[length]""","""a[a.length-1]""","""a[-1]""",C
+6204,"""// forループ\nint[] a = {1■ 2};\nfor(int i=0; i<____; i++) {\n  System.out.print(a[i]);\n}""","""a.length""","""a.size""","""2""","""10""",A
+6205,"""// String配列長\nString[] s = {""A""■ ""B""};\nSystem.out.println(s.length); // ____""","""2""","""1""","""0""","""null""",A
+6206,"""// 空配列長\nint[] a = {};\nSystem.out.println(a.length); // ____""","""null""","""1""","""0""","""error""",C
+6207,"""// 拡張for文\nint[] a = {10■ 20};\nfor(int x : a) {\n  System.out.print(x);\n}\n// 出力: ____""","""10""","""1020""","""20""","""30""",B
+6208,"""// 合計計算\nint[] a = {2■ 2■ 2};\nint sum = 0;\nfor(int n : a) sum += n;\nSystem.out.println(sum); // ____""","""2""","""4""","""0""","""6""",D
+6209,"""// length代入\nint[] a = new int[3];\n// a.length = 5; は可能？""","""可能""","""例外発生""","""不可(エラー)""","""無視""",C
+6210,"""// ループ条件ミス\nint[] a = {10};\n// for(int i=0; i <= a.length; i++)\n// 結果は？""","""例外発生""","""正常""","""10表示""","""無限ループ""",A
+6211,"""// null参照\nint[] a = null;\n// System.out.println(a.length);\n// 結果は？""","""0""","""null""","""例外発生""","""-1""",C
+6212,"""// 文字列長と区別\nString[] s = {""Test""};\nSystem.out.println(s.length); // ____""","""4""","""5""","""Test""","""1""",D
+6213,"""// 拡張for構文\n// for(int n ____ nums)""","""in""","""=""","""of""",""":""",D
+6214,"""// 初期化サイズ\nint[] a = {1■ 2};\n// 要素数は自動決定？""","""いいえ""","""はい""","""エラー""","""不明""",B
+6215,"""// インデックス範囲\nint[] a = new int[3];\n// 有効範囲は？""","""1■ 2■ 3""","""0■ 1■ 2■ 3""","""1■ 2""","""0■ 1■ 2""",D
+6216,"""// 直打ち計算\nint[] a = {1■ 2};\nSystem.out.println(a[0] + a[1]); // ____""","""1""","""2""","""3""","""12""",C
+6217,"""// サイズ変更\nint[] a = {1};\n// 要素追加は可能？""","""可能(add)""","""可能(append)""","""自動""","""不可(要再作成)""",D
+6218,"""// lengthの型\nint[] a = {1};\n// int len = a.length;\n// lenはint？""","""long""","""正しい""","""short""","""double""",B
+6219,"""// 要素数確認\nint[] a = {1■ 2■ 3■ 4■ 5};\nSystem.out.println(a.length); // ____""","""4""","""6""","""0""","""5""",D
+6220,"""// ループ変数i\nfor(int i=0; i<3; i++) ...\n// iの名称は？""","""カウンタ変数""","""メソッド""","""クラス""","""配列""",A

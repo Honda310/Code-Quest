@@ -13,12 +13,21 @@ public class MapChangeScript : MonoBehaviour
                 GameManager.Instance.mapManager.TransAnotherMap("ToNeto", TransId);
                 break;
             case 1:
-                GameManager.Instance.mapManager.TransAnotherMap("InFrontOfLamentForest", TransId);
+                GameManager.Instance.mapManager.TransAnotherMap("ToNeto", TransId);
                 break;
             case 2:
-                GameManager.Instance.mapManager.TransAnotherMap("LamentForest", TransId);
+                GameManager.Instance.mapManager.TransAnotherMap("InFrontOfLamentForest", TransId);
                 break;
             case 3:
+                GameManager.Instance.mapManager.TransAnotherMap("InFrontOfLamentForest", TransId);
+                break;
+            case 4:
+                GameManager.Instance.mapManager.TransAnotherMap("LamentForest", TransId);
+                break;
+            case 5:
+                GameManager.Instance.mapManager.TransAnotherMap("LamentForest", TransId);
+                break;
+            case 6:
                 GameManager.Instance.mapManager.TransAnotherMap("PoisonedSpring", TransId);
                 break;
         }

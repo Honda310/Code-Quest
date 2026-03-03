@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,7 +32,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text PlSelectLabelText;    
     [SerializeField] private Text NetoSelectLabelText;  
     [SerializeField] private Text DifficultSelectText;  
-    [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
     [SerializeField] private GameObject itemDebugPanel; // アイテムデバッグ画面
@@ -38,13 +39,47 @@ public class UIManager : MonoBehaviour
     [Header("戦闘パネルの各要素")]
     [SerializeField] private GameObject PlSelectPanel;
     [SerializeField] private GameObject NetoSelectPanel;
-    [SerializeField] private GameObject HealthDpSlidersAndCharactersPanel;
     [SerializeField] private GameObject DifficultSelectPanel;
     [SerializeField] private GameObject QuestFramePanel;
+    [SerializeField] private GameObject NormalQuestFramePanel;
+    [SerializeField] private GameObject HardQuestFramePanel;
     [SerializeField] private GameObject DifficultAndCheckButtonFramePanel;
     [SerializeField] private GameObject DifficultAndSelectButtonFramePanel;
+    [SerializeField] private GameObject BattleItemPanel;
+    [SerializeField] private GameObject BattleItemListPanel;
+    [SerializeField] private GameObject BattleItemTargetSelectPanel;
+    [SerializeField] private GameObject BattleItemReconfirmPanel;
     [SerializeField] private Slider TimeLimitSlider;
     [SerializeField] private Text TimeLimitText;
+    [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
+    [SerializeField] private Text PlayerName;
+    [SerializeField] private Image EnemyImage;
+    [SerializeField] private Text EnemyName;
+    [SerializeField] private Text BattleItemSelectSlot1;
+    [SerializeField] private Text BattleItemSelectSlot2;
+    [SerializeField] private Text BattleItemSelectSlot3;
+    [SerializeField] private Text BattleItemSelectSlot4;
+    [SerializeField] private Text BattleItemSelectSlot5;
+    [SerializeField] private Text BattleItemValue1;
+    [SerializeField] private Text BattleItemValue2;
+    [SerializeField] private Text BattleItemValue3;
+    [SerializeField] private Text BattleItemValue4;
+    [SerializeField] private Text BattleItemValue5;
+    [SerializeField] private Text BattleItemFlavorText;
+    [SerializeField] private Text PlayerItemValidTextInBattle;
+    [SerializeField] private Text NetoItemValidTextInBattle;
+    [SerializeField] private Text FillBlankAnswer;
+    private bool OnPlayerAttack;
+    private bool ItemUsedByPlayer;
+    private bool OnNetoScan;
+    private bool HardQuestion;
+    public int EnemyScanCount = 0;
+    private bool ItemUsedByNeto;
+    private int ItemUsingCharaID;
+    private int ItemUsedCharaIDByPlayer;
+    private int ItemUsedCharaIDByNeto;
+    private Item PlayerUseItemInBattle;
+    private Item NetoUseItemInBattle;
     Color skyblue = new Color32(0, 224, 255, 255);
     Color yellow = new Color32(224, 255, 0, 255);
     Color red = new Color32(255, 96, 96, 255);
@@ -111,6 +146,53 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject EquipItemFlavorPanel;
     [SerializeField] private Text EquipItemFlavorText;
 
+    [Header("コーディング問題用")]
+    [SerializeField] private CodingManager codingManager;
+    [SerializeField] private GameObject DebugPanel;
+    [SerializeField] private GameObject DebugQuestDisplayPanel;
+    [SerializeField] private GameObject DebugInputPanel;
+    [SerializeField] private GameObject DebugHintDisplayPanel;
+    [SerializeField] private GameObject DebugCorrectPanel;
+    [SerializeField] private GameObject DebugInCorrectPanel;
+    [SerializeField] private GameObject BugMapTile;
+    [SerializeField] private GameObject RepairMapTile;
+    [SerializeField] private Text DebugQuestText;
+    [SerializeField] private Text DebugInputText;
+    [SerializeField] private Text DebugHintText;
+    [SerializeField] private Text DebugErrorText;
+    [SerializeField] private QuestManager questManager;
+    private CodingQuestData currentCodingQuest;
+
+    [Header("ショップパネル用")]
+    [SerializeField] private GameObject BaseItemSelectPanel;
+    [SerializeField] private GameObject TradeItemSelectPanel;
+    [SerializeField] private GameObject ShopMenuPanel; 
+    [SerializeField] private GameObject TradeBaseConfirmPanel;
+    [SerializeField] private GameObject TradeConfirmPanel;
+    [SerializeField] private Text BaseItemSelectText1;
+    [SerializeField] private Text BaseItemSelectText2;
+    [SerializeField] private Text BaseItemSelectText3;
+    [SerializeField] private Text BaseItemSelectText4;
+    [SerializeField] private Text BaseItemSelectText5;
+    [SerializeField] private Text BaseItemValueText1;
+    [SerializeField] private Text BaseItemValueText2;
+    [SerializeField] private Text BaseItemValueText3;
+    [SerializeField] private Text BaseItemValueText4;
+    [SerializeField] private Text BaseItemValueText5;
+    [SerializeField] private Text TradeItemSelectText1;
+    [SerializeField] private Text TradeItemSelectText2;
+    [SerializeField] private Text TradeItemSelectText3;
+    [SerializeField] private Text TradeItemSelectText4;
+    [SerializeField] private Text TradeItemSelectText5;
+    [SerializeField] private Text TradeItemValueText1;
+    [SerializeField] private Text TradeItemValueText2;
+    [SerializeField] private Text TradeItemValueText3;
+    [SerializeField] private Text TradeItemValueText4;
+    [SerializeField] private Text TradeItemValueText5;
+    [SerializeField] private Text TradeItemFlavorText;
+    private Item BaseItem;
+    private Item TradeItem;
+
     [Header("細かいUIの調整用")]
     //例えば、スロット2にある選択中に下にスクロールした場合、Entered,Exit制御では
     //前のアイテムが表示され続けてしまう問題がある。上から、
@@ -119,14 +201,15 @@ public class UIManager : MonoBehaviour
     //戦闘画面からのアイテム選択時
     //private int SelectorItemIDKeeper_VerBattle=0;
     //装備画面での装備選択時
-    private int SelectorEquipIDKeeper=1; 
+    private int SelectorEquipIDKeeper=1;
+    [SerializeField] MapNamePopUp mapnamepop;
 
     [Header("会話イベントなどに使用するいろいろ")]
     [SerializeField] private GameObject TalkTextBoxPanel;
     [SerializeField] private Text TalkTextBox;
     [SerializeField] private GameObject SaveLoadPanel;
+    [SerializeField] private Text SaveDetailText;
     [SerializeField] private GameObject TalkBranchPanel;
-
     //装備&ステータス画面の制御系
     private bool EquipCharacterSelecter;
     private bool EquipSlots;
@@ -141,7 +224,7 @@ public class UIManager : MonoBehaviour
     private string AccessoryItemName;
     private bool PlayerTarget;
     private bool NetoTarget;
-
+    private int SaveSlotId = 1;
     //先に呼ばれても変なことにならないための予防用初期値
     private double MaxTimeLimit=10.0;
     private double CurrentTimeLimit = 10.0;
@@ -151,6 +234,7 @@ public class UIManager : MonoBehaviour
     private Inventory inventory;
     private Player p;
     private Neto n;
+    Dictionary<QuestCategory, string> categoris = new Dictionary<QuestCategory, string>();
     public static UIManager Active { get; private set; }
     private void Awake()
     {
@@ -165,6 +249,20 @@ public class UIManager : MonoBehaviour
         inventory = GameManager.Instance.inventory;
         UpdateStatus(p,n);
         AllPanelClose();
+        mapnamepop.MapNamePopUP(SceneManager.GetActiveScene().name);
+        categoris[QuestCategory.Variable_AdditionAndSubtraction] = "変数の加算減算";
+        categoris[QuestCategory.Variable_MultiplicationAndDivisionAndRemainder] = "変数の乗算、除算、剰余算";
+        categoris[QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence] = "変数の複合代入";
+        categoris[QuestCategory.IF_BasicComparison] = "条件分岐の基本比較";
+        categoris[QuestCategory.IF_ElseIf] = "複数の条件分岐";
+        categoris[QuestCategory.IF_LogicalOperator] = "複合条件による分岐";
+        categoris[QuestCategory.ForWhile_Basic] = "基本的な反復処理";
+        categoris[QuestCategory.ForWhile_WhileAndDoWhile] = "While文について";
+        categoris[QuestCategory.ForWhile_Nest] = "for文のネストについて";
+        categoris[QuestCategory.Array_Length_Loop] = "配列を用いた反復処理";
+        categoris[QuestCategory.Array_Types_Values] = "配列の型と値";
+        categoris[QuestCategory.Array_Decl_Init] = "配列の宣言と初期化";
+        categoris[QuestCategory.Array_Access_Index] = "配列の添字";
     }
     public void Update()
     {
@@ -235,9 +333,16 @@ public class UIManager : MonoBehaviour
         ItemPanel.SetActive(false);
         KeyBindPanel.SetActive(false);
         ConfigPanel.SetActive(false);
-        ConfigPanelGameEnd.SetActive(false);
         ItemTargetSelectPanel.SetActive(false);
         ItemConfirmPanel.SetActive(false);
+    }
+    public void MenuElementClose()
+    {
+        EquipandStatusPanel.SetActive(false);
+        ItemPanel.SetActive(false);
+        KeyBindPanel.SetActive(false);
+        ConfigPanel.SetActive(false);
+        ConfigPanelGameEnd.SetActive(false);
     }
     ///<summary>
     ///フィールド上などで、キャラの現在ステータスをUIに反映するためのメソッドです。
@@ -328,6 +433,12 @@ public class UIManager : MonoBehaviour
             EnemyStatusSlider.value = e.CurrentDP;
         }
     }
+    public void EnemySetUp(string path,string name)
+    {
+        PlayerName.text = p.PlayerName ;
+        EnemyName.text = name ;
+        EnemyImage.sprite = Resources.Load<Sprite>($"Image/Enemy/{path}");
+    }
     public void ShowLog()
     {
         logText1.text = "";
@@ -383,8 +494,7 @@ public class UIManager : MonoBehaviour
     {
         if (battleQuestText != null)
         {
-            battleQuestText.text = text+"\n\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3];
-
+            battleQuestText.text = text+"\n"+"A:"+opts[0]+ "　B:" + opts[1] + "　C:" + opts[2] + "　D:" + opts[3];
         }
     }
     /// <summary>
@@ -400,25 +510,19 @@ public class UIManager : MonoBehaviour
         string buttonText = clickedButton.GetComponentInChildren<Text>().text;
         string answer = buttonText;
 
-        if ((answer=="A" || answer == "B" || answer == "C" || answer == "D")==false)
+        if (answer=="A" || answer == "B" || answer == "C" || answer == "D")
         {
-            answer = answerInput.text;
-            GameManager.Instance.BattleManager.OnSubmitFillBrankAnswer(answer);
-            Debug.Log("fill");
+            GameManager.Instance.BattleManager.OnSubmitMultiChoiceAnswer(answer);
         }
         else
         {
-            GameManager.Instance.BattleManager.OnSubmitMultiChoiceAnswer(answer);
+            answer = answerInput.text;
+            GameManager.Instance.BattleManager.OnSubmitFillBrankAnswer(answer);
         }
             // 入力欄を空にします
             answerInput.text = "";
             QuestFramePanel.SetActive(false);
     }
-    //テンプレ用
-    //public void OnButtonClicked(Button clickedButton)
-    //{
-
-    //}
     public void OnSelectNormalButtonClicked()
     {
         DifficultAndCheckButtonFramePanel.SetActive(true);
@@ -434,11 +538,23 @@ public class UIManager : MonoBehaviour
     }
     public void OnSelectHardButtonClicked()
     {
-		
+        if (GameManager.Instance.BattleManager.ChallengableHard)
+        {
+            HardQuestion = true;
+            DifficultAndCheckButtonFramePanel.SetActive(true);
+            DifficultAndSelectButtonFramePanel.SetActive(false);
+        }
     }
     public void OnSelectHardButtonSelected()
     {
-        DifficultSelectText.text = ("＊穴埋め問題に挑戦する");
+        if (GameManager.Instance.BattleManager.ChallengableHard)
+        {
+            DifficultSelectText.text = ("＊穴埋め問題に挑戦する");
+        }
+        else
+        {
+            DifficultSelectText.text = ("＊このマップでは穴埋め問題に挑戦できません。");
+        }
     }
     public void OnSelectHardButtonDeSelected()
     {
@@ -464,6 +580,8 @@ public class UIManager : MonoBehaviour
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultSelectPanel.SetActive(false);
         NetoSelectPanel.SetActive(true);
+        RebootLog();
+        OnPlayerAttack = true;
     }
     public void OnAcceptButtonSelected()
 	{
@@ -505,7 +623,18 @@ public class UIManager : MonoBehaviour
     }
     public void OnPlayerItemButtonClicked()
     {
-		
+        ItemUsedByPlayer = true;
+        ItemUsingCharaID = 0;
+        SelectorItemIDKeeper = 0;
+        InventoryItemCursor = 0;
+        PlSelectPanel.SetActive(false);
+        NetoSelectPanel.SetActive(false);
+        BattleItemPanel.SetActive(true);
+        BattleItemListPanel.SetActive(true);
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItemSelectorChangeInBattle(0, supportItems);
+        ItemUsingCharaID = 0;
+        HideLog();
     }
     public void OnPlayerItemButtonSelected()
     {
@@ -518,9 +647,8 @@ public class UIManager : MonoBehaviour
     public void OnNetoSearchButtonClicked()
     {
         NetoSelectPanel.SetActive(false);
-        HealthDpSlidersAndCharactersPanel.SetActive(false);
-        QuestFramePanel.SetActive(true);
-        QuizStart();
+        OnNetoScan = true;
+        PlayerTurnOrderStart();
     }
     public void OnNetoSearchButtonSelected()
     {
@@ -532,7 +660,18 @@ public class UIManager : MonoBehaviour
     }
     public void OnNetoItemButtonClicked()
     {
-		
+        ItemUsedByNeto = true;
+        PlSelectPanel.SetActive(false);
+        NetoSelectPanel.SetActive(false);
+        ItemUsingCharaID = 1;
+        SelectorItemIDKeeper = 0;
+        InventoryItemCursor = 0;
+        BattleItemPanel.SetActive(true);
+        BattleItemListPanel.SetActive(true);
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItemSelectorChangeInBattle(0, supportItems);
+        ItemUsingCharaID = 1;
+        HideLog();
     }
     public void OnNetoItemButtonSelected()
     {
@@ -542,6 +681,249 @@ public class UIManager : MonoBehaviour
     {
         NetoSelectLabelText.text = ("");
     }
+    public void SupportItemSelectorChangeInBattle(int i, List<CarryItem> supportItems)
+    {
+        try
+        {
+            if (0 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
+                BattleItemValue1.text = $"{supportItems[0 + i].quantity}";
+            }
+            else
+            {
+                BattleItemSelectSlot1.text = "";
+                BattleItemValue1.text = "";
+            }
+            if (1 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
+                BattleItemValue2.text = $"{supportItems[1 + i].quantity}";
+            }
+            else
+            {
+                BattleItemSelectSlot2.text = "";
+                BattleItemValue2.text = "";
+            }
+            if (2 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
+                BattleItemValue3.text = $"{supportItems[2 + i].quantity}";
+            }
+            else
+            {
+                BattleItemSelectSlot3.text = "";
+                BattleItemValue3.text = "";
+            }
+            if (3 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
+                BattleItemValue4.text = $"{supportItems[3 + i].quantity}";
+            }
+            else
+            {
+                BattleItemSelectSlot4.text = "";
+                BattleItemValue4.text = "";
+            }
+            if (4 + i < supportItems.Count)
+            {
+                BattleItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
+                BattleItemValue5.text = $"{supportItems[4 + i].quantity}";
+            }
+            else
+            {
+                BattleItemSelectSlot5.text = "";
+                BattleItemValue5.text = "";
+            }
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
+    }
+    public void ItemListAllowDownInBattle()
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        if (supportItems == null || supportItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Min(++InventoryItemCursor, supportItems.Count - 5);
+        SupportItemSelectorChangeInBattle(InventoryItemCursor, supportItems);
+        if (ItemFlavorText.text == "") return;
+        ItemDetailUpdateInBattle(SelectorItemIDKeeper);
+    }
+    public void ItemListAllowUpInBattle()
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        if (supportItems == null || supportItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
+        SupportItemSelectorChangeInBattle(InventoryItemCursor, supportItems);
+        if (ItemFlavorText.text == "") return;
+        ItemDetailUpdateInBattle(SelectorItemIDKeeper);
+    }
+    public void ItemDetailUpdateInBattle(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
+        BattleItemFlavorText.text = focus.Flavor;
+    }
+    public void OnItemSelectorClickedInBattle(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+        SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
+        switch (focus.EffectID)
+        {
+            case 1:
+                if (p.MaxHP > p.CurrentHP)
+                {
+                    PlayerItemValidTextInBattle.text = $"HPが{Mathf.Min(focus.EffectSize, p.MaxHP - p.CurrentHP)}回復";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidTextInBattle.text = "HPが最大値";
+                    PlayerTarget = false;
+                }
+                if (n.MaxHP > n.CurrentHP)
+                {
+                    NetoItemValidTextInBattle.text = $"HPが{Mathf.Min(focus.EffectSize, n.MaxHP - n.CurrentHP)}回復";
+                    NetoTarget = true;
+                }
+                else
+                {
+                    NetoItemValidTextInBattle.text = "HPが最大値";
+                    NetoTarget = false;
+                }
+                break;
+            case 2:
+                if (focus.EffectSize > p.TemporaryAtk)
+                {
+                    PlayerItemValidTextInBattle.text = $"攻撃力+{focus.EffectSize - p.TemporaryAtk}";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidTextInBattle.text = "より強い効果を使用中";
+                    PlayerTarget = false;
+                }
+                NetoItemValidTextInBattle.text = "ネトは攻撃力を持ちません";
+                NetoTarget = false;
+                break;
+            case 3:
+                if (focus.EffectSize > p.TemporaryDef)
+                {
+                    PlayerItemValidTextInBattle.text = $"防御力+{focus.EffectSize - p.TemporaryDef}";
+                    PlayerTarget = true;
+                }
+                else
+                {
+                    PlayerItemValidTextInBattle.text = "より強い効果を使用中";
+                    PlayerTarget = false;
+                }
+                if (focus.EffectSize > n.TemporaryDef)
+                {
+                    NetoItemValidTextInBattle.text = $"防御力+{focus.EffectSize - n.TemporaryDef}";
+                    NetoTarget = true;
+                }
+                else
+                {
+                    NetoItemValidTextInBattle.text = "より強い効果を使用中";
+                    NetoTarget = false;
+                }
+                break;
+        }
+        InventorySlotIdHolder = slotID;
+        BattleItemTargetSelectPanel.SetActive(true);
+        ItemFlavorText.text = focus.Flavor;
+        if (ItemUsingCharaID == 0)
+        {
+            PlayerUseItemInBattle = focus;
+        }
+        else
+        {
+            NetoUseItemInBattle = focus;
+        }
+    }
+
+    public void OnItemSelectorEnteredInBattle(int slotID)
+    {
+        SelectorEquipIDKeeper = slotID;
+        ItemDetailUpdateInBattle(slotID);
+    }
+    public void OnItemSelectorExitInBattle()
+    {
+        BattleItemFlavorText.text = "";
+    }
+    public void OnItemTargetButtonInBattle(int CharaID)
+    {
+        if (CharaID == 0 && PlayerTarget == false) return;
+        if (CharaID == 1 && NetoTarget == false) return;
+        BattleItemTargetSelectPanel.SetActive(false);
+        BattleItemReconfirmPanel.SetActive(true);
+        CharaIdHolder = CharaID;
+    }
+    public void OnItemReconfirmAcceptInBattle()
+    {
+        ItemFlavorText.text = "";
+        BattleItemReconfirmPanel.SetActive(false);
+        BattleItemPanel.SetActive(false);
+        if (ItemUsingCharaID==0)
+        {
+            ItemUsedCharaIDByPlayer = CharaIdHolder;
+            NetoSelectPanel.SetActive(true);
+            RebootLog();
+        }
+        else
+        {
+            ItemUsedCharaIDByNeto = CharaIdHolder;
+            PlayerTurnOrderStart();
+        }
+    }
+    public void OnItemReconfirmCancelInBattle()
+    {
+        BattleItemReconfirmPanel.SetActive(false);
+    }
+    public void BattleMenuBack()
+    {
+        if (NetoSelectPanel.activeSelf && p.CurrentHP > 0)
+        {
+            NetoSelectPanel.SetActive(false);
+            PlSelectPanel.SetActive(true);
+            OnPlayerAttack = false;
+            ItemUsedByPlayer = false;
+            HardQuestion = false;
+        }
+        if (BattleItemTargetSelectPanel.activeSelf)
+        {
+            BattleItemTargetSelectPanel.SetActive(false);
+        }
+        else if (BattleItemReconfirmPanel.activeSelf)
+        {
+            BattleItemReconfirmPanel.SetActive(false);
+        }
+        else if (BattleItemPanel.activeSelf)
+        {
+            BattleItemPanel.SetActive(false);
+            if (ItemUsingCharaID==0)
+            {
+                PlSelectPanel.SetActive(true);
+                ItemUsedByPlayer = false;
+                RebootLog();
+            }
+            else
+            {
+                NetoSelectPanel.SetActive(true);
+                ItemUsedByNeto = false;
+                RebootLog();
+            }
+        }
+        if (DifficultAndSelectButtonFramePanel.activeSelf)
+        {
+            OnReselectButtonClicked();
+        }
+        else if (DifficultAndCheckButtonFramePanel.activeSelf)
+        {
+            OnCancelButtonClicked();
+        }
+    }
     public void TurnStart()
     {
         PlSelectPanel.SetActive(false);
@@ -550,8 +932,10 @@ public class UIManager : MonoBehaviour
         DifficultSelectPanel.SetActive(false);
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultAndSelectButtonFramePanel.SetActive(false);
-
-        HealthDpSlidersAndCharactersPanel.SetActive(true);
+        BattleItemPanel.SetActive(false);
+        BattleItemListPanel.SetActive(false);
+        BattleItemTargetSelectPanel.SetActive(false);
+        BattleItemReconfirmPanel.SetActive(false);
         if (p.CurrentHP > 0)
         {
             PlSelectPanel.SetActive(true);
@@ -561,14 +945,160 @@ public class UIManager : MonoBehaviour
             NetoSelectPanel.SetActive(true);
         }
         UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
+        OnPlayerAttack = false;
+        ItemUsedByPlayer = false;
+        OnNetoScan = false;
+        ItemUsedByNeto = false;
         MaxTimeLimit = p.DebugLimit;
+        HardQuestion = false;
     }
-    public void QuizStart()
+    private void PlayerTurnOrderStart()
+    {
+        if (ItemUsedByPlayer)
+        {
+            if (ItemUsedCharaIDByPlayer == 0)
+            {
+                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, p.MaxHP - p.CurrentHP);
+                        ShowLog($"{p.PlayerName}のHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal, p);
+                        break;
+                    case 2:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryAtk}上昇した！");
+                        break;
+                    case 3:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryDef}上昇した！");
+                        break;
+                }
+                p.ApplyEffect(PlayerUseItemInBattle);
+            }
+            else if (ItemUsedCharaIDByPlayer == 1)
+            {
+                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, n.MaxHP - n.CurrentHP);
+                        ShowLog($"NetoのHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal, p);
+                        break;
+                    case 2:
+                        ShowLog($"Netoは攻撃力を持ちません。効果なし");
+                        break;
+                    case 3:
+                        ShowLog($"Netoの攻撃力が一時的に{item.EffectSize - n.TemporaryDef}上昇した！");
+                        break;
+                }
+                n.ApplyEffect(PlayerUseItemInBattle);
+            }
+            inventory.RemoveItem(PlayerUseItemInBattle.ItemID, 1);
+            List<CarryItem> ResupportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+            if (InventoryItemCursor + 5 > ResupportItems.Count)
+            {
+                InventoryItemCursor--;
+            }
+            UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
+        }
+        if (ItemUsedByNeto)
+        {
+            if (ItemUsedCharaIDByNeto == 0)
+            {
+                SupportItem item = NetoUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, p.MaxHP - p.CurrentHP);
+                        ShowLog($"{p.PlayerName}のHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal,p);
+                        break;
+                    case 2:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryAtk}上昇した！");
+                        break;
+                    case 3:
+                        ShowLog($"{p.PlayerName}の攻撃力が一時的に{item.EffectSize - p.TemporaryDef}上昇した！");
+                        break;
+                }
+                p.ApplyEffect(NetoUseItemInBattle);
+            }
+            else if (ItemUsedCharaIDByNeto == 1)
+            {
+                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                switch (item.EffectID)
+                {
+                    case 1:
+                        int heal = Mathf.Min(item.EffectSize, n.MaxHP - n.CurrentHP);
+                        ShowLog($"NetoのHPが{heal}回復した！");
+                        GameManager.Instance.BattleManager.HealAnimate(heal,n);
+                        break;
+                    case 2:
+                        ShowLog($"Netoは攻撃力を持ちません。効果なし");
+                        break;
+                    case 3:
+                        ShowLog($"Netoの攻撃力が一時的に{item.EffectSize - n.TemporaryDef}上昇した！");
+                        break;
+                }
+                n.ApplyEffect(NetoUseItemInBattle);
+            }
+            inventory.RemoveItem(NetoUseItemInBattle.ItemID, 1);
+            List<CarryItem> ResupportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
+
+            if (InventoryItemCursor + 5 > ResupportItems.Count)
+            {
+                InventoryItemCursor--;
+            }
+            UpdateStatus(p, n, GameManager.Instance.BattleManager.currentEnemy);
+        }
+        if (OnNetoScan)
+        {
+            if (EnemyScanCount==0)
+            {
+                logText1.text = "ネトは敵をスキャンした！";
+                logText2.text = $"この敵は{QuestCategoriesTranslate(GameManager.Instance.BattleManager.currentEnemy.QuestionCategories)}を出題してくるよ。";
+            }
+            else
+            {
+                logText1.text = "ネトは敵をスキャンした！";
+                logText2.text = $"この敵が受けるダメージが5上昇した！(現在：{EnemyScanCount*5})";
+            }
+            EnemyScanCount++;
+        }
+        if (OnPlayerAttack)
+        {
+            StartCoroutine(QuizStart());
+        }
+        else
+        {
+            GameManager.Instance.BattleManager.NotAttackTurn();
+        }
+    }
+    private string QuestCategoriesTranslate(QuestCategory category)
+    {
+        return categoris[category];
+    }
+    public IEnumerator QuizStart()
     {
         CurrentTimeLimit = MaxTimeLimit;
-        QuestionStart = true;
         TimeLimitSlider.maxValue = (float)MaxTimeLimit;
         TimeLimitSlider.value = (float)MaxTimeLimit;
+        GameManager.Instance.BattleManager.QuestSet(HardQuestion);
+        yield return new WaitForSecondsRealtime(2.0f);
+        if (HardQuestion)
+        {
+            QuestFramePanel.SetActive(true);
+            NormalQuestFramePanel.SetActive(false);
+            HardQuestFramePanel.SetActive(true);
+        }
+        else
+        {
+            QuestFramePanel.SetActive(true);
+            NormalQuestFramePanel.SetActive(true);
+            HardQuestFramePanel.SetActive(false);
+        }
+        QuestionStart = true;
+        HideLog();
     }
     public void OnInventoryButtonClicked()
     {
@@ -578,15 +1108,11 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            MenuElementClose();
             ItemPanel.SetActive(true);
-            EquipandStatusPanel.SetActive(false);
-            ConfigPanel.SetActive(false);
-            ConfigPanelGameEnd.SetActive(false);
-            KeyBindPanel.SetActive(false);
             List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
             SupportItemSelectorChange(0, supportItems);
         }
-        
     }
     public void OnEquipAndStatusButtonClicked()
     {
@@ -596,17 +1122,15 @@ public class UIManager : MonoBehaviour
         CurrentAtkText.text = $"  ATK :";
         CurrentDefText.text = $"  DEF :";
         CurrentDebugLimitText.text = $"  Lim :";
+        CharaNameText.text = "Chara Name";
         if (EquipandStatusPanel.activeSelf)
         {
             EquipandStatusPanel.SetActive(false);
         }
         else
         {
-            ItemPanel.SetActive(false);
+            MenuElementClose();
             EquipandStatusPanel.SetActive(true);
-            ConfigPanel.SetActive(false);
-            ConfigPanelGameEnd.SetActive(false);
-            KeyBindPanel.SetActive(false);
         }
         EquipCharacterSelecter = true;
         EquipSlots = false;
@@ -638,10 +1162,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            ItemPanel.SetActive(false);
-            EquipandStatusPanel.SetActive(false);
+            MenuElementClose();
             ConfigPanel.SetActive(true);
-            KeyBindPanel.SetActive(false);
         }
         
     }
@@ -653,10 +1175,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            ItemPanel.SetActive(false);
-            EquipandStatusPanel.SetActive(false);
-            ConfigPanel.SetActive(false);
-            ConfigPanelGameEnd.SetActive(false);
+            MenuElementClose();
             KeyBindPanel.SetActive(true);
         }
         
@@ -694,8 +1213,7 @@ public class UIManager : MonoBehaviour
         PlayerTarget =false;
         NetoTarget=false;
         gm.SetMode(GameMode.Field);
-}
-    
+    }
     public void MenuToggle()
     {
         if (MenuPanel.activeSelf == false)
@@ -730,6 +1248,7 @@ public class UIManager : MonoBehaviour
         }
         else if (MenuPanel.activeSelf && EquipSlots)
         {
+            CharaNameText.text = "Chara Name";
             CharaSelector.SetActive(false);
             NetoSelector.SetActive(false);
             EquipSlots = false;
@@ -941,6 +1460,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("そのアイコンはfalseだよ");
             return;
         }
+        CharaNameText.text = p.PlayerName;
         EquipWeaponName.text = p.EquipWeaponName;
         EquipAccessoryName.text = p.EquipAccessoryName;
         CharaSelector.SetActive(true);
@@ -958,6 +1478,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("そのアイコンはfalseだよ");
             return;
         }
+        CharaNameText.text = "Neto";
         EquipWeaponName.text = "装備不可";
         EquipAccessoryName.text = n.EquipAccessoryName;
         CharaSelector.SetActive(false);
@@ -1014,11 +1535,27 @@ public class UIManager : MonoBehaviour
     {
         try
         {
-            if (weaponItems[0 + i].item != null) EquipItemSelectSlot1.text = weaponItems[0 + i].item.ItemName;
-            if (weaponItems[1 + i].item != null) EquipItemSelectSlot2.text = weaponItems[1 + i].item.ItemName;
-            if (weaponItems[2 + i].item != null) EquipItemSelectSlot3.text = weaponItems[2 + i].item.ItemName;
-            if (weaponItems[3 + i].item != null) EquipItemSelectSlot4.text = weaponItems[3 + i].item.ItemName;
-            if (weaponItems[4 + i].item != null) EquipItemSelectSlot5.text = weaponItems[4 + i].item.ItemName;
+            if (0 + i < weaponItems.Count)
+                EquipItemSelectSlot1.text = weaponItems[0 + i].item.ItemName;
+            else
+                EquipItemSelectSlot1.text = "";
+            if (1 + i < weaponItems.Count)
+                EquipItemSelectSlot2.text = weaponItems[1 + i].item.ItemName;
+            else
+                EquipItemSelectSlot2.text = "";
+            if (2 + i < weaponItems.Count)
+                EquipItemSelectSlot3.text = weaponItems[2 + i].item.ItemName;
+            else
+                EquipItemSelectSlot3.text = "";
+            if (3 + i < weaponItems.Count)
+                EquipItemSelectSlot4.text = weaponItems[3 + i].item.ItemName;
+            else
+                EquipItemSelectSlot4.text = "";
+            if (4 + i < weaponItems.Count)
+                EquipItemSelectSlot5.text = weaponItems[4 + i].item.ItemName;
+            else
+                EquipItemSelectSlot5.text = "";
+                
         }
         catch (IndexOutOfRangeException)
         {
@@ -1029,11 +1566,26 @@ public class UIManager : MonoBehaviour
     {
         try
         {
-            if (accessoryItems[0 + i].item != null) EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
-            if (accessoryItems[1 + i].item != null) EquipItemSelectSlot2.text = accessoryItems[1 + i].item.ItemName;
-            if (accessoryItems[2 + i].item != null) EquipItemSelectSlot3.text = accessoryItems[2 + i].item.ItemName;
-            if (accessoryItems[3 + i].item != null) EquipItemSelectSlot4.text = accessoryItems[3 + i].item.ItemName;
-            if (accessoryItems[4 + i].item != null) EquipItemSelectSlot5.text = accessoryItems[4 + i].item.ItemName;
+            if (0 + i < accessoryItems.Count)
+                EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
+            else
+                EquipItemSelectSlot1.text = "";
+            if (1 + i < accessoryItems.Count)
+                EquipItemSelectSlot2.text = accessoryItems[1 + i].item.ItemName;
+            else
+                EquipItemSelectSlot2.text = "";
+            if (2 + i < accessoryItems.Count)
+                EquipItemSelectSlot3.text = accessoryItems[2 + i].item.ItemName;
+            else
+                EquipItemSelectSlot3.text = "";
+            if (3 + i < accessoryItems.Count)
+                EquipItemSelectSlot4.text = accessoryItems[3 + i].item.ItemName;
+            else
+                EquipItemSelectSlot4.text = "";
+            if (4 + i < accessoryItems.Count)
+                EquipItemSelectSlot5.text = accessoryItems[4 + i].item.ItemName;
+            else
+                EquipItemSelectSlot5.text = "";
         }
         catch (IndexOutOfRangeException)
         {
@@ -1047,14 +1599,14 @@ public class UIManager : MonoBehaviour
             if (OnWeaponEquipSelecting)
             {
                 List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
-                if (weaponItems == null) return;
+                if (weaponItems == null || weaponItems.Count <= 5) return;
                 EquipSelectorcursorPosition = Mathf.Min(++EquipSelectorcursorPosition, weaponItems.Count - 5);
                 WeaponSelectorChange(EquipSelectorcursorPosition,weaponItems);
             }
             else
             {
                 List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
-                if (accessoryItems == null) return;
+                if (accessoryItems == null || accessoryItems.Count<=5) return;
                 EquipSelectorcursorPosition = Mathf.Min(++EquipSelectorcursorPosition, accessoryItems.Count - 5);
                 AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
             }
@@ -1072,14 +1624,14 @@ public class UIManager : MonoBehaviour
             if (OnWeaponEquipSelecting)
             {
                 List<CarryItem> weaponItems = inventory.GetItemsByType(Item.ItemType.Weapon);
-                if (weaponItems == null) return;
+                if (weaponItems == null || weaponItems.Count <= 5) return;
                 EquipSelectorcursorPosition = Mathf.Max(--EquipSelectorcursorPosition, 0);
                 WeaponSelectorChange(EquipSelectorcursorPosition, weaponItems);
             }
             else
             {
                 List<CarryItem> accessoryItems = inventory.GetItemsByType(Item.ItemType.Accessory);
-                if (accessoryItems == null) return;
+                if (accessoryItems == null || accessoryItems.Count <= 5) return;
                 EquipSelectorcursorPosition = Mathf.Max(--EquipSelectorcursorPosition, 0);
                 AccessorySelectorChange(EquipSelectorcursorPosition, accessoryItems);
             }
@@ -1161,16 +1713,56 @@ public class UIManager : MonoBehaviour
     {
         try
         {
-            if (supportItems[0 + i].item != null) InventoryItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
-            if (supportItems[0 + i].item != null) InventoryItemValue1.text = $"{supportItems[0 + i].quantity}";
-            if (supportItems[1 + i].item != null) InventoryItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
-            if (supportItems[1 + i].item != null) InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
-            if (supportItems[2 + i].item != null) InventoryItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
-            if (supportItems[2 + i].item != null) InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
-            if (supportItems[3 + i].item != null) InventoryItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
-            if (supportItems[3 + i].item != null) InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
-            if (supportItems[4 + i].item != null) InventoryItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
-            if (supportItems[4 + i].item != null) InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
+            if (0 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
+                InventoryItemValue1.text = $"{supportItems[0 + i].quantity}";
+            }
+            else
+            {
+                InventoryItemSelectSlot1.text = "";
+                InventoryItemValue1.text = "";
+            }
+            if(1 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
+                InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
+            }
+            else
+            {
+                InventoryItemSelectSlot2.text = "";
+                InventoryItemValue2.text = "";
+            }
+            if (2 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
+                InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
+            }
+            else
+            {
+                InventoryItemSelectSlot3.text = "";
+                InventoryItemValue3.text = "";
+            }
+            if (3 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
+                InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
+            }
+            else
+            {
+                InventoryItemSelectSlot4.text = "";
+                InventoryItemValue4.text = "";
+            }
+            if (4 + i < supportItems.Count)
+            {
+                InventoryItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
+                InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
+            }
+            else
+            {
+                InventoryItemSelectSlot5.text = "";
+                InventoryItemValue5.text = "";
+            }
         }
         catch(IndexOutOfRangeException)
         {
@@ -1194,7 +1786,7 @@ public class UIManager : MonoBehaviour
                     PlayerItemValidText.text = "HPが最大値";
                     PlayerTarget = false;
                 }
-                if (p.MaxHP > p.CurrentHP)
+                if (n.MaxHP > n.CurrentHP)
                 {
                     NetoItemValidText.text = $"HPが{Mathf.Min(focus.EffectSize, n.MaxHP - n.CurrentHP)}回復";
                     NetoTarget = true;
@@ -1261,6 +1853,12 @@ public class UIManager : MonoBehaviour
         SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
         ItemFlavorText.text = focus.Flavor;
     }
+    public void AllItemDetailUpdate(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetSortedItems();
+        Item focus = supportItems[slotID + InventoryItemCursor - 1].item;
+        ItemFlavorText.text = focus.Flavor;
+    }
     public void OnItemTargetButton(int CharaID)
     {
         if (CharaID == 0 && PlayerTarget == false) return;
@@ -1301,7 +1899,7 @@ public class UIManager : MonoBehaviour
     public void ItemListAllowDown()
     {
         List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
-        if (supportItems == null) return;
+        if (supportItems == null || supportItems.Count <= 5) return;
         InventoryItemCursor = Mathf.Min(++InventoryItemCursor, supportItems.Count - 5);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
         if (ItemFlavorText.text == "") return;
@@ -1310,7 +1908,7 @@ public class UIManager : MonoBehaviour
     public void ItemListAllowUp()
     {
         List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
-        if (supportItems == null) return;
+        if (supportItems == null || supportItems.Count <= 5) return;
         InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
         SupportItemSelectorChange(InventoryItemCursor, supportItems);
         if (ItemFlavorText.text == "") return;
@@ -1330,7 +1928,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnTitleBackExectute()
     {
-
+        SceneManager.LoadScene("BootScene");
     }
     //ここから会話系の制御
     public void TalkingEventStart()
@@ -1370,13 +1968,419 @@ public class UIManager : MonoBehaviour
     public void SavePanelEnable()
     {
         SaveLoadPanel.SetActive(true);
+        SaveSlotId = 1;
+        string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
+        string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
+        try
+        {
+            if (SaveSlotId == 1)
+            {
+                string json1 = File.ReadAllText(path1);
+                SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+                SaveDetailText.text = $"{loadedData1.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData1.currentMapName)}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            }
+            else
+            {
+                string json2 = File.ReadAllText(path2);
+                SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+                SaveDetailText.text = $"{loadedData2.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData2.currentMapName)}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData2.currentlv * 100}";
+            }
+        }
+        catch (Exception)
+        {
+            SaveDetailText.text = "セーブデータがありません。";
+        }
     }
     public void SaveExecute()
     {
-        
+        GameManager.Instance.SaveManage(SaveSlotId);
+        string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
+        string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
+        try
+        {
+            if (SaveSlotId == 1)
+            {
+                string json1 = File.ReadAllText(path1);
+                SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+                SaveDetailText.text = $"{loadedData1.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData1.currentMapName)}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            }
+            else
+            {
+                string json2 = File.ReadAllText(path2);
+                SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+                SaveDetailText.text = $"{loadedData2.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData2.currentMapName)}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData2.currentlv * 100}";
+            }
+        }
+        catch (Exception)
+        {
+            SaveDetailText.text = "セーブデータがありません。";
+
+        }
     }
     public void SavePanelDisable()
     {
+        GameManager.Instance.SetMode(GameManager.GameMode.Field);
         SaveLoadPanel.SetActive(false);
+    }
+    public void SaveSlotChange(int i)
+    {
+        SaveSlotId = i;
+        string path1 = Path.Combine(Application.persistentDataPath, "save1.json");
+        string path2 = Path.Combine(Application.persistentDataPath, "save2.json");
+        try 
+        {
+            if (SaveSlotId == 1)
+            {
+                string json1 = File.ReadAllText(path1);
+                SaveLoadManager.SaveData loadedData1 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json1);
+                SaveDetailText.text = $"{loadedData1.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData1.currentMapName)}  {loadedData1.saveDate}\nLv{loadedData1.currentlv}  Exp:{loadedData1.exp}/{loadedData1.currentlv * 100}";
+            }
+            else
+            {
+                string json2 = File.ReadAllText(path2);
+                SaveLoadManager.SaveData loadedData2 = JsonUtility.FromJson<SaveLoadManager.SaveData>(json2);
+                SaveDetailText.text = $"{loadedData2.playername}\n{GameManager.Instance.mapManager.MapNameConvertor(loadedData2.currentMapName)}  {loadedData2.saveDate}\nLv{loadedData2.currentlv}  Exp:{loadedData2.exp}/{loadedData2.currentlv * 100}";
+            }
+        }
+        catch (Exception)
+        {
+            SaveDetailText.text = "セーブデータがありません。";
+        }
+    }
+    //ここからコーディング問題用
+    public void DebugStart()
+    {
+        OnDebugTextReset();
+        DebugPanel.SetActive(true);
+        DebugQuestDisplayPanel.SetActive(true);
+        GameManager.Instance.SetMode(GameMode.Debug);
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "LamentForest":
+                currentCodingQuest = questManager.GetCodingQuestion(0);
+                break;
+            case "PoisonedSpring":
+                currentCodingQuest = questManager.GetCodingQuestion(1);
+                break;
+            case "CorrupedTown":
+                currentCodingQuest = questManager.GetCodingQuestion(2);
+                break;
+            case "Temple":
+                currentCodingQuest = questManager.GetCodingQuestion(3);
+                break;
+            case "defalut":
+                break;
+        }
+        DebugQuestText.text = currentCodingQuest.QuestionText;
+        DebugHintText.text = currentCodingQuest.QuestionHint;
+    }
+    public void OnDebugPanelReset()
+    {
+        DebugQuestDisplayPanel.SetActive(false);
+        DebugInputPanel.SetActive(false);
+        DebugHintDisplayPanel.SetActive(false);
+        DebugCorrectPanel.SetActive(false);
+        DebugCorrectPanel.SetActive(false);
+    }
+    public void OnDebugTextReset()
+    {
+        DebugQuestText.text = "";
+        DebugInputText.text = "";
+        DebugHintText.text = "";
+    }
+    public void OnCodingQuestDisplayButtonClicked()
+    {
+        OnDebugPanelReset();
+        DebugQuestDisplayPanel.SetActive(true);
+    }
+    public void OnCodeWriteDisplayButtonClicked()
+    {
+        OnDebugPanelReset();
+        DebugInputPanel.SetActive(true);
+    }
+    public void OnHintDisplayButtonClicked()
+    {
+        OnDebugPanelReset();
+        DebugHintDisplayPanel.SetActive(true);
+    }
+    public void OnCodeSendingButtonClicked()
+    {
+        codingManager.CodeSending(DebugInputText.text);
+        if (codingManager.AnswerCheck(currentCodingQuest))
+        {
+            DebugCorrectPanel.SetActive(true);
+        }
+        else
+        {
+            DebugInCorrectPanel.SetActive(true);
+            DebugErrorText.text = "";
+        }
+    }
+    public void OnCodingCancelButtonClicked()
+    {
+        GameManager.Instance.SetMode(GameMode.Field);
+        DebugPanel.SetActive(false);
+        OnDebugPanelReset();
+        OnDebugTextReset();
+    }
+    public void OnDebugCorrectCheckButton()
+    {
+        OnCodingCancelButtonClicked();
+        BugMapTile.SetActive(false);
+        RepairMapTile.SetActive(true);
+    }
+    public void OnDebugInCorrectCheckButton()
+    {
+        DebugInCorrectPanel.SetActive(false);
+    }
+    //ここからショップパネル用
+    public void ShopPanelOpen()
+    {
+        shopPanel.SetActive(true);
+        ShopMenuPanel.SetActive(true);
+        ShopPanelReset();
+        GameManager.Instance.SetMode(GameMode.Shop);
+    }
+    public void ShopPanelReset()
+    {
+        BaseItemSelectPanel.SetActive(false);
+        TradeItemSelectPanel.SetActive(false);
+        TradeConfirmPanel.SetActive(false);
+    }
+    public void OnTradeButtonClicked()
+    {
+        BaseItemSelectPanel.SetActive(true);
+        ShopMenuPanel.SetActive(false);
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        BaseItemSelectorChange(0, AllItems);
+        InventoryItemCursor = 0;
+        SelectorItemIDKeeper = 0;
+    }
+    public void OnTalkInShopButtonClicked()
+    {
+        
+    }
+    public void OnReturnInShopButtonClicked()
+    {
+        ShopPanelReset();
+        shopPanel.SetActive(false);
+        GameManager.Instance.SetMode(GameMode.Field);
+    }
+    public void OnTradeBaseDecideButtonClicked()
+    {
+        BaseItemSelectPanel.SetActive(false);
+        TradeBaseConfirmPanel.SetActive(false);
+        TradeItemSelectPanel.SetActive(true);
+        inventory.RemoveItem(BaseItem.ItemID,1);
+        List<CarryItem> SameRarityItems = inventory.GetFilteredByRarityItemsForTrade(BaseItem.Rarity);
+        TradeItemSelectorChange(0, SameRarityItems);
+        InventoryItemCursor = 0;
+    }
+    public void OnTradeAcceptButtonClicked()
+    {
+        inventory.AddItem(TradeItem, 1);
+        TradeConfirmPanel.SetActive(false);
+        TradeItemSelectPanel.SetActive(false);
+        ShopMenuPanel.SetActive(true);
+    }
+    public void OnBaseItemSelectorClicked(int slotID)
+    {
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        Item focus = AllItems[slotID + InventoryItemCursor - 1].item;
+        InventorySlotIdHolder = slotID;
+        TradeBaseConfirmPanel.SetActive(true);
+        TradeItemFlavorText.text = focus.Flavor;
+        BaseItem = focus;
+    }
+    
+    public void OnTradeBaseItemSelectorEntered(int slotID)
+    {
+        SelectorEquipIDKeeper = slotID;
+        ItemDetailUpdateForTradeBase(slotID);
+    }
+    public void OnTradeBaseItemSelectorExit()
+    {
+        TradeItemFlavorText.text = "";
+    }
+    public void OnTradeItemSelectorClicked(int slotID)
+    {
+        List<CarryItem> Items = inventory.GetFilteredByRarityItemsForTrade(BaseItem.Rarity);
+        int idx = slotID + InventoryItemCursor - 1;
+        if (idx < Items.Count)
+        {
+            Item focus = Items[slotID + InventoryItemCursor - 1].item;
+            InventorySlotIdHolder = slotID;
+            TradeConfirmPanel.SetActive(true);
+            TradeItemFlavorText.text = focus.Flavor;
+            TradeItem = focus;
+        }
+    }
+    public void OnTradeItemSelectorEntered(int slotID)
+    {
+        SelectorEquipIDKeeper = slotID;
+        ItemDetailUpdateForTrade(slotID);
+    }
+    public void OnTradeItemSelectorExit()
+    {
+        TradeItemFlavorText.text = "";
+    }
+    public void TradeItemListAllowDown()
+    {
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        if (AllItems == null || AllItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Min(++InventoryItemCursor, AllItems.Count - 5);
+        BaseItemSelectorChange(InventoryItemCursor, AllItems);
+        if (TradeItemFlavorText.text == "") return;
+        AllItemDetailUpdate(SelectorItemIDKeeper);
+    }
+    public void TradeItemListAllowUp()
+    {
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        if (AllItems == null || AllItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
+        BaseItemSelectorChange(InventoryItemCursor, AllItems);
+        if (TradeItemFlavorText.text == "") return;
+        AllItemDetailUpdate(SelectorItemIDKeeper);
+    }
+    public void ItemDetailUpdateForTradeBase(int slotID)
+    {
+        List<CarryItem> Allitems = inventory.GetSortedItems();
+        int idx = slotID + InventoryItemCursor - 1;
+        if (idx < Allitems.Count)
+        {
+            Item focus = Allitems[idx].item;
+            TradeItemFlavorText.text = focus.Flavor;
+        }
+    }
+    public void ItemDetailUpdateForTrade(int slotID)
+    {
+        List<CarryItem> Allitems = inventory.GetFilteredByRarityItemsForTrade(BaseItem.Rarity);
+        int idx = slotID + InventoryItemCursor - 1;
+        if (idx < Allitems.Count)
+        {
+            Item focus = Allitems[idx].item;
+            TradeItemFlavorText.text = focus.Flavor;
+        }
+        
+    }
+    public void BaseItemSelectorChange(int i, List<CarryItem> AllItem)
+    {
+        try
+        {
+            if (0 + i < AllItem.Count)
+            {
+                BaseItemSelectText1.text = AllItem[0 + i].item.ItemName;
+                BaseItemValueText1.text = $"{AllItem[0 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText1.text = "";
+                BaseItemValueText1.text = "";
+            }
+            if (1 + i < AllItem.Count)
+            {
+                BaseItemSelectText2.text = AllItem[1 + i].item.ItemName;
+                BaseItemValueText2.text = $"{AllItem[1 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText2.text = "";
+                BaseItemValueText2.text = "";
+            }
+            if (2 + i < AllItem.Count)
+            {
+                BaseItemSelectText3.text = AllItem[2 + i].item.ItemName;
+                BaseItemValueText3.text = $"{AllItem[2 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText3.text = "";
+                BaseItemValueText3.text = "";
+            }
+            if (3 + i < AllItem.Count)
+            {
+                BaseItemSelectText4.text = AllItem[3 + i].item.ItemName;
+                BaseItemValueText4.text = $"{AllItem[3 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText4.text = "";
+                BaseItemValueText4.text = "";
+            }
+            if (4 + i < AllItem.Count)
+            {
+                BaseItemSelectText5.text = AllItem[4 + i].item.ItemName;
+                BaseItemValueText5.text = $"{AllItem[4 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText5.text = "";
+                BaseItemValueText5.text = "";
+            }
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
+    }
+    public void TradeItemSelectorChange(int i, List<CarryItem> AllItem)
+    {
+        try
+        {
+            if (0 + i < AllItem.Count)
+            {
+                TradeItemSelectText1.text = AllItem[0 + i].item.ItemName;
+                TradeItemValueText1.text = $"{AllItem[0 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText1.text = "";
+                TradeItemValueText1.text = "";
+            }
+            if (1 + i < AllItem.Count)
+            {
+                TradeItemSelectText2.text = AllItem[1 + i].item.ItemName;
+                TradeItemValueText2.text = $"{AllItem[1 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText2.text = "";
+                TradeItemValueText2.text = "";
+            }
+            if (2 + i < AllItem.Count)
+            {
+                TradeItemSelectText3.text = AllItem[2 + i].item.ItemName;
+                TradeItemValueText3.text = $"{AllItem[2 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText3.text = "";
+                TradeItemValueText3.text = "";
+            }
+            if (3 + i < AllItem.Count)
+            {
+                TradeItemSelectText4.text = AllItem[3 + i].item.ItemName;
+                TradeItemValueText4.text = $"{AllItem[3 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText4.text = "";
+                TradeItemValueText4.text = "";
+            }
+            if (4 + i < AllItem.Count)
+            {
+                TradeItemSelectText5.text = AllItem[4 + i].item.ItemName;
+                TradeItemValueText5.text = $"{AllItem[4 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText5.text = "";
+                TradeItemValueText5.text = "";
+            }
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
     }
 }

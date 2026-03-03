@@ -12,8 +12,6 @@ public class DataManager : MonoBehaviour
     public Dictionary<int, Weapon> WeaponMaster = new Dictionary<int, Weapon>();
     public Dictionary<int, Accessory> AccessoryMaster = new Dictionary<int, Accessory>();
     public Dictionary<int, SupportItem> SupportItemMaster = new Dictionary<int, SupportItem>();
-
-    // 敵データ検索用辞書
     public Dictionary<int, EnemyData> EnemyMaster = new Dictionary<int, EnemyData>();
 
     public void LoadAllData()
@@ -22,7 +20,8 @@ public class DataManager : MonoBehaviour
         LoadAccessories("Data/Accessory");
         LoadSupportItems("Data/SupportItem");
         LoadEnemies("Data/Enemy");
-
+        LoadTreasureBoxes("Data/TreasureBox");
+        
         Debug.Log("全データのロードが完了しました。");
     }
 
@@ -31,11 +30,12 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 7 || line.Length > 7) continue;
-			int id = int.Parse(line[0]);
-            Weapon w = new Weapon(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
-            if (!WeaponMaster.ContainsKey(id)) WeaponMaster.Add(id, w);
-
+            if (line.Length == 7)
+            {
+                int id = int.Parse(line[0]);
+                Weapon w = new Weapon(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
+                if (!WeaponMaster.ContainsKey(id)) WeaponMaster.Add(id, w);
+            }
         }
         Debug.Log($"武器マスタ: {WeaponMaster.Count}件 ロード完了");
     }
@@ -45,10 +45,12 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 6 || line.Length > 6) continue;
-			int id = int.Parse(line[0]);
-            Accessory a = new Accessory(id, line[1], int.Parse(line[2]), int.Parse(line[3]), Enum.Parse<Item.ItemType>(line[4]), line[5]);
-            if (!AccessoryMaster.ContainsKey(id)) AccessoryMaster.Add(id, a);
+            if (line.Length == 6)
+            {
+                int id = int.Parse(line[0]);
+                Accessory a = new Accessory(id, line[1], int.Parse(line[2]), int.Parse(line[3]), Enum.Parse<Item.ItemType>(line[4]), line[5]);
+                if (!AccessoryMaster.ContainsKey(id)) AccessoryMaster.Add(id, a);
+            }
         }
         Debug.Log($"アクセサリマスタ: {AccessoryMaster.Count}件 ロード完了");
     }
@@ -58,10 +60,12 @@ public class DataManager : MonoBehaviour
         var csv = CSVReader.Read(path);
         foreach (var line in csv)
         {
-            if (line.Length < 7 || line.Length > 7) continue;
-			int id = int.Parse(line[0]);
-            SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
-            if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
+            if (line.Length == 7)
+            {
+                int id = int.Parse(line[0]);
+                SupportItem s = new SupportItem(id, line[1], int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), Enum.Parse<Item.ItemType>(line[5]), line[6]);
+                if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
+            }
         }
         Debug.Log($"サポートアイテムマスタ: {SupportItemMaster.Count}件 ロード完了");
     }
@@ -80,7 +84,7 @@ public class DataManager : MonoBehaviour
             int maxDp = CSVParser.ParseInt(line[2]);
             int atk = CSVParser.ParseInt(line[3]);
 
-            List<QuestCategory> categories = CSVParser.ParseEnumList<QuestCategory>(line[4], '/');
+            QuestCategory categories = CSVParser.ParseEnum(line[4], QuestCategory.None);
 
             string imageFileName = line[5];
             int Exp = CSVParser.ParseInt(line[6]);
@@ -91,8 +95,22 @@ public class DataManager : MonoBehaviour
             {
                 EnemyMaster.Add(id, data);
             }
+            GameManager.Instance.enemyList.EnemyRegist(id);
         }
         Debug.Log($"敵マスタ: {EnemyMaster.Count}件 ロード完了");
+    }
+    private void LoadTreasureBoxes(string path)
+    {
+        List<string[]> csv = CSVParser.Read(path);
+        for (int i = 1; i < csv.Count; i++)
+        {
+            string[] line = csv[i];
+            if (line.Length < 2) continue;
+            int id = CSVParser.ParseInt(line[0]);
+            int itemid = CSVParser.ParseInt(line[1]);
+            GameManager.Instance.treasureBoxList.CreateTreasureBox(id, itemid);
+        }
+        
     }
 	public Item GetItemById(Item.ItemType type, int id)
 	{
@@ -126,10 +144,10 @@ public class EnemyData
     public string Name;
     public int MaxDP;
     public int Atk;
-    public List<QuestCategory> Categories;
+    public QuestCategory Categories;
     public string ImageFileName;
     public int Exp;
-    public EnemyData(int id, string name, int dp, int atk, List<QuestCategory> categories, string imgName, int exp)
+    public EnemyData(int id, string name, int dp, int atk, QuestCategory categories, string imgName, int exp)
     {
         ID = id;
         Name = name;

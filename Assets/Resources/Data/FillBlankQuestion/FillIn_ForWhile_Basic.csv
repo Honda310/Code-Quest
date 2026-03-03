@@ -1,0 +1,46 @@
+ID,QuestionText,CorrectAnswer
+Sel001,// 0から4まで5回繰り返すための命令を(****)に書いてね\n(****) (int i = 0; i < 5; i++) {\n    System.out.println(i);\n},for
+Sel002,// iが5「より小さい」あいだ続けるための記号を(****)に書いてね\nfor (int i = 0; i (****) 5; i++) {\n   // 処理\n},<
+Sel003,int a = 5;\n// aの値を1増やす演算子を(****)に書いてね\na(****);\nSystem.out.println(a);,++
+Sel004,// 1から3まで繰り返すための命令を(****)に書いてね\n(****) (int j = 1; j <= 3; j++) {\n    System.out.println(j);\n},for
+Sel005,int flag = 1;\n// 「もしflagが1なら」実行するための命令を(****)に書いてね\n(****) (flag == 1) {\n    System.out.println("Start");\n},if
+Sel006,// 整数を入れる変数iを作るための型を(****)に書いてね\nfor ((****) i = 0; i < 5; i++) {\n    // 処理\n},int
+Sel007,// 変数iを1増やす演算子を(****)に書いてね\nfor (int i = 0; i < 5; i(****)) {\n    // 処理\n},++
+Sel008,// iが5「より小さい」あいだ続けるための記号を(****)に書いてね\nfor (int i = 0; i (****) 5; i++) {\n    // 処理\n},<
+Sel009,int x = 0;\n// xの値を1増やす演算子を(****)に書いてね\nx(****);\nSystem.out.println(x);,++
+Sel010,// 10から1まで繰り返すための命令を(****)に書いてね\n(****) (int k = 10; k > 0; k--) {\n    System.out.println(k);\n},for
+Sel011,// ループのたびにiを1増やす演算子を(****)に書いてね\nfor (int i = 0; i < 5; i(****)) {\n    // 処理\n},++
+Sel012,// 整数を入れる変数を宣言する型を(****)に書いてね\nfor ((****) i = 0; i < 5; i++) {\n    // 処理\n},int
+Sel013,int y = 8;\n// yの値を1減らす演算子を(****)に書いてね\ny(****);\nSystem.out.println(y);,--
+Sel014,// iが5「より小さい」あいだ続けるための記号を(****)に書いてね\nfor (int i = 0; i (****) 5; i++) {\n    // 処理\n},<
+Sel015,int c = 2;\n// cの値を1増やす演算子を(****)に書いてね\nc(****);\nSystem.out.println(c);,++
+Sel016,// iを1増やす演算子を(****)に書いてね\nfor (int i = 0; i < 5; i(****)) {\n    // 処理\n},++
+Sel017,// 1から10まで繰り返すための命令を(****)に書いてね\n(****) (int n = 1; n <= 10; n += 2) {\n    System.out.println(n);\n},for
+Sel018,// 整数を入れる変数nを作るための型を(****)に書いてね\nfor ((****) n = 1; n <= 10; n++) {\n    // 処理\n},int
+Sel019,int z = 10;\n// zの値を1減らす演算子を(****)に書いてね\nz(****);\nSystem.out.println(z);,--
+Sel020,// iが5「より小さい」か調べる記号を(****)に書いてね\nfor (int i = 0; i (****) 5; i++) {\n    // 処理\n},<
+Sel021,// 5から1まで繰り返すための命令を(****)に書いてね\n(****) (int i = 5; i > 0; i--) {\n    System.out.println(i);\n},for
+Sel022,// 整数を入れる変数iを作るための型を(****)に書いてね\nfor ((****) i = 0; i < 5; i++) {\n    // 処理\n},int
+Sel023,int count = 5;\n// countを1減らす演算子を(****)に書いてね\ncount(****);\nSystem.out.println(count);,--
+Sel024,// iに3を足し合わせる演算子を(****)に書いてね\nfor (int i = 0; i <= 6; i (****) 3) {\n    // 処理\n},+=
+Sel025,int x = 0; x++;\n// 整数を入れる変数を宣言する型を(****)に書いてね\n(****) typeX = x;,int
+Sel026,// iが5「より小さい」か調べる記号を(****)に書いてね\nfor (int i = 0; i (****) 5; i++) {\n    // 処理\n},<
+Sel027,int x = 5;\n// 「もしxが5なら」実行するための命令を(****)に書いてね\n(****) (x == 5) {\n    System.out.println("Match");\n},if
+Sel028,// 整数を入れる変数iを作るための型を(****)に書いてね\nfor ((****) i = 0; i < 5; i++) {\n    // 処理\n},int
+Sel029,int m = 1;\n// mを1減らす演算子を(****)に書いてね\nm(****);\nSystem.out.println(m);,--
+Sel030,// iを1増やす演算子を(****)に書いてね\nfor (int i = 0; i < 5; i(****)) {\n    // 処理\n},++
+Sel031,// 0から3まで繰り返すための命令を(****)に書いてね\n(****) (int i = 0; i < 4; i++) {\n    System.out.println(i);\n},for
+Sel032,int data = 100;\n// 整数を入れる変数valを作るための型を(****)に書いてね\n(****) val = data;,int
+Sel033,// iが5「より小さい」か調べる記号を(****)に書いてね\nfor (int i = 0; i (****) 5; i++) {\n    // 処理\n},<
+Sel034,int d = 9;\n// dを1増やす演算子を(****)に書いてね\nd(****);\nSystem.out.println(d);,++
+Sel035,// 整数を入れる変数iを作るための型を(****)に書いてね\nfor ((****) i = 0; i < 5; i++) {\n    // 処理\n},int
+Sel036,// iを1増やす演算子を(****)に書いてね\nfor (int i = 0; i < 5; i(****)) {\n    // 処理\n},++
+Sel037,'int s1 = 2;
+int s2 = 5;
+// s1がs2「より小さい」なら正しい(true)となる記号
+boolean check = (s1 (****) s2);',<
+Sel038,'int flag = 1;
+// 条件分岐をするための命令
+(****) (flag == 0) {
+    System.out.println("Zero");
+}',if

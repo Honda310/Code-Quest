@@ -1,0 +1,20 @@
+ID,QuestionText,CorrectAnswer
+3101,"boolean a = false;\n// ifの条件がダメだったときに実行する命令を(****)に書いてね\nif (a) {\n    System.out.println(""A"");\n} (****) {\n    System.out.println(""Not A"");\n}",else
+3102,"int x = 7;\n// 最初の条件がダメで、別の条件(x>5)を調べる命令を(****)に書いてね\nif (x > 10) {\n    System.out.println(""Large"");\n} (****) (x > 5) {\n    System.out.println(""Medium"");\n}",else if
+3103,"int score = 80;\n// 最初の条件がダメで、次の条件(score > 70)を調べる命令を(****)に書いてね\nif (score > 90) {\n    System.out.println(""S"");\n} (****) (score > 70) {\n    System.out.println(""A"");\n}",else if
+3104,"int p = 2;\n// pが1ではなく、2の場合を調べる命令を(****)に書いてね\nif (p == 1) {\n    System.out.println(""One"");\n} (****) (p == 2) {\n    System.out.println(""Two"");\n}",else if
+3105,"boolean isValid = false;\n// isValidがfalse(ダメ)なときに実行する命令を(****)に書いてね\nif (isValid) {\n    System.out.println(""Valid"");\n} (****) {\n    System.out.println(""Invalid"");\n}",else
+3106,"int temp = 25;\n// 30以下だけど、20より大きい場合を調べる命令を(****)に書いてね\nif (temp > 30) {\n    System.out.println(""Hot"");\n} (****) (temp > 20) {\n    System.out.println(""Warm"");\n}",else if
+3107,"int mode = 2;\n// modeが1じゃなくて2の場合を調べる命令を(****)に書いてね\nif (mode == 1) {\n    System.out.println(""Mode 1"");\n} (****) (mode == 2) {\n    System.out.println(""Mode 2"");\n}",else if
+3108,"boolean hasError = false;\n// hasErrorがfalse(ダメ)なときに実行する命令を(****)に書いてね\nif (hasError) {\n    System.out.println(""Error"");\n} (****) {\n    System.out.println(""Success"");\n}",else
+3109,"int level = 2;\n// levelが3じゃなくて2の場合を調べる命令を(****)に書いてね\nif (level == 3) {\n    System.out.println(""High"");\n} (****) (level == 2) {\n    System.out.println(""Mid"");\n}",else if
+3110,"boolean isDone = false;\n// isDoneがfalse(まだ)なときに実行する命令を(****)に書いてね\nif (isDone) {\n    System.out.println(""Finished"");\n} (****) {\n    System.out.println(""Pending"");\n}",else
+3111,"int num = 0;\n// 負の数じゃなくて、0の場合を調べる命令を(****)に書いてね\nif (num < 0) {\n    System.out.println(""Negative"");\n} (****) (num == 0) {\n    System.out.println(""Zero"");\n}",else if
+3112,"int day = 7;\n// 1じゃなくて、7の場合を調べる命令を(****)に書いてね\nif (day == 1) {\n    System.out.println(""Sunday"");\n} (****) (day == 7) {\n    System.out.println(""Saturday"");\n}",else if
+3113,"boolean isReady = false;\n// isReadyがfalse(ダメ)なときに実行する命令を(****)に書いてね\nif (isReady) {\n    System.out.println(""Go"");\n} (****) {\n    System.out.println(""Wait"");\n}",else
+3114,"boolean checkA = false;\nboolean checkB = true;\n// Aがダメで、BがOKな場合を調べる命令を(****)に書いてね\nif (checkA) {\n    System.out.println(""A OK"");\n} (****) (checkB) {\n    System.out.println(""B OK"");\n}",else if
+3115,"int val = 60;\n// 100以下だけど、50より大きい場合を調べる命令を(****)に書いてね\nif (val > 100) {\n    System.out.println(""Max"");\n} (****) (val > 50) {\n    System.out.println(""Half"");\n}",else if
+3116,"boolean isFalse = false;\n// 上の条件以外の場合に実行する命令を(****)に書いてね\nif (isFalse) {\n    System.out.println(""NG"");\n} (****) {\n    System.out.println(""OK"");\n}",else
+3117,"int state = 2;\n// stateが1じゃなくて2の場合を調べる命令を(****)に書いてね\nif (state == 1) {\n    System.out.println(""Start"");\n} (****) (state == 2) {\n    System.out.println(""Stop"");\n}",else if
+3118,"int h = 7;\n// 10以下だけど、5より大きい場合を調べる命令を(****)に書いてね\nif (h > 10) {\n    System.out.println(""Tall"");\n} (****) (h > 5) {\n    System.out.println(""Average"");\n}",else if
+3119,"boolean result = false;\n// resultがfalse(ダメ)なときに実行する命令を(****)に書いてね\nif (result) {\n    System.out.println(""Win"");\n} (****) {\n    System.out.println(""Lose"");\n}",else

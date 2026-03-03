@@ -15,12 +15,14 @@ public class BattleManager : MonoBehaviour
     private Player player;
     private Neto neto;
     private QuestData currentQuestion;
-    List<QuestCategory> categories = new List<QuestCategory>();
+    private QuestCategory categories;
     private QuestManager questManager;
     [SerializeField] private MultipleChoiceQuest choicechecker;
     [SerializeField] private FillBlankQuest writechecker;
     [SerializeField] private UIManager uimanager;
     private bool hitPlayer;
+    public bool ChallengableHard=false;
+    
     private void Awake()
     {
         GameManager.Instance.RegisterBattleManager(this);
@@ -28,10 +30,7 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         questManager = GameManager.Instance.questManager;
-        //choicechecker = GetComponent<MultipleChoiceQuest>();
-        //writechecker = GetComponent<FillBlankQuest>();
     }
-
     /// <summary>
     /// 戦闘開始処理
     /// </summary>
@@ -54,35 +53,56 @@ public class BattleManager : MonoBehaviour
         currentEnemy.CurrentDP = 0;
         currentEnemy.Atk = data.Atk;
         currentEnemy.Exp = data.Exp;
-
-        categories.Clear();
-        categories.Add(QuestCategory.Variable_AdditionAndSubtraction);
-        categories.Add(QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence);
-        categories.Add(QuestCategory.Variable_MultiplicationAndDivisionAndRemainder);
-
-        questManager.CreateDeck(categories);
-
-        GameManager.Instance.SetMode(GameManager.GameMode.Battle);
-        UIManager.Active?.ShowLog();
-        damagePop.TextReset();
-        NextTurn();
-    }
-
-    public void NextTurn()
-    {
-        currentQuestion = questManager.GetNextQuestion();
-        if (currentQuestion != null)
+        categories = data.Categories;
+        questManager.CreateDeckNormal(categories);
+        if (!(categories == QuestCategory.Variable_AdditionAndSubtraction || categories == QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence || categories == QuestCategory.Variable_MultiplicationAndDivisionAndRemainder))
         {
-            uimanager.UpdateBattleMessage($"出力される内容を答えてネト！\n\n{currentQuestion.QuestionText}",currentQuestion.Options);
+            questManager.CreateDeckHard(categories);
+            ChallengableHard = true;
         }
         else
         {
-            uimanager.UpdateBattleMessage("問題切れ！");
+            ChallengableHard = false;
         }
+        GameManager.Instance.SetMode(GameManager.GameMode.Battle);
+        uimanager.ShowLog();
+        uimanager.EnemySetUp(data.ImageFileName,data.Name);
+        damagePop.TextReset();
+        uimanager.EnemyScanCount = 0;
         uimanager.TurnStart();
     }
-
-    public void OnSubmitMultiChoiceAnswer(string code)//4択クイズの正解確認
+    public void QuestSet(bool hard)
+    {
+        if (hard)
+        {
+            currentQuestion = questManager.GetNextQuestionHard();
+            if (currentQuestion != null)
+            {
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}");
+            }
+            else
+            {
+                questManager.CreateDeckHard(categories);
+                currentQuestion = questManager.GetNextQuestionHard();
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}");
+            }
+        }
+        else
+        {
+            currentQuestion = questManager.GetNextQuestionNormal();
+            if (currentQuestion != null)
+            {
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            }
+            else
+            {
+                questManager.CreateDeckNormal(categories);
+                currentQuestion = questManager.GetNextQuestionNormal();
+                uimanager.UpdateBattleMessage($"出力される内容を答えてね！\n{currentQuestion.QuestionText}", currentQuestion.Options);
+            }
+        }
+    }
+    public void OnSubmitMultiChoiceAnswer(string code)
     {
         if (choicechecker.CheckAnswer(code, currentQuestion))
         {
@@ -93,21 +113,46 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(QuizIncorrect());
         }
     }
+    public void OnSubmitFillBrankAnswer(string code)
+    {
+        if (writechecker.CheckAnswer(code, currentQuestion.CorrectAnswer))
+        {
+            StartCoroutine(QuizCorrectHard());
+        }
+        else
+        {
+            StartCoroutine(QuizIncorrect());
+        }
+    }
     public void TimeExpired()
     {
         StartCoroutine(QuizIncorrect());
     }
-    public void OnSubmitFillBrankAnswer(string code)
-    {
-
-    }
     private IEnumerator QuizCorrect()
     {
         yield return new WaitForSecondsRealtime(0.4f);
-        currentEnemy.TakeDamage(player.CurrentAtk);
-        UIManager.Active?.ShowLog($"問題に正解、{player.CurrentAtk}DPを与えた！");
+        int dmg = player.CurrentAtk + (uimanager.EnemyScanCount - 1) * 5;
+        currentEnemy.TakeDamage(dmg);
+        UIManager.Active?.ShowLog($"問題に正解、{dmg}DPを与えた！");
         uimanager.UpdateStatus(player, neto, currentEnemy);
-        damagePop.EnemyDpPlay(player.CurrentAtk);
+        damagePop.EnemyDpPlay(dmg);
+        if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
+        {
+            StartCoroutine(EndBattle(true));
+        }
+        else
+        {
+            StartCoroutine(EnemyTurn());
+        }
+    }
+    private IEnumerator QuizCorrectHard()
+    {
+        yield return new WaitForSecondsRealtime(0.4f);
+        int dmg = (player.CurrentAtk * 3 / 2 + (uimanager.EnemyScanCount - 1) * 5);
+        currentEnemy.TakeDamage(dmg);
+        UIManager.Active?.ShowLog($"問題に正解、{dmg}DPを与えた！");
+        uimanager.UpdateStatus(player, neto, currentEnemy);
+        damagePop.EnemyDpPlay(dmg);
         if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
         {
             StartCoroutine(EndBattle(true));
@@ -121,6 +166,18 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.4f);
         UIManager.Active.ShowLog("不正解、ダメージを与えられなかった…");
+        StartCoroutine(EnemyTurn());
+    }
+    public void HealAnimate(int heal,Player p)
+    {
+        damagePop.PlayerHealPlay(heal);
+    }
+    public void HealAnimate(int heal,Neto n)
+    {
+        damagePop.NetoHealPlay(heal);
+    }
+    public void NotAttackTurn()
+    {
         StartCoroutine(EnemyTurn());
     }
     private IEnumerator EnemyTurn()
@@ -168,7 +225,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            NextTurn();
+            uimanager.TurnStart();
         }
     }
 
@@ -178,7 +235,7 @@ public class BattleManager : MonoBehaviour
         if (win)
         {
             Destroy(currentEnemy.gameObject);
-            GameManager.Instance.MarkEnemyDefeated();
+            GameManager.Instance.enemyList.EnemyDefeat(currentEnemy.EnemyID);
         }
         player.ClearBuffs();
         neto.ClearBuffs();

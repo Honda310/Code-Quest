@@ -1,0 +1,20 @@
+﻿ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+2101,int a = 10;\nif (a > 10) {\n System.out.println(1);\n} else if (a == 10) {\n System.out.println(2);\n} else {\n System.out.println(3);\n},1,2,3,1\n2,B
+2102,"int x = 5;\nif (x > 5) {\n System.out.println(""A"");\n} else if (x < 5) {\n System.out.println(""B"");\n} else {\n System.out.println(""C"");\n}",A,B,C,A\nB\nC,C
+2103,"int num = 8;\nif (num % 2 == 0) {\n System.out.println(""偶数"");\n} else if (num > 5) {\n System.out.println(""大"");\n} else {\n System.out.println(""小"");\n}",偶数,大,小,偶数\n大,A
+2104,"int score = 75;\nif (score >= 80) {\n System.out.println(""優"");\n} else if (score >= 70) {\n System.out.println(""良"");\n} else {\n System.out.println(""可"");\n}",優,良,可,優\n良,B
+2105,"int temp = 10;\nif (temp < 0) {\n System.out.println(""寒"");\n} else if (temp < 20) {\n System.out.println(""適"");\n} else {\n System.out.println(""暑"");\n}",寒,適,暑,寒\n適,B
+2106,int i = 5;\nif (i < 5) {\n System.out.println(1);\n} else if (i == 5) {\n System.out.println(2);\n} else {\n System.out.println(3);\n},1,2,3,1\n2,B
+2107,"int j = 0;\nif (j > 0) {\n System.out.println(""P"");\n} else if (j == 0) {\n System.out.println(""Z"");\n} else {\n System.out.println(""N"");\n}",P,Z,N,P\nZ,B
+2108,"int k = 2;\nif (k == 1) {\n System.out.println(""One"");\n} else if (k == 2) {\n System.out.println(""Two"");\n} else {\n System.out.println(""Other"");\n}",One,Two,Other,One\nTwo,B
+2109,int l = 10;\nif (l < 5) {\n System.out.println(1);\n} else if (l > 15) {\n System.out.println(2);\n} else {\n System.out.println(3);\n},1,2,3,何も表示されない,C
+2110,"int m = 1;\nif (m != 1) {\n System.out.println(""A"");\n} else if (m == 1) {\n System.out.println(""B"");\n} else {\n System.out.println(""C"");\n}",A,B,C,何も表示されない,B
+2111,"int n = 100;\nif (n < 10) {\n System.out.println(""Small"");\n} else if (n < 100) {\n System.out.println(""Middle"");\n} else {\n System.out.println(""Large"");\n}",Small,Middle,Large,Small\nLarge,C
+2112,int p = 50;\nif (p > 100) {\n System.out.println(1);\n} else if (p < 50) {\n System.out.println(2);\n} else {\n System.out.println(3);\n},1,2,3,50,C
+2113,"int q = 1;\nif (q == 1) {\n System.out.println(""Go"");\n} else if (q == 1) {\n System.out.println(""Stop"");\n} else {\n System.out.println(""Wait"");\n}",Go,Stop,Wait,Go\nStop,A
+2114,"int r = 10;\nif (r > 20) {\n System.out.println(""Big"");\n} else if (r > 5) {\n System.out.println(""Mid"");\n} else {\n System.out.println(""Small"");\n}",Big,Mid,Small,Big\nMid,B
+2115,int s = 1;\nif (s == 0) {\n System.out.println(0);\n} else if (s == 1) {\n System.out.println(1);\n} else {\n System.out.println(2);\n},0,1,2,0\n1,B
+2116,"int t = 99;\nif (t > 100) {\n System.out.println(""A"");\n} else if (t == 100) {\n System.out.println(""B"");\n} else {\n System.out.println(""C"");\n}",A,B,C,何も表示されない,C
+2117,"int u = 2;\nif (u % 3 == 0) {\n System.out.println(""Yes"");\n} else if (u % 2 == 0) {\n System.out.println(""No"");\n} else {\n System.out.println(""Other"");\n}",Yes,No,Other,Yes\nNo,B
+2118,int v = 5;\nif (v > 10) {\n System.out.println(1);\n} else if (v > 1) {\n System.out.println(2);\n} else {\n System.out.println(3);\n},1,2,3,1\n2,B
+2119,"int w = 3;\nif (w == 1) {\n System.out.println(""A"");\n} else if (w == 2) {\n System.out.println(""B"");\n} else {\n System.out.println(""C"");\n}",A,B,C,何も表示されない,C

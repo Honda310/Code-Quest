@@ -9,10 +9,15 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
-    [NonSerialized]public string PlayerName;
-    [NonSerialized] public int DebugLimit = 15;
+    [NonSerialized] public string PlayerName;
     [NonSerialized] public int CurrentLv = 1;
     [NonSerialized] public int CurrentExp = 0;
+    [NonSerialized] public int DebugLimit = 15;
+    [NonSerialized] public Weapon CurrentEquipWeapon;
+    [NonSerialized] public Accessory CurrentEquipAccessory;
+    [NonSerialized] public string EquipWeaponName = "なし";
+    [NonSerialized] public string EquipAccessoryName = "なし";
+    [NonSerialized] public bool[] EventFlag;
     public int NextExp
     {
         get { return CurrentLv*100; }
@@ -38,8 +43,6 @@ public class Player : MonoBehaviour
     {
         get { return 9 + CurrentLv; }
     }
-    [NonSerialized] public string EquipWeaponName="なし";
-    [NonSerialized] public string EquipAccessoryName="なし";
 
     public int WeaponAtk { get; private set; }
     public int AccessoryDef { get; private set; }
@@ -111,6 +114,7 @@ public class Player : MonoBehaviour
             { "d_0", Load("4right_1stop") },
             { "d_1", Load("4right_2move") },
         };
+        PlayerName = "コンカレ太郎";
     }
 
     /// <summary>
@@ -190,6 +194,7 @@ public class Player : MonoBehaviour
     public void EquipWeapon(Item item)
     {
         Weapon weapon = item as Weapon;
+        CurrentEquipWeapon = weapon;
         EquipWeaponName = weapon.ItemName;
         WeaponAtk = weapon.Atk;
         DebugLimit = Math.Max(15,weapon.TimeLimit);
@@ -202,6 +207,7 @@ public class Player : MonoBehaviour
     public void EquipAccessory(Item item)
     {
         Accessory accessory = item as Accessory;
+        CurrentEquipAccessory = accessory;
         EquipAccessoryName = accessory.ItemName;
         AccessoryDef = accessory.Def;
     }
@@ -268,5 +274,20 @@ public class Player : MonoBehaviour
             CurrentLv ++;
             CurrentHP = MaxHP;
         }
+    }
+    public void LoadFromSaveData(string playername,int currentlv,int currentexp,Weapon equipweapon,Accessory equipaccessory,int tempatk,int tempdef)
+    {
+        PlayerName = playername;
+        CurrentLv = currentlv;
+        CurrentExp = currentexp;
+        CurrentEquipWeapon = equipweapon;
+        CurrentEquipAccessory = equipaccessory;
+        TemporaryAtk = tempatk;
+        TemporaryDef = tempdef;
+        DebugLimit = equipweapon.TimeLimit;
+        EquipWeaponName = equipweapon.ItemName;
+        WeaponAtk = equipweapon.Atk;
+        EquipAccessoryName = equipaccessory.ItemName;
+        AccessoryDef = equipaccessory.Def;
     }
 }
