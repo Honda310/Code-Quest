@@ -103,6 +103,14 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Active?.BattleMenuBack();
         }
+        if (Input.GetKeyDown(KeyCode.T) && CurrentMode==GameMode.Field)
+        {
+            UIManager.Active?.ShopPanelOpen();
+        }
+        if ((Input.GetKeyDown(KeyCode.Escape)|| Input.GetKeyDown(KeyCode.X)) && CurrentMode == GameMode.Debug)
+        {
+            UIManager.Active?.OnCodingCancelButtonClicked();
+        }
     }
     public void RegisterBattleManager(BattleManager bm)
     {

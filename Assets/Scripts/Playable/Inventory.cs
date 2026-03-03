@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,27 @@ public class Inventory : MonoBehaviour
 {
     // 所持しているアイテムのリスト
     [NonSerialized] public List<CarryItem> items = new List<CarryItem>();
+    [NonSerialized] public List<CarryItem> Allitems = new List<CarryItem>();
     public DataManager dataManager;
+
+    private void Start()
+    {
+        for (int i = 10001; i <= 10015; i++)
+        {
+            Item item = dataManager.GetItemById(Item.ItemType.SupportItem, i);
+            AddItemForTradeBase(item, 1);
+        }
+        for (int i = 20001; i <= 20005; i++)
+        {
+            Item item = dataManager.GetItemById(Item.ItemType.Accessory, i);
+            AddItemForTradeBase(item, 1);
+        }
+        for (int i = 30001; i <= 30010; i++)
+        {
+            Item item = dataManager.GetItemById(Item.ItemType.Weapon, i);
+            AddItemForTradeBase(item, 1);
+        }
+    }
 
     /// <summary>
     /// アイテムを追加します
@@ -29,7 +50,7 @@ public class Inventory : MonoBehaviour
             items.Add(new CarryItem(item, amount));
         }
 
-        Debug.Log($"{item.ItemName} を {amount}個 入手しました。");
+        //Debug.Log($"{item.ItemName} を {amount}個 入手しました。");
     }
     public enum ItemType
 	{
@@ -73,7 +94,28 @@ public class Inventory : MonoBehaviour
             .OrderBy(c => c.item.ItemID)
             .ToList();
     }
+    public void AddItemForTradeBase(Item item, int amount)
+    {
+        CarryItem target = items.Find(c => c.item.ItemID == item.ItemID);
 
+        if (target != null)
+        {
+            target.quantity += amount;
+        }
+        else
+        {
+            Allitems.Add(new CarryItem(item, amount));
+        }
+
+        Debug.Log($"{item.ItemName} を {amount}個 入手しました。");
+    }
+    public List<CarryItem> GetFilteredByRarityItemsForTrade(int rarity)
+    {
+        return Allitems
+            .Where(c => c.item.Rarity == rarity)
+            .OrderBy(c => c.item.ItemID)
+            .ToList();
+    }
     public List<CarryItem> GetItemsByType(Item.ItemType type)
     {
         return items

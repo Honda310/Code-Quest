@@ -117,7 +117,7 @@ public class BattleManager : MonoBehaviour
     {
         if (writechecker.CheckAnswer(code, currentQuestion.CorrectAnswer))
         {
-            StartCoroutine(QuizCorrect());
+            StartCoroutine(QuizCorrectHard());
         }
         else
         {
@@ -132,6 +132,23 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.4f);
         int dmg = player.CurrentAtk + (uimanager.EnemyScanCount - 1) * 5;
+        currentEnemy.TakeDamage(dmg);
+        UIManager.Active?.ShowLog($"問題に正解、{dmg}DPを与えた！");
+        uimanager.UpdateStatus(player, neto, currentEnemy);
+        damagePop.EnemyDpPlay(dmg);
+        if (currentEnemy.CurrentDP >= currentEnemy.MaxDP)
+        {
+            StartCoroutine(EndBattle(true));
+        }
+        else
+        {
+            StartCoroutine(EnemyTurn());
+        }
+    }
+    private IEnumerator QuizCorrectHard()
+    {
+        yield return new WaitForSecondsRealtime(0.4f);
+        int dmg = (player.CurrentAtk * 3 / 2 + (uimanager.EnemyScanCount - 1) * 5);
         currentEnemy.TakeDamage(dmg);
         UIManager.Active?.ShowLog($"問題に正解、{dmg}DPを与えた！");
         uimanager.UpdateStatus(player, neto, currentEnemy);

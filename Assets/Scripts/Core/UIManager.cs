@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -155,10 +154,42 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject DebugHintDisplayPanel;
     [SerializeField] private GameObject DebugCorrectPanel;
     [SerializeField] private GameObject DebugInCorrectPanel;
+    [SerializeField] private GameObject BugMapTile;
+    [SerializeField] private GameObject RepairMapTile;
     [SerializeField] private Text DebugQuestText;
     [SerializeField] private Text DebugInputText;
     [SerializeField] private Text DebugHintText;
     [SerializeField] private Text DebugErrorText;
+
+    [Header("ショップパネル用")]
+    [SerializeField] private GameObject BaseItemSelectPanel;
+    [SerializeField] private GameObject TradeItemSelectPanel;
+    [SerializeField] private GameObject ShopMenuPanel; 
+    [SerializeField] private GameObject TradeBaseConfirmPanel;
+    [SerializeField] private GameObject TradeConfirmPanel;
+    [SerializeField] private Text BaseItemSelectText1;
+    [SerializeField] private Text BaseItemSelectText2;
+    [SerializeField] private Text BaseItemSelectText3;
+    [SerializeField] private Text BaseItemSelectText4;
+    [SerializeField] private Text BaseItemSelectText5;
+    [SerializeField] private Text BaseItemValueText1;
+    [SerializeField] private Text BaseItemValueText2;
+    [SerializeField] private Text BaseItemValueText3;
+    [SerializeField] private Text BaseItemValueText4;
+    [SerializeField] private Text BaseItemValueText5;
+    [SerializeField] private Text TradeItemSelectText1;
+    [SerializeField] private Text TradeItemSelectText2;
+    [SerializeField] private Text TradeItemSelectText3;
+    [SerializeField] private Text TradeItemSelectText4;
+    [SerializeField] private Text TradeItemSelectText5;
+    [SerializeField] private Text TradeItemValueText1;
+    [SerializeField] private Text TradeItemValueText2;
+    [SerializeField] private Text TradeItemValueText3;
+    [SerializeField] private Text TradeItemValueText4;
+    [SerializeField] private Text TradeItemValueText5;
+    [SerializeField] private Text TradeItemFlavorText;
+    private Item BaseItem;
+    private Item TradeItem;
 
     [Header("細かいUIの調整用")]
     //例えば、スロット2にある選択中に下にスクロールした場合、Entered,Exit制御では
@@ -657,25 +688,50 @@ public class UIManager : MonoBehaviour
                 BattleItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
                 BattleItemValue1.text = $"{supportItems[0 + i].quantity}";
             }
+            else
+            {
+                BattleItemSelectSlot1.text = "";
+                BattleItemValue1.text = "";
+            }
             if (1 + i < supportItems.Count)
             {
                 BattleItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
                 BattleItemValue2.text = $"{supportItems[1 + i].quantity}";
+            }
+            else
+            {
+                BattleItemSelectSlot2.text = "";
+                BattleItemValue2.text = "";
             }
             if (2 + i < supportItems.Count)
             {
                 BattleItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
                 BattleItemValue3.text = $"{supportItems[2 + i].quantity}";
             }
+            else
+            {
+                BattleItemSelectSlot3.text = "";
+                BattleItemValue3.text = "";
+            }
             if (3 + i < supportItems.Count)
             {
                 BattleItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
                 BattleItemValue4.text = $"{supportItems[3 + i].quantity}";
             }
+            else
+            {
+                BattleItemSelectSlot4.text = "";
+                BattleItemValue4.text = "";
+            }
             if (4 + i < supportItems.Count)
             {
                 BattleItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
                 BattleItemValue5.text = $"{supportItems[4 + i].quantity}";
+            }
+            else
+            {
+                BattleItemSelectSlot5.text = "";
+                BattleItemValue5.text = "";
             }
         }
         catch (IndexOutOfRangeException)
@@ -847,11 +903,13 @@ public class UIManager : MonoBehaviour
             if (ItemUsingCharaID==0)
             {
                 PlSelectPanel.SetActive(true);
+                ItemUsedByPlayer = false;
                 RebootLog();
             }
             else
             {
                 NetoSelectPanel.SetActive(true);
+                ItemUsedByNeto = false;
                 RebootLog();
             }
         }
@@ -1477,14 +1535,25 @@ public class UIManager : MonoBehaviour
         {
             if (0 + i < weaponItems.Count)
                 EquipItemSelectSlot1.text = weaponItems[0 + i].item.ItemName;
+            else
+                EquipItemSelectSlot1.text = "";
             if (1 + i < weaponItems.Count)
                 EquipItemSelectSlot2.text = weaponItems[1 + i].item.ItemName;
+            else
+                EquipItemSelectSlot2.text = "";
             if (2 + i < weaponItems.Count)
                 EquipItemSelectSlot3.text = weaponItems[2 + i].item.ItemName;
+            else
+                EquipItemSelectSlot3.text = "";
             if (3 + i < weaponItems.Count)
                 EquipItemSelectSlot4.text = weaponItems[3 + i].item.ItemName;
-            if (4 + i < weaponItems.Count) 
+            else
+                EquipItemSelectSlot4.text = "";
+            if (4 + i < weaponItems.Count)
                 EquipItemSelectSlot5.text = weaponItems[4 + i].item.ItemName;
+            else
+                EquipItemSelectSlot5.text = "";
+                
         }
         catch (IndexOutOfRangeException)
         {
@@ -1497,18 +1566,24 @@ public class UIManager : MonoBehaviour
         {
             if (0 + i < accessoryItems.Count)
                 EquipItemSelectSlot1.text = accessoryItems[0 + i].item.ItemName;
-
+            else
+                EquipItemSelectSlot1.text = "";
             if (1 + i < accessoryItems.Count)
                 EquipItemSelectSlot2.text = accessoryItems[1 + i].item.ItemName;
-
+            else
+                EquipItemSelectSlot2.text = "";
             if (2 + i < accessoryItems.Count)
                 EquipItemSelectSlot3.text = accessoryItems[2 + i].item.ItemName;
-
+            else
+                EquipItemSelectSlot3.text = "";
             if (3 + i < accessoryItems.Count)
                 EquipItemSelectSlot4.text = accessoryItems[3 + i].item.ItemName;
-
+            else
+                EquipItemSelectSlot4.text = "";
             if (4 + i < accessoryItems.Count)
                 EquipItemSelectSlot5.text = accessoryItems[4 + i].item.ItemName;
+            else
+                EquipItemSelectSlot5.text = "";
         }
         catch (IndexOutOfRangeException)
         {
@@ -1636,31 +1711,55 @@ public class UIManager : MonoBehaviour
     {
         try
         {
-
             if (0 + i < supportItems.Count)
             {
                 InventoryItemSelectSlot1.text = supportItems[0 + i].item.ItemName;
                 InventoryItemValue1.text = $"{supportItems[0 + i].quantity}";
+            }
+            else
+            {
+                InventoryItemSelectSlot1.text = "";
+                InventoryItemValue1.text = "";
             }
             if(1 + i < supportItems.Count)
             {
                 InventoryItemSelectSlot2.text = supportItems[1 + i].item.ItemName;
                 InventoryItemValue2.text = $"{supportItems[1 + i].quantity}";
             }
-            if(2 + i < supportItems.Count)
+            else
+            {
+                InventoryItemSelectSlot2.text = "";
+                InventoryItemValue2.text = "";
+            }
+            if (2 + i < supportItems.Count)
             {
                 InventoryItemSelectSlot3.text = supportItems[2 + i].item.ItemName;
                 InventoryItemValue3.text = $"{supportItems[2 + i].quantity}";
             }
-            if(3 + i < supportItems.Count)
+            else
+            {
+                InventoryItemSelectSlot3.text = "";
+                InventoryItemValue3.text = "";
+            }
+            if (3 + i < supportItems.Count)
             {
                 InventoryItemSelectSlot4.text = supportItems[3 + i].item.ItemName;
                 InventoryItemValue4.text = $"{supportItems[3 + i].quantity}";
             }
-            if(4 + i < supportItems.Count)
+            else
+            {
+                InventoryItemSelectSlot4.text = "";
+                InventoryItemValue4.text = "";
+            }
+            if (4 + i < supportItems.Count)
             {
                 InventoryItemSelectSlot5.text = supportItems[4 + i].item.ItemName;
                 InventoryItemValue5.text = $"{supportItems[4 + i].quantity}";
+            }
+            else
+            {
+                InventoryItemSelectSlot5.text = "";
+                InventoryItemValue5.text = "";
             }
         }
         catch(IndexOutOfRangeException)
@@ -1750,6 +1849,12 @@ public class UIManager : MonoBehaviour
     {
         List<CarryItem> supportItems = inventory.GetItemsByType(Item.ItemType.SupportItem);
         SupportItem focus = supportItems[slotID + InventoryItemCursor - 1].item as SupportItem;
+        ItemFlavorText.text = focus.Flavor;
+    }
+    public void AllItemDetailUpdate(int slotID)
+    {
+        List<CarryItem> supportItems = inventory.GetSortedItems();
+        Item focus = supportItems[slotID + InventoryItemCursor - 1].item;
         ItemFlavorText.text = focus.Flavor;
     }
     public void OnItemTargetButton(int CharaID)
@@ -1940,6 +2045,13 @@ public class UIManager : MonoBehaviour
             SaveDetailText.text = "セーブデータがありません。";
         }
     }
+    //ここからコーディング問題用
+    public void DebugStart()
+    {
+        DebugPanel.SetActive(true);
+        DebugQuestDisplayPanel.SetActive(true);
+        GameManager.Instance.SetMode(GameMode.Debug);
+    }
     public void OnDebugPanelReset()
     {
         DebugQuestDisplayPanel.SetActive(false);
@@ -1992,9 +2104,261 @@ public class UIManager : MonoBehaviour
     public void OnDebugCorrectCheckButton()
     {
         OnCodingCancelButtonClicked();
+        BugMapTile.SetActive(false);
+        RepairMapTile.SetActive(true);
     }
     public void OnDebugInCorrectCheckButton()
     {
         DebugInCorrectPanel.SetActive(false);
+    }
+    //ここからショップパネル用
+    public void ShopPanelOpen()
+    {
+        shopPanel.SetActive(true);
+        ShopMenuPanel.SetActive(true);
+        ShopPanelReset();
+        GameManager.Instance.SetMode(GameMode.Shop);
+    }
+    public void ShopPanelReset()
+    {
+        BaseItemSelectPanel.SetActive(false);
+        TradeItemSelectPanel.SetActive(false);
+        TradeConfirmPanel.SetActive(false);
+    }
+    public void OnTradeButtonClicked()
+    {
+        BaseItemSelectPanel.SetActive(true);
+        ShopMenuPanel.SetActive(false);
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        BaseItemSelectorChange(0, AllItems);
+        InventoryItemCursor = 0;
+        SelectorItemIDKeeper = 0;
+    }
+    public void OnTalkInShopButtonClicked()
+    {
+        
+    }
+    public void OnReturnInShopButtonClicked()
+    {
+        ShopPanelReset();
+        shopPanel.SetActive(false);
+        GameManager.Instance.SetMode(GameMode.Field);
+    }
+    public void OnTradeBaseDecideButtonClicked()
+    {
+        BaseItemSelectPanel.SetActive(false);
+        TradeBaseConfirmPanel.SetActive(false);
+        TradeItemSelectPanel.SetActive(true);
+        inventory.RemoveItem(BaseItem.ItemID,1);
+        List<CarryItem> SameRarityItems = inventory.GetFilteredByRarityItemsForTrade(BaseItem.Rarity);
+        TradeItemSelectorChange(0, SameRarityItems);
+        InventoryItemCursor = 0;
+    }
+    public void OnTradeAcceptButtonClicked()
+    {
+        inventory.AddItem(TradeItem, 1);
+        TradeConfirmPanel.SetActive(false);
+        TradeItemSelectPanel.SetActive(false);
+        ShopMenuPanel.SetActive(true);
+    }
+    public void OnBaseItemSelectorClicked(int slotID)
+    {
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        Item focus = AllItems[slotID + InventoryItemCursor - 1].item;
+        InventorySlotIdHolder = slotID;
+        TradeBaseConfirmPanel.SetActive(true);
+        TradeItemFlavorText.text = focus.Flavor;
+        BaseItem = focus;
+    }
+    
+    public void OnTradeBaseItemSelectorEntered(int slotID)
+    {
+        SelectorEquipIDKeeper = slotID;
+        ItemDetailUpdateForTradeBase(slotID);
+    }
+    public void OnTradeBaseItemSelectorExit()
+    {
+        TradeItemFlavorText.text = "";
+    }
+    public void OnTradeItemSelectorClicked(int slotID)
+    {
+        List<CarryItem> Items = inventory.GetFilteredByRarityItemsForTrade(BaseItem.Rarity);
+        int idx = slotID + InventoryItemCursor - 1;
+        if (idx < Items.Count)
+        {
+            Item focus = Items[slotID + InventoryItemCursor - 1].item;
+            InventorySlotIdHolder = slotID;
+            TradeConfirmPanel.SetActive(true);
+            TradeItemFlavorText.text = focus.Flavor;
+            TradeItem = focus;
+        }
+    }
+    public void OnTradeItemSelectorEntered(int slotID)
+    {
+        SelectorEquipIDKeeper = slotID;
+        ItemDetailUpdateForTrade(slotID);
+    }
+    public void OnTradeItemSelectorExit()
+    {
+        TradeItemFlavorText.text = "";
+    }
+    public void TradeItemListAllowDown()
+    {
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        if (AllItems == null || AllItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Min(++InventoryItemCursor, AllItems.Count - 5);
+        BaseItemSelectorChange(InventoryItemCursor, AllItems);
+        if (TradeItemFlavorText.text == "") return;
+        AllItemDetailUpdate(SelectorItemIDKeeper);
+    }
+    public void TradeItemListAllowUp()
+    {
+        List<CarryItem> AllItems = inventory.GetSortedItems();
+        if (AllItems == null || AllItems.Count <= 5) return;
+        InventoryItemCursor = Mathf.Max(--InventoryItemCursor, 0);
+        BaseItemSelectorChange(InventoryItemCursor, AllItems);
+        if (TradeItemFlavorText.text == "") return;
+        AllItemDetailUpdate(SelectorItemIDKeeper);
+    }
+    public void ItemDetailUpdateForTradeBase(int slotID)
+    {
+        List<CarryItem> Allitems = inventory.GetSortedItems();
+        int idx = slotID + InventoryItemCursor - 1;
+        if (idx < Allitems.Count)
+        {
+            Item focus = Allitems[idx].item;
+            TradeItemFlavorText.text = focus.Flavor;
+        }
+    }
+    public void ItemDetailUpdateForTrade(int slotID)
+    {
+        List<CarryItem> Allitems = inventory.GetFilteredByRarityItemsForTrade(BaseItem.Rarity);
+        int idx = slotID + InventoryItemCursor - 1;
+        if (idx < Allitems.Count)
+        {
+            Item focus = Allitems[idx].item;
+            TradeItemFlavorText.text = focus.Flavor;
+        }
+        
+    }
+    public void BaseItemSelectorChange(int i, List<CarryItem> AllItem)
+    {
+        try
+        {
+            if (0 + i < AllItem.Count)
+            {
+                BaseItemSelectText1.text = AllItem[0 + i].item.ItemName;
+                BaseItemValueText1.text = $"{AllItem[0 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText1.text = "";
+                BaseItemValueText1.text = "";
+            }
+            if (1 + i < AllItem.Count)
+            {
+                BaseItemSelectText2.text = AllItem[1 + i].item.ItemName;
+                BaseItemValueText2.text = $"{AllItem[1 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText2.text = "";
+                BaseItemValueText2.text = "";
+            }
+            if (2 + i < AllItem.Count)
+            {
+                BaseItemSelectText3.text = AllItem[2 + i].item.ItemName;
+                BaseItemValueText3.text = $"{AllItem[2 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText3.text = "";
+                BaseItemValueText3.text = "";
+            }
+            if (3 + i < AllItem.Count)
+            {
+                BaseItemSelectText4.text = AllItem[3 + i].item.ItemName;
+                BaseItemValueText4.text = $"{AllItem[3 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText4.text = "";
+                BaseItemValueText4.text = "";
+            }
+            if (4 + i < AllItem.Count)
+            {
+                BaseItemSelectText5.text = AllItem[4 + i].item.ItemName;
+                BaseItemValueText5.text = $"{AllItem[4 + i].quantity}";
+            }
+            else
+            {
+                BaseItemSelectText5.text = "";
+                BaseItemValueText5.text = "";
+            }
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
+    }
+    public void TradeItemSelectorChange(int i, List<CarryItem> AllItem)
+    {
+        try
+        {
+            if (0 + i < AllItem.Count)
+            {
+                TradeItemSelectText1.text = AllItem[0 + i].item.ItemName;
+                TradeItemValueText1.text = $"{AllItem[0 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText1.text = "";
+                TradeItemValueText1.text = "";
+            }
+            if (1 + i < AllItem.Count)
+            {
+                TradeItemSelectText2.text = AllItem[1 + i].item.ItemName;
+                TradeItemValueText2.text = $"{AllItem[1 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText2.text = "";
+                TradeItemValueText2.text = "";
+            }
+            if (2 + i < AllItem.Count)
+            {
+                TradeItemSelectText3.text = AllItem[2 + i].item.ItemName;
+                TradeItemValueText3.text = $"{AllItem[2 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText3.text = "";
+                TradeItemValueText3.text = "";
+            }
+            if (3 + i < AllItem.Count)
+            {
+                TradeItemSelectText4.text = AllItem[3 + i].item.ItemName;
+                TradeItemValueText4.text = $"{AllItem[3 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText4.text = "";
+                TradeItemValueText4.text = "";
+            }
+            if (4 + i < AllItem.Count)
+            {
+                TradeItemSelectText5.text = AllItem[4 + i].item.ItemName;
+                TradeItemValueText5.text = $"{AllItem[4 + i].quantity}";
+            }
+            else
+            {
+                TradeItemSelectText5.text = "";
+                TradeItemValueText5.text = "";
+            }
+        }
+        catch (IndexOutOfRangeException)
+        {
+
+        }
     }
 }

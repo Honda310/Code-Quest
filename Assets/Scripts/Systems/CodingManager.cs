@@ -13,17 +13,11 @@ public class CodingManager : MonoBehaviour
     public enum VarType
     {
         Int,
-        Float,
-        Double,
         Bool,
         String,
-        Char,
         IntArray,
-        FloatArray,
-        DoubleArray,
         BoolArray,
-        StringArray,
-        CharArray
+        StringArray
     }
     public enum TokenType
     {
@@ -1146,17 +1140,14 @@ public class CodingManager : MonoBehaviour
                 break;
         }
         if (ans == AnswerObject.ToString())
-        {
             return true;
-        }
         else
-        {
             return false;
-        }
+        //return true;
     }
     private void Start()
     {
-        CodeSending(@" int x = 5;
+        CodeSending(@"int x = 5;
                     print(x);
 
                     if (x > 3) {
