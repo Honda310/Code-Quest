@@ -6,17 +6,24 @@ public class EnemyMove : MonoBehaviour
     Rigidbody2D rb;
     int roop_frame=0;
     float moveSpeed = 85.0f;
-    int tale_moving=-1;
+    int moving=-1;
     private Dictionary<string, Sprite> PromdSprites;
     private Dictionary<string, Sprite> GabettaSprites;
     private Dictionary<string, Sprite> PackettonSprites;
+    //private Dictionary<string, Sprite> [“G‚Ì–¼‘O]Sprites;
+    private Dictionary<string, Sprite> TrojarSprites;
+    private Dictionary<string, Sprite> adSprites;
+    private Dictionary<string, Sprite> MatranSprites;
+    private Dictionary<string, Sprite> Modu1;
+    private Dictionary<string, Sprite> Modu2;
+    private Dictionary<string, Sprite> Modu3;
+    private Dictionary<string, Sprite> MulsleddaSprites;
     [SerializeField] private Enemy enemy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Vector2 pos = rb.position;
         PromdSprites = new Dictionary<string, Sprite>()
         {
             { "-1_-1", Load("promd/3Enemy_06EasyEn_1normal_3left") },
@@ -40,6 +47,37 @@ public class EnemyMove : MonoBehaviour
 
             { "1_-1", Load("Packetton/2_1paketton_right") },
             { "1_1", Load("Packetton/2_2paketton_battleMotion_right") },
+        };
+        //PackettonSprites = new Dictionary<string, Sprite>()
+        //{
+        //    { "-1_-1", Load("Packetton/1_1paketton_left") },
+        //    { "-1_1", Load("Packetton/1_2paketton_battleMotion_left") },
+
+        //    { "1_-1", Load("Packetton/2_1paketton_right") },
+        //    { "1_1", Load("Packetton/2_2paketton_battleMotion_right") },
+        //};
+        TrojarSprites = new Dictionary<string, Sprite>()
+        {
+            { "-1_0", Load("Trojar/left_walk1") },
+            { "-1_1", Load("Trojar/left_walk2") },
+            { "-1_2", Load("Trojar/left_walk3") },
+
+            { "-1_0", Load("Trojar/left_walk1") },
+            { "-1_1", Load("Trojar/left_walk2") },
+            { "-1_2", Load("Trojar/left_walk3") },
+        };
+        MulsleddaSprites = new Dictionary<string, Sprite>()
+        {
+            { "1_1", Load("Mulsledda/") },
+            { "-1_1", Load("Mulsledda/") },
+        };
+        adSprites = new Dictionary<string, Sprite>()
+        {
+            { "-1_-1", Load("2ad/2walk") },
+            { "-1_1", Load("2ad_2walk") },
+
+            { "1_-1", Load("2ad_3walk") },
+            { "1_1", Load("2ad_3walk") },
         };
     }
 
@@ -70,11 +108,7 @@ public class EnemyMove : MonoBehaviour
                 rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
                 roop_frame = 0;
             }
-            if (roop_frame % 20 == 0)
-            {
-                tale_moving = tale_moving * -1;
-            }
-            string spriteKey = $"{direction.x}_{tale_moving}";
+            string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
             if (enemy.EnemyName == "Promd")
             {
                 if (PromdSprites.ContainsKey(spriteKey))
@@ -82,20 +116,43 @@ public class EnemyMove : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = PromdSprites[spriteKey];
                 }
             }
-            else if(enemy.EnemyName == "Gabetta")
+            else if (enemy.EnemyName == "Gabetta")
             {
                 if (GabettaSprites.ContainsKey(spriteKey))
                 {
                     GetComponent<SpriteRenderer>().sprite = GabettaSprites[spriteKey];
                 }
             }
-            else if(enemy.EnemyName == "Packetton")
+            else if (enemy.EnemyName == "Packetton")
             {
                 if (PackettonSprites.ContainsKey(spriteKey))
                 {
                     GetComponent<SpriteRenderer>().sprite = PackettonSprites[spriteKey];
                 }
             }
+            else if (enemy.EnemyName == "Trojar")
+            {
+                spriteKey = $"{direction.x}_{MovePresetTrojar(roop_frame)}";
+                if (TrojarSprites.ContainsKey(spriteKey))
+                {
+                    GetComponent<SpriteRenderer>().sprite = TrojarSprites[spriteKey];
+                }
+            }else if (enemy.EnemyName == "Mulsledda")
+            {
+                spriteKey = $"{direction.x}_1";
+                if (MulsleddaSprites.ContainsKey(spriteKey))
+                {
+                    GetComponent<SpriteRenderer>().sprite = TrojarSprites[spriteKey];
+                }
+            }
+            //else if(enemy.EnemyName == "")
+            //{
+            //    if (PackettonSprites.ContainsKey(spriteKey))
+            //    {
+            //        GetComponent<SpriteRenderer>().sprite = PackettonSprites[spriteKey];
+            //    }
+            //}
+
             else
             {
                 Debug.Log(enemy.EnemyName);
@@ -105,5 +162,37 @@ public class EnemyMove : MonoBehaviour
     Sprite Load(string name)
     {
         return Resources.Load<Sprite>($"Image/Enemy/{name}");
+    }
+    private int MovePreset(int roop_frame)
+    {
+        if (roop_frame % 20 == 0)
+        {
+            return moving = moving * -1;
+        }
+        else
+        {
+            return moving;
+        }
+    }
+    private int MovePresetTrojar(int roop_frame)
+    {
+        if (roop_frame % 15 == 0)
+        {
+            switch (moving)
+            {
+                case 0:
+                    return 1;
+                case 1:
+                    return 2;
+                case 2:
+                    return 0;
+                default:
+                    return moving;
+            }
+        }
+        else
+        {
+            return moving;
+        }
     }
 }
