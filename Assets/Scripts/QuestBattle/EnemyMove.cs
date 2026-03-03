@@ -62,9 +62,9 @@ public class EnemyMove : MonoBehaviour
             { "-1_1", Load("Trojar/left_walk2") },
             { "-1_2", Load("Trojar/left_walk3") },
 
-            { "-1_0", Load("Trojar/left_walk1") },
-            { "-1_1", Load("Trojar/left_walk2") },
-            { "-1_2", Load("Trojar/left_walk3") },
+            { "1_0", Load("Trojar/right_walk1") },
+            { "1_1", Load("Trojar/right_walk2") },
+            { "1_2", Load("Trojar/right_walk3") },
         };
         MulsleddaSprites = new Dictionary<string, Sprite>()
         {
