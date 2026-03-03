@@ -107,7 +107,7 @@ public class Inventory : MonoBehaviour
             Allitems.Add(new CarryItem(item, amount));
         }
 
-        Debug.Log($"{item.ItemName} ‚ğ {amount}ŒÂ “üè‚µ‚Ü‚µ‚½B");
+        //Debug.Log($"{item.ItemName} ‚ğ {amount}ŒÂ “üè‚µ‚Ü‚µ‚½B");
     }
     public List<CarryItem> GetFilteredByRarityItemsForTrade(int rarity)
     {

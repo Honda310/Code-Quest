@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [NonSerialized] public string EquipWeaponName = "なし";
     [NonSerialized] public string EquipAccessoryName = "なし";
     [NonSerialized] public bool[] EventFlag;
+    [NonSerialized] public bool[] RepairedLine= {false,false,false,false};
     public int NextExp
     {
         get { return CurrentLv*100; }
