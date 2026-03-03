@@ -42,6 +42,7 @@ public class SaveLoadManager : MonoBehaviour
         public int[] BoxId;
         public bool[] BoxAccessable;
         public string currentMapName;
+        public bool[] EventFlag;
         public Vector3 charavector;
     }
     private SaveData loadedData;
@@ -74,6 +75,7 @@ public class SaveLoadManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();                         //現在シーンの取得
         data.currentMapName = currentScene.name;                                    //セーブしたマップ名の情報⑥
         data.charavector = p.transform.position;                                    //セーブした座標の情報⑦
+        data.EventFlag = p.EventFlag;                                               //完了したイベントの情報⑧
         string json = JsonUtility.ToJson(data);             
         string fileName;
         if (slotId == 0)
@@ -135,6 +137,7 @@ public class SaveLoadManager : MonoBehaviour
         SceneManager.LoadScene(loadedData.currentMapName);
         player.transform.position = loadedData.charavector;
         neto.transform.position = loadedData.charavector;
+        player.EventFlag = loadedData.EventFlag;
     }
 
     /// <summary>

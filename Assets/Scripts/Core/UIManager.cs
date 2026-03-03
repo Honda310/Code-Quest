@@ -160,6 +160,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text DebugInputText;
     [SerializeField] private Text DebugHintText;
     [SerializeField] private Text DebugErrorText;
+    [SerializeField] private QuestManager questManager;
+    private CodingQuestData currentCodingQuest;
 
     [Header("ショップパネル用")]
     [SerializeField] private GameObject BaseItemSelectPanel;
@@ -1004,7 +1006,7 @@ public class UIManager : MonoBehaviour
         {
             if (ItemUsedCharaIDByNeto == 0)
             {
-                SupportItem item = PlayerUseItemInBattle as SupportItem;
+                SupportItem item = NetoUseItemInBattle as SupportItem;
                 switch (item.EffectID)
                 {
                     case 1:
@@ -2048,9 +2050,29 @@ public class UIManager : MonoBehaviour
     //ここからコーディング問題用
     public void DebugStart()
     {
+        OnDebugTextReset();
         DebugPanel.SetActive(true);
         DebugQuestDisplayPanel.SetActive(true);
         GameManager.Instance.SetMode(GameMode.Debug);
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "LamentForest":
+                currentCodingQuest = questManager.GetCodingQuestion(0);
+                break;
+            case "PoisonedSpring":
+                currentCodingQuest = questManager.GetCodingQuestion(1);
+                break;
+            case "CorrupedTown":
+                currentCodingQuest = questManager.GetCodingQuestion(2);
+                break;
+            case "Temple":
+                currentCodingQuest = questManager.GetCodingQuestion(3);
+                break;
+            case "defalut":
+                break;
+        }
+        DebugQuestText.text = currentCodingQuest.QuestionText;
+        DebugHintText.text = currentCodingQuest.QuestionHint;
     }
     public void OnDebugPanelReset()
     {
@@ -2084,7 +2106,7 @@ public class UIManager : MonoBehaviour
     public void OnCodeSendingButtonClicked()
     {
         codingManager.CodeSending(DebugInputText.text);
-        if (codingManager.AnswerCheck())
+        if (codingManager.AnswerCheck(currentCodingQuest))
         {
             DebugCorrectPanel.SetActive(true);
         }

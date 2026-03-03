@@ -8,8 +8,8 @@ public class CodingManager : MonoBehaviour
     private Stack<Dictionary<string, Variable>> scopes = new Stack<Dictionary<string, Variable>>();
     private List<Token> tokens;
     private int current = 0;
-    private QuestManager questManager;
     private object AnswerObject="";
+    private string[] AnsCheck = new string[3];
     public enum VarType
     {
         Int,
@@ -1109,7 +1109,50 @@ public class CodingManager : MonoBehaviour
     }
     public void CodeSending(string code)
     {
-        Tokenize(code);
+        string[] BaseCode = new string[3];
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "LamentForest":
+                BaseCode[0] = @"int a=10;
+                                int b=20
+                                ";
+                BaseCode[1] = @"int a=5;
+                                int b=10
+                                ";
+                BaseCode[2] = @"int a=30;
+                                int b=5
+                                ";
+                break;
+            case "PoisonedSpring":
+                BaseCode[0] = @"int score=75;
+                                ";
+                BaseCode[1] = @"int score=55;
+                                ";
+                BaseCode[2] = @"int score=100;
+                                ";
+                break;
+            case "CorrupedTown":
+                BaseCode[0] = @"";
+                BaseCode[1] = @"";
+                BaseCode[2] = @"";
+                break;
+            case "Temple":
+                BaseCode[0] = @"";
+                BaseCode[1] = @"";
+                BaseCode[2] = @"";
+                break;
+            case "defalut":
+                BaseCode[0] = @"";
+                BaseCode[1] = @"";
+                BaseCode[2] = @"";
+                break;
+        }
+        Tokenize(BaseCode[0] +code);
+        AnsCheck[0] = AnswerObject.ToString();
+        Tokenize(BaseCode[1] + code);
+        AnsCheck[1] = AnswerObject.ToString();
+        Tokenize(BaseCode[2] + code);
+        AnsCheck[2] = AnswerObject.ToString();
 
         List<Stmt> program = ParseProgram();
 
@@ -1118,55 +1161,18 @@ public class CodingManager : MonoBehaviour
             stmt.Execute(this);
         }
     }
-    public bool AnswerCheck()
+    public bool AnswerCheck(CodingQuestData Quest)
     {
-        String ans="";
-        switch (SceneManager.GetActiveScene().name)
+        String[] ans;
+        bool Checker = true;
+        ans = Quest.CorrectAnswer;
+        for(int i=0; i<3 ; i++)
         {
-            case "LamentForest":
-                ans = questManager.GetCodingQuestion(0).CorrectAnswer;
-                break;
-            case "PoisonedSpring":
-                ans = questManager.GetCodingQuestion(1).CorrectAnswer;
-                break;
-            case "CorrupedTown":
-                ans = questManager.GetCodingQuestion(2).CorrectAnswer;
-                break;
-            case "Temple":
-                ans = questManager.GetCodingQuestion(3).CorrectAnswer;
-                break;
-            case "defalut":
-                ans = "";
-                break;
+            if (ans[i] == AnsCheck[i])
+            {
+                Checker = false;
+            }
         }
-        if (ans == AnswerObject.ToString())
-            return true;
-        else
-            return false;
-        //return true;
-    }
-    private void Start()
-    {
-        CodeSending(@"int x = 5;
-                    print(x);
-
-                    if (x > 3) {
-                        int y = 100;
-                        print(y);
-                    }
-
-                    for (int i = 0; i < 3; i++) {
-                        print(i);
-                    }
-
-                    int[] arr = new int[3];
-                    arr[0] = 10;
-                    arr[1] = 20;
-                    print(arr[1]);
-
-                    while (x > 0) {
-                        print(x);
-                        x--;
-                    }");
+        return Checker;
     }
 }

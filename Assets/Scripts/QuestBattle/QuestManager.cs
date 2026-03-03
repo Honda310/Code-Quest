@@ -21,6 +21,7 @@ public class QuestManager : MonoBehaviour
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_BasicComparison", QuestCategory.IF_BasicComparisonHard);
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_ElseIf", QuestCategory.IF_ElseIfHard);
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_LogicalOperator", QuestCategory.IF_LogicalOperatorHard);
+        LoadFromCodingCSV("Data/CodingQuest/CodingQuestAll");
         Debug.Log("[QuestManager] ロード完了");
     }
     private void LoadFromSingleCSV(string path, QuestCategory category)
@@ -60,11 +61,12 @@ public class QuestManager : MonoBehaviour
         for (int i = 1; i < csv.Count; i++)
         {
             string[] cols = csv[i];
-            if (cols.Length == 5)
+            if (cols.Length == 7)
             {
                 cols[1] = cols[1].Replace("\\n", "\n");
                 cols[1] = cols[1].Replace("■", ",");
-                codingQuestList.Add(new CodingQuestData(cols[0], cols[1], cols[2], cols[3], cols[4]));
+                string[] answers = { cols[2], cols[3], cols[4] };
+                codingQuestList.Add(new CodingQuestData(cols[0], cols[1], answers, cols[5], cols[6]));
             }
         }
     }

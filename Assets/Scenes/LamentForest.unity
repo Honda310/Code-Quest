@@ -52778,6 +52778,7 @@ GameObject:
   - component: {fileID: 2130257030}
   - component: {fileID: 2130257031}
   - component: {fileID: 2130257032}
+  - component: {fileID: 2130257033}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Player
@@ -53004,6 +53005,7 @@ MonoBehaviour:
   DebugInputText: {fileID: 2032615523}
   DebugHintText: {fileID: 625764726}
   DebugErrorText: {fileID: 172262227}
+  questManager: {fileID: 2130257033}
   BaseItemSelectPanel: {fileID: 921408054}
   TradeItemSelectPanel: {fileID: 1801079124}
   ShopMenuPanel: {fileID: 38974368}
@@ -53100,6 +53102,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4207ecf643601d74491d14c3ee837d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodingManager
+--- !u!114 &2130257033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130257022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346cf5ed561819b4c87b5b3b4b5324ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestManager
 --- !u!1 &2137249274
 GameObject:
   m_ObjectHideFlags: 0
