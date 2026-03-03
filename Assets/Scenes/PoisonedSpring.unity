@@ -5938,6 +5938,7 @@ MonoBehaviour:
   MaxDP: 0
   Atk: 20
   QuestionCategories: 00000000
+  Exp: 0
 --- !u!58 &261993797
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9992,6 +9993,7 @@ MonoBehaviour:
   MaxDP: 0
   Atk: 20
   QuestionCategories: 00000000
+  Exp: 0
 --- !u!58 &464395891
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -17972,12 +17974,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a89621f255d10478c0a594081a8bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  PlayerName: 
-  MaxHP: 100
-  CurrentHP: 100
-  BaseAtk: 10
-  BaseDef: 10
-  DebugLimit: 5
   moveSpeed: 100
 --- !u!61 &874623090
 BoxCollider2D:
@@ -20413,6 +20409,7 @@ MonoBehaviour:
   MaxDP: 0
   Atk: 20
   QuestionCategories: 00000000
+  Exp: 0
 --- !u!58 &966505772
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -20747,6 +20744,7 @@ MonoBehaviour:
   ItemTargetSelectPanel: {fileID: 1197172605}
   ItemConfirmPanel: {fileID: 1007215284}
   EquipandStatusPanel: {fileID: 2134376880}
+  ConfigPanelGameEnd: {fileID: 0}
   ConfigPanel: {fileID: 577212087}
   KeyBindPanel: {fileID: 117422818}
   CharaSelector: {fileID: 8945532}
@@ -20754,9 +20752,21 @@ MonoBehaviour:
   EquipPanelDisable1: {fileID: 1618512018}
   EquipPanelDisable2: {fileID: 563408059}
   EquipPanelDisable3: {fileID: 1398621211}
+  PointerPanel1: {fileID: 0}
+  PointerPanel2: {fileID: 0}
+  PointerPanel3: {fileID: 0}
+  PointerPanel4: {fileID: 0}
+  PointerPanel5: {fileID: 0}
+  PointerPanel6: {fileID: 0}
+  PlHpSlider: {fileID: 0}
+  NetoHpSlider: {fileID: 0}
+  PlHpText: {fileID: 0}
+  NetoHpText: {fileID: 0}
   CharaNameText: {fileID: 1226822556}
   EquipWeaponName: {fileID: 2068029536}
   EquipAccessoryName: {fileID: 1866015086}
+  LevelText: {fileID: 0}
+  ExpText: {fileID: 0}
   CurrentHPText: {fileID: 1671418497}
   CurrentAtkText: {fileID: 2057656774}
   CurrentDefText: {fileID: 121022027}
@@ -20779,8 +20789,16 @@ MonoBehaviour:
   PlayerItemValidText: {fileID: 468683707}
   NetoItemValidText: {fileID: 432274880}
   ItemFlavorText: {fileID: 665733283}
+  StatusDetailPanel: {fileID: 0}
+  StatusDetailText: {fileID: 0}
+  ItemDetailPanel: {fileID: 0}
+  ItemDetailText: {fileID: 0}
+  EquipItemFlavorPanel: {fileID: 0}
+  EquipItemFlavorText: {fileID: 0}
   TalkTextBoxPanel: {fileID: 497584303}
   TalkTextBox: {fileID: 628670872}
+  SaveLoadPanel: {fileID: 0}
+  TalkBranchPanel: {fileID: 0}
 --- !u!114 &970237894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30769,6 +30787,7 @@ MonoBehaviour:
   MaxDP: 0
   Atk: 20
   QuestionCategories: 00000000
+  Exp: 0
 --- !u!58 &1622608168
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -37614,6 +37633,7 @@ MonoBehaviour:
   MaxDP: 0
   Atk: 20
   QuestionCategories: 00000000
+  Exp: 0
 --- !u!58 &1867198312
 CircleCollider2D:
   m_ObjectHideFlags: 0
