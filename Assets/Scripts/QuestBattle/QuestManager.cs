@@ -19,9 +19,16 @@ public class QuestManager : MonoBehaviour
         LoadFromSingleCSV("Data/SelectQuestion/IF_BasicComparison", QuestCategory.IF_BasicComparison);
         LoadFromSingleCSV("Data/SelectQuestion/IF_ElseIf", QuestCategory.IF_ElseIf);
         LoadFromSingleCSV("Data/SelectQuestion/IF_LogicalOperator", QuestCategory.IF_LogicalOperator);
-        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_BasicComparison", QuestCategory.IF_BasicComparisonHard);
-        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_ElseIf", QuestCategory.IF_ElseIfHard);
-        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF_LogicalOperator", QuestCategory.IF_LogicalOperatorHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF", QuestCategory.IF_BasicComparisonHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF", QuestCategory.IF_ElseIfHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_IF", QuestCategory.IF_LogicalOperatorHard);
+        LoadFromSingleCSV("Data/SelectQuestion/ForWhile_Basic", QuestCategory.ForWhile_Basic);
+        LoadFromSingleCSV("Data/SelectQuestion/ForWhile_Nest", QuestCategory.ForWhile_Nest);
+        LoadFromSingleCSV("Data/SelectQuestion/ForWhile_WhileAndDoWhile", QuestCategory.ForWhile_WhileAndDoWhile);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.ForWhile_BasicHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.ForWhile_NestHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.ForWhile_WhileAndDoWhileHard);
+        //LoadFromSingleCSV("Data/SelectQuestion/FillBlankQuestion/", QuestCategory.ForWhile_BasicHard);
         LoadFromCodingCSV("Data/CodingQuest/CodingQuestAll");
         Debug.Log("[QuestManager] ロード完了");
     }

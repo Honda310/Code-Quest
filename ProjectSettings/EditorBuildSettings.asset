@@ -29,6 +29,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InFrontOfLamentForest.unity
     guid: b1f62898469434c4ab994d1d56f83668
+  - enabled: 1
+    path: Assets/Scenes/CorrupedTown.unity
+    guid: 1f84ed7c8dbc0cf46a7585c962b28f88
+  - enabled: 1
+    path: Assets/Scenes/Temple.unity
+    guid: 5c45763cdae938044b7adb7668e15854
+  - enabled: 1
+    path: Assets/Scenes/ErrorVillage.unity
+    guid: 04a1ca2efe90c304897d14f8f476bb92
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

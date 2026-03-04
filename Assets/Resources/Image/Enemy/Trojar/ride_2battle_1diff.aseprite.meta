@@ -74,7 +74,7 @@ ScriptedImporter:
   previousAsepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -89,7 +89,7 @@ ScriptedImporter:
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639081428970509359
+  platformSettingsDirtyTick: 639082160396940222
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ride_2battle_1diff
+  - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 4"
     originalName: 
     pivot: {x: 0.5078125, y: -0.008064516}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 128
       height: 124
-    spriteID: 6d72e71cdebb7a54d87afac4248a57b0
+    spriteID: 634bcfef8255b26498e9ca906fd64c98
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,17 +153,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3211772372
+      value0: 1187789977
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: ride_2battle_1diff
-    layerFlags: 0
+    name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 4"
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: ride_2battle_1diff
+    - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 4"
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 1
         width: 128
         height: 124
-      spriteId: 6d72e71cdebb7a54d87afac4248a57b0
+      spriteId: 634bcfef8255b26498e9ca906fd64c98
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
