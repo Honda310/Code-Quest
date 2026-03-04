@@ -43,6 +43,31 @@ public class SpawnPlayer : MonoBehaviour
                 GameManager.Instance.player.transform.position = new Vector3(180, 50, 0);
                 GameManager.Instance.neto.transform.position = new Vector3(150, 50, 0);
                 break;
+            //毒害泉源(出口に移動)
+            case 7:
+                GameManager.Instance.player.transform.position = new Vector3(1920, -540, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(1920, -540, 0);
+                break;
+            //エラー集落(入口に移動)
+            case 8:
+                GameManager.Instance.player.transform.position = new Vector3(320, -300, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(320, -300, 0);
+                break;
+            //エラー集落(出口に移動)
+            case 9:
+                GameManager.Instance.player.transform.position = new Vector3(320, 80, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(320, 110, 0);
+                break;
+            //衰微市街(入口に移動)
+            case 10:
+                GameManager.Instance.player.transform.position = new Vector3(270, -1150, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(240, -1150, 0);
+                break;
+            //衰微市街(出口に移動)
+            case 11:
+                GameManager.Instance.player.transform.position = new Vector3(1350, 50, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(1320, 50, 0);
+                break;
             case 99:
                 GameManager.Instance.player.transform.position = new Vector3(0, 60, 0);
                 GameManager.Instance.neto.transform.position = new Vector3(0, 100, 0);

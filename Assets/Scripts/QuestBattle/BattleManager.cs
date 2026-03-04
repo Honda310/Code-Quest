@@ -54,6 +54,7 @@ public class BattleManager : MonoBehaviour
         currentEnemy.Atk = data.Atk;
         currentEnemy.Exp = data.Exp;
         categories = data.Categories;
+        Debug.Log(categories);
         questManager.CreateDeckNormal(categories);
         if (!(categories == QuestCategory.Variable_AdditionAndSubtraction || categories == QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence || categories == QuestCategory.Variable_MultiplicationAndDivisionAndRemainder))
         {

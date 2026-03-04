@@ -6,7 +6,7 @@ public class EnemyMove : MonoBehaviour
     Rigidbody2D rb;
     int roop_frame=0;
     float moveSpeed = 85.0f;
-    int moving=-1;
+    int moving=1;
     private Dictionary<string, Sprite> PromdSprites;
     private Dictionary<string, Sprite> GabettaSprites;
     private Dictionary<string, Sprite> PackettonSprites;
@@ -58,13 +58,15 @@ public class EnemyMove : MonoBehaviour
         //};
         TrojarSprites = new Dictionary<string, Sprite>()
         {
-            { "-1_0", Load("Trojar/left_walk1") },
-            { "-1_1", Load("Trojar/left_walk2") },
-            { "-1_2", Load("Trojar/left_walk3") },
+            { "-1_0", Load("Trojar/Trojar_left") },
+            { "-1_1", Load("Trojar/Trojar_left_walk1") },
+            { "-1_2", Load("Trojar/Trojar_left_walk2") },
+            { "-1_3", Load("Trojar/Trojar_left_walk3") },
 
-            { "1_0", Load("Trojar/right_walk1") },
-            { "1_1", Load("Trojar/right_walk2") },
-            { "1_2", Load("Trojar/right_walk3") },
+            { "1_0", Load("Trojar/Trojar_right") },
+            { "1_1", Load("Trojar/Trojar_right_walk1") },
+            { "1_2", Load("Trojar/Trojar_right_walk2") },
+            { "1_3", Load("Trojar/Trojar_right_walk3") },
         };
         MulsleddaSprites = new Dictionary<string, Sprite>()
         {
@@ -73,11 +75,11 @@ public class EnemyMove : MonoBehaviour
         };
         adSprites = new Dictionary<string, Sprite>()
         {
-            { "-1_-1", Load("2ad/2walk") },
-            { "-1_1", Load("2ad_2walk") },
+            { "-1_-1", Load("ad/2ad_2walk") },
+            { "-1_1", Load("ad/2ad_3walk") },
 
-            { "1_-1", Load("2ad_3walk") },
-            { "1_1", Load("2ad_3walk") },
+            { "1_-1", Load("ad/2ad_3walk") },
+            { "1_1", Load("ad/2ad_2walk") },
         };
     }
 
@@ -108,10 +110,10 @@ public class EnemyMove : MonoBehaviour
                 rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
                 roop_frame = 0;
             }
-            string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
+            
             if (enemy.EnemyName == "Purond")
             {
-                Debug.Log(spriteKey);
+                string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
                 if (PromdSprites.ContainsKey(spriteKey))
                 {
                     GetComponent<SpriteRenderer>().sprite = PromdSprites[spriteKey];
@@ -119,6 +121,7 @@ public class EnemyMove : MonoBehaviour
             }
             else if (enemy.EnemyName == "Gabetta")
             {
+                string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
                 if (GabettaSprites.ContainsKey(spriteKey))
                 {
                     GetComponent<SpriteRenderer>().sprite = GabettaSprites[spriteKey];
@@ -126,6 +129,7 @@ public class EnemyMove : MonoBehaviour
             }
             else if (enemy.EnemyName == "Paketton")
             {
+                string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
                 if (PackettonSprites.ContainsKey(spriteKey))
                 {
                     GetComponent<SpriteRenderer>().sprite = PackettonSprites[spriteKey];
@@ -133,17 +137,27 @@ public class EnemyMove : MonoBehaviour
             }
             else if (enemy.EnemyName == "Trojar")
             {
-                spriteKey = $"{direction.x}_{MovePresetTrojar(roop_frame)}";
+                moving = MovePresetTrojar(roop_frame);
+                string spriteKey = $"{direction.x}_{moving}";
                 if (TrojarSprites.ContainsKey(spriteKey))
                 {
                     GetComponent<SpriteRenderer>().sprite = TrojarSprites[spriteKey];
                 }
-            }else if (enemy.EnemyName == "Mulsledda")
+            }
+            else if (enemy.EnemyName == "Mulsledda")
             {
-                spriteKey = $"{direction.x}_1";
+                string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
                 if (MulsleddaSprites.ContainsKey(spriteKey))
                 {
-                    GetComponent<SpriteRenderer>().sprite = TrojarSprites[spriteKey];
+                    GetComponent<SpriteRenderer>().sprite = MulsleddaSprites[spriteKey];
+                }
+            }
+            else if (enemy.EnemyName == "ad")
+            {
+                string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
+                if (adSprites.ContainsKey(spriteKey))
+                {
+                    GetComponent<SpriteRenderer>().sprite = adSprites[spriteKey];
                 }
             }
             //else if(enemy.EnemyName == "")
@@ -177,7 +191,7 @@ public class EnemyMove : MonoBehaviour
     }
     private int MovePresetTrojar(int roop_frame)
     {
-        if (roop_frame % 15 == 0)
+        if (roop_frame % 10 == 0)
         {
             switch (moving)
             {
@@ -186,6 +200,8 @@ public class EnemyMove : MonoBehaviour
                 case 1:
                     return 2;
                 case 2:
+                    return 3;
+                case 3:
                     return 0;
                 default:
                     return moving;

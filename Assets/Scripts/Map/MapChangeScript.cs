@@ -30,6 +30,21 @@ public class MapChangeScript : MonoBehaviour
             case 6:
                 GameManager.Instance.mapManager.TransAnotherMap("PoisonedSpring", TransId);
                 break;
+            case 7:
+                GameManager.Instance.mapManager.TransAnotherMap("PoisonedSpring", TransId);
+                break;
+            case 8:
+                GameManager.Instance.mapManager.TransAnotherMap("ErrorVillage", TransId);
+                break;
+            case 9:
+                GameManager.Instance.mapManager.TransAnotherMap("ErrorVillage", TransId);
+                break;
+            case 10:
+                GameManager.Instance.mapManager.TransAnotherMap("CorrupedTown", TransId);
+                break;
+            case 11:
+                GameManager.Instance.mapManager.TransAnotherMap("CorrupedTown", TransId);
+                break;
         }
     }
 }

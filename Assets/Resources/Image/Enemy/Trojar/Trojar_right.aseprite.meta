@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4329ff3ace6758488167d30e808f61b
+guid: ec99909ca78beb1489050725bc0df1ed
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -74,7 +74,7 @@ ScriptedImporter:
   previousAsepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -89,7 +89,7 @@ ScriptedImporter:
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639081428970509359
+  platformSettingsDirtyTick: 639082160396940222
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: 'Trojar_left '
+  - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
     originalName: 
-    pivot: {x: 0.53333336, y: -0.11111111}
+    pivot: {x: 0.4666667, y: -0.11111111}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 60
       height: 54
-    spriteID: 1b41ace2b1b690b4ea84756b67bb6b7d
+    spriteID: 387f3ab903081c743adc3ecdde736d40
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 453524426
+      value0: 1591074504
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: 'Trojar_left '
-    layerFlags: 0
+    name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: 'Trojar_left '
+    - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 4
         y: 6
         width: 60
         height: 54
-      spriteId: 1b41ace2b1b690b4ea84756b67bb6b7d
+      spriteId: 387f3ab903081c743adc3ecdde736d40
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
