@@ -6,11 +6,22 @@ using static GameManager;
 /// </summary>
 public class RepairableLine : MonoBehaviour
 {
+    [SerializeField] private int lineId;
+    private RepairableLineList repairableLineList;
     [SerializeField] private UIManager uiManager;
     public Rigidbody2D rb;
     public Transform target;
     public float dist;
     private bool Repairable = false;
+    void Start()
+    {
+        repairableLineList = GameManager.Instance.repairableLineList;
+
+        if (!repairableLineList.IsRepairable(lineId))
+        {
+            gameObject.SetActive(false);
+        }
+    }
     void Update()
     {
         Player player = Object.FindFirstObjectByType<Player>();

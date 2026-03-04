@@ -631,6 +631,7 @@ GameObject:
   - component: {fileID: 1182703144}
   - component: {fileID: 1182703146}
   - component: {fileID: 1182703147}
+  - component: {fileID: 1182703148}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -783,6 +784,7 @@ MonoBehaviour:
   shopManager: {fileID: 1182703132}
   screenScaler: {fileID: 1182703144}
   treasureBoxList: {fileID: 1182703145}
+  repairableLineList: {fileID: 1182703148}
   enemyList: {fileID: 1182703147}
   player: {fileID: 2088172326}
   neto: {fileID: 881097284}
@@ -877,6 +879,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d2d1b4cac30ad4b9c0be6e4927a828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyList
+--- !u!114 &1182703148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182703126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97fbf4e5f8da3a4293e082ff966e685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RepairableLineList
 --- !u!1001 &2088172322
 PrefabInstance:
   m_ObjectHideFlags: 0

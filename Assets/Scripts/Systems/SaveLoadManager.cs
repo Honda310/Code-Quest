@@ -43,6 +43,7 @@ public class SaveLoadManager : MonoBehaviour
         public bool[] BoxAccessable;
         public string currentMapName;
         public bool[] EventFlag;
+        public RepairableLineList RepairableFlag;
         public Vector3 charavector;
     }
     private SaveData loadedData;
@@ -51,7 +52,7 @@ public class SaveLoadManager : MonoBehaviour
     /// ゲームをセーブします
     /// </summary>
     /// <param name="slotId">0はオートセーブ、1,2は手動セーブ</param>
-    public void SaveGame(Player p, Neto n, List<CarryItem> items, int slotId,TreasureBoxList boxList,EnemyList enemies)
+    public void SaveGame(Player p, Neto n, List<CarryItem> items, int slotId, TreasureBoxList boxList, EnemyList enemies,RepairableLineList repair)
     {
         SaveData data = new SaveData();
         data.saveDate = System.DateTime.Now.ToString();                             //セーブした日時⓪
@@ -76,6 +77,7 @@ public class SaveLoadManager : MonoBehaviour
         data.currentMapName = currentScene.name;                                    //セーブしたマップ名の情報⑥
         data.charavector = p.transform.position;                                    //セーブした座標の情報⑦
         data.EventFlag = p.EventFlag;                                               //完了したイベントの情報⑧
+        data.RepairableFlag = repair;                                               //完了した道の修繕の情報⑨
         string json = JsonUtility.ToJson(data);             
         string fileName;
         if (slotId == 0)

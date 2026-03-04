@@ -155,7 +155,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject DebugCorrectPanel;
     [SerializeField] private GameObject DebugInCorrectPanel;
     [SerializeField] private GameObject BugMapTile;
-    [SerializeField] private GameObject RepairMapTile;
+    [SerializeField] private int RepairLineId;
     [SerializeField] private Text DebugQuestText;
     [SerializeField] private Text DebugInputText;
     [SerializeField] private Text DebugHintText;
@@ -2111,7 +2111,7 @@ public class UIManager : MonoBehaviour
         if (codingManager.AnswerCheck(currentCodingQuest))
         {
             DebugCorrectPanel.SetActive(true);
-            p.RepairedLine[currentCodingQuest.ID] = true;
+            GameManager.Instance.repairableLineList.RepairableLineTable[currentCodingQuest.ID] = true;
         }
         else
         {
@@ -2128,9 +2128,9 @@ public class UIManager : MonoBehaviour
     }
     public void OnDebugCorrectCheckButton()
     {
-        OnCodingCancelButtonClicked();
         BugMapTile.SetActive(false);
-        RepairMapTile.SetActive(true);
+        OnCodingCancelButtonClicked();
+        GameManager.Instance.repairableLineList.RepairLine(0);
     }
     public void OnDebugInCorrectCheckButton()
     {

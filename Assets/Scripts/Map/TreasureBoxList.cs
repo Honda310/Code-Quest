@@ -20,10 +20,6 @@ public class TreasureBoxList : MonoBehaviour
         dataManager = GameManager.Instance.dataManager;
         inventory = GameManager.Instance.inventory;
     }
-    public void TreasureBoxDataCreate()
-    {
-        
-    }
     /// <summary>
     /// 可読性のためだけに存在するメソッド。
     /// 宝箱ID+宝箱の中身のアイテムIDだけでクラスを作れた方が可読性がいいだろ！

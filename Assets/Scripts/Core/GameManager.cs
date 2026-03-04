@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public ScreenScales screenScaler;
     [Header("その他機能")]
     public TreasureBoxList treasureBoxList;
+    public RepairableLineList repairableLineList;
     public EnemyList enemyList;
 
     [Header("プレイヤーデータ")]
@@ -82,7 +83,6 @@ public class GameManager : MonoBehaviour
     {
         dataManager.LoadAllData();
         questManager.LoadQuests();
-        SetQuizMode(QuizMode.Normal);
     }
     private void Update()
     {
@@ -174,11 +174,6 @@ public class GameManager : MonoBehaviour
     }
     public void SaveManage(int i)
     {
-        saveLoadManager.SaveGame(player, neto, inventory.items, i, treasureBoxList, enemyList);
-    }
-    public QuizMode CurrentQuiz;
-    public void SetQuizMode(QuizMode mode)
-    {
-        CurrentQuiz = mode;
+        saveLoadManager.SaveGame(player, neto, inventory.items, i, treasureBoxList, enemyList,repairableLineList);
     }
 }

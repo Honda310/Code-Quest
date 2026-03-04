@@ -47,7 +47,7 @@ public class GameStartManager : MonoBehaviour
         }
         catch
         {
-            SaveSlotText1.text = "セーブデータがありません";
+            SaveSlotText2.text = "セーブデータがありません";
         }
         
     }
