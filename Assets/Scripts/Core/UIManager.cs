@@ -438,6 +438,7 @@ public class UIManager : MonoBehaviour
     {
         PlayerName.text = p.PlayerName ;
         EnemyName.text = name ;
+        Debug.Log(path);
         EnemyImage.sprite = Resources.Load<Sprite>($"Image/Enemy/{path}");
     }
     public void ShowLog()

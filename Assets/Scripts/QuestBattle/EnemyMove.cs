@@ -26,11 +26,11 @@ public class EnemyMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         PromdSprites = new Dictionary<string, Sprite>()
         {
-            { "-1_-1", Load("promd/3Enemy_06EasyEn_1normal_3left") },
-            { "-1_1", Load("promd/3Enemy_06EasyEn_1normal_3left_tail") },
+            { "-1_-1", Load("purond/3Enemy_06EasyEn_1normal_3left") },
+            { "-1_1", Load("purond/3Enemy_06EasyEn_1normal_3left_tail") },
 
-            { "1_-1", Load("promd/3Enemy_06EasyEn_1normal_4right") },
-            { "1_1", Load("promd/3Enemy_06EasyEn_1normal_4right_tail") },
+            { "1_-1", Load("purond/3Enemy_06EasyEn_1normal_4right") },
+            { "1_1", Load("purond/3Enemy_06EasyEn_1normal_4right_tail") },
         };
         GabettaSprites = new Dictionary<string, Sprite>()
         {
@@ -42,11 +42,11 @@ public class EnemyMove : MonoBehaviour
         };
         PackettonSprites = new Dictionary<string, Sprite>()
         {
-            { "-1_-1", Load("Packetton/1_1paketton_left") },
-            { "-1_1", Load("Packetton/1_2paketton_battleMotion_left") },
+            { "-1_-1", Load("Paketton/1_1paketton_left") },
+            { "-1_1", Load("Paketton/1_2paketton_battleMotion_left") },
 
-            { "1_-1", Load("Packetton/2_1paketton_right") },
-            { "1_1", Load("Packetton/2_2paketton_battleMotion_right") },
+            { "1_-1", Load("Paketton/2_1paketton_right") },
+            { "1_1", Load("Paketton/2_2paketton_battleMotion_right") },
         };
         //PackettonSprites = new Dictionary<string, Sprite>()
         //{
@@ -109,8 +109,9 @@ public class EnemyMove : MonoBehaviour
                 roop_frame = 0;
             }
             string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
-            if (enemy.EnemyName == "Promd")
+            if (enemy.EnemyName == "Purond")
             {
+                Debug.Log(spriteKey);
                 if (PromdSprites.ContainsKey(spriteKey))
                 {
                     GetComponent<SpriteRenderer>().sprite = PromdSprites[spriteKey];
@@ -123,7 +124,7 @@ public class EnemyMove : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = GabettaSprites[spriteKey];
                 }
             }
-            else if (enemy.EnemyName == "Packetton")
+            else if (enemy.EnemyName == "Paketton")
             {
                 if (PackettonSprites.ContainsKey(spriteKey))
                 {
