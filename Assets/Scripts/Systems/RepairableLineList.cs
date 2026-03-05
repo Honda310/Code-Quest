@@ -5,11 +5,13 @@ public class RepairableLineList : MonoBehaviour
 {
     public Dictionary<int, bool> RepairableLineTable = new Dictionary<int, bool>();
 
-    public void CreateRepairableLine(int lineId)
+    private void Start()
     {
-        RepairableLineTable[lineId] = false;
+        for (int i = 0; i < 4 ; i++)
+        {
+            RepairableLineTable[i] = false;
+        }
     }
-
     public void RepairLine(int lineId)
     {
         if (RepairableLineTable.ContainsKey(lineId))

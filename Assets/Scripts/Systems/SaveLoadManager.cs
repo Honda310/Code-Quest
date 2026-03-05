@@ -43,7 +43,8 @@ public class SaveLoadManager : MonoBehaviour
         public bool[] BoxAccessable;
         public string currentMapName;
         public bool[] EventFlag;
-        public RepairableLineList RepairableFlag;
+        public int[] RepairableLineID;
+        public bool[] Repaired;
         public Vector3 charavector;
     }
     private SaveData loadedData;
@@ -77,7 +78,8 @@ public class SaveLoadManager : MonoBehaviour
         data.currentMapName = currentScene.name;                                    //セーブしたマップ名の情報⑥
         data.charavector = p.transform.position;                                    //セーブした座標の情報⑦
         data.EventFlag = p.EventFlag;                                               //完了したイベントの情報⑧
-        data.RepairableFlag = repair;                                               //完了した道の修繕の情報⑨
+        data.RepairableLineID = repair.RepairableLineTable.Keys.ToArray();          //完了した道の修繕の情報⑨
+        data.Repaired = repair.RepairableLineTable.Values.ToArray();
         string json = JsonUtility.ToJson(data);             
         string fileName;
         if (slotId == 0)
@@ -126,6 +128,7 @@ public class SaveLoadManager : MonoBehaviour
 
         Inventory inventory = Object.FindFirstObjectByType<Inventory>();
         TreasureBoxList treasureList = Object.FindFirstObjectByType<TreasureBoxList>();
+        RepairableLineList repairableLineList = Object.FindFirstObjectByType<RepairableLineList>();
         EnemyList enemyList = Object.FindFirstObjectByType<EnemyList>();
         Player player = Object.FindFirstObjectByType<Player>();
         Neto neto = Object.FindFirstObjectByType<Neto>();
@@ -140,6 +143,7 @@ public class SaveLoadManager : MonoBehaviour
         player.transform.position = loadedData.charavector;
         neto.transform.position = loadedData.charavector;
         player.EventFlag = loadedData.EventFlag;
+        repairableLineList.LoadFromSaveData(loadedData.RepairableLineID,loadedData.Repaired);
     }
 
     /// <summary>

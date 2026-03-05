@@ -1,3 +1,5 @@
+using Unity.Collections;
+using UnityEditor.UI;
 using UnityEngine;
 using static GameManager;
 
@@ -9,17 +11,18 @@ public class RepairableLine : MonoBehaviour
     [SerializeField] private int lineId;
     private RepairableLineList repairableLineList;
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private GameObject BugMapTile;
     public Rigidbody2D rb;
     public Transform target;
     public float dist;
     private bool Repairable = false;
+    
     void Start()
     {
         repairableLineList = GameManager.Instance.repairableLineList;
-
-        if (!repairableLineList.IsRepairable(lineId))
+        if (repairableLineList.RepairableLineTable[lineId])
         {
-            gameObject.SetActive(false);
+            Repair();
         }
     }
     void Update()
@@ -45,5 +48,9 @@ public class RepairableLine : MonoBehaviour
         {
             uiManager.DebugStart();
         }
+    }
+    public void Repair()
+    {
+        BugMapTile.SetActive(false);
     }
 }

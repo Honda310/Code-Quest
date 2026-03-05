@@ -162,6 +162,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text DebugErrorText;
     private QuestManager questManager;
     private CodingQuestData currentCodingQuest;
+    [SerializeField] private RepairableLine repairableLine;
 
     [Header("ショップパネル用")]
     [SerializeField] private GameObject BaseItemSelectPanel;
@@ -2128,9 +2129,9 @@ public class UIManager : MonoBehaviour
     }
     public void OnDebugCorrectCheckButton()
     {
-        BugMapTile.SetActive(false);
         OnCodingCancelButtonClicked();
         GameManager.Instance.repairableLineList.RepairLine(0);
+        repairableLine.Repair();
     }
     public void OnDebugInCorrectCheckButton()
     {
