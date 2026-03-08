@@ -44,6 +44,18 @@ public class MapChangeScript : MonoBehaviour
                 break;
             case 11:
                 GameManager.Instance.mapManager.TransAnotherMap("CorrupedTown", TransId);
+                break; 
+            case 12:
+                GameManager.Instance.mapManager.TransAnotherMap("Unknown", TransId);
+                break;
+            case 13:
+                GameManager.Instance.mapManager.TransAnotherMap("Unknown", TransId);
+                break;
+            case 14:
+                GameManager.Instance.mapManager.TransAnotherMap("Temple", TransId);
+                break;
+            case 15:
+                GameManager.Instance.mapManager.TransAnotherMap("Temple", TransId);
                 break;
         }
     }

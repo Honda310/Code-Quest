@@ -20355,7 +20355,7 @@ MonoBehaviour:
   DebugCorrectPanel: {fileID: 849019580}
   DebugInCorrectPanel: {fileID: 1891450505}
   BugMapTile: {fileID: 0}
-  RepairMapTile: {fileID: 0}
+  RepairLineId: 0
   DebugQuestText: {fileID: 1177505514}
   DebugInputText: {fileID: 1053633147}
   DebugHintText: {fileID: 826465923}
@@ -31992,13 +31992,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 948
+      value: 945.4
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -617
+      value: -601
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32406,6 +32410,7 @@ GameObject:
   - component: {fileID: 1200495588}
   - component: {fileID: 1200495589}
   - component: {fileID: 1200495590}
+  - component: {fileID: 1200495591}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -32422,8 +32427,8 @@ Transform:
   m_GameObject: {fileID: 1200495587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 211.8249, y: 924.8914, z: 0}
-  m_LocalScale: {x: 103.5404, y: 429.05942, z: 1}
+  m_LocalPosition: {x: 202.6153, y: 924.8914, z: 0}
+  m_LocalScale: {x: 121.95561, y: 429.05942, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1393068105}
@@ -32532,6 +32537,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1200495591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200495587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5896602ade5db1b4a888d2110402c923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapChangeScript
+  TransId: 12
 --- !u!1001 &1202325379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34665,13 +34683,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 678
+      value: 680.4
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1159
+      value: -1139.7
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: bd237e0a88964c24bb1275d537dc8d8e, type: 3}
       propertyPath: m_LocalPosition.z

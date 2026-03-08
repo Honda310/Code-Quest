@@ -17,6 +17,7 @@ public class EnemyMove : MonoBehaviour
     private Dictionary<string, Sprite> Modu1;
     private Dictionary<string, Sprite> Modu2;
     private Dictionary<string, Sprite> Modu3;
+    private Dictionary<string, Sprite> DedcSprites;
     private Dictionary<string, Sprite> MulsleddaSprites;
     [SerializeField] private Enemy enemy;
 
@@ -70,8 +71,11 @@ public class EnemyMove : MonoBehaviour
         };
         MulsleddaSprites = new Dictionary<string, Sprite>()
         {
-            { "1_1", Load("Mulsledda/") },
-            { "-1_1", Load("Mulsledda/") },
+            { "-1_-1", Load("Mulsledda/mulsledda_1nomal_1left_1walk") },
+            { "-1_1", Load("Mulsledda/mulsledda_1nomal_1left_2walk") },
+
+            { "1_-1", Load("Mulsledda/mulsledda_1nomal_2right_1walk") },
+            { "1_1", Load("Mulsledda/mulsledda_1nomal_2right_2walk") },
         };
         adSprites = new Dictionary<string, Sprite>()
         {
@@ -80,6 +84,14 @@ public class EnemyMove : MonoBehaviour
 
             { "1_-1", Load("ad/2ad_3walk") },
             { "1_1", Load("ad/2ad_2walk") },
+        };
+        DedcSprites = new Dictionary<string, Sprite>()
+        {
+            { "-1_-1", Load("Dedc/1dedc_2left_1") },
+            { "-1_1", Load("Dedc/1dedc_2left_2jump1") },
+
+            { "1_-1", Load("Dedc/1dedc_1right_1") },
+            { "1_1", Load("Dedc/1dedc_1right_2jump1") },
         };
     }
 
@@ -160,6 +172,14 @@ public class EnemyMove : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = adSprites[spriteKey];
                 }
             }
+            else if (enemy.EnemyName == "dedc")
+            {
+                string spriteKey = $"{direction.x}_{MovePreset(roop_frame)}";
+                if (DedcSprites.ContainsKey(spriteKey))
+                {
+                    GetComponent<SpriteRenderer>().sprite = DedcSprites[spriteKey];
+                }
+            }
             //else if(enemy.EnemyName == "")
             //{
             //    if (PackettonSprites.ContainsKey(spriteKey))
@@ -170,7 +190,7 @@ public class EnemyMove : MonoBehaviour
 
             else
             {
-                Debug.Log(enemy.EnemyName);
+                //Debug.Log(enemy.EnemyName);
             }
         }
     }

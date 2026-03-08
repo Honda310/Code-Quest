@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a1f09cec6b46459459852829fc7da018
+guid: cc12086088df03f4e956a6323be635de
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639081428970558927
+  platformSettingsDirtyTick: 639084088475126283
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 68
       height: 79
-    spriteID: a4eb7cc082b2af148a1ea4f4092eb3d2
+    spriteID: a2d234ef687014f40b9c5c164c10afcb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 4
       width: 74
       height: 79
-    spriteID: d5ada9e7ef3a6a644baad6aa67e81dcd
+    spriteID: df577e7aed296fa46a31cc15faafddfb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,7 +181,7 @@ ScriptedImporter:
       y: 4
       width: 68
       height: 77
-    spriteID: 14ceae24a4b3be449bf453006eb47988
+    spriteID: df1acad55867ecb4b9177d2a1f2c0f90
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -195,12 +195,12 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1877208269
+      value0: 1379881890
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: mulsledda_1nomal_1right_2discovery
+    name: mulsledda_1nomal_1left_2discovery
     layerFlags: 0
     layerType: 0
     blendMode: 0
@@ -213,7 +213,7 @@ ScriptedImporter:
         y: 7
         width: 68
         height: 79
-      spriteId: a4eb7cc082b2af148a1ea4f4092eb3d2
+      spriteId: a2d234ef687014f40b9c5c164c10afcb
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -222,7 +222,7 @@ ScriptedImporter:
         y: 5
         width: 74
         height: 79
-      spriteId: d5ada9e7ef3a6a644baad6aa67e81dcd
+      spriteId: df577e7aed296fa46a31cc15faafddfb
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -231,7 +231,7 @@ ScriptedImporter:
         y: 7
         width: 68
         height: 77
-      spriteId: 14ceae24a4b3be449bf453006eb47988
+      spriteId: df1acad55867ecb4b9177d2a1f2c0f90
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

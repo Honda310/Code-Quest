@@ -28,6 +28,14 @@ public class QuestManager : MonoBehaviour
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.ForWhile_BasicHard);
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.ForWhile_NestHard);
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.ForWhile_WhileAndDoWhileHard);
+        LoadFromSingleCSV("Data/SelectQuestion/Array_Access_Index", QuestCategory.Array_Access_Index);
+        LoadFromSingleCSV("Data/SelectQuestion/Array_Decl_Init", QuestCategory.Array_Decl_Init);
+        LoadFromSingleCSV("Data/SelectQuestion/Array_Length_Loop", QuestCategory.Array_Length_Loop);
+        LoadFromSingleCSV("Data/SelectQuestion/Array_Types_Values", QuestCategory.Array_Types_Values);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.Array_Access_IndexHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.Array_Decl_InitHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.Array_Length_LoopHard);
+        LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_ForWhile", QuestCategory.Array_Types_ValuesHard);
         //LoadFromSingleCSV("Data/SelectQuestion/FillBlankQuestion/", QuestCategory.ForWhile_BasicHard);
         LoadFromCodingCSV("Data/CodingQuest/CodingQuestAll");
         Debug.Log("[QuestManager] ロード完了");

@@ -790,7 +790,6 @@ MonoBehaviour:
   neto: {fileID: 881097284}
   inventory: {fileID: 1182703143}
   spawnPlayer: {fileID: 1182703142}
-  CurrentQuiz: 0
 --- !u!4 &1182703141
 Transform:
   m_ObjectHideFlags: 0
