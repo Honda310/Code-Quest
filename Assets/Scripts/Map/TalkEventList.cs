@@ -12,8 +12,4 @@ public class TalkEventList: MonoBehaviour
             "‚¨‘O‚ç‚ÌéŒ¾‚µ‚½•Ï”‚ğ–¢’è‹`‚É‚µ‚Ä‚â‚éÌ§²‚Ë‚¥I"
         });
     }
-    void Update()
-    {
-        
-    }
 }

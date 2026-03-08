@@ -5,11 +5,15 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     Queue<string> currentLines;
-    [SerializeField] private TalkEventList talkEventList;
     private bool inputAble=false;
     public void StartDialogue(int npcId)
     {
-        currentLines = new Queue<string>(talkEventList.TalkEventTable[npcId]);
+        currentLines = new Queue<string>(GameManager.Instance.talkEventList.TalkEventTable[npcId]);
+        ShowNext();
+    }
+    public void StartEvent(int eventId)
+    {
+        currentLines = new Queue<string>(GameManager.Instance.eventList.EventTable[eventId]);
         ShowNext();
     }
 

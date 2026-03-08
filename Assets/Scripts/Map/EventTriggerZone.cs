@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 /// <summary>
 /// プレイヤーが侵入したときにイベントを発生させるトリガークラスです。
@@ -7,18 +9,33 @@ public class EventTriggerZone : MonoBehaviour
 {
     public int EventID;
     public bool OneTime = true;
+    public Rigidbody2D rb;
     private bool triggered = false;
-
-    private void OnTriggerEnter2D(Collider2D col)
+    float dist = 1000.0f;
+    private Transform target;
+    private void Update()
     {
-        if (col.CompareTag("Player") && !triggered)
+        Player player = Object.FindFirstObjectByType<Player>();
+        if (player != null)
         {
-            GameManager.Instance.eventManager.EventTrigger(EventID);
-
-            if (OneTime)
+            target = player.transform;
+            Vector2 TargetPos = target.position;
+            Vector2 pos = rb.position;
+            Vector2 toPlayer = TargetPos - pos;
+            dist = toPlayer.magnitude;
+            if (dist < 20)
             {
                 triggered = true;
             }
+            else
+            {
+                triggered = false;
+            }
+        }
+        if (triggered)
+        {
+            GameManager.Instance.dialogueManager.StartEvent(EventID);
+            OneTime = false;
         }
     }
 }
