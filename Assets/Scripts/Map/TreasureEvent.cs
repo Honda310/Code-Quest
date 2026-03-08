@@ -27,6 +27,7 @@ public class TreasureEvent : MonoBehaviour
     }
     void Update()
     {
+
         Player player = Object.FindFirstObjectByType<Player>();
         if (player != null)
         {

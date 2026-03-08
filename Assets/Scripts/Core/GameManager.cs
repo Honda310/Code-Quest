@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     // 各機能ごとの管理クラスをここに登録します
     public DataManager dataManager;         // データ（CSVなど）の読み込み管理
     public QuestManager questManager;       // クイズ問題の管理
-    public EventManager eventManager;       // 会話などのイベント管理
+    public DialogueManager dialogueManager; // 会話などのイベント管理
+    public EventList eventList;
+    public TalkEventList talkEventList;
     public SaveLoadManager saveLoadManager; // セーブ・ロード機能
     public AudioManager audioManager;       // BGM・効果音
     public MapManager mapManager;           // シーン移動
