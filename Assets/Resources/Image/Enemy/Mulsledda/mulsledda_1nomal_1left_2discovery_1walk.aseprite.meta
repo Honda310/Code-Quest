@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: afcf82e9e7dfb95459bdecba10322995
+guid: f7a08508366b08a42939f9a8cbe5bbcf
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639081428970558927
+  platformSettingsDirtyTick: 639084088475126283
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: mulsledda_2nomal_2breath
+  - name: Frame_0
     originalName: 
-    pivot: {x: 0.5441177, y: -0.11111111}
+    pivot: {x: 0.49999997, y: -0.07575758}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 68
-      height: 63
-    spriteID: 7c8efbaaa243945419cc5ed7882a3a77
+      width: 74
+      height: 66
+    spriteID: cf16e2bee9459544db95c311dda2da82
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,30 +148,60 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5441177, y: -0.11111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 78
+      width: 68
+      height: 63
+    spriteID: 908680730ef8914448def0ee0d993f5b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 78}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 998636868
+      value0: 2899866585
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: mulsledda_2nomal_2breath
+    name: mulsledda_1nomal_1left_2discovery_1walk
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: mulsledda_2nomal_2breath
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 3
+        y: 5
+        width: 74
+        height: 66
+      spriteId: cf16e2bee9459544db95c311dda2da82
+    - name: Frame_1
+      frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 3
         y: 7
         width: 68
         height: 63
-      spriteId: 7c8efbaaa243945419cc5ed7882a3a77
+      spriteId: 908680730ef8914448def0ee0d993f5b
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -205,5 +235,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 80, y: 80}
-  previousTextureSize: {x: 128, y: 128}
+  canvasSize: {x: 80, y: 100}
+  previousTextureSize: {x: 128, y: 256}

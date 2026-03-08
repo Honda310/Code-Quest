@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 70f99b038dc440c4fa5dd6f04b912164
+guid: d5ee4acc2cf8577439c549e7d976fb45
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639081428970509359
+  platformSettingsDirtyTick: 639084088475126283
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: mulsledda_2nomal_1idle
+  - name: mulsledda_1nomal_1left_1walk
     originalName: 
     pivot: {x: 0.49999997, y: -0.07575758}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 74
       height: 66
-    spriteID: 0e5e023d85115584abb50cb76bd51c09
+    spriteID: 22bdcbc4c3341c34dad01b4982750ae3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,17 +153,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1293273077
+      value0: 162626000
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: mulsledda_2nomal_1idle
+    name: mulsledda_1nomal_1left_1walk
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: mulsledda_2nomal_1idle
+    - name: mulsledda_1nomal_1left_1walk
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 5
         width: 74
         height: 66
-      spriteId: 0e5e023d85115584abb50cb76bd51c09
+      spriteId: 22bdcbc4c3341c34dad01b4982750ae3
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

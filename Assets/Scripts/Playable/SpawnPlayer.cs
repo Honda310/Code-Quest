@@ -68,6 +68,26 @@ public class SpawnPlayer : MonoBehaviour
                 GameManager.Instance.player.transform.position = new Vector3(1350, 50, 0);
                 GameManager.Instance.neto.transform.position = new Vector3(1320, 50, 0);
                 break;
+            //???(入口に移動)
+            case 12:
+                GameManager.Instance.player.transform.position = new Vector3(90, 50, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(60, 50, 0);
+                break;
+            //???(出口に移動)
+            case 13:
+                GameManager.Instance.player.transform.position = new Vector3(1600, 50, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(1630, 50, 0);
+                break; 
+            //神殿(入口に移動)
+            case 14:
+                GameManager.Instance.player.transform.position = new Vector3(1570, -230, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(1570, -200, 0);
+                break; 
+            //神殿(出口に移動)
+            case 15:
+                GameManager.Instance.player.transform.position = new Vector3(1600, -310, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(1630, -310, 0);
+                break;
             case 99:
                 GameManager.Instance.player.transform.position = new Vector3(0, 60, 0);
                 GameManager.Instance.neto.transform.position = new Vector3(0, 100, 0);

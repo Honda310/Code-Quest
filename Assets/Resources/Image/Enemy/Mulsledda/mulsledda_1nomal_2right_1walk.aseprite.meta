@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd366ad42fbe5c24c9d8470c075c9287
+guid: 6690e42453a0023499d15d5dc329e35e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639081428970509359
+  platformSettingsDirtyTick: 639084088475126283
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: mulsledda_1nomal_2right_1walk
     originalName: 
     pivot: {x: 0.49999997, y: -0.07575758}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 74
       height: 66
-    spriteID: dc5f9c59ca4b4fa4e9c736de111aa64b
+    spriteID: 528e9744e27c64b488a7071ed8471fc6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,43 +148,22 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5441177, y: -0.11111111}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 78
-      width: 68
-      height: 63
-    spriteID: 0622c756bf1df7549b7eff4309ed7103
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 78}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 953333173
+      value0: 231964976
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: mulsledda_1nomal_1right_1walk
+    name: mulsledda_1nomal_2right_1walk
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: mulsledda_1nomal_2right_1walk
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -192,16 +171,7 @@ ScriptedImporter:
         y: 5
         width: 74
         height: 66
-      spriteId: dc5f9c59ca4b4fa4e9c736de111aa64b
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 3
-        y: 7
-        width: 68
-        height: 63
-      spriteId: 0622c756bf1df7549b7eff4309ed7103
+      spriteId: 528e9744e27c64b488a7071ed8471fc6
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -236,4 +206,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 80, y: 80}
-  previousTextureSize: {x: 128, y: 256}
+  previousTextureSize: {x: 128, y: 128}

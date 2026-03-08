@@ -22270,7 +22270,7 @@ MonoBehaviour:
   DebugCorrectPanel: {fileID: 1983956139}
   DebugInCorrectPanel: {fileID: 1474412428}
   BugMapTile: {fileID: 0}
-  RepairMapTile: {fileID: 0}
+  RepairLineId: 0
   DebugQuestText: {fileID: 772722204}
   DebugInputText: {fileID: 2121250546}
   DebugHintText: {fileID: 1559444145}
@@ -54216,7 +54216,6 @@ SceneRoots:
   - {fileID: 1321490296}
   - {fileID: 1070651932}
   - {fileID: 1165141144}
-  - {fileID: 1846078688}
   - {fileID: 874623085}
   - {fileID: 103075008}
   - {fileID: 1069212520}
@@ -54227,5 +54226,6 @@ SceneRoots:
   - {fileID: 140917067}
   - {fileID: 596434187}
   - {fileID: 2024600175}
+  - {fileID: 1846078688}
   - {fileID: 861332412}
   - {fileID: 1601753134}

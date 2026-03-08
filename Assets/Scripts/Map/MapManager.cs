@@ -17,6 +17,8 @@ public class MapManager : MonoBehaviour
         MapNameConvert["PoisonedSpring"] = "“ÅŠQòŒ¹";
         MapNameConvert["ErrorVillage"] = "ƒGƒ‰[W—";
         MapNameConvert["CorrupedTown"] = "Š”÷sŠX";
+        MapNameConvert["Unknown"] = "???";
+        MapNameConvert["Temple"] = "_“a";
     }
     public void TransAnotherMap(string sceneName,int spawnID)
     {
