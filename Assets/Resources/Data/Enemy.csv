@@ -10,17 +10,25 @@ EnemyID,Name,MaxDP,Atk,Categories,ImageFileName,EXP
 9,Trojar,90,20,IF_ElseIf,Trojar/Trojar_3battle,35
 10,ad,110,20,IF_ElseIf,ad/2ad_1,35
 11,Trojar,90,30,IF_LogicalOperator,Trojar/Trojar_3battle,35
-12,ad,120,20,IF_LogicalOperator,ad/2ad_1,35
 13,Modu3,100,25,ForWhile_Basic,Modu3/modu3_2battle_1,35
-14,Modu1,80,30,ForWhile_Basic,"Modu1/modu1 _2battle_1",35
-15,Modu2,90,20,ForWhile_Nest,"Modu2/modu2 _2battle_1",35
+14,Modu1,80,30,ForWhile_Basic,Modu1/modu1_2battle_1,35
+15,Modu2,90,20,ForWhile_Nest,Modu2/modu2_2battle_1,35
 16,Modu3,110,20,ForWhile_Nest,Modu3/modu3_2battle_1,35
-17,Modu2,90,30,ForWhile_WhileAndDoWhile,"Modu2/modu2 _2battle_1",35
+17,Modu2,90,30,ForWhile_WhileAndDoWhile,Modu2/modu2_2battle_1,35
 18,Matran,120,20,ForWhile_WhileAndDoWhile,Matran/matran_2battle_1,35
 19,Dedc,120,20,Array_Access_Index,Dedc/1dedc_2left_battle_debag,35
+<<<<<<< HEAD
 20,Mulsledda,120,20,Array_Access_Index,Mulsledda/mulsledda_2battle_1idle,35
 21,Mulsledda,120,20,Array_Decl_Init,Mulsledda/mulsledda_2battle_1idle,35
 22,Mulsledda,120,20,Array_Length_Loop,Mulsledda/mulsledda_2battle_1idle,35
 23,SionZero,120,20,Array_Types_Values,3_SionZero_2battle_1idle,35
 24,Gubsect,150,30,Variable_All,gubsect/gubsect_2battle,210,
 25,Ride,200,30,IF_All,ad/2ad_1,350
+=======
+20,Mulsledda,120,20,Array_Access_Index,Mulsledda/mulsledda_2nomal_1idle,35
+21,Mulsledda,120,20,Array_Decl_Init,Mulsledda/mulsledda_2nomal_1idle,35
+22,Mulsledda,120,20,Array_Length_Loop,Mulsledda/mulsledda_2nomal_1idle,35
+23,SionZero,120,20,Array_Types_Values,SionZero/3_SionZero_2battle_1idle,35
+100,Gubsect,150,30,Variable_All,gubsect/gubsect_2battle,210
+101,Ride,200,30,IF_All,Ride/ride_2battle
+>>>>>>> kairi

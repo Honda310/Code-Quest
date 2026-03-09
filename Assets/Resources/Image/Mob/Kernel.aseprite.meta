@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 1
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -74,7 +74,7 @@ ScriptedImporter:
   previousAsepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -89,7 +89,7 @@ ScriptedImporter:
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 639086599977111517
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: chara1
     originalName: 
     pivot: {x: 0.4814815, y: -0.03125}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 27
       height: 32
-    spriteID: af7468cf06fbd36438dfb529d85d371c
+    spriteID: e744602eba8a9fa4a8dda823a0b0da65
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,7 +148,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
+  - name: chara2
     originalName: 
     pivot: {x: 0.4814815, y: -0.03125}
     alignment: 9
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 44
       width: 27
       height: 32
-    spriteID: 93e9fb2d940a33f46be468439129edef
+    spriteID: 1716e878d879569439868794b642f9c8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -174,17 +174,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3129660675
+      value0: 1588646124
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Kernel
-    layerFlags: 0
+    name: chara1
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: chara1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -192,8 +192,24 @@ ScriptedImporter:
         y: 1
         width: 27
         height: 32
-      spriteId: af7468cf06fbd36438dfb529d85d371c
-    - name: Frame_1
+      spriteId: e744602eba8a9fa4a8dda823a0b0da65
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 22562183
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: chara2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: chara2
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -201,13 +217,37 @@ ScriptedImporter:
         y: 1
         width: 27
         height: 32
-      spriteId: 93e9fb2d940a33f46be468439129edef
+      spriteId: 1716e878d879569439868794b642f9c8
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
   tileSets: []
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 

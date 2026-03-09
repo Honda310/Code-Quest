@@ -776,7 +776,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   dataManager: {fileID: 1182703139}
   questManager: {fileID: 1182703136}
-  eventManager: {fileID: 1182703137}
+  dialogueManager: {fileID: 0}
+  eventList: {fileID: 0}
+  talkEventList: {fileID: 0}
   saveLoadManager: {fileID: 1182703134}
   audioManager: {fileID: 1182703133}
   mapManager: {fileID: 1182703138}
