@@ -258,7 +258,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -682,7 +682,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1002,7 +1002,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1367,11 +1367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a89621f255d10478c0a594081a8bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  PlayerName: 
-  MaxHP: 100
-  CurrentHP: 100
-  BaseAtk: 10
-  BaseDef: 10
   moveSpeed: 100
 --- !u!61 &554212419
 BoxCollider2D:
@@ -1528,7 +1523,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1758,7 +1753,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2429,7 +2424,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2807,7 +2802,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3427,7 +3422,6 @@ Transform:
   m_Children:
   - {fileID: 1758247982}
   - {fileID: 144566858}
-  - {fileID: 2069728433}
   - {fileID: 578176620}
   - {fileID: 1807842818}
   - {fileID: 1541741257}
@@ -3701,7 +3695,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4250,7 +4244,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4434,7 +4428,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4618,7 +4612,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4802,7 +4796,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4940,7 +4934,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5262,7 +5256,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5503,7 +5497,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5687,7 +5681,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5817,7 +5811,7 @@ Transform:
   m_GameObject: {fileID: 1835303769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 897.8, y: 385.4192, z: 0}
+  m_LocalPosition: {x: 890, y: 420, z: 0}
   m_LocalScale: {x: 121.70052, y: 52.62198, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5871,7 +5865,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6027,17 +6021,163 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40896019c21f4b747833b921afd5871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  playerStatusText: {fileID: 0}
-  netoStatusText: {fileID: 0}
-  logText: {fileID: 0}
-  inventoryPanel: {fileID: 0}
+  PlayerStatusText: {fileID: 0}
+  NetoStatusText: {fileID: 0}
+  EnemyStatusText: {fileID: 0}
+  PlayerStatusSlider: {fileID: 0}
+  NetoStatusSlider: {fileID: 0}
+  EnemyStatusSlider: {fileID: 0}
+  logText1: {fileID: 0}
+  logText2: {fileID: 0}
+  logKeeper:
+  - 
+  - 
   battlePanel: {fileID: 0}
   battleQuestText: {fileID: 0}
   battleInfoText: {fileID: 0}
-  answerInput: {fileID: 0}
+  PlSelectLabelText: {fileID: 0}
+  NetoSelectLabelText: {fileID: 0}
+  DifficultSelectText: {fileID: 0}
   shopPanel: {fileID: 0}
   dojoPanel: {fileID: 0}
   itemDebugPanel: {fileID: 0}
+  PlSelectPanel: {fileID: 0}
+  NetoSelectPanel: {fileID: 0}
+  DifficultSelectPanel: {fileID: 0}
+  QuestFramePanel: {fileID: 0}
+  NormalQuestFramePanel: {fileID: 0}
+  HardQuestFramePanel: {fileID: 0}
+  DifficultAndCheckButtonFramePanel: {fileID: 0}
+  DifficultAndSelectButtonFramePanel: {fileID: 0}
+  BattleItemPanel: {fileID: 0}
+  BattleItemListPanel: {fileID: 0}
+  BattleItemTargetSelectPanel: {fileID: 0}
+  BattleItemReconfirmPanel: {fileID: 0}
+  TimeLimitSlider: {fileID: 0}
+  TimeLimitText: {fileID: 0}
+  answerInput: {fileID: 0}
+  PlayerName: {fileID: 0}
+  EnemyImage: {fileID: 0}
+  EnemyName: {fileID: 0}
+  BattleItemSelectSlot1: {fileID: 0}
+  BattleItemSelectSlot2: {fileID: 0}
+  BattleItemSelectSlot3: {fileID: 0}
+  BattleItemSelectSlot4: {fileID: 0}
+  BattleItemSelectSlot5: {fileID: 0}
+  BattleItemValue1: {fileID: 0}
+  BattleItemValue2: {fileID: 0}
+  BattleItemValue3: {fileID: 0}
+  BattleItemValue4: {fileID: 0}
+  BattleItemValue5: {fileID: 0}
+  BattleItemFlavorText: {fileID: 0}
+  PlayerItemValidTextInBattle: {fileID: 0}
+  NetoItemValidTextInBattle: {fileID: 0}
+  FillBlankAnswer: {fileID: 0}
+  EnemyScanCount: 0
+  MenuPanel: {fileID: 0}
+  MenuBarPanel: {fileID: 0}
+  MenuButtonPanel: {fileID: 0}
+  ItemPanel: {fileID: 0}
+  ItemTargetSelectPanel: {fileID: 0}
+  ItemConfirmPanel: {fileID: 0}
+  EquipandStatusPanel: {fileID: 0}
+  ConfigPanelGameEnd: {fileID: 0}
+  ConfigPanel: {fileID: 0}
+  KeyBindPanel: {fileID: 0}
+  CharaSelector: {fileID: 0}
+  NetoSelector: {fileID: 0}
+  EquipPanelDisable1: {fileID: 0}
+  EquipPanelDisable2: {fileID: 0}
+  EquipPanelDisable3: {fileID: 0}
+  PointerPanel1: {fileID: 0}
+  PointerPanel2: {fileID: 0}
+  PointerPanel3: {fileID: 0}
+  PointerPanel4: {fileID: 0}
+  PointerPanel5: {fileID: 0}
+  PointerPanel6: {fileID: 0}
+  PlHpSlider: {fileID: 0}
+  NetoHpSlider: {fileID: 0}
+  PlHpText: {fileID: 0}
+  NetoHpText: {fileID: 0}
+  CharaNameText: {fileID: 0}
+  EquipWeaponName: {fileID: 0}
+  EquipAccessoryName: {fileID: 0}
+  LevelText: {fileID: 0}
+  ExpText: {fileID: 0}
+  CurrentHPText: {fileID: 0}
+  CurrentAtkText: {fileID: 0}
+  CurrentDefText: {fileID: 0}
+  CurrentDebugLimitText: {fileID: 0}
+  EquipItemSelectSlot1: {fileID: 0}
+  EquipItemSelectSlot2: {fileID: 0}
+  EquipItemSelectSlot3: {fileID: 0}
+  EquipItemSelectSlot4: {fileID: 0}
+  EquipItemSelectSlot5: {fileID: 0}
+  InventoryItemSelectSlot1: {fileID: 0}
+  InventoryItemSelectSlot2: {fileID: 0}
+  InventoryItemSelectSlot3: {fileID: 0}
+  InventoryItemSelectSlot4: {fileID: 0}
+  InventoryItemSelectSlot5: {fileID: 0}
+  InventoryItemValue1: {fileID: 0}
+  InventoryItemValue2: {fileID: 0}
+  InventoryItemValue3: {fileID: 0}
+  InventoryItemValue4: {fileID: 0}
+  InventoryItemValue5: {fileID: 0}
+  PlayerItemValidText: {fileID: 0}
+  NetoItemValidText: {fileID: 0}
+  ItemFlavorText: {fileID: 0}
+  StatusDetailPanel: {fileID: 0}
+  StatusDetailText: {fileID: 0}
+  ItemDetailPanel: {fileID: 0}
+  ItemDetailText: {fileID: 0}
+  EquipItemFlavorPanel: {fileID: 0}
+  EquipItemFlavorText: {fileID: 0}
+  codingManager: {fileID: 0}
+  DebugPanel: {fileID: 0}
+  DebugQuestDisplayPanel: {fileID: 0}
+  DebugInputPanel: {fileID: 0}
+  DebugHintDisplayPanel: {fileID: 0}
+  DebugCorrectPanel: {fileID: 0}
+  DebugInCorrectPanel: {fileID: 0}
+  BugMapTile: {fileID: 0}
+  RepairLineId: 0
+  DebugQuestText: {fileID: 0}
+  DebugInputText: {fileID: 0}
+  DebugHintText: {fileID: 0}
+  DebugErrorText: {fileID: 0}
+  repairableLine: {fileID: 0}
+  BaseItemSelectPanel: {fileID: 0}
+  TradeItemSelectPanel: {fileID: 0}
+  ShopMenuPanel: {fileID: 0}
+  TradeBaseConfirmPanel: {fileID: 0}
+  TradeConfirmPanel: {fileID: 0}
+  BaseItemSelectText1: {fileID: 0}
+  BaseItemSelectText2: {fileID: 0}
+  BaseItemSelectText3: {fileID: 0}
+  BaseItemSelectText4: {fileID: 0}
+  BaseItemSelectText5: {fileID: 0}
+  BaseItemValueText1: {fileID: 0}
+  BaseItemValueText2: {fileID: 0}
+  BaseItemValueText3: {fileID: 0}
+  BaseItemValueText4: {fileID: 0}
+  BaseItemValueText5: {fileID: 0}
+  TradeItemSelectText1: {fileID: 0}
+  TradeItemSelectText2: {fileID: 0}
+  TradeItemSelectText3: {fileID: 0}
+  TradeItemSelectText4: {fileID: 0}
+  TradeItemSelectText5: {fileID: 0}
+  TradeItemValueText1: {fileID: 0}
+  TradeItemValueText2: {fileID: 0}
+  TradeItemValueText3: {fileID: 0}
+  TradeItemValueText4: {fileID: 0}
+  TradeItemValueText5: {fileID: 0}
+  TradeItemFlavorText: {fileID: 0}
+  mapnamepop: {fileID: 0}
+  TalkTextBoxPanel: {fileID: 0}
+  TalkTextBox: {fileID: 0}
+  SaveLoadPanel: {fileID: 0}
+  SaveDetailText: {fileID: 0}
+  TalkBranchPanel: {fileID: 0}
 --- !u!114 &1855242585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6062,6 +6202,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd56785b33a31d4d87c3a02d1cb51ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DojoManager
+  DojoSelectPanel: {fileID: 0}
+  DojoTellPanel: {fileID: 0}
+  BattleAskPanel: {fileID: 0}
+  DojoPanel: {fileID: 0}
+  NetoTellText: {fileID: 0}
+  IndexLabel: {fileID: 0}
+  BattleAskText: {fileID: 0}
 --- !u!114 &1855242587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6125,7 +6272,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bf9c832fdbe2d42adb1951e565b73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
-  currentEnemy: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  damagePop: {fileID: 0}
+  choicechecker: {fileID: 0}
+  writechecker: {fileID: 0}
+  uimanager: {fileID: 0}
+  ChallengableHard: 0
 --- !u!114 &1855242592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6186,19 +6338,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b736f07f702a1d9409e5e7d20e21126d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  uiManager: {fileID: 0}
   dataManager: {fileID: 1855242595}
   questManager: {fileID: 1855242592}
-  eventManager: {fileID: 1855242593}
+  dialogueManager: {fileID: 0}
+  eventList: {fileID: 0}
+  talkEventList: {fileID: 0}
   saveLoadManager: {fileID: 1855242590}
   audioManager: {fileID: 1855242589}
   mapManager: {fileID: 1855242594}
   itemDebugManager: {fileID: 1855242587}
   shopManager: {fileID: 1855242588}
-  dojoManager: {fileID: 1855242586}
+  screenScaler: {fileID: 0}
+  treasureBoxList: {fileID: 0}
+  repairableLineList: {fileID: 0}
+  enemyList: {fileID: 0}
   player: {fileID: 554212418}
   neto: {fileID: 0}
   inventory: {fileID: 0}
+  spawnPlayer: {fileID: 0}
 --- !u!4 &1855242597
 Transform:
   m_ObjectHideFlags: 0
@@ -6342,7 +6499,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6663,7 +6820,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6904,7 +7061,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
+  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6921,190 +7078,6 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063025533}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!1 &2069728432
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2069728433}
-  - component: {fileID: 2069728434}
-  - component: {fileID: 2069728435}
-  - component: {fileID: 2069728436}
-  m_Layer: 0
-  m_Name: Square (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2069728433
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069728432}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 987.1664, y: 536.0958, z: 0}
-  m_LocalScale: {x: 35.775883, y: 67.873634, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1078860640}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2069728434
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069728432}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20186144, g: 0.9622642, b: 0.049928807, a: 0.09803922}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!61 &2069728435
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069728432}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!61 &2069728436
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069728432}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
