@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 696e5d15f81e9264eb60770e012e02b4
+guid: 5564ce70b0c1d6648a970b2c01472ec8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -74,7 +74,7 @@ ScriptedImporter:
   previousAsepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 0
+    layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -89,7 +89,7 @@ ScriptedImporter:
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 0
+    layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 639086736333910590
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
+  - name: 6munataka_1normal_2back_1stop
     originalName: 
-    pivot: {x: 0.9090908, y: 0}
+    pivot: {x: 0.47368422, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 11
-      height: 50
-    spriteID: 0bba0e1225dffda40bd6e30ec352e220
+      width: 19
+      height: 49
+    spriteID: 647bf99503643c34a89d09d2fc3c1159
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1591074504
+      value0: 2750733075
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
-    layerFlags: 3
+    name: 6munataka_1normal_2back_1stop
+    layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: "\xE3\x83\xAC\xE3\x82\xA4\xE3\x83\xA4\xE3\x83\xBC 1"
+    - name: 6munataka_1normal_2back_1stop
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 15
+        x: 7
         y: 0
-        width: 11
-        height: 50
-      spriteId: 0bba0e1225dffda40bd6e30ec352e220
+        width: 19
+        height: 49
+      spriteId: 647bf99503643c34a89d09d2fc3c1159
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -205,5 +205,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 50, y: 50}
+  canvasSize: {x: 32, y: 54}
   previousTextureSize: {x: 32, y: 64}

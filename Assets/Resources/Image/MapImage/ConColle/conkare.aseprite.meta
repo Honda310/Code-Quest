@@ -1,0 +1,605 @@
+fileFormatVersion: 2
+guid: 010f66563a84e3444a5383941cdee327
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 1
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639086737237922487
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: background
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 320
+      height: 360
+    spriteID: d9f0f09394774d94fb317ccd3e5d1270
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: floor
+    originalName: 
+    pivot: {x: 0.4771242, y: -0.16981132}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 4
+      width: 306
+      height: 265
+    spriteID: 588755b216151dd44aa6303ccdf578a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 4}
+  - name: wall
+    originalName: 
+    pivot: {x: 0.5, y: -2.4065936}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 372
+      width: 292
+      height: 91
+    spriteID: 4a81a05d9496ab648baa1cb11436eb17
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 372}
+  - name: table
+    originalName: 
+    pivot: {x: 0.49612403, y: -0.186722}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 4
+      width: 258
+      height: 241
+    spriteID: 046164f1c2342584face28f54b8ea971
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 4}
+  - name: shelf
+    originalName: 
+    pivot: {x: 0.49825785, y: -2.7866669}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 384
+      width: 287
+      height: 75
+    spriteID: c12114405d9d35b40afdf2940990303b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 384}
+  - name: Podiumobj
+    originalName: 
+    pivot: {x: 0.51304346, y: -7.7307696}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 845
+      y: 344
+      width: 115
+      height: 26
+    spriteID: 193515582dff52346856580b175d0d9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 845, y: 344}
+  - name: computer
+    originalName: 
+    pivot: {x: 0.49612403, y: -0.45454547}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 332
+      y: 277
+      width: 258
+      height: 99
+    spriteID: e34c068421566fd4798124fa38c0334d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 332, y: 277}
+  - name: '
+
+      chair'
+    originalName: 
+    pivot: {x: 0.48066297, y: -0.5421687}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 253
+      width: 181
+      height: 83
+    spriteID: e09240cc3e8427f4cb02d5b4e3d2c519
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 253}
+  - name: '
+
+      wall_hanging'
+    originalName: 
+    pivot: {x: 0.51832455, y: -3.9166667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 344
+      width: 191
+      height: 60
+    spriteID: c778ac157b1272d44ad17780cb5c6a99
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 344}
+  spriteSheetImportData: []
+  tileSetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    uuid:
+      value0: 297084606
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: background
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: background
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 320
+        height: 360
+      spriteId: d9f0f09394774d94fb317ccd3e5d1270
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 1
+    uuid:
+      value0: 1776456860
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: floor
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: floor
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 14
+        y: 45
+        width: 306
+        height: 265
+      spriteId: 588755b216151dd44aa6303ccdf578a9
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 2
+    uuid:
+      value0: 405904966
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: wall
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: wall
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 14
+        y: 219
+        width: 292
+        height: 91
+      spriteId: 4a81a05d9496ab648baa1cb11436eb17
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 3
+    uuid:
+      value0: 1921814400
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: furniture
+    layerFlags: 3
+    layerType: 1
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  - layerIndex: 4
+    uuid:
+      value0: 354214589
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: table
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: table
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 32
+        y: 45
+        width: 258
+        height: 241
+      spriteId: 046164f1c2342584face28f54b8ea971
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 3
+  - layerIndex: 5
+    uuid:
+      value0: 892005943
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: shelf
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: shelf
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 17
+        y: 209
+        width: 287
+        height: 75
+      spriteId: c12114405d9d35b40afdf2940990303b
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 3
+  - layerIndex: 6
+    uuid:
+      value0: 2336822370
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Podiumobj
+    layerFlags: 1
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Podiumobj
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 101
+        y: 201
+        width: 115
+        height: 26
+      spriteId: 193515582dff52346856580b175d0d9d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 3
+  - layerIndex: 7
+    uuid:
+      value0: 756104412
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: computer
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: computer
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 32
+        y: 45
+        width: 258
+        height: 99
+      spriteId: e34c068421566fd4798124fa38c0334d
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 3
+  - layerIndex: 8
+    uuid:
+      value0: 3464609985
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: '
+
+      chair'
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: '
+
+        chair'
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 73
+        y: 45
+        width: 181
+        height: 83
+      spriteId: e09240cc3e8427f4cb02d5b4e3d2c519
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 3
+  - layerIndex: 9
+    uuid:
+      value0: 610044033
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: '
+
+      wall_hanging'
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: '
+
+        wall_hanging'
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 61
+        y: 235
+        width: 191
+        height: 60
+      spriteId: c778ac157b1272d44ad17780cb5c6a99
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: 3
+  tileSets: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 320, y: 360}
+  previousTextureSize: {x: 1024, y: 512}

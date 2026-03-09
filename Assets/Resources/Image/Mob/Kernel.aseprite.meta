@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639086599977111517
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 27
       height: 32
-    spriteID: e744602eba8a9fa4a8dda823a0b0da65
+    spriteID: 7b5b6892439bee34ea90006a3e83f888
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 44
       width: 27
       height: 32
-    spriteID: 1716e878d879569439868794b642f9c8
+    spriteID: 575bac787b529b54b9a65d1dcbc487c5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
         y: 1
         width: 27
         height: 32
-      spriteId: e744602eba8a9fa4a8dda823a0b0da65
+      spriteId: 7b5b6892439bee34ea90006a3e83f888
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -217,7 +217,7 @@ ScriptedImporter:
         y: 1
         width: 27
         height: 32
-      spriteId: 1716e878d879569439868794b642f9c8
+      spriteId: 575bac787b529b54b9a65d1dcbc487c5
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
