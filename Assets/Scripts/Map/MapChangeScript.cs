@@ -55,7 +55,10 @@ public class MapChangeScript : MonoBehaviour
                 GameManager.Instance.mapManager.TransAnotherMap("Temple", TransId);
                 break;
             case 15:
-                GameManager.Instance.mapManager.TransAnotherMap("Temple", TransId);
+                GameManager.Instance.mapManager.TransAnotherMap(TransId);
+                break;
+            case 16:
+                GameManager.Instance.mapManager.TransAnotherMap(TransId);
                 break;
         }
     }

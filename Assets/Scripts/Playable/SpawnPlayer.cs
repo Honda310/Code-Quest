@@ -85,8 +85,13 @@ public class SpawnPlayer : MonoBehaviour
                 break; 
             //_“a(oŒû‚ÉˆÚ“®)
             case 15:
-                GameManager.Instance.player.transform.position = new Vector3(1600, -310, 0);
-                GameManager.Instance.neto.transform.position = new Vector3(1630, -310, 0);
+                GameManager.Instance.player.transform.position = new Vector3(0, -950, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(0, -930, 0);
+                break;
+            //_“aB2F(“üŒû‚ÉˆÚ“®)
+            case 16:
+                GameManager.Instance.player.transform.position = new Vector3(-30, -2530, 0);
+                GameManager.Instance.neto.transform.position = new Vector3(-30, -2530, 0);
                 break;
             case 99:
                 GameManager.Instance.player.transform.position = new Vector3(0, 60, 0);

@@ -28829,6 +28829,7 @@ MonoBehaviour:
   DebugInputText: {fileID: 611597694}
   DebugHintText: {fileID: 1292734735}
   DebugErrorText: {fileID: 797397918}
+  repairableLine: {fileID: 0}
   BaseItemSelectPanel: {fileID: 1422690265}
   TradeItemSelectPanel: {fileID: 532399201}
   ShopMenuPanel: {fileID: 258792888}
@@ -28932,7 +28933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2686aef45d5c2e47aab664ba1ffe07d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  talkEventList: {fileID: 1529083987}
 --- !u!114 &1529083987
 MonoBehaviour:
   m_ObjectHideFlags: 0

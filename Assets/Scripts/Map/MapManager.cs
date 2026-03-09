@@ -25,6 +25,10 @@ public class MapManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         GameManager.Instance.spawnPlayer.CharacterSpawn(spawnID);
     }
+    public void TransAnotherMap(int spawnID)
+    {
+        GameManager.Instance.spawnPlayer.CharacterSpawn(spawnID);
+    }
     public string MapNameConvertor(string sceneName)
     {
         return MapNameConvert[sceneName];
