@@ -61,7 +61,10 @@ public class MapChangeScript : MonoBehaviour
                 GameManager.Instance.mapManager.TransAnotherMap(TransId);
                 break;
             case 17:
-                GameManager.Instance.mapManager.TransAnotherMap("Concolle",TransId);
+                GameManager.Instance.mapManager.TransAnotherMap("Comcolle",TransId);
+                break;
+            case 18:
+                GameManager.Instance.mapManager.TransAnotherMap("Home", TransId);
                 break;
         }
     }

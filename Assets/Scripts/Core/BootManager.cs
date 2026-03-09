@@ -8,7 +8,7 @@ public class BootManager : MonoBehaviour
     void Start()
     {
         Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
-        GameManager.Instance.mapManager.TransAnotherMap("Title", 2);
+        GameManager.Instance.mapManager.TransAnotherMap("GameStartScene", 2);
     }
     void Update()
     {

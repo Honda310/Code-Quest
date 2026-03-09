@@ -10,7 +10,7 @@ public class MapManager : MonoBehaviour
     Dictionary<string,string> MapNameConvert;
     private void Start()
     {
-        MapNameConvert = new Dictionary<string,string>();
+        MapNameConvert = new Dictionary<string, string>();
         MapNameConvert["ToNeto"] = "‚Í‚¶‚Ü‚è‚Ì“¹";
         MapNameConvert["InFrontOfLamentForest"] = "’Q‚«‚ÌX‘O";
         MapNameConvert["LamentForest"] = "’Q‚«‚ÌX";

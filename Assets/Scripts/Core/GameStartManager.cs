@@ -2,6 +2,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 /// <summary>
 /// ÅyÉ^ÉCÉgÉãâÊñ Åz
@@ -91,13 +92,13 @@ public class GameStartManager : MonoBehaviour
                 Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.SupportItem, 10000 + i);
                 GameManager.Instance.inventory.AddItem(item, 1);
             }
-            //FirstWeapon = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30001);
-            FirstWeapon = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30011);
+            FirstWeapon = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30001);
             FirstAccessory = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Accessory, 20001);
             GameManager.Instance.player.EquipWeapon(FirstWeapon);
             GameManager.Instance.player.EquipAccessory(FirstAccessory);
             GameManager.Instance.neto.EquipAccessory(FirstAccessory);
-            GameManager.Instance.mapManager.TransAnotherMap("ToNeto", 0);
+            GameManager.Instance.mapManager.TransAnotherMap("Home", 18);
+            GameManager.Instance.neto.gameObject.SetActive(false);
         }
         else
         {

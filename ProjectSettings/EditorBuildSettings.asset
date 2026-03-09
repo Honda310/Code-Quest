@@ -18,9 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Dojo.unity
     guid: 1f290778040a3db46a411be64e013329
   - enabled: 1
-    path: Assets/Scenes/Title.unity
-    guid: 0efdbdeb54162f6469aa5d0b42969ad8
-  - enabled: 1
     path: Assets/Scenes/GameStartScene.unity
     guid: 1a413ea5fcccd3844868d1d2cd7fe8ca
   - enabled: 1
@@ -41,6 +38,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Unknown.unity
     guid: af065428270d01e4ca6922731ddeb6ba
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: e96d729ed51ffce4cbd8154973079d8e
+  - enabled: 1
+    path: Assets/Scenes/Comcolle.unity
+    guid: f589d15702d672240938cbd6b65546aa
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

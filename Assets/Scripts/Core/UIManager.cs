@@ -253,7 +253,8 @@ public class UIManager : MonoBehaviour
         questManager = GameManager.Instance.questManager;
         UpdateStatus(p,n);
         AllPanelClose();
-        mapnamepop.MapNamePopUP(SceneManager.GetActiveScene().name);
+        string mapname = SceneManager.GetActiveScene().name;
+        if(mapname != "Home" && mapname != "ComColle") mapnamepop.MapNamePopUP(mapname);
         categoris[QuestCategory.Variable_AdditionAndSubtraction] = "•Ï”‚Ì‰ÁZŒ¸Z";
         categoris[QuestCategory.Variable_MultiplicationAndDivisionAndRemainder] = "•Ï”‚ÌæZAœZAè—]Z";
         categoris[QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence] = "•Ï”‚Ì•¡‡‘ã“ü";
