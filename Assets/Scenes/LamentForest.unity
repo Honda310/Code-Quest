@@ -32001,8 +32001,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1785555277}
   - {fileID: 2120401358}
+  - {fileID: 1785555277}
   m_Father: {fileID: 459156370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -34088,7 +34088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  EnemyID: 100
+  EnemyID: 24
   QuestionCategories: 0
 --- !u!114 &1320867872
 MonoBehaviour:
@@ -34102,8 +34102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
-  EnemyID: 100
-  enemy: {fileID: 859797243}
+  EnemyID: 24
+  enemy: {fileID: 1320867871}
 --- !u!1 &1330743008
 GameObject:
   m_ObjectHideFlags: 0
@@ -46159,7 +46159,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1785555279}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2130257028}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GameOverTitleButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1785555279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52957,7 +52969,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2120401360}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2130257028}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GameOverContinueButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2120401360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53249,6 +53273,7 @@ MonoBehaviour:
   BattleItemListPanel: {fileID: 354304957}
   BattleItemTargetSelectPanel: {fileID: 280462357}
   BattleItemReconfirmPanel: {fileID: 683355432}
+  GameOverPanel: {fileID: 1267316154}
   TimeLimitSlider: {fileID: 833595864}
   TimeLimitText: {fileID: 1739151577}
   answerInput: {fileID: 93549790}

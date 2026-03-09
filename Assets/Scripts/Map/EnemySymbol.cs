@@ -7,7 +7,6 @@ public class EnemySymbol : MonoBehaviour
     [SerializeField] private  Enemy enemy;
     private void Start()
     {
-        // ‚·‚Å‚É“|‚³‚ê‚Ä‚¢‚é“G‚È‚çÁ‚·
         if (GameManager.Instance.enemyList.enemyDefeated[EnemyID])
         {
             Destroy(gameObject);

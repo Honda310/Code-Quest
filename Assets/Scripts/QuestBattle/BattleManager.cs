@@ -37,7 +37,6 @@ public class BattleManager : MonoBehaviour
     /// <param name="enemyId">CSVで定義された敵ID</param>
     public void StartBattle(int enemyId,Enemy enemy)
     {
-        // プレイヤー取得（BattleScene側で責任を持つ）
         player = GameManager.Instance.player;
         neto = GameManager.Instance.neto;
 
@@ -56,7 +55,7 @@ public class BattleManager : MonoBehaviour
         categories = data.Categories;
         Debug.Log(categories);
         questManager.CreateDeckNormal(categories);
-        if (!(categories == QuestCategory.Variable_AdditionAndSubtraction || categories == QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence || categories == QuestCategory.Variable_MultiplicationAndDivisionAndRemainder))
+        if (!(categories == QuestCategory.Variable_AdditionAndSubtraction || categories == QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence || categories == QuestCategory.Variable_MultiplicationAndDivisionAndRemainder || categories == QuestCategory.Variable_All))
         {
             questManager.CreateDeckHard(categories);
             ChallengableHard = true;

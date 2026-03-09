@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartEvent(int eventId)
     {
-        currentLines = new Queue<string>(GameManager.Instance.eventList.EventTable[eventId]);
+        currentLines = new Queue<string>(GameManager.Instance.talkEventList.TalkEventTable[eventId]);
         ShowNext();
     }
 

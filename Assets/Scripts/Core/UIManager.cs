@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -49,6 +50,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject BattleItemListPanel;
     [SerializeField] private GameObject BattleItemTargetSelectPanel;
     [SerializeField] private GameObject BattleItemReconfirmPanel;
+    [SerializeField] private GameObject GameOverPanel;
     [SerializeField] private Slider TimeLimitSlider;
     [SerializeField] private Text TimeLimitText;
     [SerializeField] private InputField answerInput;    // 記述式回答の入力欄
@@ -255,16 +257,20 @@ public class UIManager : MonoBehaviour
         categoris[QuestCategory.Variable_AdditionAndSubtraction] = "変数の加算減算";
         categoris[QuestCategory.Variable_MultiplicationAndDivisionAndRemainder] = "変数の乗算、除算、剰余算";
         categoris[QuestCategory.Variable_IncrementAndCompoundAssignmentPrecedence] = "変数の複合代入";
+        categoris[QuestCategory.Variable_All] = "変数の範囲すべて";
         categoris[QuestCategory.IF_BasicComparison] = "条件分岐の基本比較";
         categoris[QuestCategory.IF_ElseIf] = "複数の条件分岐";
         categoris[QuestCategory.IF_LogicalOperator] = "複合条件による分岐";
+        categoris[QuestCategory.IF_All] = "条件分岐の範囲すべて";
         categoris[QuestCategory.ForWhile_Basic] = "基本的な反復処理";
         categoris[QuestCategory.ForWhile_WhileAndDoWhile] = "While文について";
         categoris[QuestCategory.ForWhile_Nest] = "for文のネストについて";
+        categoris[QuestCategory.ForWhile_All] = "ループ文の範囲すべて";
         categoris[QuestCategory.Array_Length_Loop] = "配列を用いた反復処理";
         categoris[QuestCategory.Array_Types_Values] = "配列の型と値";
         categoris[QuestCategory.Array_Decl_Init] = "配列の宣言と初期化";
         categoris[QuestCategory.Array_Access_Index] = "配列の添字";
+        categoris[QuestCategory.Array_All] = "配列の範囲すべて";
     }
     public void Update()
     {
@@ -337,6 +343,7 @@ public class UIManager : MonoBehaviour
         ConfigPanel.SetActive(false);
         ItemTargetSelectPanel.SetActive(false);
         ItemConfirmPanel.SetActive(false);
+        GameOverPanel.SetActive(false);
     }
     public void MenuElementClose()
     {
@@ -1105,7 +1112,17 @@ public class UIManager : MonoBehaviour
     }
     public void GameOver()
     {
-
+        GameOverPanel.SetActive(true);
+    }
+    public void GameOverContinueButtonClicked()
+    {
+        AllPanelClose();
+        SceneManager.LoadScene("GameStartScene");
+    }
+    public void GameOverTitleButtonClicked()
+    {
+        AllPanelClose();
+        SceneManager.LoadScene("GameStartScene");
     }
     public void OnInventoryButtonClicked()
     {
@@ -1935,7 +1952,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnTitleBackExectute()
     {
-        SceneManager.LoadScene("BootScene");
+        SceneManager.LoadScene("GameStartScene");
     }
     //ここから会話系の制御
     public void TalkingEventStart()
@@ -2269,7 +2286,6 @@ public class UIManager : MonoBehaviour
             Item focus = Allitems[idx].item;
             TradeItemFlavorText.text = focus.Flavor;
         }
-        
     }
     public void BaseItemSelectorChange(int i, List<CarryItem> AllItem)
     {
