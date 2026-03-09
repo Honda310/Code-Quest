@@ -1103,6 +1103,10 @@ public class UIManager : MonoBehaviour
         QuestionStart = true;
         HideLog();
     }
+    public void GameOver()
+    {
+
+    }
     public void OnInventoryButtonClicked()
     {
         if (ItemPanel.activeSelf)

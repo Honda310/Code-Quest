@@ -1,0 +1,79 @@
+ID,QuestionText,ChoiceA,ChoiceB,ChoiceC,ChoiceD,CorrectAnswer
+6001,// 要素数3の配列を作る正しい書き方は？\nint[] a = ____;,int[3],{3},new int[3],(3),C
+6002,// 初期化子で配列を作る\nint[] a = ____;,[10■ 20],{10■ 20},(10■ 20),new {10■ 20},B
+6003,// int配列の初期値\nint[] a = new int[1];\nSystem.out.println(a[0]); // 出力: ____,1,null,undefined,0,D
+6004,// String配列の初期値\nString[] s = new String[1];\nSystem.out.println(s[0]); // 出力: ____,null,0,,String,A
+6005,// boolean配列の初期値\nboolean[] b = new boolean[1];\nSystem.out.println(b[0]); // 出力:____,true,0,false,null,C
+6006,// double配列の初期値\ndouble[] d = new double[1];\nSystem.out.println(d[0]); // 出力: ____,0,null,NaN,0.0,D
+6007,// 空の配列を作る\nint[] a = ____;\nSystem.out.println(a.length); // 0,null,new int[0],{},(0),B
+6008,// 変数でサイズ指定\nint size = 5;\nint[] a = ____;,new int[size],int[size],new int(size),[size],A
+6009,// char配列の要素数\nchar[] c = {'A'■ 'B'};\nSystem.out.println(c.length); // 出力: ____,1,0,3,2,D
+6010,// 宣言のみで使用\nint[] a;\n// System.out.println(a); // 結果は？,null,0,要素数不定,コンパイルエラー,D
+6011,// float配列の宣言\nfloat[] f = {1.5f■ 2.5f};\n// 正しい宣言は ____,float[] f,float f,f float[],Float f,A
+6012,// nullの代入\nint[] a = ____;\nif (a == null) System.out.println(ok);,0,void,null,empty,C
+6013,// long配列の型\n____ nums = new long[3];,int[],double[],long[],String[],C
+6014,// byte配列の作成\nbyte[] b = ____;,byte[10],new byte[10],(byte)10,[10],B
+6015,// 要素1つの配列\nint[] a = ____;,{1},(1),[1],<1>,A
+6016,// short配列の長さ\nshort[] s = new short[5];\nSystem.out.println(s.length); // 出力: ____,4,0,null,5,D
+6017,// 複数宣言\nint[] a■ b;\n// b = new int[3]; は可能？,不可能,可能,エラー,警告,B
+6018,// C言語スタイル\nint a[] = {1■ 2};\n// これは有効？,無効,エラー,有効,非推奨,C
+6019,// 宣言後の代入\nint[] a;\na = ____ {1■ 2■ 3};,{,int[],(int[]),new int[],D
+6020,// varでの宣言\nvar a = new int[]{1■ 2};\nSystem.out.println(a[0]); // 出力: ____,1,2,0,null,A
+6101,// 先頭要素の表示\nint[] a = {10■ 20};\nSystem.out.println(____); // 10,a[1],a[0],a(0),a{0},B
+6102,// 2番目の要素\nint[] a = {10■ 20};\nSystem.out.println(____); // 20,a[2],a[0],a[1],a[-1],C
+6103,// 最後のインデックス\nint[] a = {5■ 6■ 7};\n// 7を取り出す番号は？,0,1,2,3,C
+6104,// 要素への代入\nint[] a = {10};\na[0] = 99;\nSystem.out.println(a[0]); // 出力: ____,10,0,1,99,D
+6105,// String配列\nString[] s = {Hi■ Bye};\nSystem.out.println(s[0]); // 出力: ____,Bye,s,null,Hi,D
+6106,// 計算利用\nint[] a = {2■ 3};\nint x = a[0] * a[1];\nSystem.out.println(x); // 出力: ____,5,23,0,6,D
+6107,// インクリメント\nint[] a = {0};\na[0]++;\nSystem.out.println(a[0]); // 出力: ____,0,null,2,1,D
+6108,// 変数インデックス\nint[] a = {10■ 20};\nint i = 1;\nSystem.out.println(a[i]); // 出力: ____,10,20,1,i,B
+6109,// 範囲外アクセス\nint[] a = {10};\n// a[1] = 20; の結果は？,例外発生,配列拡張,無視,0代入,A
+6110,// 負のインデックス\nint[] a = {10};\n// a[-1] = 20; の結果は？,最後尾,先頭,無視,例外発生,D
+6111,// char配列\nchar[] c = {'A'■ 'B'};\nc[1] = 'Z';\nSystem.out.println(c[1]); // 出力: ____,B,A,Z,C,C
+6112,// double配列\ndouble[] d = {1.5};\nd[0] += 0.5;\nSystem.out.println(d[0]); // 出力: ____,1.5,0.5,2.0,1.0,C
+6113,// コピー代入\nint[] a = {5■ 10};\na[0] = a[1];\nSystem.out.println(a[0]); // 出力: ____,5,10,0,15,B
+6114,// 代入式の値\nint[] a = {1};\nint x = (a[0] = 5);\nSystem.out.println(x); // 出力: ____,1,0,true,5,D
+6115,// 演算順序\nint[] a = {10};\na[0] = a[0] + 1 * 2;\nSystem.out.println(a[0]); // 出力: ____,12,22,20,11,A
+6116,// 文字列結合\nString[] s = {A};\ns[0] = s[0] + B;\nSystem.out.println(s[0]); // 出力: ____,A,B,BA,AB,D
+6117,// 入れ替え\nint[] a = {1■ 2};\nint t = a[0];\na[0] = a[1];\na[1] = t;\n// a[0]は？,1,0,t,2,D
+6118,// 論理反転\nboolean[] b = {false};\nb[0] = !b[0];\nSystem.out.println(b[0]); // 出力: ____,false,0,1,true,D
+6119,// 上書き\nint[] a = {0};\na[0] = 1;\na[0] = 2;\nSystem.out.println(a[0]); // 出力: ____,1,2,0,3,B
+6120,// 乗算代入\nint[] a = {10};\na[0] *= 2;\nSystem.out.println(a[0]); // 出力: ____,10,12,2,20,D6201,// 長さ取得\nint[] a = {1■ 2■ 3};\nSystem.out.println(____); // 3,a.size(),a.count,a.length(),a.length,D
+6202,// 確保サイズ\nint[] a = new int[10];\nSystem.out.println(a.length); // ____,9,0,10,11,C
+6203,// 最後の要素\nint[] a = {1■ 2■ 3};\nSystem.out.println(____); // 3,a[a.length],a[length],a[a.length-1],a[-1],C
+6204,// forループ\nint[] a = {1■ 2};\nfor(int i=0; i<____; i++) {\n  System.out.print(a[i]);\n},a.length,a.size,2,10,A
+6205,// String配列長\nString[] s = {A■ B};\nSystem.out.println(s.length); // ____,2,1,0,null,A
+6206,// 空配列長\nint[] a = {};\nSystem.out.println(a.length); // ____,null,1,0,error,C
+6207,// 拡張for文\nint[] a = {10■ 20};\nfor(int x : a) {\n  System.out.print(x);\n}\n// 出力: ____,10,1020,20,30,B
+6208,// 合計計算\nint[] a = {2■ 2■ 2};\nint sum = 0;\nfor(int n : a) sum += n;\nSystem.out.println(sum); // ____,2,4,0,6,D
+6209,// length代入\nint[] a = new int[3];\n// a.length = 5; は可能？,可能,例外発生,不可(エラー),無視,C
+6210,// ループ条件ミス\nint[] a = {10};\n// for(int i=0; i <= a.length; i++)\n// 結果は？,例外発生,正常,10表示,無限ループ,A
+6211,// null参照\nint[] a = null;\n// System.out.println(a.length);\n// 結果は？,0,null,例外発生,-1,C
+6212,// 文字列長と区別\nString[] s = {Test};\nSystem.out.println(s.length); // ____,4,5,Test,1,D
+6213,// 拡張for構文\n// for(int n ____ nums),in,=,of,:,D
+6214,// 初期化サイズ\nint[] a = {1■ 2};\n// 要素数は自動決定？,いいえ,はい,エラー,不明,B
+6215,// インデックス範囲\nint[] a = new int[3];\n// 有効範囲は？,1■ 2■ 3,0■ 1■ 2■ 3,1■ 2,0■ 1■ 2,D
+6216,// 直打ち計算\nint[] a = {1■ 2};\nSystem.out.println(a[0] + a[1]); // ____,1,2,3,12,C
+6217,// サイズ変更\nint[] a = {1};\n// 要素追加は可能？,可能(add),可能(append),自動,不可(要再作成),D
+6218,// lengthの型\nint[] a = {1};\n// int len = a.length;\n// lenはint？,long,正しい,short,double,B
+6219,// 要素数確認\nint[] a = {1■ 2■ 3■ 4■ 5};\nSystem.out.println(a.length); // ____,4,6,0,5,D
+6220,// ループ変数i\nfor(int i=0; i<3; i++) ...\n// iの名称は？,カウンタ変数,メソッド,クラス,配列,A6301,// int初期値\nint[] a = new int[1];\nSystem.out.println(a[0]); // ____,1,null,0,undefined,C
+6302,// double初期値\ndouble[] d = new double[1];\nSystem.out.println(d[0]); // ____,0,null,NaN,0.0,D
+6303,// boolean初期値\nboolean[] b = new boolean[1];\nSystem.out.println(b[0]); // ____,false,true,0,null,A
+6304,// String初期値\nString[] s = new String[1];\nSystem.out.println(s[0]); // ____,null,,0,false,A
+6305,// 参照コピー\nint[] a = {1};\nint[] b = a;\nb[0] = 9;\nSystem.out.println(a[0]); // ____,1,0,null,9,D
+6306,// 参照比較\nint[] a = {1};\nint[] b = {1};\nSystem.out.println(a == b); // ____,true,false,error,null,B
+6307,// 同一性比較\nint[] a = {1};\nint[] b = a;\nSystem.out.println(a == b); // ____,false,error,null,true,D
+6308,// char初期値\nchar[] c = new char[1];\n// c[0] はヌル文字？,いいえ,エラー,はい,不明,C
+6309,// 配列出力\nint[] a = {1};\nSystem.out.println(a);\n// [1]と出る？,いいえ,はい,エラー,null,A
+6310,// 文字列化\nint[] a = {1};\nSystem.out.println(Arrays.toString(a)); // ____,1,{1},(1),[1],D
+6311,// ソート\nint[] a = {3■ 1};\nArrays.sort(a);\nSystem.out.println(a[0]); // ____,3,1,2,0,B
+6312,// 内容比較\nint[] a = {1};\nint[] b = {1};\nSystem.out.println(Arrays.equals(a■ b)); // ____,false,error,true,null,C
+6313,// final要素変更\nfinal int[] a = {10};\na[0] = 20;\n// 可能？,不可,可能,無視,警告,B
+6314,// final再代入\nfinal int[] a = {10};\n// a = new int[3];\n// 可能？,不可,可能,警告,無視,A
+6315,// null代入\nString[] s = new String[1];\ns[0] = null;\n// 可能？,不可,エラー,空文字,可能,D
+6316,// 異型代入\nint[] a = new int[1];\n// a[0] = 3.5;\n// 結果は？,代入される,切り捨て,エラー,実行時エラー,C
+6317,// var型推論\nvar a = new int[]{1};\n// aの型は？,int,int[],Object,var,B
+6318,// Object代入\nObject obj = new int[]{1};\n// 可能？,いいえ,エラー,はい,不明,C
+6319,// short初期値\nshort[] s = new short[1];\nSystem.out.println(s[0]); // ____,0.0,null,false,0,D
+6320,// long初期値\nlong[] l = new long[1];\nSystem.out.println(l[0]); // ____,0.0,0,null,false,B

@@ -223,6 +223,7 @@ public class BattleManager : MonoBehaviour
         if (player.CurrentHP <= 0 && neto.CurrentHP <= 0)
         {
             StartCoroutine(EndBattle(false));
+            uimanager.GameOver();
         }
         else
         {
