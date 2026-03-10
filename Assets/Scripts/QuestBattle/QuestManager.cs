@@ -42,7 +42,6 @@ public class QuestManager : MonoBehaviour
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_Array", QuestCategory.Array_Length_LoopHard);
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_Array", QuestCategory.Array_Types_ValuesHard);
         LoadFromSingleCSV("Data/FillBlankQuestion/FillIn_Array", QuestCategory.Array_AllHard);
-        //LoadFromSingleCSV("Data/SelectQuestion/FillBlankQuestion/", QuestCategory.ForWhile_BasicHard);
         LoadFromCodingCSV("Data/CodingQuest/CodingQuestAll");
         Debug.Log("[QuestManager] ロード完了");
     }
@@ -74,7 +73,6 @@ public class QuestManager : MonoBehaviour
             if (categorizedQuests.ContainsKey(catName)) categorizedQuests[catName].AddRange(list);
             else categorizedQuests.Add(catName, list);
         }
-        Debug.Log("Loaded: " + catName + " Count: " + list.Count);
     }
     private void LoadFromCodingCSV(string path)
     {

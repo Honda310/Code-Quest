@@ -32,6 +32,7 @@ public class EventTriggerZone : MonoBehaviour
         }
         if (triggered && OneTime)
         {
+            UIManager.Active?.TalkingEventStart();
             GameManager.Instance.dialogueManager.StartEvent(EventID);
             OneTime = false;
         }

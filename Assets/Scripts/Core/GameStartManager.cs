@@ -66,8 +66,7 @@ public class GameStartManager : MonoBehaviour
             NameInputPanel.SetActive(false);
             GameManager.Instance.player.PlayerName = name;
 
-            for (int i = 1; i <= 11; i++)
-            //for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 3; i++)
             {
                 Item item = GameManager.Instance.dataManager.GetItemById(Item.ItemType.Weapon, 30000 + i);
                 GameManager.Instance.inventory.AddItem(item, 1);

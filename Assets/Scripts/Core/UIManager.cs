@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -213,6 +212,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject SaveLoadPanel;
     [SerializeField] private Text SaveDetailText;
     [SerializeField] private GameObject TalkBranchPanel;
+    [SerializeField] private GameObject Destroiedneto;
     //装備&ステータス画面の制御系
     private bool EquipCharacterSelecter;
     private bool EquipSlots;
@@ -1961,8 +1961,8 @@ public class UIManager : MonoBehaviour
     //ここから会話系の制御
     public void TalkingEventStart()
     {
-        TalkTextBox.text = "";
         TalkTextBoxPanel.SetActive(true);
+        TalkTextBox.text = "";
         GameManager.Instance.SetMode(GameMode.Talk);
     }
     public void TalkingFowarded(string text)
@@ -1973,6 +1973,14 @@ public class UIManager : MonoBehaviour
     {
         TalkTextBoxPanel.SetActive(false);
         GameManager.Instance.SetMode(GameMode.Field);
+        if (SceneManager.GetActiveScene().name=="Comcolle")
+        {
+            GameManager.Instance.mapManager.TransAnotherMap("ToNeto", 0);
+        }
+        if (SceneManager.GetActiveScene().name == "ToNeto")
+        {
+            GameManager.Instance.neto.gameObject.SetActive(true);
+        }
     }
     public void TreasureTakeEventStart(string itemname)
     {

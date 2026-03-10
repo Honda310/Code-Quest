@@ -37,6 +37,7 @@ public class DataManager : MonoBehaviour
                 if (!WeaponMaster.ContainsKey(id)) WeaponMaster.Add(id, w);
             }
         }
+        Debug.Log($"武器：{WeaponMaster.Count}件");
     }
 
     private void LoadAccessories(string path)
@@ -51,6 +52,7 @@ public class DataManager : MonoBehaviour
                 if (!AccessoryMaster.ContainsKey(id)) AccessoryMaster.Add(id, a);
             }
         }
+        Debug.Log($"アクセサリ：{AccessoryMaster.Count}件");
     }
 
     private void LoadSupportItems(string path)
@@ -65,6 +67,7 @@ public class DataManager : MonoBehaviour
                 if (!SupportItemMaster.ContainsKey(id)) SupportItemMaster.Add(id, s);
             }
         }
+        Debug.Log($"サポートアイテムマスタ：{SupportItemMaster.Count}件");
     }
 
     private void LoadEnemies(string path)

@@ -33618,7 +33618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30740f9e85387564b81f2a7409e27089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventTriggerZone
-  EventID: 2
+  EventID: 1
   OneTime: 1
   rb: {fileID: 1730309981}
   dist: 0

@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,8 +48,6 @@ public class Inventory : MonoBehaviour
         {
             items.Add(new CarryItem(item, amount));
         }
-
-        //Debug.Log($"{item.ItemName} ‚ğ {amount}ŒÂ “üè‚µ‚Ü‚µ‚½B");
     }
     public enum ItemType
 	{
@@ -106,8 +103,6 @@ public class Inventory : MonoBehaviour
         {
             Allitems.Add(new CarryItem(item, amount));
         }
-
-        //Debug.Log($"{item.ItemName} ‚ğ {amount}ŒÂ “üè‚µ‚Ü‚µ‚½B");
     }
     public List<CarryItem> GetFilteredByRarityItemsForTrade(int rarity)
     {
