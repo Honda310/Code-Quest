@@ -2238,7 +2238,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 265efa085e13f534c8d11e444c784055, type: 3}
       propertyPath: m_Name
-      value: TreasureBox1 (3)
+      value: TreasureBox1 6
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 265efa085e13f534c8d11e444c784055, type: 3}
       propertyPath: m_SortingOrder
@@ -2312,7 +2312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6cd75a4bb98064ebcf56cb061dec77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
-  TreasureId: 8
+  TreasureId: 36
   ColorId: 1
   uiManager: {fileID: 0}
   rb: {fileID: 102983537}
@@ -19155,7 +19155,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 265efa085e13f534c8d11e444c784055, type: 3}
       propertyPath: m_Name
-      value: TreasureBox1 (5)
+      value: TreasureBox1 56
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 265efa085e13f534c8d11e444c784055, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19225,7 +19225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6cd75a4bb98064ebcf56cb061dec77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
-  TreasureId: 56
+  TreasureId: 61
   ColorId: 1
   uiManager: {fileID: 0}
   rb: {fileID: 726675981}
@@ -19602,7 +19602,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 265efa085e13f534c8d11e444c784055, type: 3}
       propertyPath: m_Name
-      value: TreasureBox1 (1)
+      value: TreasureBox1 31
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 265efa085e13f534c8d11e444c784055, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19672,7 +19672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6cd75a4bb98064ebcf56cb061dec77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
-  TreasureId: 31
+  TreasureId: 11
   ColorId: 1
   uiManager: {fileID: 0}
   rb: {fileID: 757851476}
@@ -48844,7 +48844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
   TreasureId: 270
   ColorId: 1
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 819362251}
   rb: {fileID: 1872889301}
 --- !u!50 &1872889301
 Rigidbody2D:
@@ -55320,7 +55320,6 @@ SceneRoots:
   - {fileID: 1974502912}
   - {fileID: 1867074210}
   - {fileID: 1984616168}
-  - {fileID: 757851473}
   - {fileID: 1706091749}
   - {fileID: 1071686932}
   - {fileID: 1260011547}
@@ -55343,6 +55342,7 @@ SceneRoots:
   - {fileID: 875563387}
   - {fileID: 140917067}
   - {fileID: 1846078688}
+  - {fileID: 757851473}
   - {fileID: 1887651019}
   - {fileID: 102983534}
   - {fileID: 1872889298}
