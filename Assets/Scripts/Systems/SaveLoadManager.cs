@@ -42,6 +42,7 @@ public class SaveLoadManager : MonoBehaviour
         public int[] BoxId;
         public bool[] BoxAccessable;
         public string currentMapName;
+        public int[] EventID;
         public bool[] EventFlag;
         public int[] RepairableLineID;
         public bool[] Repaired;
@@ -53,7 +54,7 @@ public class SaveLoadManager : MonoBehaviour
     /// ゲームをセーブします
     /// </summary>
     /// <param name="slotId">0はオートセーブ、1,2は手動セーブ</param>
-    public void SaveGame(Player p, Neto n, List<CarryItem> items, int slotId, TreasureBoxList boxList, EnemyList enemies,RepairableLineList repair)
+    public void SaveGame(Player p, Neto n, List<CarryItem> items, int slotId, TreasureBoxList boxList, EnemyList enemies,RepairableLineList repair,EventList eventList)
     {
         SaveData data = new SaveData();
         data.saveDate = System.DateTime.Now.ToString();                             //セーブした日時⓪
@@ -77,7 +78,8 @@ public class SaveLoadManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();                         //現在シーンの取得
         data.currentMapName = currentScene.name;                                    //セーブしたマップ名の情報⑥
         data.charavector = p.transform.position;                                    //セーブした座標の情報⑦
-        data.EventFlag = p.EventFlag;                                               //完了したイベントの情報⑧
+        data.EventID = eventList.TriggeredEventTable.Keys.ToArray();
+        data.EventFlag = eventList.TriggeredEventTable.Values.ToArray();                                               //完了したイベントの情報⑧
         data.RepairableLineID = repair.RepairableLineTable.Keys.ToArray();          //完了した道の修繕の情報⑨
         data.Repaired = repair.RepairableLineTable.Values.ToArray();
         string json = JsonUtility.ToJson(data);             
@@ -130,6 +132,7 @@ public class SaveLoadManager : MonoBehaviour
         TreasureBoxList treasureList = Object.FindFirstObjectByType<TreasureBoxList>();
         RepairableLineList repairableLineList = Object.FindFirstObjectByType<RepairableLineList>();
         EnemyList enemyList = Object.FindFirstObjectByType<EnemyList>();
+        EventList eventList = Object.FindFirstObjectByType<EventList>();
         Player player = Object.FindFirstObjectByType<Player>();
         Neto neto = Object.FindFirstObjectByType<Neto>();
         
@@ -143,7 +146,7 @@ public class SaveLoadManager : MonoBehaviour
         player.transform.position = loadedData.charavector;
         neto.transform.position = loadedData.charavector;
         player.EventFlag = loadedData.EventFlag;
-        repairableLineList.LoadFromSaveData(loadedData.RepairableLineID,loadedData.Repaired);
+        eventList.LoadFromSaveData(loadedData.RepairableLineID,loadedData.Repaired);
     }
 
     /// <summary>

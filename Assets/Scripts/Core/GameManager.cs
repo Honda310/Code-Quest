@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public DataManager dataManager;         // データ（CSVなど）の読み込み管理
     public QuestManager questManager;       // クイズ問題の管理
     public DialogueManager dialogueManager; // 会話などのイベント管理
-    public TalkEventList talkEventList;
     public SaveLoadManager saveLoadManager; // セーブ・ロード機能
     public AudioManager audioManager;       // BGM・効果音
     public MapManager mapManager;           // シーン移動
@@ -31,6 +30,8 @@ public class GameManager : MonoBehaviour
     public TreasureBoxList treasureBoxList;
     public RepairableLineList repairableLineList;
     public EnemyList enemyList;
+    public TalkEventList talkEventList;
+    public EventList eventList;
 
     [Header("プレイヤーデータ")]
     public Player player;       // 主人公
@@ -175,6 +176,6 @@ public class GameManager : MonoBehaviour
     }
     public void SaveManage(int i)
     {
-        saveLoadManager.SaveGame(player, neto, inventory.items, i, treasureBoxList, enemyList,repairableLineList);
+        saveLoadManager.SaveGame(player, neto, inventory.items, i, treasureBoxList, enemyList,repairableLineList,eventList);
     }
 }

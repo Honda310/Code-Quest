@@ -212,7 +212,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject SaveLoadPanel;
     [SerializeField] private Text SaveDetailText;
     [SerializeField] private GameObject TalkBranchPanel;
-    [SerializeField] private GameObject Destroiedneto;
+    [SerializeField] private GameObject EventObject=null;
     //装備&ステータス画面の制御系
     private bool EquipCharacterSelecter;
     private bool EquipSlots;
@@ -1959,11 +1959,19 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("GameStartScene");
     }
     //ここから会話系の制御
+    public void TalkingEventStart(GameObject gameObject,int eventId)
+    {
+        TalkTextBoxPanel.SetActive(true);
+        TalkTextBox.text = "";
+        GameManager.Instance.SetMode(GameMode.Talk);
+        EventObject = gameObject;
+    }
     public void TalkingEventStart()
     {
         TalkTextBoxPanel.SetActive(true);
         TalkTextBox.text = "";
         GameManager.Instance.SetMode(GameMode.Talk);
+        EventObject = null;
     }
     public void TalkingFowarded(string text)
     {
@@ -1980,6 +1988,10 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "ToNeto")
         {
             GameManager.Instance.neto.gameObject.SetActive(true);
+        }
+        if (EventObject != null)
+        {
+            Destroy(EventObject);
         }
     }
     public void TreasureTakeEventStart(string itemname)

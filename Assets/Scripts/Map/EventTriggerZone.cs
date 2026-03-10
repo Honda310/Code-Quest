@@ -11,6 +11,14 @@ public class EventTriggerZone : MonoBehaviour
     private bool triggered = false;
     public float dist = 1000.0f;
     private Transform target;
+    private void Start()
+    {
+        if (GameManager.Instance.eventList.TriggeredEventTable[EventID])
+        {
+            OneTime = false;
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         Player player = Object.FindFirstObjectByType<Player>();
@@ -21,7 +29,7 @@ public class EventTriggerZone : MonoBehaviour
             Vector2 pos = rb.position;
             Vector2 toPlayer = TargetPos - pos;
             dist = toPlayer.magnitude;
-            if (dist < 160)
+            if (dist < 120)
             {
                 triggered = true;
             }
@@ -32,7 +40,7 @@ public class EventTriggerZone : MonoBehaviour
         }
         if (triggered && OneTime)
         {
-            UIManager.Active?.TalkingEventStart();
+            UIManager.Active?.TalkingEventStart(gameObject,EventID);
             GameManager.Instance.dialogueManager.StartEvent(EventID);
             OneTime = false;
         }
