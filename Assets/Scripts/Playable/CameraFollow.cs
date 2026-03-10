@@ -9,13 +9,15 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public float smoothing = 5f;
-    public float maxY = 45f;
+    float maxY = 2000f;
+    float minY = -2000f;
+    float maxX = 2000f;
+    float minX = -2000f;
 
     private static CameraFollow instance;
 
     private void Awake()
     {
-        // èdï°ñhé~
         if (instance != null)
         {
             Destroy(gameObject);
@@ -25,20 +27,30 @@ public class CameraFollow : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
+    public void CameraPosLimitChange(int maxy, int miny, int maxx,int minx)
+    {
+        maxY = maxy;
+        minY = miny;
+        maxX = maxx;
+        minX = minx;
+    }
+    public void CameraPosLimitChange()
+    {
+        maxY = 2000;
+        minY = -2000;
+        maxX = 2000;
+        minX = -2000;
+    }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // ÉVÅ[Éìêÿë÷å„Ç… Player ÇçƒéÊìæ
         Player player = Object.FindFirstObjectByType<Player>();
         if (player != null)
         {
@@ -49,8 +61,43 @@ public class CameraFollow : MonoBehaviour
             pos.x = -30f;
             transform.position = pos;
         }
+        if (SceneManager.GetActiveScene().name == "Home")
+        {
+            CameraPosLimitChange();
+        }
+        else if (SceneManager.GetActiveScene().name == "Comcolle")
+        {
+            CameraPosLimitChange(180,180,0,0);
+        }
+        else if (SceneManager.GetActiveScene().name == "ToNeto")
+        {
+            CameraPosLimitChange();
+        }
+        else if (SceneManager.GetActiveScene().name == "InFrontOfLamentForest")
+        {
+            CameraPosLimitChange(90, 90, 320, 0);
+        }
+        else if (SceneManager.GetActiveScene().name == "PoisonedSpring")
+        {
+            CameraPosLimitChange();
+        }
+        else if (SceneManager.GetActiveScene().name == "ErrorVillage")
+        {
+            CameraPosLimitChange();
+        }
+        else if (SceneManager.GetActiveScene().name == "CorrupedTown")
+        {
+            CameraPosLimitChange();
+        }
+        else if (SceneManager.GetActiveScene().name == "Temple")
+        {
+            CameraPosLimitChange();
+        }
+        else if (SceneManager.GetActiveScene().name == "Unknown")
+        {
+            CameraPosLimitChange();
+        }
     }
-
     private void FixedUpdate()
     {
         if (SceneManager.GetActiveScene().name=="Dojo")
@@ -71,7 +118,8 @@ public class CameraFollow : MonoBehaviour
                 smoothing * Time.deltaTime
             );
 
-            newPos.y = Mathf.Min(newPos.y, maxY);
+            newPos.x = Mathf.Max(Mathf.Min(newPos.x, maxX), minX);
+            newPos.y = Mathf.Max(Mathf.Min(newPos.y, maxY), minY);
             newPos.x = Mathf.Round(newPos.x);
             newPos.y = Mathf.Round(newPos.y);
 

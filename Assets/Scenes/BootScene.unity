@@ -375,7 +375,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 2088172323}
   smoothing: 5
-  maxY: 45
 --- !u!114 &482548537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +631,7 @@ GameObject:
   - component: {fileID: 1182703146}
   - component: {fileID: 1182703147}
   - component: {fileID: 1182703148}
+  - component: {fileID: 1182703149}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -776,9 +776,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   dataManager: {fileID: 1182703139}
   questManager: {fileID: 1182703136}
-  dialogueManager: {fileID: 0}
+  dialogueManager: {fileID: 1182703149}
   eventList: {fileID: 0}
-  talkEventList: {fileID: 0}
+  talkEventList: {fileID: 1182703146}
   saveLoadManager: {fileID: 1182703134}
   audioManager: {fileID: 1182703133}
   mapManager: {fileID: 1182703138}
@@ -892,6 +892,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97fbf4e5f8da3a4293e082ff966e685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RepairableLineList
+--- !u!114 &1182703149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182703126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2686aef45d5c2e47aab664ba1ffe07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
 --- !u!1001 &2088172322
 PrefabInstance:
   m_ObjectHideFlags: 0
