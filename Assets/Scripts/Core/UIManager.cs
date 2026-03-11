@@ -1090,6 +1090,9 @@ public class UIManager : MonoBehaviour
     }
     private string QuestCategoriesTranslate(QuestCategory category)
     {
+        Debug.Log(this.name);
+        Debug.Log(this.GetInstanceID());
+        Debug.Log("Dictionary Count = " + categoris.Count);
         return categoris[category];
     }
     public IEnumerator QuizStart()

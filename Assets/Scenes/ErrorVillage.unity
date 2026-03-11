@@ -16231,6 +16231,8 @@ GameObject:
   - component: {fileID: 611987638}
   - component: {fileID: 611987640}
   - component: {fileID: 611987639}
+  - component: {fileID: 611987642}
+  - component: {fileID: 611987641}
   m_Layer: 0
   m_Name: Square (90)
   m_TagString: Untagged
@@ -16247,8 +16249,8 @@ Transform:
   m_GameObject: {fileID: 611987637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 332.6916, y: 292.3, z: 0}
-  m_LocalScale: {x: -120.18441, y: 41.356026, z: 1}
+  m_LocalPosition: {x: 307.6916, y: 279.8, z: 0}
+  m_LocalScale: {x: -70.18769, y: 66.35607, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1110089705}
@@ -16283,7 +16285,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -16357,6 +16359,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &611987641
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611987637}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &611987642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611987637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0bb8bb77ce73340a7aa0b4c56bcbfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopEnter
+  rb2D: {fileID: 611987641}
+  uiManager: {fileID: 1867327293}
 --- !u!1 &614634211
 GameObject:
   m_ObjectHideFlags: 0
@@ -18772,7 +18815,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 0}
   smoothing: 5
-  maxY: 45
 --- !u!114 &694863453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48650,6 +48692,7 @@ MonoBehaviour:
   SaveLoadPanel: {fileID: 366865534}
   SaveDetailText: {fileID: 195886855}
   TalkBranchPanel: {fileID: 0}
+  EventObject: {fileID: 0}
 --- !u!224 &1867327294
 RectTransform:
   m_ObjectHideFlags: 0

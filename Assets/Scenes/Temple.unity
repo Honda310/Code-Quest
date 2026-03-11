@@ -10333,6 +10333,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 81daa42ce7622ac4099b569e77927de2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 352421975}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 81daa42ce7622ac4099b569e77927de2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 352421978}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 81daa42ce7622ac4099b569e77927de2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 352421977}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 81daa42ce7622ac4099b569e77927de2, type: 3}
 --- !u!1 &352421974 stripped
 GameObject:
@@ -10402,6 +10408,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &352421977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352421974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  EnemyID: 26
+  QuestionCategories: 0
+--- !u!114 &352421978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352421974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
+  EnemyID: 26
+  enemy: {fileID: 352421977}
 --- !u!1 &364940329
 GameObject:
   m_ObjectHideFlags: 0
@@ -20024,6 +20058,7 @@ MonoBehaviour:
   SaveLoadPanel: {fileID: 1860222632}
   SaveDetailText: {fileID: 852383152}
   TalkBranchPanel: {fileID: 0}
+  EventObject: {fileID: 0}
 --- !u!114 &762266908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31012,6 +31047,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: ca4aae13eacf27f438ea96fee356bdf6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1254148600}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: ca4aae13eacf27f438ea96fee356bdf6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1254148603}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: ca4aae13eacf27f438ea96fee356bdf6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1254148602}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: ca4aae13eacf27f438ea96fee356bdf6, type: 3}
 --- !u!1 &1254148599 stripped
 GameObject:
@@ -31081,6 +31122,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1254148602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254148599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
+  EnemyID: 23
+  enemy: {fileID: 1254148603}
+--- !u!114 &1254148603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254148599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  EnemyID: 23
+  QuestionCategories: 0
 --- !u!1 &1257364023
 GameObject:
   m_ObjectHideFlags: 0
@@ -46805,6 +46874,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8a8cbdc1dbeea164cb818cc646e7265b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1842258684}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8a8cbdc1dbeea164cb818cc646e7265b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1842258687}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8a8cbdc1dbeea164cb818cc646e7265b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1842258686}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 8a8cbdc1dbeea164cb818cc646e7265b, type: 3}
 --- !u!1 &1842258683 stripped
 GameObject:
@@ -46874,6 +46949,34 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 2, y: 10}
   m_Radius: 30
+--- !u!114 &1842258686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842258683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
+  EnemyID: 27
+  enemy: {fileID: 1842258687}
+--- !u!114 &1842258687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842258683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  EnemyID: 27
+  QuestionCategories: 0
 --- !u!1001 &1843691548
 PrefabInstance:
   m_ObjectHideFlags: 0

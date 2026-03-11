@@ -20,6 +20,8 @@ EnemyID,Name,MaxDP,Atk,Categories,ImageFileName,EXP
 20,Mulsledda,120,20,Array_Access_Index,Mulsledda/mulsledda_2battle_1idle,35
 21,Mulsledda,120,20,Array_Decl_Init,Mulsledda/mulsledda_2battle_1idle,35
 22,Mulsledda,120,20,Array_Length_Loop,Mulsledda/mulsledda_2battle_1idle,35
-23,SionZero,120,20,Array_Types_Values,3_SionZero_2battle_1idle,35
+23,SionZero,300,40,Array_All,SionZero/3_SionZero_2battle_1idle,1000
 24,Gubsect,150,30,Variable_All,gubsect/gubsect_2battle,210,
-25,Ride,200,30,IF_All,ad/2ad_1,350
+25,Ride,200,30,IF_All,Ride/ride_2battle,350
+26,Eneles,350,45,Array_All,Eneles/3_Eneles_2battle_1idle,1000
+27,ErrorKing,400,50,Array_All,ErrorKing/3_ErrarKing_2battle_1idle,0

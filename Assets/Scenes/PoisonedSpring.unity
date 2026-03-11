@@ -2314,7 +2314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
   TreasureId: 36
   ColorId: 1
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 819362251}
   rb: {fileID: 102983537}
 --- !u!50 &102983537
 Rigidbody2D:
@@ -19227,7 +19227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
   TreasureId: 61
   ColorId: 1
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 819362251}
   rb: {fileID: 726675981}
 --- !u!50 &726675981
 Rigidbody2D:
@@ -19674,7 +19674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
   TreasureId: 11
   ColorId: 1
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 819362251}
   rb: {fileID: 757851476}
 --- !u!50 &757851476
 Rigidbody2D:
@@ -21553,6 +21553,7 @@ MonoBehaviour:
   SaveLoadPanel: {fileID: 226119097}
   SaveDetailText: {fileID: 1396636804}
   TalkBranchPanel: {fileID: 0}
+  EventObject: {fileID: 0}
 --- !u!224 &819362252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23900,7 +23901,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 4621ec62b04fbde4499c8fea26d222c6, type: 3}
       propertyPath: m_Name
-      value: Enemy101
+      value: Enemy25
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 4621ec62b04fbde4499c8fea26d222c6, type: 3}
       propertyPath: m_LocalScale.x
@@ -23960,13 +23961,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 4621ec62b04fbde4499c8fea26d222c6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 875563392}
-    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 4621ec62b04fbde4499c8fea26d222c6, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 875563391}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 4621ec62b04fbde4499c8fea26d222c6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 875563390}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 4621ec62b04fbde4499c8fea26d222c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 875563392}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 4621ec62b04fbde4499c8fea26d222c6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 875563389}
@@ -23988,7 +23989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  EnemyID: 101
+  EnemyID: 25
   QuestionCategories: 0
 --- !u!58 &875563390
 CircleCollider2D:
@@ -24065,7 +24066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
-  EnemyID: 101
+  EnemyID: 25
   enemy: {fileID: 875563389}
 --- !u!1 &882999362
 GameObject:
@@ -42400,7 +42401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
   TreasureId: 180
   ColorId: 1
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 819362251}
   rb: {fileID: 1616661413}
 --- !u!50 &1616661413
 Rigidbody2D:
@@ -49416,7 +49417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
   TreasureId: 260
   ColorId: 1
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 819362251}
   rb: {fileID: 1887651022}
 --- !u!50 &1887651022
 Rigidbody2D:
@@ -51592,7 +51593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreasureEvent
   TreasureId: 280
   ColorId: 1
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 819362251}
   rb: {fileID: 1974502915}
 --- !u!50 &1974502915
 Rigidbody2D:
@@ -55317,7 +55318,6 @@ SceneRoots:
   - {fileID: 1429969498}
   - {fileID: 387167811}
   - {fileID: 927910868}
-  - {fileID: 1974502912}
   - {fileID: 1867074210}
   - {fileID: 1984616168}
   - {fileID: 1706091749}
@@ -55348,6 +55348,7 @@ SceneRoots:
   - {fileID: 1872889298}
   - {fileID: 726675978}
   - {fileID: 1616661410}
+  - {fileID: 1974502912}
   - {fileID: 819362252}
   - {fileID: 1717146354}
   - {fileID: 328153484}
