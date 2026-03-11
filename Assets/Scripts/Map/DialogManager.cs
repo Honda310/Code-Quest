@@ -19,7 +19,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && GameManager.Instance.CurrentMode == GameManager.GameMode.Talk && inputAble)
+        if (Input.GetKeyUp(KeyCode.Return) && GameManager.Instance.CurrentMode == GameManager.GameMode.Talk && inputAble)
         {
             ShowNext();
         }

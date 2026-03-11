@@ -114,7 +114,6 @@ public class Player : MonoBehaviour
             { "d_0", Load("4right_1stop") },
             { "d_1", Load("4right_2move") },
         };
-        PlayerName = "コンカレ太郎";
     }
 
     /// <summary>

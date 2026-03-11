@@ -24,7 +24,7 @@ public class TalkEventList: MonoBehaviour
             "キーンコーンカーンコーン",
             "ムナタカ「始めます」",
             "生徒「よろしくお願いします」",
-            "主人公（パソコンをつける）（画面が光だし目の前が真っ白になる）"
+            "主人公（パソコンをつける）\n（画面が光りだし、目の前が真っ白になる）"
         });
 
         TalkEventTable[2] = new Queue<string>(new[]
@@ -38,7 +38,7 @@ public class TalkEventList: MonoBehaviour
            "ネト「この世界はいま、色々な物がバグって大変なことになってるネト」\r\n「君の…プログラミングの力でこの世界を救ってほしいネト！」",
            "主人公「わかった」",
            "ネト「ありがとうネト！！ほんと助かるネト！」\r\n「そういえば何て呼べばいいネトー？」",
-           "主人公「名前」",
+           $"主人公「{GameManager.Instance.player.PlayerName}」",
            "ネト「これからよろしくネト！！！」",
         });
 

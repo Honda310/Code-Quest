@@ -1988,6 +1988,7 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "ToNeto")
         {
             GameManager.Instance.neto.gameObject.SetActive(true);
+            GameManager.Instance.neto.transform.position = EventObject.transform.position;
         }
         if (EventObject != null)
         {
