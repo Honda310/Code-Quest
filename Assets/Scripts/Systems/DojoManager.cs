@@ -42,11 +42,11 @@ public class DojoManager : MonoBehaviour
                             ,"★ポイント\r\n上から順番にチェックしていって、\r\n一度どれかの条件に合ったら、その下の\r\nelse if や else は全部無視されるよ。\r\n\r\n一番最初に「当たり」を引いたら、\r\nそこでおしまい！って動きをするんだ。\r\n\r\nどう？「=」と「==」の違いや「&&」と「||」\r\nの使い分け、バッチリ掴めたかな？ "
                             };
     string[] ForWhileContent = { "" };
-    string[] ArrayContent = {"" /*"【学習文章：配列 × for文】\n配列を使うときに、よく一緒に使うのが for文ネト。\nfor文は「決まった回数だけ繰り返す処理」を書くときに使うネト。"
+    string[] ArrayContent = {"【学習文章：配列 × for文】\n配列を使うときに、よく一緒に使うのが for文ネト。\nfor文は「決まった回数だけ繰り返す処理」を書くときに使うネト。"
                                 ,"基本形はこれネト：\n\nfor (int i = 0; i < 5; i++) {\n    //繰り返す処理\n}\nint i = 0 … ループ用の変数iを宣言、0でスタート\ni < 5 … iが4までループ(5回繰り返す)\ni++ … ループのたびにiを1増やす\n\n配列と組み合わせると、配列の全要素を順番に処理できるネト。"
                                 , "例えば：\n\nint[] nums = { 5, 8, 12 };\n\nfor (int i = 0; i < nums.length; i++) {\n    System.out.println(nums[i]);\n}\n\nこれで 配列の中身を0番目から順に表示できるネト。"
                                 ,"次のコードを実行すると、最後に表示される値は何になるネト？\n\npublic class Main {\n    public static void main(String[] args) {\n        int[] nums = { 4, 9, 2, 7 };\n        for (int i = 0; i < nums.length; i++) {\n            System.out.println(nums[i]);\n        }\n    }\n}\n A:4 B:2 C:7 D:9"
-                                ,"【解説】ネト\n配列 nums の中身は次ネト。\nインデックス：0 1 2 3\n値　　　　　：4 9 2 7\n\nfor文はこう動くネト：\ni = 0 → nums[0] = 4 を表示\ni = 1 → nums[1] = 9 を表示\ni = 2 → nums[2] = 2 を表示\ni = 3 → nums[3] = 7 を表示\n\nつまり、最後に出力されるのは 7 、正解は C ネト！"*/};
+                                ,"【解説】ネト\n配列 nums の中身は次ネト。\nインデックス：0 1 2 3\n値　　　　　：4 9 2 7\n\nfor文はこう動くネト：\ni = 0 → nums[0] = 4 を表示\ni = 1 → nums[1] = 9 を表示\ni = 2 → nums[2] = 2 を表示\ni = 3 → nums[3] = 7 を表示\n\nつまり、最後に出力されるのは 7 、正解は C ネト！"};
     int[] ArrayLengths = new int[4];
     string[] BattleAsk = {"変数の学習内容を実践しますか？\n（戦闘が始まります）",
                             "条件分岐の学習内容を実践しますか？\n（戦闘が始まります）",

@@ -2114,7 +2114,7 @@ public class UIManager : MonoBehaviour
             case "PoisonedSpring":
                 currentCodingQuest = questManager.GetCodingQuestion(1);
                 break;
-            case "CorrupedTown":
+            case "Unknown":
                 currentCodingQuest = questManager.GetCodingQuestion(2);
                 break;
             case "Temple":
