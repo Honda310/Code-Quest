@@ -1131,15 +1131,18 @@ public class CodingManager : MonoBehaviour
                 BaseCode[2] = @"int score=100;
                                 ";
                 break;
-            case "CorrupedTown":
+            case "Unknown":
                 BaseCode[0] = @"int a=1;
                                 int b=9;
+                                int count=0;
                                 ";
                 BaseCode[1] = @"int a=10;
                                 int b=24;
+                                int count=0;
                                 ";
                 BaseCode[2] = @"int a=11;
                                 int b=15;
+                                int count=0;
                                 ";
                 break;
             case "Temple":
@@ -1149,25 +1152,25 @@ numbers[1]=7;
 numbers[2]=2;
 numbers[3]=9;
 numbers[4]=5;
-int x=5;
+int a=5;
 ";
 
-                BaseCode[1] = @"int[] numbers = new int[3];
+                BaseCode[1] = @"int[] numbers = new int[5];
 numbers[0]=1;
 numbers[1]=2;
 numbers[2]=3;
 numbers[3]=4;
 numbers[4]=5;
-int x=10;
+int a=10;
 ";
 
-                BaseCode[2] = @"int[] numbers = new int[4];
+                BaseCode[2] = @"int[] numbers = new int[5];
 numbers[0]=8;
 numbers[1]=4;
 numbers[2]=6;
 numbers[3]=1;
 numbers[4]=3;
-int x=5;
+int a=5;
 ";
                 break;
             case "defalut":
@@ -1206,6 +1209,7 @@ int x=5;
                 Checker = false;
             }
         }
+        UnityEngine.Debug.Log(Checker);
         return Checker;
     }
 }

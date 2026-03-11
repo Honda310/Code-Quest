@@ -235,8 +235,12 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         if (win)
         {
-            Destroy(currentEnemy.gameObject);
             GameManager.Instance.enemyList.EnemyDefeat(currentEnemy.EnemyID);
+            if (currentEnemy.EnemyID== 27)
+            {
+                uimanager.EndrollTrigger();
+            }
+            Destroy(currentEnemy.gameObject);
         }
         player.ClearBuffs();
         neto.ClearBuffs();
