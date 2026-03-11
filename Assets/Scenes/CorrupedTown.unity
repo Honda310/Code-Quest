@@ -10253,7 +10253,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 998af94b642565242b64b0085b02d4ba, type: 3}
       propertyPath: m_Name
-      value: Enemy14
+      value: Enemy15
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 998af94b642565242b64b0085b02d4ba, type: 3}
       propertyPath: m_SortingOrder
@@ -10348,7 +10348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  EnemyID: 14
+  EnemyID: 15
   QuestionCategories: 0
 --- !u!114 &362378917
 MonoBehaviour:
@@ -10375,7 +10375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
-  EnemyID: 14
+  EnemyID: 15
   enemy: {fileID: 362378916}
 --- !u!50 &362378919
 Rigidbody2D:
@@ -26615,6 +26615,7 @@ MonoBehaviour:
   SaveLoadPanel: {fileID: 1356690559}
   SaveDetailText: {fileID: 2012427642}
   TalkBranchPanel: {fileID: 0}
+  EventObject: {fileID: 0}
 --- !u!114 &1040071110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27466,7 +27467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 0}
   smoothing: 5
-  maxY: 45
 --- !u!114 &1061122702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30910,7 +30910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavePointManager
   rb: {fileID: 1190748786}
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1040071109}
 --- !u!1 &1192126820
 GameObject:
   m_ObjectHideFlags: 0
@@ -39630,7 +39630,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 98103d1a0bd63154a9c54d7c2d3c1aab, type: 3}
       propertyPath: m_Name
-      value: Enemy15
+      value: Enemy14
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 98103d1a0bd63154a9c54d7c2d3c1aab, type: 3}
       propertyPath: m_SortingOrder
@@ -39738,7 +39738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd575632f11f84b44ad9dfd7dd48ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySymbol
-  EnemyID: 15
+  EnemyID: 14
   enemy: {fileID: 1525953112}
 --- !u!114 &1525953112
 MonoBehaviour:
@@ -39752,7 +39752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bffd94fb3d2f3a4db21a2a6060a45d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  EnemyID: 15
+  EnemyID: 14
   QuestionCategories: 0
 --- !u!58 &1525953113
 CircleCollider2D:

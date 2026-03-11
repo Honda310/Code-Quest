@@ -67,7 +67,7 @@ public class CameraFollow : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Comcolle")
         {
-            CameraPosLimitChange(180,180,0,0);
+            CameraPosLimitChange(180, 180, 0, 0);
         }
         else if (SceneManager.GetActiveScene().name == "ToNeto")
         {
@@ -77,9 +77,13 @@ public class CameraFollow : MonoBehaviour
         {
             CameraPosLimitChange(90, 90, 320, 0);
         }
+        else if (SceneManager.GetActiveScene().name == "LamentForest")
+        {
+            CameraPosLimitChange(45, -2000, 2000, -2000);
+        }
         else if (SceneManager.GetActiveScene().name == "PoisonedSpring")
         {
-            CameraPosLimitChange();
+            CameraPosLimitChange(90, -2000, 3000, -3000);
         }
         else if (SceneManager.GetActiveScene().name == "ErrorVillage")
         {
@@ -87,11 +91,11 @@ public class CameraFollow : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "CorrupedTown")
         {
-            CameraPosLimitChange();
+            CameraPosLimitChange(90, -2000, 3000, -3000);
         }
         else if (SceneManager.GetActiveScene().name == "Temple")
         {
-            CameraPosLimitChange();
+            CameraPosLimitChange(90, -4000, 3000, -3000);
         }
         else if (SceneManager.GetActiveScene().name == "Unknown")
         {
