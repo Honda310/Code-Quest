@@ -57,8 +57,6 @@ public class GameManager : MonoBehaviour
         if (Time.unscaledTime < nextAcceptTime) return;
 
         nextAcceptTime = Time.unscaledTime + Cooldown;
-        // シングルトン化の処理
-        // シーン移動してもこのオブジェクトが破壊されないようにします
         if (Instance == null)
         {
             Instance = this;
@@ -91,7 +89,6 @@ public class GameManager : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X)) && ((CurrentMode == GameMode.Field) || (CurrentMode == GameMode.Menu)))
         {
             UIManager.Active?.MenuToggle();
-            Debug.Log("called");
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -109,7 +106,7 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Active?.ShopPanelOpen();
         }
-        if ((Input.GetKeyDown(KeyCode.Escape)|| Input.GetKeyDown(KeyCode.X)) && CurrentMode == GameMode.Debug)
+        if ((Input.GetKeyDown(KeyCode.Escape)) && CurrentMode == GameMode.Debug)
         {
             UIManager.Active?.OnCodingCancelButtonClicked();
         }

@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shopPanel;      // お店画面
     [SerializeField] private GameObject dojoPanel;      // 道場画面
     [SerializeField] private GameObject itemDebugPanel; // アイテムデバッグ画面
+    [SerializeField] private GameObject endRollPanel;
 
     [Header("戦闘パネルの各要素")]
     [SerializeField] private GameObject PlSelectPanel;
@@ -593,9 +594,16 @@ public class UIManager : MonoBehaviour
     {
         DifficultAndCheckButtonFramePanel.SetActive(false);
         DifficultSelectPanel.SetActive(false);
-        NetoSelectPanel.SetActive(true);
-        RebootLog();
         OnPlayerAttack = true;
+        if (n.CurrentHP > 0)
+        {
+            NetoSelectPanel.SetActive(true);
+        }
+        else
+        {
+            PlayerTurnOrderStart();
+        }
+        RebootLog();
     }
     public void OnAcceptButtonSelected()
 	{
@@ -2471,5 +2479,9 @@ public class UIManager : MonoBehaviour
         {
 
         }
+    }
+    public void EndrollTrigger()
+    {
+        endRollPanel.SetActive(true);
     }
 }

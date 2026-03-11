@@ -1,9 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TalkEventList: MonoBehaviour
 {
     public Dictionary<int, Queue<string>> TalkEventTable = new Dictionary<int, Queue<string>>();
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     void Start()
     {
         TalkEventTable[0] = new Queue<string>(new[]
@@ -27,20 +37,7 @@ public class TalkEventList: MonoBehaviour
             "主人公（パソコンをつける）\n（画面が光りだし、目の前が真っ白になる）"
         });
 
-        TalkEventTable[2] = new Queue<string>(new[]
-        {
-           "ネト「みんな…みんなおかしくなっちゃったネト…」",
-           "「人間ならきっとみんなのこと元に戻せるネト…」",
-           "「でもこんなとこにいるわけないネト…」",
-           "ネト「!?」",
-           "ネト「助けてほしいネト！！」",
-           "主人公「…?」",
-           "ネト「この世界はいま、色々な物がバグって大変なことになってるネト」\r\n「君の…プログラミングの力でこの世界を救ってほしいネト！」",
-           "主人公「わかった」",
-           "ネト「ありがとうネト！！ほんと助かるネト！」\r\n「そういえば何て呼べばいいネトー？」",
-           $"主人公「{GameManager.Instance.player.PlayerName}」",
-           "ネト「これからよろしくネト！！！」",
-        });
+
 
         TalkEventTable[3] = new Queue<string>(new[]
         {
@@ -99,5 +96,25 @@ public class TalkEventList: MonoBehaviour
             "「まぁ…いいか」",
             "「私の邪魔をする者はたとえ神であっても私の物語の『端役』として死んでもらう」"
         });
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name=="ToNeto")
+        {
+            TalkEventTable[2] = new Queue<string>(new[]
+        {
+           "ネト「みんな…みんなおかしくなっちゃったネト…」",
+           "「人間ならきっとみんなのこと元に戻せるネト…」",
+           "「でもこんなとこにいるわけないネト…」",
+           "ネト「!?」",
+           "ネト「助けてほしいネト！！」",
+           "主人公「…?」",
+           "ネト「この世界はいま、色々な物がバグって大変なことになってるネト」\r\n「君の…プログラミングの力でこの世界を救ってほしいネト！」",
+           "主人公「わかった」",
+           "ネト「ありがとうネト！！ほんと助かるネト！」\r\n「そういえば何て呼べばいいネトー？」",
+           $"主人公「{GameManager.Instance.player.PlayerName}だよ、よろしく。」",
+           $"ネト「{GameManager.Instance.player.PlayerName}！これからよろしくネト！！！」",
+        });
+        }
     }
 }
