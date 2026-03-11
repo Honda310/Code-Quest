@@ -1,13 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Neto : MonoBehaviour
 {
-    public int MaxHP;
-    public int CurrentHP;
-    public int BaseDef;
+    [NonSerialized] public int MaxHP=130;
+    [NonSerialized] public int CurrentHP=130;
+    [NonSerialized] public int BaseDef=15;
     public Accessory equipAccessory;
 
     public int AccessoryDef { get; private set; }
@@ -49,7 +49,7 @@ public class Neto : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // ƒV[ƒ“Ø‘ÖŒã‚É Player ‚ğÄæ“¾
-        Player player = Object.FindFirstObjectByType<Player>();
+        Player player = UnityEngine.Object.FindFirstObjectByType<Player>();
         if (player != null)
         {
             target = player.transform;

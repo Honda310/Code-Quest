@@ -2172,11 +2172,48 @@ public class UIManager : MonoBehaviour
         DebugPanel.SetActive(false);
         OnDebugPanelReset();
         OnDebugTextReset();
+        if (DebugCorrectPanel.activeSelf)
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "LamentForest":
+                    GameManager.Instance.repairableLineList.RepairLine(0);
+                    break;
+                case "PoisonedSpring":
+                    GameManager.Instance.repairableLineList.RepairLine(1);
+                    break;
+                case "CorrupedTown":
+                    GameManager.Instance.repairableLineList.RepairLine(2);
+                    break;
+                case "Temple":
+                    GameManager.Instance.repairableLineList.RepairLine(3);
+                    break;
+                case "defalut":
+                    break;
+            }
+            repairableLine.Repair();
+        }
     }
     public void OnDebugCorrectCheckButton()
     {
         OnCodingCancelButtonClicked();
-        GameManager.Instance.repairableLineList.RepairLine(0);
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "LamentForest":
+                GameManager.Instance.repairableLineList.RepairLine(0);
+                break;
+            case "PoisonedSpring":
+                GameManager.Instance.repairableLineList.RepairLine(1);
+                break;
+            case "CorrupedTown":
+                GameManager.Instance.repairableLineList.RepairLine(2);
+                break;
+            case "Temple":
+                GameManager.Instance.repairableLineList.RepairLine(3);
+                break;
+            case "defalut":
+                break;
+        }
         repairableLine.Repair();
     }
     public void OnDebugInCorrectCheckButton()

@@ -1132,14 +1132,43 @@ public class CodingManager : MonoBehaviour
                                 ";
                 break;
             case "CorrupedTown":
-                BaseCode[0] = @"";
-                BaseCode[1] = @"";
-                BaseCode[2] = @"";
+                BaseCode[0] = @"int a=1;
+                                int b=9;
+                                ";
+                BaseCode[1] = @"int a=10;
+                                int b=24;
+                                ";
+                BaseCode[2] = @"int a=11;
+                                int b=15;
+                                ";
                 break;
             case "Temple":
-                BaseCode[0] = @"";
-                BaseCode[1] = @"";
-                BaseCode[2] = @"";
+                BaseCode[0] = @"int[] numbers = new int[5];
+numbers[0]=3;
+numbers[1]=7;
+numbers[2]=2;
+numbers[3]=9;
+numbers[4]=5;
+int x=5;
+";
+
+                BaseCode[1] = @"int[] numbers = new int[3];
+numbers[0]=1;
+numbers[1]=2;
+numbers[2]=3;
+numbers[3]=4;
+numbers[4]=5;
+int x=10;
+";
+
+                BaseCode[2] = @"int[] numbers = new int[4];
+numbers[0]=8;
+numbers[1]=4;
+numbers[2]=6;
+numbers[3]=1;
+numbers[4]=3;
+int x=5;
+";
                 break;
             case "defalut":
                 BaseCode[0] = @"";
