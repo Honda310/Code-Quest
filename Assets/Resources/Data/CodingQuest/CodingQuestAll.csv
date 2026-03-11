@@ -1,5 +1,5 @@
 QuestID,Quest,AnsA,AnsB,AnsC,Hint,Sample
-0,"int型(整数)のaとbが与えられます。\naとbの合計を出力してください。",30,15,35,"int a; \nint b; \nの宣言はいらないから、aとbの加算結果をprintするだけだよ！",print(a+b);
-1,"int型(整数)のscoreが与えられます。\nscoreが80以上ならAを、60以上ならBを、\nそうでないならCを出力してください。",B,C,A,"if elseif else…って感じだよ！\nscoreをそのまま条件分岐に使えるよ"。,"if(score >= 80){\	nprint("A");\n}\nelse if(score >= 60){\n	print("B");\n}\nelse{\n	print("C");\n}"
-2,"int型(整数)のaとb(a<=bかつ、a>=1)\nが与えられます。\na以上b以下の奇数の数を出力してください。\nint count = 0;が既に宣言されています。",5,7,3,"for文とif文と剰余を使うのが正攻法だよ！\nカウント用の変数はcountだから、しっかり使ってね！","int i;\nfor(i=a;i<=b;i=i+1){\n    if(i%2==0){\n        count = count+1;\n    }\n}"
-3,"int(整数)型の配列numbers(要素数:5)と\nint(整数)型のxがあります。\nnumbersの中でx以上の値を加算した合計を出力してください。",21,0,14,"ループ用の変数、加算用の変数をしっかり作って、\nループ文とif文を組み合わせるといいよ！\n要素番号は0から始まるから、0 1 2 3 4だね。","int sum=0;\nint i=0;\nwhile(i<5){\n    if(numbers[i]>=x){\n        sum=sum+numbers[i];\n    }\n    i++;\n}\nprint(sum);"
+0,int型(整数)のaとbが与えられます。\naとbの合計を出力してください。,30,15,35,int a; \nint b; \nの宣言はいらないから、aとbの加算結果をprintするだけだよ！,print(a+b);
+1,int型(整数)のscoreが与えられます。\nscoreが80以上ならAを、60以上ならBを、\nそうでないならCを出力してください。,B,C,A,if elseif else…って感じだよ！\nscoreをそのまま条件分岐に使えるよ。,if(score >= 80){\	nprint("A");\n}\nelse if(score >= 60){\n	print("B");\n}\nelse{\n	print("C");\n}
+2,int型(整数)のaとb(a<=bかつ、a>=1)\nが与えられます。\na以上b以下の奇数の数を出力してください。\nint count = 0;が既に宣言されています。,5,7,3,for文とif文と剰余を使うのが正攻法だよ！\nカウント用の変数はcountだから、しっかり使ってね！,int i;\nfor(i=a;i<=b;i=i+1){\n    if(i%2==0){\n        count = count+1;\n    }\n}
+3,int(整数)型の配列numbers(要素数:5)と\nint(整数)型のxがあります。\nnumbersの中でx以上の値を加算した合計を出力してください。\n,21,0,14,ループ用の変数、加算用の変数をしっかり作って、\nループ文とif文を組み合わせるといいよ！\n要素番号は0から始まるから、0 1 2 3 4だね。,int sum=0;\nint i=0;\nwhile(i<5){\n    if(numbers[i]>=x){\n        sum=sum+numbers[i];\n    }\n    i++;\n}\nprint(sum);
